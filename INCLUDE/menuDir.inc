@@ -13,10 +13,8 @@
                           <a href="#"><i class="glyphicon glyphicon-plus"></i> PERSONAL <span class="arrow"></span></a>
                         </li>
                         <ul class="sub-menu collapse" id="products">
-                            <li class="active"><a href="#"><i class="glyphicon glyphicon-plus-sign"></i>Contratar veterinario</a></li>
-                            <li><a href="#"><i class="glyphicon glyphicon-plus-sign"></i>Contratar recepcionista</a></li>
-                            <li><a href="#"><i class="	glyphicon glyphicon-cog"></i>Consultar veterinario</a></li>
-                            <li><a href="#"><i class="	glyphicon glyphicon-cog"></i>Consultar recepcionista</a></li>
+                            <li class="active"><a href="vistaContratar.php"><i class="glyphicon glyphicon-plus-sign"></i>Contratar</a></li>
+                            <li><a href="#"><i class="	glyphicon glyphicon-cog"></i>Consultar</a></li>
                         </ul>
         
         
