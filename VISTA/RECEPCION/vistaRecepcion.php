@@ -20,14 +20,14 @@
 
 
 
-  <link rel="stylesheet" type="text/css" href="../CSS/estilo.css">
+  <link rel="stylesheet" type="text/css" href="../../CSS/estilo.css">
 
 </head>
 
 <body>
   <!-- MENU PRINCIPAL -->
       <?php
-      include "../INCLUDE/menuPrincipal.inc"
+      include "../../INCLUDE/menuPrincipal.inc"
       ?>
 
   <div class="row">
@@ -35,14 +35,14 @@
   <!-- MENU LATERAL -->
       <div class="col-sm-4">
       <?php
-      include "../INCLUDE/menuRec.inc"
+      include "../../INCLUDE/menuRec.inc"
        ?>
       </div>
 
 
       <!-- CONTENIDO-->
       <div class="col-sm-8 text-left">
-            <img class="logotipo" src="../IMAGENES/logog.png" width="80%" height="auto" > 
+            <img class="logotipo" src="../../IMAGENES/logog.png" width="80%" height="auto" > 
 
 
       </div>

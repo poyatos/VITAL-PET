@@ -14,7 +14,7 @@
   <script src="//code.jquery.com/jquery-1.11.1.min.js"></script>
 <!-- prueba -->
   <link href="//maxcdn.bootstrapcdn.com/font-awesome/4.2.0/css/font-awesome.min.css" rel="stylesheet">
-  <link rel="stylesheet" type="text/css" href="../CSS/estilo.css">
+  <link rel="stylesheet" type="text/css" href="../../CSS/estilo.css">
 
 </head>
 
@@ -23,7 +23,7 @@
 
   <!-- MENU PRINCIPAL -->
       <?php
-      include "../INCLUDE/menuPrincipal.inc"
+      include "../../INCLUDE/menuPrincipal.inc"
       ?>
 
 
@@ -32,14 +32,14 @@
   <!-- MENU LATERAL -->
       <div class="col-sm-4">
       <?php
-      include "../INCLUDE/menuVet.inc"
+      include "../../INCLUDE/menuVet.inc"
       ?>
       </div>
 
 
       <!-- CONTENIDO-->
       <div class="col-sm-8 text-left">
-            <img class="logotipo" src="../IMAGENES/logog.png" width="80%" height="auto" > 
+            <img class="logotipo" src="../../IMAGENES/logog.png" width="80%" height="auto" > 
 
 
       </div>
