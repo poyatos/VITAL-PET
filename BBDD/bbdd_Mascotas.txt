@@ -1,0 +1,51 @@
+DNI		NOMBRE 		TIPO ANIMAL	RAZA/ESPECIE		SEXO		FECHA NAC	PESO
+
+77517664-M	Kira		Perro	   	Schnauzer Miniatura	Femenino	06-12-2014  	 7kg
+77517664-M	Koch		Perro 		Akita Japones		Masculino  	12-12-2012 	 9kg
+80328807-L 	Misaki		Gato		Selkirk Rex		Femenino   	02-04-2010 	 8kg
+47490404-K	Oblonga		Reptil		Iguana del desierto 	Masculino	Desconocida 	 5kg
+47490404-K	Cutiepie		Gato		Bengali			Femenino   	19-05-2014 	  6kg
+99684155-Q	Pepper		Gato		Bombay			Masculino   	29-03-2010 	 4kg
+04152658-K	Ion		Roedor		Hamster Chino		Masculino	01-11-2018  	1kg
+35641701-G	Ulanoca		Perro   		Basset Hound		Femenino   	 14-12-2013 	 10kg	 
+41909009-L	Schnitzel		Perro  		 Doberman		Masculino   	 02-02-2012  	20kg
+57776644-T	Furia		Perro  		 Bichon Maltes		Masculino  	  01-01-2011 	 6kg
+65331468-Z	Oliva		Loro		Loro gris			Femenino   	 15-07-2015  	 3kg
+Y-1530936-R	Druida		Perro   		Yorkshire Terrier		Femenino   	 22-08-2012   	7kg
+79014632-H	Sahne		Huron		Huron whippet		Femenino    	 24-01-2017  	2kg
+79014632-H	Zahn		Pajaro		Periquito			Masculino    	01-10-2017  	1kg
+Z-9632384-N	Amy		Pajaro		Periquito			Femenino  	   11-11-2016  	1kg
+67012985-R	Dafne		Perro		Shar Pei			Femenino   	  02-05-2012 	 25kg
+67012985-R	Malka		Reptil		Dragon barbudo		Femenino   	  05-02-2011  	2kg
+67012985-R	Lana		Perro		Shiba Inu			Femenino    	 11-06-2010 	 8kg
+80858584-Z	Louise		Gato		Khao Manee		Masculino    	08-07-2015   	5kg
+46997747-F	Bernadette	Gato		Siames			Masculino   	 05-08-2015  	 6kg
+91695318-E	Nova		Gato		Persa de pelo largo		Femenino    	 Desconocida  	 6kg
+91695318-E	Uschi		Perro		Shih Tzu			Masculino   	 01-08-2013   	8kg
+29734113-N	Luna		Perro		Rottweiler		Femenino    	 27-12-2017   	30kg
+29734113-N	Lolo		Roedor		Hamster Ruso		Masculino   	 24-11-2015  	 1kg
+15910193-N	Golfo		Gato		Mau egipcio		Masculino   	 23-02-2014  	  5kg
+Y8523941-V	Char		Perro		Mastin Tibetano		Masculino   	 11-09-2014  	  34kg
+57297818-B	Bolita		Pajaro		Loro Arcoiris		Femenino   	  05-08-2010 	   2kg
+57297818-B	Ian		Reptil		Iguana verde		Masculino   	 04-04-2014   	 4kg
+57297818-B	Pepe		Perro		Malinois			Masculino   	 01-04-2016  	  26kg
+57297818-B	Iris		Gato		Spgnynx			Femenino    	 21-12-2014   	 4kg
+53121661-X	Goku		Huron		Huron bull		Masculino   	 07-08-2011   	 2kg
+53121661-X	Benji		Perro		Sin raza			Masculino	05-12-2012	6kg
+73510864-N	Eros		Perro		Pug			Masculino	11-05-2015	5kg	
+30093802-G	Tommy		Gato		Sin raza			Masculino	10-02-2010	5kg
+16152523-Z	Miko		Erizo		Erizo Somali		Masculino	12-12-2012	1kg
+54862977-L	Wally		Gato		Sin raza			Masculino	10-01-2011	4kg
+82353546-E	Ikky		Gato		Azal ruso			Femenino	12-12-2011	1kg
+82353546-E	Ania		Pajaro		Pajaro dodo		Femenino	15-10-2013	1kg
+82353546-E	Shiva		Gato		Gato Persa		Femenino	25-03-2015	4kg
+82353546-E	Cali		Roedor		Hamster Ruso		Femenino	22-11-2013	1kg
+80729531-Z	Pantera		Perro		Chihuahua		Femenino	23-12-2014	4kg
+80729531-Z	Merlin		Perro		Sin raza			Masculino	Desconocida	22kg
+80729531-Z	Simon		Iguana		Iguana Comun		Masculino	14-07-2015	3kg
+77511664-M	Ruffo		Loro		Loro Azul		Masculino	Desconocida	2kg
+77511664-M	Arames		Roedor		Hamster Roborowski	Masculino	12-11-2016	1kg
+77511664-M	Trufita		Gato		Maine Coon		Femenino	01-05-2016	3kg
+80328807-L 	Nona		Perro		Sin raza			Femenino	04-07-2017	12kg
+80328807-L 	Osito		Reptil		Tortuga			Masculino	12-11-2018	3kg
+99684155-Q	Nicolas		Gato		Sin raza			Masculino	Desconocida	3kg
