@@ -57,8 +57,8 @@
         <th>Estado de la cita</th>
         <th>id mascota</th>
         <th>Consulta nº</th>
-    
         <th>Editar</th>
+        
       </tr>
     </thead>
     <tbody id="myTable">

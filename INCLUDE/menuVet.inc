@@ -14,7 +14,6 @@
                         </li>
                         <ul class="sub-menu collapse" id="products">
                             <li class="active"><a href="#"><i class="glyphicon glyphicon-eye-open"></i>Consultar pacientes</a></li>
-                            <li><a href="#"><i class="glyphicon glyphicon-minus-sign"></i>Finalizar consulta</a></li>
                         </ul>
         
         
