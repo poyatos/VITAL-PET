@@ -1,0 +1,1 @@
+INSERT INTO pruebas (nombre_prueba, precio_prueba, id_mascota, resultado_prueba, observaciones) VALUES (),(),
