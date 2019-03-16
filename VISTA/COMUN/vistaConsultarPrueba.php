@@ -42,61 +42,44 @@
 
 <!-- filtro y busqueda-->
  <div class="col-sm-7 text-left">
-     <div class="container">
-      <div class="form-group col-md-2">
-          
-            <select id="inputState" class="form-control">
-                <option selected></option>
-                <option selected>Veterinario</option>
-                <option>Recepcionista</option>
-            </select>
-      </div>
-      <div class="form-group col-md-5">
+
             <input class="form-control" id="myInput" type="text" placeholder="Busqueda..">
-      </div>
-</div>
   <br>
 
   <!-- tabla de busqueda-->
   <table class="table table-bordered table-striped">
     <thead>
       <tr>
-        <th>ID Empleado</th>
-        <th>Nombre</th>
-        <th>Apellidos</th>
-        <th>DNI</th>
-        <th>Telefono</th>
-        <th>Profesión</th>
-        <th>Fecha fin de contrato</th>
+        <th>ID</th>
+        <th>Nombre de la prueba</th>
+        <th>Resultado de la prueba</th>
+        <th>Observaciones</th>
+        <th>Precio</th>
         <th>Editar</th>
       </tr>
     </thead>
     <tbody id="myTable">
       <tr>
-        <td>#1</td>
-        <td>John</td>
-        <td>Doe</td>
-        <td>3242342343e</td>
-        <td>913652635</td>
-        <td>Recepcionista</td>
-        <td>06/10/2021</td>
+        
+        <td>#45</td>
+        <td>operacion final</td>
+        <td>POSITIVO</td>
+        <td>Operacion realizada con exito</td>
+        <td>2200€</td>
         <td>
-        <a href="#" class="btn btn-success" role="button">Renovar</a>
-        <a href="#" class="btn btn-danger" role="button">Despedir</a>
+        <a href="#" class="btn btn-danger" role="button">Borrar</a>
         <a href="#" class="btn btn-info" role="button">Editar</a>
         </td>
       </tr>
       <tr>
-        <td>#1</td>
-        <td>Perico</td>
-        <td>Doe</td>
-        <td>3242342343e</td>
-        <td>913652635</td>
-        <td>Recepcionista</td>
-        <td>06/10/2021</td>
+           
+        <td>#46</td>
+        <td>operacion final</td>
+        <td>POSITIVO</td>
+        <td>Operacion realizada con exito</td>
+        <td>2200€</td>
         <td>
-        <a href="#" class="btn btn-success" role="button">Renovar</a>
-        <a href="#" class="btn btn-danger" role="button">Despedir</a>
+        <a href="#" class="btn btn-danger" role="button">Borrar</a>
         <a href="#" class="btn btn-info" role="button">Editar</a>
         </td>
       </tr>

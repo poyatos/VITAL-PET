@@ -50,38 +50,38 @@
   <table class="table table-bordered table-striped">
     <thead>
       <tr>
-        <th>Nombre</th>
-        <th>Apellidos</th>
-        <th>DNI</th>
-        <th>Telefono</th>
+        <th>ID Paciente</th>
         <th>Nombre de Mascota</th>
-        <th>Especie</th>
+        <th>DNI dueño</th>
+        <th>Tipo</th>
         <th>Raza</th>
+        <th>Peso</th>
+        <th>Sexo</th>
         <th>Editar</th>
       </tr>
     </thead>
     <tbody id="myTable">
       <tr>
+        <td>#01</td>
         <td>John</td>
-        <td>Doe</td>
-        <td>3242342343e</td>
-        <td>913652635</td>
-        <td>paco</td>
-        <td>Mamifero</td>
-        <td>Perro</td>
+        <td>456765457e</td>
+        <td>perrete</td>
+        <td>labrador</td>
+        <td>50kilos</td>
+        <td>M</td>
         <td>
         <a href="#" class="btn btn-danger" role="button">Borrar</a>
         <a href="#" class="btn btn-info" role="button">Editar</a>
         </td>
       </tr>
       <tr>
-        <td>Pedro</td>
-        <td>Doe</td>
-        <td>3242342343e</td>
-        <td>913652635</td>
-        <td>paco</td>
-        <td>Anfibio</td>
-        <td>Rana</td>
+        <td>#01</td>
+        <td>Perico</td>
+        <td>456765457e</td>
+        <td>perrete</td>
+        <td>labrador</td>
+        <td>50kilos</td>
+        <td>M</td>
         <td>
         <a href="#" class="btn btn-danger" role="button">Borrar</a>
         <a href="#" class="btn btn-info" role="button">Editar</a>
