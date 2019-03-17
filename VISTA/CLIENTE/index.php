@@ -23,42 +23,28 @@
 <!-- contenido -->
 <div class="container">    
   <div class="row">
-    <div class="col-sm-4">
-      <div class="panel panel-warning">
-        <div class="panel-heading">CONSULTAR VETERINARIO</div>
-        <div class="panel-body"><a href="#"><img src="../../IMAGENES/vet.jpg" class="img-responsive" style="width:100%" alt="Image"></a></div>
-    
+  <div class="col-sm-4">
+      <div class="panel panel-info">
+        <div class="panel-heading">EXPEDIENTE VETERINARIO</div>
+        <div class="panel-body"><a href="#"><img src="../../IMAGENES/lag.jpg" class="img-responsive" style="width:100%" alt="Image"></a></div>
       </div>
     </div>
     <div class="col-sm-4"> 
       <div class="panel panel-danger">
         <div class="panel-heading">CONSULTAR CITAS</div>
-        <div class="panel-body"><a href="#"><img src="../../IMAGENES/per.jpg" class="img-responsive" style="width:100%" alt="Image"></a></div>
+        <div class="panel-body"><a href="../COMUN/vistaGestionCitas.php"><img src="../../IMAGENES/per.jpg" class="img-responsive" style="width:100%" alt="Image"></a></div>
         
       </div>
     </div>
     <div class="col-sm-4"> 
       <div class="panel panel-success">
         <div class="panel-heading">CONSULTAR PRUEBAS</div>
-        <div class="panel-body"><a href="#"><img src="../../IMAGENES/gat.jpg" class="img-responsive" style="width:100%" alt="Image"></a></div>
+        <div class="panel-body"><a href="../COMUN/vistaGestionPrueba.php"><img src="../../IMAGENES/gat.jpg" class="img-responsive" style="width:100%" alt="Image"></a></div>
        
       </div>
     </div>
   </div>
 </div><br>
-
-<div class="container">    
-  <div class="row">
-    <div class="col-sm-4">
-      <div class="panel panel-info">
-        <div class="panel-heading">EXPEDIENTE VETERINARIO</div>
-        <div class="panel-body"><a href="#"><img src="../../IMAGENES/lag.jpg" class="img-responsive" style="width:100%" alt="Image"></a></div>
-       
-      </div>
-    </div>
-    </div>
-    </div>
-    <br><br>
 
 
 

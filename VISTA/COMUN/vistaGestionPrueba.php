@@ -42,7 +42,7 @@
 
 <!-- filtro y busqueda-->
  <div class="col-sm-7 text-left">
-
+ <h1>LISTADO MASCOTAS</h1>
             <input class="form-control" id="myInput" type="text" placeholder="Busqueda..">
   <br>
 

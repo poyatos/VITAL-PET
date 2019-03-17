@@ -42,6 +42,7 @@
 
 <!-- filtro y busqueda-->
  <div class="col-sm-7 text-left">
+ <h1>LISTADO MASCOTAS</h1>
 
             <input class="form-control" id="myInput" type="text" placeholder="Busqueda..">
   <br>
@@ -70,9 +71,12 @@
         <td>50kilos</td>
         <td>M</td>
         <td>
+        <!--DIRECTOR Y RECEPCION-->
         <a href="#" class="btn btn-danger" role="button">Borrar</a>
         <a href="#" class="btn btn-info" role="button">Editar</a>
-        
+         <!--VETERINARIO-->
+        <a href="../VETERINARIO/vistaAnadirPrueba.php" class="btn btn-info" role="button">Añadir prueba</a>
+
         </td>
       </tr>
       <tr>
@@ -84,8 +88,11 @@
         <td>50kilos</td>
         <td>M</td>
         <td>
+        <!--DIRECTOR Y RECEPCION-->
         <a href="#" class="btn btn-danger" role="button">Borrar</a>
         <a href="#" class="btn btn-info" role="button">Editar</a>
+        <!--VETERINARIO-->
+        <a href="../VETERINARIO/vistaAnadirPrueba.php" class="btn btn-info" role="button">Añadir prueba</a>
        
         </td>
       </tr>

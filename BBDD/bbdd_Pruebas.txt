@@ -36,7 +36,7 @@ Tratamiento inyectable subcutáneo o intramuscular 1 inyección (incluyendo medica
 
 20 €
 
-** Consulta de seguimiento o de revisión sin inyectable **    Ver detalles en Consultas  
+** Consulta de seguimiento o de revisión sin inyectable **    
 
 20 €
 
@@ -134,13 +134,6 @@ Análisis de sangre completo, - Hemograma completo  (anemia/infección) + 10 bioqu
 
 69 €
 
-** Consulta (anamnesis, reconocimiento, diagnóstico y prescripción de tratamiento) de urgencia diurna de L a V (fuera del horario de apertura normal)
-
-65 €
-
-** Consulta (anamnesis, reconocimiento, diagnóstico y prescripción de tratamiento) de urgencia diurna en festivos y fines de semana
-
-70 €
 
 ** Consulta de Especialidad o de segunda opinión (anamnesis, reconocimiento, diagnóstico presuntivo y prescripción de tratamiento)
 
@@ -154,9 +147,6 @@ Estudio ecográfico abdominal completo
 
 120 €
 
-*** Consulta (anamnesis, reconocimiento, diagnóstico y prescripción de tratamiento) de urgencia nocturna
-
-120 €
 
 Estudio ecográfico cardíaco doble color completo
 
@@ -180,7 +170,7 @@ La esterilización de perros machos que contempla este precio a es mediante la té
 Limpieza de boca (sarro) de perro hasta 5 kg con anestesia inhalatoria + monitorización + sueroterapia EV + Antibioterapia + Analgesia + chequeo prequirúrgico                                                                                                                      150 €
 
  
-Castración perra 0-5 kg       => 175 euros  
-Castración perra 5-10 kg     => 225 euros 
-Castración perra 10-20 Kg   => 285 euros
-Castración perra 20-30 kg   => 390 euros
+Esterelizacion perra 0-5 kg       => 175 euros  
+Esterelizacion perra 5-10 kg     => 225 euros 
+Esterelizacion perra 10-20 Kg   => 285 euros
+Esterelizacion perra 20-30 kg   => 390 euros

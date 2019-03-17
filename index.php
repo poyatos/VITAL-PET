@@ -1,3 +1,8 @@
+<?php
+    
+    session_start ();
+?>
+
 <!DOCTYPE html>
 <html lang="en">
 <head>
@@ -8,6 +13,8 @@
   <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
   <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.0/js/bootstrap.min.js"></script>
   <link rel="stylesheet" type="text/css" href="CSS/estiloIndex.css">
+
+
 </head>
 <body>
 
@@ -40,7 +47,7 @@
           <div class="cinicio">
           <h4 class="modal-title">Inicia Sesión</h4>
           <br/>
-        <form action="/action_page.php">
+        <form  action="CONTROLADOR/login.php" method="POST" enctype="multipart/form-data">
           <div class="form-group">
             <label for="email">Dni:</label>
             <input type="text" class="form-control" id="dni" placeholder="Dni" name="dni">
@@ -92,7 +99,6 @@
     </a>
 </div>
 
-
  <!-- CONTENIDO --> 
 <div class="container-fluid ">
   <div class="row">
@@ -113,7 +119,7 @@
       </p>
     </div>
     <div class="col-sm-4">
-    <img class="logotipo" src="IMAGENES/sobre.png" width="500px" height="auto" >
+    <img class="logotipo" src="IMAGENES/sobre.png" width="80%" height="auto" >
     </div>
   </div>
 </div>
@@ -121,12 +127,11 @@
 <div class="container-fluid bg-grey">
   <div class="row">
     <div class="col-sm-4">
-    <img class="logotipo" src="IMAGENES/valors.png" width="500px" height="auto" >
+    <img class="logotipo" src="IMAGENES/valors.png" width="90%" height="auto" >
     </div>
     <div class="col-sm-8">
       <h2>NUESTROS VALORES</h2>
       <h4><strong>MISIÓN DE LA EMPRESA</strong> Una mascota no es solo un animal es un compañero y amigo que te acompaña durante tu vida, por eso desde PET VITAL ofrecemos el servicio numero 1 para que tu mascota viva sana y en las mejores condiciones posibles</h4>      
-      
     </div>
   </div>
 </div>
@@ -173,20 +178,18 @@
   </div>
 </div>
 
-
-
-
+<!--GOOGLE MAPS -->
 <div class="container">
     <div class="row-fluid">
         <div class="col-md-9">
-        	<iframe width="100%" height="350" frameborder="0" scrolling="no" marginheight="0" marginwidth="0" src="https://www.google.com/maps/embed/v1/place?q=Cyberborg%20Bodyart%2C%20Bangka%2C%20Jakarta%2C%20Indonesia&key=AIzaSyCGz8WzqxQw1OwHWey3LCTjqKFG9feCxP4"></iframe>
+        <iframe src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3043.2384419675677!2d-3.8095838846078625!3d40.2926643793798!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0xd418bff2fdeb219%3A0xa1ded8e97c07bb6e!2sClinica+Vital-Pet!5e0!3m2!1ses!2ses!4v1552826235149" width="800" height="400" frameborder="0" style="border:0" allowfullscreen></iframe>
     	</div>
     	
       	<div class="col-md-3">
     		<h2>CONTACTO</h2>
     		<address>
     			<strong>VITAL PET</strong><br>
-    			Calle inventada numero 6<br>
+    			Calle de Mostoles<br>
     			Fuenlabrada, Madrid<br>
     			España<br>
     			28941<br>
