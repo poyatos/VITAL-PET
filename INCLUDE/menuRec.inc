@@ -12,8 +12,8 @@
                           <a href="#"><i class="glyphicon glyphicon-user"></i>CLIENTES<span class="arrow"></span></a>
                         </li>
                         <ul class="sub-menu collapse" id="products">
-                            <li class="active"><a href="../RECEPCION/vistaRegistroCliente.php"><i class="glyphicon glyphicon-plus-sign"></i>Añadir cliente</a></li>
-                            <li><a href="../RECEPCION/vistaRegistroMascota.php"><i class="glyphicon glyphicon-plus-sign"></i>Añadir mascota</a></li>
+                            <li class="active"><a href="../RECEPCIONISTA/vistaRegistroCliente.php"><i class="glyphicon glyphicon-plus-sign"></i>Añadir cliente</a></li>
+                            <li><a href="../RECEPCIONISTA/vistaRegistroMascota.php"><i class="glyphicon glyphicon-plus-sign"></i>Añadir mascota</a></li>
                             <li><a href="../COMUN/vistaGestionPacientes.php"><i class="glyphicon glyphicon-eye-open"></i>Consultar clientes/mascotas</a></li>
                             <li class="active"><a href="../COMUN/vistaGestionCitas.php"><i class="glyphicon glyphicon-plus-sign"></i>Gestionar citas</a></li>
                         </ul>

@@ -81,9 +81,9 @@
         <td>Recepcionista</td>
         <td>06/10/2021</td>
         <td>
-        <a href="#" class="btn btn-success" role="button">Renovar</a>
+        <a href="../DIRECTOR/vistaEditarContrato.php" class="btn btn-success" role="button">Renovar</a>
         <a href="#" class="btn btn-danger" role="button">Despedir</a>
-        <a href="#" class="btn btn-info" role="button">Editar</a>
+        <a href="../DIRECTOR/vistaContratar.php" class="btn btn-info" role="button">Editar</a>
         </td>
       </tr>
       <tr>
@@ -95,9 +95,9 @@
         <td>Recepcionista</td>
         <td>06/10/2021</td>
         <td>
-        <a href="#" class="btn btn-success" role="button">Renovar</a>
+        <a href="../DIRECTOR/vistaEditarContrato.php" class="btn btn-success" role="button">Renovar</a>
         <a href="#" class="btn btn-danger" role="button">Despedir</a>
-        <a href="#" class="btn btn-info" role="button">Editar</a>
+        <a href="../DIRECTOR/vistaContratar.php" class="btn btn-info" role="button">Editar</a>
         </td>
       </tr>
     </tbody>

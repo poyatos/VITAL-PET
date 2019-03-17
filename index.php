@@ -1,3 +1,8 @@
+<?php
+    
+    session_start ();
+?>
+
 <!DOCTYPE html>
 <html lang="en">
 <head>
@@ -8,6 +13,8 @@
   <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
   <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.0/js/bootstrap.min.js"></script>
   <link rel="stylesheet" type="text/css" href="CSS/estiloIndex.css">
+
+
 </head>
 <body>
 
@@ -40,7 +47,7 @@
           <div class="cinicio">
           <h4 class="modal-title">Inicia Sesión</h4>
           <br/>
-        <form action="/action_page.php">
+        <form  action="CONTROLADOR/login.php" method="POST" enctype="multipart/form-data">
           <div class="form-group">
             <label for="email">Dni:</label>
             <input type="text" class="form-control" id="dni" placeholder="Dni" name="dni">
@@ -92,7 +99,6 @@
     </a>
 </div>
 
-
  <!-- CONTENIDO --> 
 <div class="container-fluid ">
   <div class="row">
@@ -113,7 +119,7 @@
       </p>
     </div>
     <div class="col-sm-4">
-    <img class="logotipo" src="IMAGENES/sobre.png" width="500px" height="auto" >
+    <img class="logotipo" src="IMAGENES/sobre.png" width="80%" height="auto" >
     </div>
   </div>
 </div>
@@ -121,12 +127,11 @@
 <div class="container-fluid bg-grey">
   <div class="row">
     <div class="col-sm-4">
-    <img class="logotipo" src="IMAGENES/valors.png" width="500px" height="auto" >
+    <img class="logotipo" src="IMAGENES/valors.png" width="90%" height="auto" >
     </div>
     <div class="col-sm-8">
       <h2>NUESTROS VALORES</h2>
       <h4><strong>MISIÓN DE LA EMPRESA</strong> Una mascota no es solo un animal es un compañero y amigo que te acompaña durante tu vida, por eso desde PET VITAL ofrecemos el servicio numero 1 para que tu mascota viva sana y en las mejores condiciones posibles</h4>      
-      
     </div>
   </div>
 </div>
