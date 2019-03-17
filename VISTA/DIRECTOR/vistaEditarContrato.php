@@ -45,58 +45,12 @@
 
       <div class="panel panel-default">
         <div class="panel-heading">
-          <h2>CONTRATAR</h2>
+          <h2>CONTRATO</h2>
         </div>
         <form class="formulario">
-          <div class="form-group col-md-12">
-          </div>
           <div class="form-row">
-            <div class="form-group col-md-6">
-              <label for="inputNombre">Nombre</label>
-              <input type="text" name="nombre" class="form-control" id="inputNombre" placeholder="Nombre">
-            </div>
-            <div class="form-group col-md-6">
-              <label for="inputApellidos">Apellidos</label>
-              <input type="text"  name="apellidos" class="form-control" id="inputApellidos" placeholder="Apellidos">
-            </div>
-            <div class="form-group col-md-6">
-              <label for="inputPassword">Contraseña</label>
-              <input type="password"  name="contraseña"  class="form-control" id="inputPassword" placeholder="Password">
-            </div>
-            <div class="form-group col-md-6">
-              <label for="inputDni">DNI</label>
-              <input type="text"  name="dni"  class="form-control" id="inputDni" placeholder="492039494E">
-            </div>
-          </div>
           <div class="form-group col-md-12">
-            <label for="inputCorreo">Correo</label>
-            <input type="text"  name="correo"  class="form-control" id="inputCorreo" placeholder="ejemplo@ejemplo.ejemplo">
-          </div>
-          <div class="form-row">
-            <div class="form-group col-md-6">
-              <label for="inputDireccion">Direccion</label>
-              <input type="text"  name="direccion"  class="form-control" id="calle de ejemplo numero 3">
-            </div>
-            <div class="form-group col-md-6">
-              <label for="inputTelefono">Telefono</label>
-              <input type="text"  name="telefono"  class="form-control" id="916652654">
-            </div>
-          </div>
-          <div class="form-group col-md-6">
-            <label for="inputFecha">Fecha</label>
-            <input type="date"  name="fecna"  class="form-control" id="fecha">
-          </div>
-
-          <div class="form-group col-md-6">
-            <label for="inputJob">Elije la profesión</label>
-            <select  name="profesion"  id="inputJob" class="form-control">
-              <option value="veterinario" selected>Veterinario</option>
-              <option value ="recepcionista">Recepcionista</option>
-            </select>
-          </div>
-          <br />
-          <div class="form-group col-md-12">
-            <h3>CONTRATO</h3>
+            <h3>EDITAR CONTRATO</h3>
           </div>
           <div class="form-group col-md-6">
             <label for="inputFInicio">Fecha Inicio</label>
