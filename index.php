@@ -156,8 +156,40 @@ section .section-title {
     </div>
     <div class="collapse navbar-collapse" id="myNavbar">
       <ul class="nav navbar-nav navbar-right">
-        <li ><a class="in" href="#"><span class="glyphicon glyphicon-log-in in"></span> Iniciar sesión</a></li>
-      </ul>
+
+ <!-- BOTON INICIO DE SESIÓN -->
+  <button type="button" class="btn btn-success btn-lg" data-toggle="modal" data-target="#myModal"><i class="glyphicon glyphicon-log-in"></i> Iniciar sesión</button>
+
+  <!--MODAL -->
+  <div class="modal" id="myModal" role="dialog">
+    <div class="modal-dialog modal-sm">
+      <div class="modal-content">
+        <div class="modal-header">
+          <button type="button" class="close" data-dismiss="modal">&times;</button>
+          
+          <!--FORMULARIO INICIO DE SESIÓN-->
+          <div class="cinicio">
+          <h4 class="modal-title">Inicia Sesión</h4>
+          <br/>
+        <form action="/action_page.php">
+          <div class="form-group">
+            <label for="email">Dni:</label>
+            <input type="text" class="form-control" id="dni" placeholder="Dni" name="dni">
+          </div>
+        <div class="form-group">
+          <label for="pwd">Contraseña:</label>
+          <input type="password" class="form-control" id="pwd" placeholder="Contraseña" name="pwd">
+        </div>
+        <div class="checkbox">
+          <label><input type="checkbox" name="remember"> Recuerdame</label>
+        </div>
+          <button type="submit" class="btn btn-default">Iniciar Sesión</button>
+      </form>
+      </div>
+    </div>
+  </div>
+    </ul>
+</div>
     </div>
   </div>
 </nav>
@@ -193,7 +225,6 @@ section .section-title {
 
 
  <!-- CONTENIDO --> 
-
 <div class="container-fluid ">
   <div class="row">
     <div class="col-sm-8">
@@ -274,6 +305,7 @@ section .section-title {
 </div>
 
 
+<<<<<<< HEAD
 
 <link href="//maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css" rel="stylesheet" id="bootstrap-css">
 <script src="//maxcdn.bootstrapcdn.com/bootstrap/4.0.0/js/bootstrap.min.js"></script>
@@ -581,17 +613,20 @@ section .section-title {
 
 
 
+=======
+<!--GOOGLE MAPS -->
+>>>>>>> 0ed7703da76bda288831ad2570cef38fa68efb58
 <div class="container">
     <div class="row-fluid">
         <div class="col-md-9">
-        	<iframe width="100%" height="350" frameborder="0" scrolling="no" marginheight="0" marginwidth="0" src="https://www.google.com/maps/embed/v1/place?q=Cyberborg%20Bodyart%2C%20Bangka%2C%20Jakarta%2C%20Indonesia&key=AIzaSyCGz8WzqxQw1OwHWey3LCTjqKFG9feCxP4"></iframe>
+        <iframe src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3043.2384419675677!2d-3.8095838846078625!3d40.2926643793798!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0xd418bff2fdeb219%3A0xa1ded8e97c07bb6e!2sClinica+Vital-Pet!5e0!3m2!1ses!2ses!4v1552826235149" width="800" height="400" frameborder="0" style="border:0" allowfullscreen></iframe>
     	</div>
     	
       	<div class="col-md-3">
     		<h2>CONTACTO</h2>
     		<address>
     			<strong>VITAL PET</strong><br>
-    			Calle inventada numero 6<br>
+    			Calle de Mostoles<br>
     			Fuenlabrada, Madrid<br>
     			España<br>
     			28941<br>

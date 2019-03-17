@@ -54,45 +54,45 @@
           <div class="form-row">
             <div class="form-group col-md-6">
               <label for="inputNombre">Nombre</label>
-              <input type="text" class="form-control" id="inputNombre" placeholder="Nombre">
+              <input type="text" name="nombre" class="form-control" id="inputNombre" placeholder="Nombre">
             </div>
             <div class="form-group col-md-6">
               <label for="inputApellidos">Apellidos</label>
-              <input type="text" class="form-control" id="inputApellidos" placeholder="Apellidos">
+              <input type="text"  name="apellidos" class="form-control" id="inputApellidos" placeholder="Apellidos">
             </div>
             <div class="form-group col-md-6">
               <label for="inputPassword">Contraseña</label>
-              <input type="password" class="form-control" id="inputPassword" placeholder="Password">
+              <input type="password"  name="contraseña"  class="form-control" id="inputPassword" placeholder="Password">
             </div>
             <div class="form-group col-md-6">
               <label for="inputDni">DNI</label>
-              <input type="text" class="form-control" id="inputDni" placeholder="492039494E">
+              <input type="text"  name="dni"  class="form-control" id="inputDni" placeholder="492039494E">
             </div>
           </div>
           <div class="form-group col-md-12">
             <label for="inputCorreo">Correo</label>
-            <input type="text" class="form-control" id="inputCorreo" placeholder="ejemplo@ejemplo.ejemplo">
+            <input type="text"  name="correo"  class="form-control" id="inputCorreo" placeholder="ejemplo@ejemplo.ejemplo">
           </div>
           <div class="form-row">
             <div class="form-group col-md-6">
               <label for="inputDireccion">Direccion</label>
-              <input type="text" class="form-control" id="calle de ejemplo numero 3">
+              <input type="text"  name="direccion"  class="form-control" id="calle de ejemplo numero 3">
             </div>
             <div class="form-group col-md-6">
               <label for="inputTelefono">Telefono</label>
-              <input type="text" class="form-control" id="916652654">
+              <input type="text"  name="telefono"  class="form-control" id="916652654">
             </div>
           </div>
           <div class="form-group col-md-6">
             <label for="inputFecha">Fecha</label>
-            <input type="date" class="form-control" id="fecha">
+            <input type="date"  name="fecna"  class="form-control" id="fecha">
           </div>
 
           <div class="form-group col-md-6">
             <label for="inputJob">Elije la profesión</label>
-            <select id="inputJob" class="form-control">
-              <option selected>Veterinario</option>
-              <option>Recepcionista</option>
+            <select  name="profesion"  id="inputJob" class="form-control">
+              <option value="veterinario" selected>Veterinario</option>
+              <option value ="recepcionista">Recepcionista</option>
             </select>
           </div>
           <br />
@@ -101,32 +101,32 @@
           </div>
           <div class="form-group col-md-6">
             <label for="inputFInicio">Fecha Inicio</label>
-            <input type="date" class="form-control" id="fecha">
+            <input type="date"  name="fecin"  class="form-control" id="fecha">
           </div>
           <div class="form-group col-md-6">
             <label for="inputFFin">Fecha Fin</label>
-            <input type="date" class="form-control" id="fecha">
+            <input type="date"  name="fefin"  class="form-control" id="fecha">
           </div>
           <div class="form-group col-md-6">
             <label for="inputSueldo">Sueldo</label>
-            <input type="number" class="form-control" id="1000">
+            <input type="number"  name="sueldo"  class="form-control" id="1000">
           </div>
 
           <div class="form-group col-md-6">
             <label for="inputJob">Elije el horario</label>
-            <select id="inputJob" class="form-control">
-              <option selected>Vespertino</option>
-              <option>Matutino</option>
+            <select  name="horario"  id="inputJob" class="form-control">
+              <option value="matutino" selected>Vespertino</option>
+              <option value="vespertino">Matutino</option>
             </select>
           </div>
-       
-            <input type="submit" class="btn btn-lg" value="Contratar">
-         
+
+          <input type="submit" class="btn btn-lg" value="Contratar">
+
 
         </form>
       </div>
     </div>
-</div>
+  </div>
 
 </body>
 

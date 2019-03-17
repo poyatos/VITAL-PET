@@ -184,3 +184,9 @@
 .formulario{
   padding:2%;
 }
+
+textarea{
+
+    resize:none;
+
+}
