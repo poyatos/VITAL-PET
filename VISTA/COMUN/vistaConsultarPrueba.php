@@ -63,12 +63,14 @@
         
         <td>#45</td>
         <td>operacion final</td>
-        <td>POSITIVO</td>
-        <td>Operacion realizada con exito</td>
+        <td>***</td>
+        <td>***</td>
         <td>2200€</td>
+        
+        <!-- SOLO SE ACCEDE DESDE VETERINARIO-->
         <td>
         <a href="#" class="btn btn-danger" role="button">Borrar</a>
-        <a href="#" class="btn btn-info" role="button">Editar</a>
+        <a href="../VETERINARIO/vistaEditarPrueba.php" class="btn btn-info" role="button">Editar</a>
         </td>
       </tr>
       <tr>
@@ -80,7 +82,7 @@
         <td>2200€</td>
         <td>
         <a href="#" class="btn btn-danger" role="button">Borrar</a>
-        <a href="#" class="btn btn-info" role="button">Editar</a>
+        <a href="../VETERINARIO/vistaEditarPrueba.php" class="btn btn-info" role="button">Editar</a>
         </td>
       </tr>
     </tbody>

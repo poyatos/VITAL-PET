@@ -25,8 +25,40 @@
     </div>
     <div class="collapse navbar-collapse" id="myNavbar">
       <ul class="nav navbar-nav navbar-right">
-        <li ><a class="in" href="#"><span class="glyphicon glyphicon-log-in in"></span> Iniciar sesión</a></li>
-      </ul>
+
+ <!-- BOTON INICIO DE SESIÓN -->
+  <button type="button" class="btn btn-success btn-lg" data-toggle="modal" data-target="#myModal"><i class="glyphicon glyphicon-log-in"></i> Iniciar sesión</button>
+
+  <!--MODAL -->
+  <div class="modal" id="myModal" role="dialog">
+    <div class="modal-dialog modal-sm">
+      <div class="modal-content">
+        <div class="modal-header">
+          <button type="button" class="close" data-dismiss="modal">&times;</button>
+          
+          <!--FORMULARIO INICIO DE SESIÓN-->
+          <div class="cinicio">
+          <h4 class="modal-title">Inicia Sesión</h4>
+          <br/>
+        <form action="/action_page.php">
+          <div class="form-group">
+            <label for="email">Dni:</label>
+            <input type="text" class="form-control" id="dni" placeholder="Dni" name="dni">
+          </div>
+        <div class="form-group">
+          <label for="pwd">Contraseña:</label>
+          <input type="password" class="form-control" id="pwd" placeholder="Contraseña" name="pwd">
+        </div>
+        <div class="checkbox">
+          <label><input type="checkbox" name="remember"> Recuerdame</label>
+        </div>
+          <button type="submit" class="btn btn-default">Iniciar Sesión</button>
+      </form>
+      </div>
+    </div>
+  </div>
+    </ul>
+</div>
     </div>
   </div>
 </nav>
@@ -62,7 +94,6 @@
 
 
  <!-- CONTENIDO --> 
-
 <div class="container-fluid ">
   <div class="row">
     <div class="col-sm-8">

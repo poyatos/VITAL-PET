@@ -13,8 +13,8 @@
                           <a href="#"><i class="glyphicon glyphicon-plus"></i> PERSONAL <span class="arrow"></span></a>
                         </li>
                         <ul class="sub-menu collapse" id="products">
-                            <li class="active"><a href="vistaContratar.php"><i class="glyphicon glyphicon-plus-sign"></i>Contratar</a></li>
-                            <li><a href="vistaConsultarEmpleados.php"><i class="glyphicon glyphicon-cog"></i>Consultar</a></li>
+                            <li class="active"><a href="../DIRECTOR/vistaContratar.php"><i class="glyphicon glyphicon-plus-sign"></i>Contratar</a></li>
+                            <li><a href="../DIRECTOR/vistaConsultarEmpleados.php"><i class="glyphicon glyphicon-cog"></i>Consultar</a></li>
                         </ul>
         
         
@@ -23,8 +23,8 @@
                         </li>  
                         <ul class="sub-menu collapse" id="service">
                             <li class="active"><a href="../COMUN/vistaConsultarPacientes.php"><i class="glyphicon glyphicon-eye-open"></i>Consultar pacientes</a></li>
-                            <li><a href="#"><i class="glyphicon glyphicon-list-alt"></i>Consultar pruebas</a></li>
-                            <li><a href="#"><i class="glyphicon glyphicon-time"></i>Consultar citas</a></li>
+                            <li><a href="../COMUN/vistaConsultarPrueba.php"><i class="glyphicon glyphicon-list-alt"></i>Consultar pruebas</a></li>
+                            <li><a href="../COMUN/vistaConsultarCitas.php"><i class="glyphicon glyphicon-time"></i>Consultar citas</a></li>
                         </ul>
 
                     </ul>

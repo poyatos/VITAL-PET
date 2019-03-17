@@ -73,6 +73,7 @@
         <td>
         <a href="#" class="btn btn-danger" role="button">Borrar</a>
         <a href="#" class="btn btn-info" role="button">Editar</a>
+        <a href="#" class="btn btn-danger" role="button">Finalizar Consulta</a>
         </td>
       </tr>
       <tr>
@@ -86,6 +87,7 @@
         <td>
         <a href="#" class="btn btn-danger" role="button">Borrar</a>
         <a href="#" class="btn btn-info" role="button">Editar</a>
+        <a href="#" class="btn btn-danger" role="button">Finalizar Consulta</a>
         </td>
       </tr>
     </tbody>
