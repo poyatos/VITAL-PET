@@ -43,6 +43,8 @@
 <!-- filtro y busqueda-->
  <div class="col-sm-7 text-left">
 
+ <h1>LISTADO CITAS</h1>
+
             <input class="form-control" id="myInput" type="text" placeholder="Busqueda..">
   <br>
 
@@ -58,7 +60,6 @@
         <th>id mascota</th>
         <th>Consulta nº</th>
         <th>Editar</th>
-        
       </tr>
     </thead>
     <tbody id="myTable">
@@ -71,9 +72,12 @@
         <td>#445</td>
         <td>4</td>
         <td>
+         <!--VETERINARIO Y RECEPCIONISTA-->
         <a href="#" class="btn btn-danger" role="button">Borrar</a>
         <a href="#" class="btn btn-info" role="button">Editar</a>
         <a href="#" class="btn btn-danger" role="button">Finalizar Consulta</a>
+        <!--RECEPCIONISTA-->
+        <a href="#" class="btn btn-danger" role="button">Añadir citas</a>
         </td>
       </tr>
       <tr>
@@ -85,9 +89,12 @@
         <td>#445</td>
         <td>4</td>
         <td>
+          <!--VETERINARIO Y RECEPCIONISTA-->
         <a href="#" class="btn btn-danger" role="button">Borrar</a>
         <a href="#" class="btn btn-info" role="button">Editar</a>
         <a href="#" class="btn btn-danger" role="button">Finalizar Consulta</a>
+        <!--RECEPCIONISTA-->
+        <a href="#" class="btn btn-danger" role="button">Añadir citas</a>
         </td>
       </tr>
     </tbody>

@@ -174,19 +174,18 @@
 </div>
 
 
-
-
+<!--GOOGLE MAPS -->
 <div class="container">
     <div class="row-fluid">
         <div class="col-md-9">
-        	<iframe width="100%" height="350" frameborder="0" scrolling="no" marginheight="0" marginwidth="0" src="https://www.google.com/maps/embed/v1/place?q=Cyberborg%20Bodyart%2C%20Bangka%2C%20Jakarta%2C%20Indonesia&key=AIzaSyCGz8WzqxQw1OwHWey3LCTjqKFG9feCxP4"></iframe>
+        <iframe src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3043.2384419675677!2d-3.8095838846078625!3d40.2926643793798!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0xd418bff2fdeb219%3A0xa1ded8e97c07bb6e!2sClinica+Vital-Pet!5e0!3m2!1ses!2ses!4v1552826235149" width="800" height="400" frameborder="0" style="border:0" allowfullscreen></iframe>
     	</div>
     	
       	<div class="col-md-3">
     		<h2>CONTACTO</h2>
     		<address>
     			<strong>VITAL PET</strong><br>
-    			Calle inventada numero 6<br>
+    			Calle de Mostoles<br>
     			Fuenlabrada, Madrid<br>
     			España<br>
     			28941<br>
