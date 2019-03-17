@@ -305,7 +305,6 @@ section .section-title {
 </div>
 
 <!--GOOGLE MAPS -->
->>>>>>> 0ed7703da76bda288831ad2570cef38fa68efb58
 <div class="container">
     <div class="row-fluid">
         <div class="col-md-9">
