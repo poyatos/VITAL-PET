@@ -24,14 +24,17 @@
 
 <body>
   <!-- MENU PRINCIPAL -->
+  <div class="row">
+  <div class="col-12 col-sm-12 col-md-12  col-lg-12">
+
       <?php
       include "../../INCLUDE/menuPrincipal.inc"
       ?>
-
-  <div class="row">
+  </div>
+ 
 
   <!-- MENU LATERAL -->
-      <div class="col-sm-4">
+      <div class="col-12 col-sm-5 col-md-4  col-lg-4">
   <?php
       include "../../INCLUDE/menuDir.inc"
   ?>
@@ -41,13 +44,19 @@
       <!-- CONTENIDO-->
 
 <!-- filtro y busqueda-->
- <div class="col-sm-7 text-left">
- <h1>LISTADO MASCOTAS</h1>
+ <div class="col-12 col-sm-7 col-md-7 col-lg-7 text-left">
+   <div class="row">
 
+   <div class="col-12 col-sm-12 col-md-12 col-lg-12">
+ <h1>LISTADO MASCOTAS</h1>
+ </div>
+
+ <div class="col-12 col-sm-12 col-md-12 col-lg-12">
             <input class="form-control" id="myInput" type="text" placeholder="Busqueda..">
-  <br>
+</div>
 
   <!-- tabla de busqueda-->
+  <div class="col-12 col-sm-12 col-md-12 col-lg-12">
   <table class="table table-bordered table-striped">
     <thead>
       <tr>
@@ -98,9 +107,11 @@
       </tr>
     </tbody>
   </table>
-
+</div>
 
 <!-- PAGINACIÓN-->
+
+<div class="col-12 col-sm-12 col-md-12 col-lg-12">
 <nav aria-label="Page navigation example">
   <ul class="pagination">
     <li class="page-item"><a class="page-link" href="#"><i class="glyphicon glyphicon-triangle-left"></i> </a></li>
@@ -112,6 +123,8 @@
     <li class="page-item"><a class="page-link" href="#"><i class="glyphicon glyphicon-triangle-right"></i> </a></li>
   </ul>
 </nav>
+</div>
+</div>
 </div>
 </div>
 </body>
