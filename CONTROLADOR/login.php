@@ -11,7 +11,7 @@
 
     if(empty($dni) || empty($pass)){
         echo "<br/><h2>Alguno de los campos esta vacio.</h2><br />";
-        echo "<a href='sesionFormulario.php'>Por favor rellene todos los campos.</a>";
+        echo "<a href='../index.php'>Por favor rellene todos los campos.</a>";
     } else {
         $conexion = new Model(Config::$host, Config::$user, Config::$pass, Config::$nombreBase);
 

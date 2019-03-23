@@ -1,3 +1,14 @@
+<?php
+  session_start();
+
+  if(!isset($_SESSION['usuario']) && !isset($_SESSION['rol'])){
+    header("Location: ../../index.php");
+  } else {
+    if($_SESSION['rol'] == 'cliente'){
+      header("Location: ../../index.php");
+    }
+  }
+?>
 <!DOCTYPE html>
 <html lang="en">
 
@@ -25,7 +36,7 @@
 <body>
   <!-- MENU PRINCIPAL -->
       <?php
-      include "../../INCLUDE/menuPrincipal.inc"
+        include "../../INCLUDE/menuPrincipal.inc";
       ?>
 
   <div class="row">
@@ -33,7 +44,13 @@
   <!-- MENU LATERAL -->
       <div class="col-sm-4">
   <?php
-      include "../../INCLUDE/menuDir.inc"
+      if($_SESSION['rol'] == 'Director'){
+        include "../../INCLUDE/menuDir.inc";
+      } else if ($_SESSION['rol'] == 'Recepcionista'){
+        include "../../INCLUDE/menuRec.inc";
+      } else if ($_SESSION['rol'] == 'Veterinario'){
+        include "../../INCLUDE/menuVet.inc";
+      }
   ?>
       </div>
 

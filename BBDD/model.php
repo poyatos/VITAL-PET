@@ -81,7 +81,7 @@
                 echo "<br/><h2>El usuario ya existe.</h2><br />";
                 echo "<a href='registroFormulario.php'>Por favor elige otro nombre.</a>";
             } else {
-                $passHash = hash("sha2", $pass);
+                $passHash = hash("sha512", $pass);
                 $sql = "INSERT INTO usuarios (nombre_usuario, apellidos_usuario, dni_usuario, telefono_usuario, correo_usuario, fecna_usuario, 
                 direccion_usuario, rol_usuario, pass_usuario) VALUES ('$nombre', '$apellidos', '$dni', $telefono, '$correo', '$fecna', 
                 '$direccion', '$rol', '$passHash')";
@@ -121,19 +121,19 @@
             $existeUsuario = mysqli_num_rows($resultado);
             $columnas = $resultado->fetch_array();
 
-            if ($existeUsuario >= 1) {
-                if ($columnas['pass_usuario'] == $pass) {
-                    $_SESSION['usuario'] = $dni;
+            if ($existeUsuario == 1) {
+                if ($columnas['pass_usuario'] == hash("sha512",$pass)) {
+                    $_SESSION['usuario'] = $columnas['nombre_usuario'] + " " + $columnas['apellidos_usuario'];
                     $_SESSION['rol'] = $columnas['rol_usuario'];
-                    $seccion = strtoupper($columnas['rol_usuario']);
-                    header("Location: ../$seccion");
+                    $rol = strtoupper($columnas['rol_usuario']);
+                    header("Location: ../VISTA/$rol");
                 } else {
                     echo "<br/><h2>La contraseña es incorrecta, por favor introduzca una contraseña válida.</h2>";
-                    echo "<h4>Volver al <a href='sesionFormulario.php'>formulario</a></h4>";
+                    echo "<h4>Volver al <a href='../index.php'>formulario</a></h4>";
                 }
             } else {
                 echo "<br/><h2>El usuario no existe, por favor introduzca un usuario válido.</h2>";
-                echo "<h4>Volver al <a href='sesionFormulario.php'>formulario</a></h4>";
+                echo "<h4>Volver al <a href='../index.php'>formulario</a></h4>";
             }
         }
 
@@ -244,14 +244,13 @@
 
         //REGISTRAR PRUEBAS
         public function registrarPrueba($id_tipo, $id_mascota, $resultado, $observaciones){
-                $consulta = $this->visualizarTipoPruebaId($id_tipo);
                 $sql = "INSERT INTO citas (id_tipo_prueba, id_mascota, resultado_prueba, observaciones_prueba)
                 VALUES ($id_tipo, $id_mascota, '$resultado', '$observaciones')";
 
                 if ($this->ejecutarConsulta($sql)) {
                     echo "<br/><h2>Prueba registrada correctamente.</h2>";
                 } else {
-                    echo "<h2>Error al crear la cita." . $sql . "</h2><br/>";
+                    echo "<h2>Error al crear la prueba." . $sql . "</h2><br/>";
                     echo "<h5><a href='registroFormulario.php'>Intentelo de nuevo</a></h5>"; 
                 }
         }
@@ -265,27 +264,54 @@
 
         //VISUALIZAR PRUEBAS MASCOTA
         public function visualizarPruebasMascota($id){
-            $consulta = "SELECT * FROM pruebas WHERE id_mascota = '$id' ";
+            $consulta = "SELECT * FROM pruebas WHERE id_prueba = $id ";
             $resultado = $this->ejecutarConsulta($consulta);
             return $resultado;
         }
 
         //MODIFICAR PRUEBA
-        public function modificarPrueba($id_tipo, $id_mascota, $resultado, $observaciones){
-            $consulta = "UPDATE pruebas SET id_tipo = $id_tipo, id_mascota = $id_mascota, resultado_prueba = '$resultado', observaciones = '$observaciones', 
-            id_mascota = $id_mascota, dni_cliente = $dni_cliente, dni_veterinario = $dni_veterinario WHERE id_cita = $id";
+        public function modificarPrueba($id, $id_tipo, $id_mascota, $resultado, $observaciones){
+            $consulta = "UPDATE pruebas SET id_tipo = $id_tipo, id_mascota = $id_mascota, resultado_prueba = '$resultado', observaciones = '$observaciones' WHERE id_prueba = $id";
             $this->ejecutarConsulta($consulta);
         }
 
-        //BORRAR CITA (OPCIONAL)
+        //BORRAR PRUEBA (OPCIONAL)
 
         /* -------------------------------------------------------- TIPOS DE PRUEBAS -----------------------------------------------------------*/
 
+        //REGISTRAR TIPOS DE PRUEBAS
+        public function registrarTipoPrueba($nombre, $precio){
+            $sql = "INSERT INTO tipos_pruebas (nombre_tipo_prueba, precio_tipo_prueba) VALUES ('$nombre', $precio)";
+
+            if ($this->ejecutarConsulta($sql)) {
+                echo "<br/><h2>Tipo de prueba registrada correctamente.</h2>";
+            } else {
+                echo "<h2>Error al crear el tipo de prueba ." . $sql . "</h2><br/>";
+                echo "<h5><a href='registroFormulario.php'>Intentelo de nuevo</a></h5>"; 
+            }
+        }
+
+        //VISUALIZAR TIPOS DE PRUEBAS
+        public function visualizarTiposPruebas(){
+            $consulta = "SELECT * FROM tipos_pruebas";
+            $resultado = $this->ejecutarConsulta($consulta);
+            return $resultado;
+        }
+
+        //MODIFICAR TIPO DE PRUEBA
+        public function modificarTipoPrueba($id, $nombre, $precio){
+            $consulta = "UPDATE tipos_pruebas SET nombre_tipo_prueba = '$nombre', precio_tipo_prueba = $precio WHERE id_tipo_prueba = $id";
+            $this->ejecutarConsulta($consulta);
+        }
+
+        //DESACTIVAR TIPO DE PRUEBA (OPCIONAL)
+
+        //BORRAR TIPO DE PRUEBA (OPCIONAL)
+
         /* ----------------------------------------------------------- CONTRATOS --------------------------------------------------------------*/
-<<<<<<< HEAD
 
         //REGISTRAR CONTRATO
-        public function contratarUsuario($fecini_contrato, $fecfin_contrato, $sueldo_contrato, $diasvac_contrato, $horario_contrato, $estado_contrato, $id_contratado){
+        public function contratarUsuario($fecini, $fecfin, $sueldo, $diasvac, $horario, $estado, $id_contratado){
             $consulta = "SELECT * FROM contratos WHERE id_contratado = '$id_contratado' ";
     
             $resultadoConsulta = $this->ejecutarConsulta($consulta);
@@ -300,7 +326,7 @@
                 echo "<a href='registroFormulario.php'>Por favor elige otra opción.</a>";
             } else {
                 $sql = "INSERT INTO contratos (fecini_contrato, fecfin_contrato, sueldo_contrato, diasvac_contrato, horario_contrato, estado_contrato, 
-                id_contratado) VALUES ('$fecini_contrato', '$fecfin_contrato', $sueldo_contrato, $diasvac_contrato, '$horario_contrato', '$estado_contrato', $id_contratado)";
+                id_contratado) VALUES ('$fecini', '$fecfin', $sueldo, $diasvac, '$horario', '$estado', $id_contratado)";
     
                 if ($this->ejecutarConsulta($sql)) {
                     echo "<br/><h2>Contrato registrado correctamente.</h2>";
@@ -311,11 +337,28 @@
             }
         }
 
+        //VISUALIZAR CONTRATO ID
+        public function visualizarContratoId($id){
+            $consulta = "SELECT * FROM contratos WHERE id_contratado = $id ";
+            $resultado = $this->ejecutarConsulta($consulta);
+            return $resultado;
+        }
+
+        //MODIFICAR CONTRATO ID
+        public function modificarContratoId($id_contratado, $fecini, $fecfin, $sueldo, $diasvac, $horario, $estado){
+            $consulta = "UPDATE contratos SET fecini_contrato = '$fecini', fecfin_contrato = '$fecfin', sueldo_contrato = $sueldo, 
+            diasvac_contrato = $diasvac, horario_contrato = '$horario', estado_contrato = '$estado' WHERE id_contratado = $id_contratado";
+            $this->ejecutarConsulta($consulta);
+        }
+
+        //FINALIZAR CONTRATO
+        public function finalizarContrato($id_contratado){
+            $consulta = "UPDATE contratos SET estado_contrato = 'Finalizado' WHERE id_contratado = $id_contratado";
+            $this->ejecutarConsulta($consulta);
+        }
+
         /* ------------------------------------------------------------- PAGOS --------------------------------------------------------------*/
 
-        /* ----------------------------------------------------------- CONSULTAS --------------------------------------------------------------*/
+        /* ------------------------------------------------------ CONSULTAS (OPCIONAL) ---------------------------------------------------------*/
     }
-=======
- 
->>>>>>> 8bf9a95b6779616eb10df3d503991a359361d16c
 ?>
