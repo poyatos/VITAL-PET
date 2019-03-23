@@ -26,14 +26,16 @@
 
 <body>
   <!-- MENU PRINCIPAL -->
+  <div class="row">
+  <div class="col-12 col-sm-12 col-md-12  col-lg-12">
       <?php
       include "../../INCLUDE/menuPrincipal.inc"
       ?>
+  </div>
 
-  <div class="row">
 
   <!-- MENU LATERAL -->
-      <div class="col-sm-4">
+      <div class="col-12 col-sm-5 col-md-4  col-lg-4"> 
       <?php
       include "../../INCLUDE/menuRec.inc"
        ?>
@@ -41,7 +43,7 @@
 
 
       <!-- CONTENIDO-->
-      <div class="col-sm-8 text-left">
+      <div class="logotipo col-12 col-sm-7 col-md-7 col-lg-7 text-left">
             <img class="logotipo" src="../../IMAGENES/logog.png" width="80%" height="auto" > 
 
 

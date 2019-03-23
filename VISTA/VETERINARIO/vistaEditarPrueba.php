@@ -22,14 +22,17 @@
 
 
   <!-- MENU PRINCIPAL -->
+
+  <div class="row">
+    <div class="col-12 col-sm-12 col-md-12  col-lg-12">
       <?php
       include "../../INCLUDE/menuPrincipal.inc"
       ?>
+  </div>
 
 
-  <div class="row">
   <!-- MENU LATERAL -->
-      <div class="col-sm-4">
+      <div class="col-12 col-sm-5 col-md-4 col-lg-4">
       <?php
       include "../../INCLUDE/menuVet.inc"
       ?>
@@ -37,44 +40,46 @@
 
 
       <!-- CONTENIDO-->
-      <div class="col-sm-7 text-left">
-      <div class="col-sm-9 text-left">
+      <div class="col-12 col-sm-7 col-md-7  col-lg-7 text-left">
+          <div class="row">
 
-<div class="panel panel-default">
-  <div class="panel-heading">
-    <h2>EDITAR PRUEBA / AÑADIR RESULTADO </h2>
-  </div>
-  <form class="formulario">
-    <div class="form-group col-md-6">
-      <label for="inputCliente">PRUEBA:</label>
-      <br/>
-      <!-- Aqui se añade el tipo de prueba recogido previamente en añadirprueba.php-->
-      <input type="text" name="cliente" id="cliente_id">
-      </select>
-    </div>
-      <!-- Aqui se elige el resultado de la prueba-->
-    <div class="form-group col-md-6">
-      <label for="inputPrueba">Resultado</label>
-      <select id="inputPrueba_id" class="form-control">
-        <option selected>Positivo</option>
-        <option selected>Positivo Leve</option>
-        <option selected>Negativo Medio</option>
-        <option>Negativo</option>
-      </select>
-    </div> 
-    <div class="form-group col-md-12">
-            <label for="inputObservacion">Observaciones:</label>
-            <textarea rows="4" cols="100"></textarea>
-    </div>  
-   
-      <input type="submit" class="btn btn-lg" value="Editar">
-  </form>
-</div>
-</div>
-</div>
+            <div class="col-12 col-sm-12 col-md-9 col-lg-9">
 
+              <div class="panel panel-default">
+                <div class="panel-heading">
+                  <h2>EDITAR PRUEBA / AÑADIR RESULTADO </h2>
+                </div>
 
-      </div>
+                  <form class="formulario">
+                    <div class="form-group col-6 col-sm-6 col-md-6 col-lg-6">
+                      <label for="inputCliente">PRUEBA:</label>
+                      <br/>
+                      <!-- Aqui se añade el tipo de prueba recogido previamente en añadirprueba.php-->
+                      <input type="text" name="cliente" id="cliente_id">
+                      </select>
+                    </div>
+                      <!-- Aqui se elige el resultado de la prueba-->
+                    <div class="form-group col-6 col-sm-6 col-md-6 col-lg-6">
+                      <label for="inputPrueba">Resultado</label>
+                      <select id="inputPrueba_id" class="form-control">
+                        <option selected>Positivo</option>
+                        <option selected>Positivo Leve</option>
+                        <option selected>Negativo Medio</option>
+                        <option>Negativo</option>
+                      </select>
+                    </div> 
+                    <div class="form-group col-12 col-sm-12 col-md-12  col-lg-12">
+                            <label for="inputObservacion">Observaciones:</label>
+                            <textarea rows="4" cols="100"></textarea>
+                    </div>  
+                  
+                      <input type="submit" class="btn btn-lg" value="Editar">
+                  </form>
+                </div>
+              </div>
+            </div>
+
+        </div>
 </div>
 
 

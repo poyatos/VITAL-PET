@@ -7,21 +7,15 @@
                 <div class="menu-list">
           
                     <ul id="menu-content" class="menu-content collapse out">
-                      
-        
-                        <li  data-toggle="collapse" data-target="#products" class="collapsed active">
-                          <a href="#"><i class="glyphicon glyphicon-plus"></i> PACIENTES <span class="arrow"></span></a>
-                        </li>
-                        <ul class="sub-menu collapse" id="products">
-                            <li class="active"><a href="../COMUN/vistaGestionCitas.php"><i class="glyphicon glyphicon-eye-open"></i>Consultar citas</a></li>
-                        </ul>      
+                           
                         <li data-toggle="collapse" data-target="#service" class="collapsed">
-                          <a href="#"><i class="glyphicon glyphicon-user"></i> PRUEBAS <span class="arrow"></span></a>
+                          <a href="#"><i class="glyphicon glyphicon-tint"></i> GESTIÓN <span class="arrow"></span></a>
                         </li>  
                         <ul class="sub-menu collapse" id="service">
-                            <li class="active"><a href="../COMUN/vistaGestionPacientes.php"><i class="glyphicon glyphicon-plus-sign"></i>Añadir pruebas</a></li>
-                            <li><a href="../COMUN/vistaGestionPrueba.php"><i class="glyphicon glyphicon-eye-open"></i>Gestionar pruebas</a></li>
-                            <li><a href="../VETERINARIO/vistaConsultarTipoPrueba.php"><i class="glyphicon glyphicon-eye-open"></i>Consultar Tipo de pruebas</a></li>
+                            <li class="active"><a href="../COMUN/vistaGestionCitas.php"><i class="glyphicon glyphicon-eye-open"></i>Consultar citas</a></li>
+                            <li class="active"><a href="../COMUN/vistaGestionMascotas.php"><i class="glyphicon glyphicon-plus-sign"></i>Añadir pruebas</a></li>
+                            <li><a href="../COMUN/vistaGestionPrueba.php"><i class="glyphicon glyphicon-cog"></i>Gestionar pruebas</a></li>
+                            <li><a href="../COMUN/vistaConsultarTipoPrueba.php"><i class="glyphicon glyphicon-cog"></i>Consultar Tipo de pruebas</a></li>
                         </ul>
 
                     </ul>

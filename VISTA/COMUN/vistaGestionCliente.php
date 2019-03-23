@@ -1,14 +1,3 @@
-<?php
-  session_start();
-
-  if(!isset($_SESSION['usuario']) && !isset($_SESSION['rol'])){
-    header("Location: ../../index.php");
-  } else {
-    if($_SESSION['rol'] == 'cliente'){
-      header("Location: ../../index.php");
-    }
-  }
-?>
 <!DOCTYPE html>
 <html lang="en">
 
@@ -35,22 +24,19 @@
 
 <body>
   <!-- MENU PRINCIPAL -->
-      <?php
-        include "../../INCLUDE/menuPrincipal.inc";
-      ?>
-
   <div class="row">
+  <div class="col-12 col-sm-12 col-md-12  col-lg-12">
+
+      <?php
+      include "../../INCLUDE/menuPrincipal.inc"
+      ?>
+  </div>
+ 
 
   <!-- MENU LATERAL -->
-      <div class="col-sm-4">
+      <div class="col-12 col-sm-5 col-md-4  col-lg-4">
   <?php
-      if($_SESSION['rol'] == 'Director'){
-        include "../../INCLUDE/menuDir.inc";
-      } else if ($_SESSION['rol'] == 'Recepcionista'){
-        include "../../INCLUDE/menuRec.inc";
-      } else if ($_SESSION['rol'] == 'Veterinario'){
-        include "../../INCLUDE/menuVet.inc";
-      }
+      include "../../INCLUDE/menuDir.inc"
   ?>
       </div>
 
@@ -58,66 +44,76 @@
       <!-- CONTENIDO-->
 
 <!-- filtro y busqueda-->
- <div class="col-sm-7 text-left">
- <h1>LISTADO MASCOTAS</h1>
+ <div class="col-12 col-sm-7 col-md-7 col-lg-7 text-left">
+   <div class="row">
 
+   <div class="col-12 col-sm-12 col-md-12 col-lg-12">
+ <h1>LISTADO MASCOTAS</h1>
+ </div>
+
+ <div class="col-12 col-sm-12 col-md-12 col-lg-12">
             <input class="form-control" id="myInput" type="text" placeholder="Busqueda..">
-  <br>
+</div>
 
   <!-- tabla de busqueda-->
+  <div class="col-12 col-sm-12 col-md-12 col-lg-12">
   <table class="table table-bordered table-striped">
     <thead>
       <tr>
-        <th>ID Paciente</th>
-        <th>Nombre de Mascota</th>
-        <th>DNI dueño</th>
-        <th>Tipo</th>
-        <th>Raza</th>
-        <th>Peso</th>
-        <th>Sexo</th>
+        <th>Nombre</th>
+        <th>Apellidos</th>
+        <th>DNI</th>
+        <th>Telefono</th>
+        <th>Correo</th>
+        <th>Dirección</th>
         <th>Editar</th>
       </tr>
     </thead>
     <tbody id="myTable">
       <tr>
-        <td>#01</td>
+        <td>paco</td>
         <td>John</td>
         <td>456765457e</td>
-        <td>perrete</td>
-        <td>labrador</td>
-        <td>50kilos</td>
-        <td>M</td>
+        <td>36653554345</td>
+        <td>cliente@cliente.com</td>
+        <td>CALLE PEPITO</td>
+  
         <td>
-        <!--DIRECTOR Y RECEPCION-->
+        <!--RECEPCION-->
         <a href="#" class="btn btn-danger" role="button">Borrar</a>
         <a href="#" class="btn btn-info" role="button">Editar</a>
-         <!--VETERINARIO-->
-        <a href="../VETERINARIO/vistaAnadirPrueba.php" class="btn btn-info" role="button">Añadir prueba</a>
+
+        <!--VER COMO ACCEDER A LAS MASCOTAS DE ESTE CLIENTE   SIN HACER-->
+        <a href="../COMUN/vistaGestionMascotas.php" class="btn btn-info" role="button">Ver mascotas</a>
+ 
 
         </td>
       </tr>
       <tr>
-        <td>#01</td>
-        <td>Perico</td>
+        <td>pepe</td>
+        <td>John</td>
         <td>456765457e</td>
-        <td>perrete</td>
-        <td>labrador</td>
-        <td>50kilos</td>
-        <td>M</td>
+        <td>36653554345</td>
+        <td>cliente@cliente.com</td>
+        <td>CALLE PEPITO</td>
+     
         <td>
-        <!--DIRECTOR Y RECEPCION-->
-        <a href="#" class="btn btn-danger" role="button">Borrar</a>
+         <!--RECEPCION-->
+         <a href="#" class="btn btn-danger" role="button">Borrar</a>
         <a href="#" class="btn btn-info" role="button">Editar</a>
-        <!--VETERINARIO-->
-        <a href="../VETERINARIO/vistaAnadirPrueba.php" class="btn btn-info" role="button">Añadir prueba</a>
+
+        <!--VER COMO ACCEDER A LAS MASCOTAS DE ESTE CLIENTE-->
+        <a href="../COMUN/vistaGestionMascotas.php" class="btn btn-info" role="button">Ver mascotas</a>
        
         </td>
       </tr>
     </tbody>
   </table>
-
+</div>
 
 <!-- PAGINACIÓN-->
+
+<div class="col-12 col-sm-12 col-md-12 col-lg-12">
 <nav aria-label="Page navigation example">
   <ul class="pagination">
     <li class="page-item"><a class="page-link" href="#"><i class="glyphicon glyphicon-triangle-left"></i> </a></li>
@@ -129,6 +125,8 @@
     <li class="page-item"><a class="page-link" href="#"><i class="glyphicon glyphicon-triangle-right"></i> </a></li>
   </ul>
 </nav>
+</div>
+</div>
 </div>
 </div>
 </body>

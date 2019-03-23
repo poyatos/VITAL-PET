@@ -26,14 +26,16 @@
 
 <body>
     <!-- MENU PRINCIPAL -->
+    <div class="row">
+    <div class="col-12 col-sm-12 col-md-12  col-lg-12">
     <?php
       include "../../INCLUDE/menuPrincipal.inc"
       ?>
-
-    <div class="row">
+    </div>
+   
 
         <!-- MENU LATERAL -->
-        <div class="col-sm-4">
+        <div class="col-12 col-sm-5  col-md-4  col-lg-4"> 
             <?php
       include "../../INCLUDE/menuRec.inc"
        ?>
@@ -41,23 +43,22 @@
 
 
         <!-- CONTENIDO-->
-        <div class="col-sm-8 text-left">
-            <div class="col-sm-7 text-left">
-
+        <div class="logotipo col-12 col-sm-7 col-md-7 col-lg-7 text-left">
+        <div class="row">
                 <div class="panel panel-default">
                     <div class="panel-heading">
                         <h2>AÑADIR CITA</h2>
                     </div>
                     <form class="formulario">
-                        <div class="form-group col-md-12">
+                        <div class="form-group col-12 col-sm-12 col-md-12 col-lg-12">
                             <h3>INFORMACIÓN</h3>
                         </div>
                         <div class="form-row">
-                            <div class="form-group col-md-6">
+                            <div class="form-group col-12 col-sm-12 col-md-6 col-lg-6">
                                 <label for="inputFecha">Fecha</label>
                                 <input type="date" name="fecha" class="form-control" id="inputFecha">
                             </div>
-                            <div class="form-group col-md-6">
+                            <div class="form-group col-12 col-sm-12 col-md-6 col-lg-6">
                             <label for="inputHora">Hora</label>
                                 <select id="inputHora_id" class="form-control">
                                      <option selected>08:00</option>
@@ -75,7 +76,7 @@
                                      <option selected>20:00</option>
                                 </select>
                             </div>
-                            <div class="form-group col-md-12">
+                            <div class="form-group col-12 col-sm-12 col-md-12 col-lg-12">
                             <label for="inputPrueba">Sala</label>
                             <select id="inputSala_id" class="form-control">
                                      <option selected>1</option>
