@@ -24,13 +24,14 @@
 
 <body>
   <!-- MENU PRINCIPAL -->
-  
   <div class="row">
   <div class="col-12 col-sm-12 col-md-12  col-lg-12">
+
       <?php
       include "../../INCLUDE/menuPrincipal.inc"
       ?>
-</div>
+  </div>
+ 
 
   <!-- MENU LATERAL -->
       <div class="col-12 col-sm-5 col-md-4  col-lg-4">
@@ -44,59 +45,70 @@
 
 <!-- filtro y busqueda-->
  <div class="col-12 col-sm-7 col-md-7 col-lg-7 text-left">
-  <div class="row">
+   <div class="row">
 
-  <div class="col-12 col-sm-12 col-md-12 col-lg-12">
- <h1>LISTADO CITAS</h1>
-</div>
-<div class="col-12 col-sm-12 col-md-12 col-lg-12">
+   <div class="col-12 col-sm-12 col-md-12 col-lg-12">
+ <h1>LISTADO MASCOTAS</h1>
+ </div>
+
+ <div class="col-12 col-sm-12 col-md-12 col-lg-12">
             <input class="form-control" id="myInput" type="text" placeholder="Busqueda..">
 </div>
 
-<div class="col-12 col-sm-12 col-md-12 col-lg-12">
+  <!-- tabla de busqueda-->
+  <div class="col-12 col-sm-12 col-md-12 col-lg-12">
   <table class="table table-bordered table-striped">
     <thead>
       <tr>
-        <th>ID cita</th>
-        <th>DNI</th>
-        <th>Fecha</th>
-        <th>Hora</th>
-        <th>Estado de la cita</th>
-        <th>id mascota</th>
-        <th>Consulta nº</th>
+        <th>ID Paciente</th>
+        <th>Nombre de Mascota</th>
+        <th>DNI dueño</th>
+        <th>Tipo</th>
+        <th>Raza</th>
+        <th>Peso</th>
+        <th>Sexo</th>
         <th>Editar</th>
       </tr>
     </thead>
     <tbody id="myTable">
       <tr>
-        <td>#445</td>
+        <td>#01</td>
+        <td>John</td>
         <td>456765457e</td>
-        <td>09/10/2021</td>
-        <td>19:30</td>
-        <td>disponible</td>
-        <td>#445</td>
-        <td>4</td>
+        <td>perrete</td>
+        <td>labrador</td>
+        <td>50kilos</td>
+        <td>M</td>
         <td>
-         <!--VETERINARIO Y RECEPCIONISTA-->
+        <!--DIRECTOR Y RECEPCION-->
         <a href="#" class="btn btn-danger" role="button">Borrar</a>
         <a href="#" class="btn btn-info" role="button">Editar</a>
-        <a href="#" class="btn btn-danger" role="button">Finalizar Consulta</a>
+         <!--VETERINARIO-->
+        <a href="../VETERINARIO/vistaAnadirPrueba.php" class="btn btn-info" role="button">Añadir prueba</a>
+        <!--RECEPCIONISTA-->
+        <a href="../VETERINARIO/vistaAnadirPrueba.php" class="btn btn-info" role="button">Pagar pruebas</a>
+        <a href="#" class="btn btn-danger" role="button">Añadir citas</a>
+
         </td>
       </tr>
       <tr>
-        <td>#456/td>
-        <td>45875457e</td>
-        <td>09/10/2022</td>
-        <td>17:30</td>
-        <td>no disponible</td>
-        <td>#445</td>
-        <td>4</td>
+        <td>#01</td>
+        <td>Perico</td>
+        <td>456765457e</td>
+        <td>perrete</td>
+        <td>labrador</td>
+        <td>50kilos</td>
+        <td>M</td>
         <td>
-          <!--VETERINARIO Y RECEPCIONISTA-->
+        <!--DIRECTOR Y RECEPCION-->
         <a href="#" class="btn btn-danger" role="button">Borrar</a>
         <a href="#" class="btn btn-info" role="button">Editar</a>
-        <a href="#" class="btn btn-danger" role="button">Finalizar Consulta</a>
-
+        <!--VETERINARIO-->
+        <a href="../VETERINARIO/vistaAnadirPrueba.php" class="btn btn-info" role="button">Añadir prueba</a>
+        <!--RECEPCIONISTA-->
+        <a href="../VETERINARIO/vistaAnadirPrueba.php" class="btn btn-info" role="button">Pagar pruebas</a>
+        <a href="#" class="btn btn-danger" role="button">Añadir citas</a>
+       
         </td>
       </tr>
     </tbody>
@@ -118,9 +130,7 @@
   </ul>
 </nav>
 </div>
-
 </div>
-
 </div>
 </div>
 </body>

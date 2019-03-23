@@ -60,48 +60,50 @@
   <table class="table table-bordered table-striped">
     <thead>
       <tr>
-        <th>ID Paciente</th>
-        <th>Nombre de Mascota</th>
-        <th>DNI dueño</th>
-        <th>Tipo</th>
-        <th>Raza</th>
-        <th>Peso</th>
-        <th>Sexo</th>
+        <th>Nombre</th>
+        <th>Apellidos</th>
+        <th>DNI</th>
+        <th>Telefono</th>
+        <th>Correo</th>
+        <th>Dirección</th>
         <th>Editar</th>
       </tr>
     </thead>
     <tbody id="myTable">
       <tr>
-        <td>#01</td>
+        <td>paco</td>
         <td>John</td>
         <td>456765457e</td>
-        <td>perrete</td>
-        <td>labrador</td>
-        <td>50kilos</td>
-        <td>M</td>
+        <td>36653554345</td>
+        <td>cliente@cliente.com</td>
+        <td>CALLE PEPITO</td>
+  
         <td>
-        <!--DIRECTOR Y RECEPCION-->
+        <!--RECEPCION-->
         <a href="#" class="btn btn-danger" role="button">Borrar</a>
         <a href="#" class="btn btn-info" role="button">Editar</a>
-         <!--VETERINARIO-->
-        <a href="../VETERINARIO/vistaAnadirPrueba.php" class="btn btn-info" role="button">Añadir prueba</a>
+
+        <!--VER COMO ACCEDER A LAS MASCOTAS DE ESTE CLIENTE   SIN HACER-->
+        <a href="../COMUN/vistaGestionMascotas.php" class="btn btn-info" role="button">Ver mascotas</a>
+ 
 
         </td>
       </tr>
       <tr>
-        <td>#01</td>
-        <td>Perico</td>
+        <td>pepe</td>
+        <td>John</td>
         <td>456765457e</td>
-        <td>perrete</td>
-        <td>labrador</td>
-        <td>50kilos</td>
-        <td>M</td>
+        <td>36653554345</td>
+        <td>cliente@cliente.com</td>
+        <td>CALLE PEPITO</td>
+     
         <td>
-        <!--DIRECTOR Y RECEPCION-->
-        <a href="#" class="btn btn-danger" role="button">Borrar</a>
+         <!--RECEPCION-->
+         <a href="#" class="btn btn-danger" role="button">Borrar</a>
         <a href="#" class="btn btn-info" role="button">Editar</a>
-        <!--VETERINARIO-->
-        <a href="../VETERINARIO/vistaAnadirPrueba.php" class="btn btn-info" role="button">Añadir prueba</a>
+
+        <!--VER COMO ACCEDER A LAS MASCOTAS DE ESTE CLIENTE-->
+        <a href="../COMUN/vistaGestionMascotas.php" class="btn btn-info" role="button">Ver mascotas</a>
        
         </td>
       </tr>

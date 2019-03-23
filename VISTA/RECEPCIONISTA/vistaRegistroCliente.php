@@ -41,8 +41,6 @@
       include "../../INCLUDE/menuRec.inc"
        ?>
         </div>
-
-
         <!-- CONTENIDO-->
         <div class="col-12 col-sm-7 col-md-7  col-lg-7 text-left">
             <div class="row">
@@ -52,7 +50,10 @@
                     <div class="panel-heading">
                         <h2>REGISTRO DE CLIENTE</h2>
                     </div>
+
+                    
                     <form class="formulario">
+                        
                         <div class="form-group col-12 col-sm-12 col-md-12  col-lg-12">
                             <h3>INFORMACIÓN</h3>
                         </div>

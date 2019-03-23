@@ -8,7 +8,6 @@
           
                     <ul id="menu-content" class="menu-content collapse out">
                       
-        
                         <li  data-toggle="collapse" data-target="#products" class="collapsed active">
                           <a href="#"><i class="glyphicon glyphicon-plus"></i> PERSONAL <span class="arrow"></span></a>
                         </li>
@@ -19,10 +18,10 @@
         
         
                         <li data-toggle="collapse" data-target="#service" class="collapsed">
-                          <a href="#"><i class="glyphicon glyphicon-user"></i> CLIENTES <span class="arrow"></span></a>
+                          <a href="#"><i class="glyphicon glyphicon-cog"></i> GESTIÓN <span class="arrow"></span></a>
                         </li>  
                         <ul class="sub-menu collapse" id="service">
-                            <li class="active"><a href="../COMUN/vistaGestionPacientes.php"><i class="glyphicon glyphicon-eye-open"></i>Gestionar pacientes</a></li>
+                            <li class="active"><a href="../COMUN/vistaGestionMascotas.php"><i class="glyphicon glyphicon-cog"></i>Gestionar mascotas</a></li>
                             <li><a href="../COMUN/vistaGestionPrueba.php"><i class="glyphicon glyphicon-list-alt"></i>Consultar pruebas</a></li>
                             <li><a href="../COMUN/vistaGestionCitas.php"><i class="glyphicon glyphicon-time"></i>Consultar citas</a></li>
                         </ul>
