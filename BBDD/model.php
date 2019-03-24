@@ -110,6 +110,22 @@
             return $resultado;
         }
 
+        //VISUALIZAR CLIENTES
+        public function visualizarClientes(){
+            $consulta = "SELECT id_usuario, nombre_usuario, apellidos_usuario, dni_usuario, telefono_usuario, correo_usuario, fecna_usuario, 
+            direccion_usuario, rol_usuario FROM usuarios WHERE rol_usuario LIKE 'Cliente'";
+            $resultado = $this->devolverConsultaArray($consulta);
+            return $resultado;
+        }
+
+        //VISUALIZAR CLIENTES (PAGINACION)
+        public function visualizarClientesPaginacion(){
+            $consulta = "SELECT id_usuario, nombre_usuario, apellidos_usuario, dni_usuario, telefono_usuario, correo_usuario, fecna_usuario, 
+            direccion_usuario, rol_usuario FROM usuarios WHERE rol_usuario LIKE 'Cliente' LIMIT ".$inicio."," . $tamano_pagina;
+            $resultado = $this->devolverConsultaArray($consulta);
+            return $resultado;
+        }
+
         //VISUALIZAR EMPLEADOS
         public function visualizarEmpleados(){
             $consulta = "SELECT id_usuario, nombre_usuario, apellidos_usuario, dni_usuario, telefono_usuario, correo_usuario, fecna_usuario, 
@@ -122,6 +138,24 @@
         public function visualizarEmpleadosPaginacion($inicio, $tamano_pagina){
             $consulta = "SELECT id_usuario, nombre_usuario, apellidos_usuario, dni_usuario, telefono_usuario, correo_usuario, fecna_usuario, 
             direccion_usuario, rol_usuario FROM usuarios WHERE rol_usuario IN ('Veterinario','Recepcionista') LIMIT ".$inicio."," . $tamano_pagina;
+            $resultado = $this->devolverConsultaArray($consulta);
+            return $resultado;
+        }
+
+        //FILTRAR EMPLEADOS
+        public function filtarEmpleados($nombre, $apellidos, $dni){
+            $consulta = "SELECT id_usuario, nombre_usuario, apellidos_usuario, dni_usuario, telefono_usuario, correo_usuario, fecna_usuario, 
+            direccion_usuario, rol_usuario FROM usuarios WHERE rol_usuario IN ('Veterinario','Recepcionista') AND nombre_usuario LIKE '%$nombre%' 
+            AND apellidos_usuario LIKE '%$apellidos%' AND dni_usuario LIKE '%$dni%'";
+            $resultado = $this->devolverConsultaArray($consulta);
+            return $resultado;
+        }
+
+        //FILTRAR EMPLEADOS (PAGINACION)
+        public function filtarEmpleadosPaginacion($nombre, $apellidos, $dni){
+            $consulta = "SELECT id_usuario, nombre_usuario, apellidos_usuario, dni_usuario, telefono_usuario, correo_usuario, fecna_usuario, 
+            direccion_usuario, rol_usuario FROM usuarios WHERE rol_usuario IN ('Veterinario','Recepcionista') AND nombre_usuario LIKE '%$nombre%' 
+            AND apellidos_usuario LIKE '%$apellidos%' AND dni_usuario LIKE '%$dni%'  LIMIT ".$inicio."," . $tamano_pagina;
             $resultado = $this->devolverConsultaArray($consulta);
             return $resultado;
         }
@@ -187,7 +221,14 @@
         //VISUALIZAR MASCOTAS
         public function visualizarMascotas(){
             $consulta = "SELECT * FROM mascotas";
-            $resultado = $this->ejecutarConsulta($consulta);
+            $resultado = $this->devolverConsultaArray($consulta);
+            return $resultado;
+        }
+
+        //VISUALIZAR MASCOTAS (PAGINACION)
+        public function visualizarMascotasPaginacion($inicio, $tamano_pagina){
+            $consulta = "SELECT * FROM mascotas LIMIT ".$inicio."," . $tamano_pagina;
+            $resultado = $this->devolverConsultaArray($consulta);
             return $resultado;
         }
 
