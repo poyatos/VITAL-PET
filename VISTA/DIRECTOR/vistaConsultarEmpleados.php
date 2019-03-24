@@ -54,10 +54,31 @@
       <!-- CONTENIDO-->
 
 <!-- filtro y busqueda-->
-<div class="logotipo col-12 col-sm-7 col-md-7 col-lg-7 text-left">
-  <div class="row">
+<div class="logotipo col-12 col-sm-7 col-md-7 col-lg-7">
+      <div class="form-group row">
+      <div class="col-4 col-sm-4 col-md-4 col-lg-4">
+            <label name="busquedaNombre_lb" id="id_busqueda_nombre">Nombre:
+            <input class="form-control" name="busquedaNombre" id="myInput" type="text" placeholder="Busqueda..">
+            </label>
+      </div>
 
-     <div class="container col-12 col-sm-12 col-md-12 col-lg-12">
+      <div class="col-4 col-sm-4 col-md-4 col-lg-4">
+            <label name="busquedaApellido_lb" id="id_busqueda_nombre">Apellidos:
+            <input class="form-control" name="busquedaApellido" id="myInput" type="text" placeholder="Busqueda..">
+            </label>
+      </div>
+
+      <div class="col-4 col-sm-4 col-md-4 col-lg-4">
+            <label name="busquedaDni_lb" id="id_busqueda_nombre">Dni:
+            <input class="form-control" name="busquedaDni" id="myInput" type="text" placeholder="Busqueda..">
+            </label>
+      </div>
+
+</div>
+
+
+
+<div class="container col-12 col-sm-12 col-md-12 col-lg-12">
       <div class="form-group">  
             <select id="inputState" class="form-control" name="profesion">
                 <option value="Todos" selected>Todos</option>
@@ -65,12 +86,14 @@
                 <option value="Recepcionista">Recepcionista</option>
             </select>
       </div>
-      <div class="form-group">
-            <input class="form-control" id="myInput" type="text" placeholder="Busqueda..">
-      </div>
-</div>
+
+
   <br>
 
+
+
+
+  </div>
   <!-- tabla de busqueda-->
   <div class="col-12 col-sm-12 col-md-12 col-lg-12">
   <table class="table table-bordered table-striped">

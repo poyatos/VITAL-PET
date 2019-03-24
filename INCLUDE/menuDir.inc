@@ -12,8 +12,8 @@
                           <a href="#"><i class="glyphicon glyphicon-plus"></i> PERSONAL <span class="arrow"></span></a>
                         </li>
                         <ul class="sub-menu collapse" id="products">
-                            <li class="active"><a href="../DIRECTOR/vistaContratar.php"><i class="glyphicon glyphicon-plus-sign"></i>Contratar Empleados</a></li>
-                            <li><a href="../DIRECTOR/vistaConsultarEmpleados.php"><i class="glyphicon glyphicon-cog"></i>Consultar Empleados</a></li>
+                            <li class="active"><a href="../DIRECTOR/vistaContratar.php"><i class="glyphicon glyphicon-plus-sign"></i>Contratar empleados</a></li>
+                            <li><a href="../DIRECTOR/vistaConsultarEmpleados.php"><i class="glyphicon glyphicon-cog"></i>Consultar empleados</a></li>
                         </ul>
         
         
@@ -21,7 +21,8 @@
                           <a href="#"><i class="glyphicon glyphicon-cog"></i> GESTIÓN <span class="arrow"></span></a>
                         </li>  
                         <ul class="sub-menu collapse" id="service">
-                            <li class="active"><a href="../COMUN/vistaGestionMascotas.php"><i class="glyphicon glyphicon-cog"></i>Gestionar mascotas</a></li>
+                        <li class="active"><a href="../COMUN/vistaGestionCliente.php"><i class="glyphicon glyphicon-cog"></i>Gestionar clientes</a></li>
+                            <li><a href="../COMUN/vistaGestionMascotas.php"><i class="glyphicon glyphicon-cog"></i>Gestionar mascotas</a></li>
                             <li><a href="../COMUN/vistaGestionPrueba.php"><i class="glyphicon glyphicon-list-alt"></i>Consultar pruebas</a></li>
                             <li><a href="../COMUN/vistaGestionCitas.php"><i class="glyphicon glyphicon-time"></i>Consultar citas</a></li>
                         </ul>
