@@ -51,7 +51,7 @@
       </div>
 
 
-      <!-- CONTENIDO-->
+<!-- CONTENIDO-->
 
 <!-- filtro y busqueda-->
 <div class="logotipo col-12 col-sm-7 col-md-7 col-lg-7">
@@ -77,7 +77,6 @@
 </div>
 
 
-
 <div class="container col-12 col-sm-12 col-md-12 col-lg-12">
       <div class="form-group">  
             <select id="inputState" class="form-control" name="profesion">
@@ -87,11 +86,7 @@
             </select>
       </div>
 
-
   <br>
-
-
-
 
   </div>
   <!-- tabla de busqueda-->
@@ -137,6 +132,7 @@
             
             $resultadoPaginacion = $conexion->visualizarEmpleadosPaginacion($inicio, $tamano_pagina);
             foreach($resultadoPaginacion as $empleado){
+
               //PENDIENTE DE SACAR FECHA DE FIN DE CONTRATO
               //$contrato = $conexion->visualizarContratoId($empleado['id_usuario'])->get_result()->fetch_array();
               echo "<tr>
@@ -148,9 +144,16 @@
               <td>".$empleado['rol_usuario']."</td>
               <td>PENDIENTE</td>
               <td>
-              <a href='../DIRECTOR/vistaEditarContrato.php' class='btn btn-success' role='button'>Renovar</a>
-              <a href='../../CONTROLADOR/controladorDirector.php' class='btn btn-danger' role='button'>Despedir</a>
-              <a href='../DIRECTOR/vistaEditarContrato.php' class='btn btn-info' role='button'>Editar</a>
+              <form action='../../CONTROLADOR/controladorDirector.php' method='post'>
+              
+              <input type='hidden' name='idContrato' value='".$contrato["id_contrato"]."'/>
+              <input type='hidden' name='idUsuario' value='".$empleado["id_usuario"]."'/>
+
+
+              <button type='submit' class='btn' name='renovarContrato'>Renovar</button>
+              <button type='submit' class='btn' name='despedirContrato'>Despedir</button>
+              <button type='submit' class='btn' name='modificarEmpleado'>Editar</button>
+              </form>
               </td>
             </tr>";
             }
