@@ -187,7 +187,7 @@
     echo '</ul></nav>';
 
   } else {
-    echo "<p>No se han encontrado empleados.</p>";
+    echo "<p>No se han encontrado resultados.</p>";
   } 
 
   $conexion->desconectar();

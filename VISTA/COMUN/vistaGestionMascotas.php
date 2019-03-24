@@ -1,7 +1,7 @@
 <?php
   session_start();
 
-  if(!isset($_SESSION['usuario']) && !isset($_SESSION['rol'])){
+  if(!isset($_SESSION['mascota']) && !isset($_SESSION['rol'])){
     header("Location: ../../index.php");
   } else {
     if($_SESSION['rol'] == 'Cliente'){
@@ -77,61 +77,66 @@
   <table class="table table-bordered table-striped">
     <thead>
       <tr>
-        <th>ID Paciente</th>
+        <th>ID Mascota</th>
         <th>Nombre de Mascota</th>
         <th>DNI dueño</th>
         <th>Tipo</th>
         <th>Raza</th>
-        <th>Peso</th>
+        <th>Peso (Kg)</th>
         <th>Sexo</th>
         <th>Editar</th>
       </tr>
     </thead>
     <tbody id="myTable">
-      <tr>
-        <td>#01</td>
-        <td>John</td>
-        <td>456765457e</td>
-        <td>perrete</td>
-        <td>labrador</td>
-        <td>50kilos</td>
-        <td>M</td>
-        <td>
-        <!-- ACCIONES -->
-        <?php
-          if($_SESSION['rol'] == 'Director'){
-            echo '<a href="#" class="btn btn-danger" role="button">Borrar</a>
-            <a href="#" class="btn btn-info" role="button">Editar</a>';
-          } else if ($_SESSION['rol'] == 'Recepcionista'){
-            echo '<a href="../VETERINARIO/vistaAnadirPrueba.php" class="btn btn-info" role="button">Pagar pruebas</a>
-            <a href="#" class="btn btn-danger" role="button">Añadir citas</a>';
-          } else if ($_SESSION['rol'] == 'Veterinario'){
-            echo '<a href="../VETERINARIO/vistaAnadirPrueba.php" class="btn btn-info" role="button">Añadir prueba</a>
-            <a href="#" class="btn btn-info" role="button">Editar</a><a href="#" class="btn btn-danger" role="button">Borrar</a>';
-          }
-        ?>
-        </td>
-      </tr>
-      <tr>
-        <td>#01</td>
-        <td>Perico</td>
-        <td>456765457e</td>
-        <td>perrete</td>
-        <td>labrador</td>
-        <td>50kilos</td>
-        <td>M</td>
-        <td>
-        <!--DIRECTOR Y RECEPCION-->
-        <a href="#" class="btn btn-danger" role="button">Borrar</a>
-        <a href="#" class="btn btn-info" role="button">Editar</a>
-        <!--VETERINARIO-->
-        <a href="../VETERINARIO/vistaAnadirPrueba.php" class="btn btn-info" role="button">Añadir prueba</a>
-        <!--RECEPCIONISTA-->
-        <a href="../VETERINARIO/vistaAnadirPrueba.php" class="btn btn-info" role="button">Pagar pruebas</a>
-        <a href="#" class="btn btn-danger" role="button">Añadir citas</a>
-       
-        </td>
-      </tr>
+    <?php
+        require_once '../../BBDD/model.php';
+        require_once '../../BBDD/config.php';
+      
+        $conexion = new Model(Config::$host, Config::$user, Config::$pass, Config::$nombreBase);
+      
+        $resultado = $conexion->visualizarMascotas();
+
+        if (!empty($resultado)) {
+            $total_registros = count($resultado);
+
+            $tamano_pagina = 5;
+            $pagina = false;
+
+            if (isset($_GET["pagina"])) {
+                $pagina = $_GET["pagina"];
+            }
+            if (!$pagina) {
+                $inicio = 0;
+                $pagina = 1;
+            } else {
+                $inicio = ($pagina - 1) * $tamano_pagina;
+            }
+            $total_paginas = ceil($total_registros / $tamano_pagina);
+            
+            $resultadoPaginacion = $conexion->visualizarMascotasPaginacion($inicio, $tamano_pagina);
+            foreach($resultadoPaginacion as $mascota){
+              echo "<tr>
+              <td>".$mascota['id_mascota']."</td>
+              <td>".$mascota['nombre_mascota']."</td>
+              <td>".$mascota['dni_cliente']."</td>
+              <td>".$mascota['tipo_mascota']."</td>
+              <td>".$mascota['raza_mascota']."</td>
+              <td>".$mascota['peso_mascota']."</td>
+              <td>".$mascota['sexo_mascota']."</td><td>";
+              if($_SESSION['rol'] == 'Director'){
+                echo '<a href="#" class="btn btn-danger" role="button">Borrar</a>
+                <a href="#" class="btn btn-info" role="button">Editar</a>';
+              } else if ($_SESSION['rol'] == 'Recepcionista'){
+                echo '<a href="../VETERINARIO/vistaAnadirPrueba.php" class="btn btn-info" role="button">Pagar pruebas</a>
+                <a href="#" class="btn btn-danger" role="button">Añadir citas</a>';
+              } else if ($_SESSION['rol'] == 'Veterinario'){
+                echo '<a href="../VETERINARIO/vistaAnadirPrueba.php" class="btn btn-info" role="button">Añadir prueba</a>
+                <a href="#" class="btn btn-info" role="button">Editar</a><a href="#" class="btn btn-danger" role="button">Borrar</a>';
+              }
+              echo "</td></tr>";
+            }
+        
+      ?>
     </tbody>
   </table>
 </div>
@@ -139,17 +144,33 @@
 <!-- PAGINACIÓN-->
 
 <div class="col-12 col-sm-12 col-md-12 col-lg-12">
-<nav aria-label="Page navigation example">
-  <ul class="pagination">
-    <li class="page-item"><a class="page-link" href="#"><i class="glyphicon glyphicon-triangle-left"></i> </a></li>
-    <li class="page-item"><a class="page-link" href="#"><i class="glyphicon glyphicon-menu-left"></i> </a></li>
-    <li class="page-item"><a class="page-link" href="#">1</a></li>
-    <li class="page-item"><a class="page-link" href="#">2</a></li>
-    <li class="page-item"><a class="page-link" href="#">3</a></li>
-    <li class="page-item"><a class="page-link" href="#"><i class="glyphicon glyphicon-menu-right"></i> </a></li>
-    <li class="page-item"><a class="page-link" href="#"><i class="glyphicon glyphicon-triangle-right"></i> </a></li>
-  </ul>
-</nav>
+<?php
+    echo '<nav aria-label="Page navigation example"><ul class="pagination">';
+    if ($total_paginas > 1) {
+      echo "<li class='page-item'><a href='vistaGestionMascotas.php?pagina=0'><i class='glyphicon glyphicon-triangle-left'></i></a></li>";
+      if ($pagina != 1){
+          echo "<li class='page-item'><a href='vistaGestionMascotas.php?pagina=".($pagina-1)."'><i class='glyphicon glyphicon-menu-left'></i></a></li>";
+      }
+      for ($i=1;$i<=$total_paginas;$i++) {
+          if ($pagina == $i){
+              echo "<li class='page-item'><a id='actual'>$pagina</a></li>";
+          } else {
+              echo "<li class='page-item'><a href='vistaGestionMascotas.php?pagina=".$i."'>".$i."</a></li>";
+          }
+      }
+      if ($pagina != $total_paginas){
+          echo "<li class='page-item'><a href='vistaGestionMascotas.php?pagina=".($pagina+1)."'><i class='glyphicon glyphicon-menu-right'></i></a></li>";
+      }
+      echo "<li class='page-item'><a href='vistaGestionMascotas.php?pagina=".$total_paginas."'><i class='glyphicon glyphicon-triangle-right'></i></a></li>";
+    }
+    echo '</ul></nav>';
+
+  } else {
+    echo "<p>No se han encontrado resultados.</p>";
+  } 
+
+  $conexion->desconectar();
+  ?>
 </div>
 </div>
 </div>
