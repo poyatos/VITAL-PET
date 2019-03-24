@@ -23,7 +23,7 @@
         //FUNCION GENERAL PARA EJECUTAR CONSULTAS
         public function ejecutarConsulta($consulta){
             $resultado = null;
-            
+
             if(isset($this->conexion)){
                 $resultado = $this->conexion->stmt_init();
                 $resultado->prepare($consulta);
@@ -36,22 +36,22 @@
         //FUNCION GENERAL PARA DEVOLVER CONSULTAS EN UN ARRAY
         public function devolverConsultaArray($consulta){
             $resultadoConsulta = $this->ejecutarConsulta($consulta);
-            $productos = null;
+            $total = null;
 
             if($resultadoConsulta){
                 $resultado = $resultadoConsulta->get_result();
-            }
+            }  
 
             if($resultado){
                 $fila = $resultado->fetch_array();
             
                 while ($fila != null){
-                    $productos[] = $fila;
+                    $total[] = $fila;
                     $fila = $resultado->fetch_array();
                 }
             }
 
-            return $productos;
+            return $total;
         }
 
         //FUNCION PARA COMPROBAR SI YA EXISTE UNA MISMA FILA DENTRO DE UNA TABLA
@@ -97,7 +97,8 @@
 
         //VISUALIZAR USUARIOS
         public function visualizarUsuarios(){
-            $consulta = "SELECT * FROM usuarios";
+            $consulta = "SELECT id_usuario, nombre_usuario, apellidos_usuario, dni_usuario, telefono_usuario, correo_usuario, fecna_usuario, 
+            direccion_usuario, rol_usuario FROM usuarios";
             $resultado = $this->devolverConsultaArray($consulta);
             return $resultado;
         }
@@ -108,10 +109,26 @@
             $resultado = $this->ejecutarConsulta($consulta);
             return $resultado;
         }
+
+        //VISUALIZAR EMPLEADOS
+        public function visualizarEmpleados(){
+            $consulta = "SELECT id_usuario, nombre_usuario, apellidos_usuario, dni_usuario, telefono_usuario, correo_usuario, fecna_usuario, 
+            direccion_usuario, rol_usuario FROM usuarios WHERE rol_usuario IN ('Veterinario','Recepcionista')";
+            $resultado = $this->devolverConsultaArray($consulta);
+            return $resultado;
+        }
+
+        //VISUALIZAR EMPLEADOS (PAGINACION)
+        public function visualizarEmpleadosPaginacion($inicio, $tamano_pagina){
+            $consulta = "SELECT id_usuario, nombre_usuario, apellidos_usuario, dni_usuario, telefono_usuario, correo_usuario, fecna_usuario, 
+            direccion_usuario, rol_usuario FROM usuarios WHERE rol_usuario IN ('Veterinario','Recepcionista') LIMIT ".$inicio."," . $tamano_pagina;
+            $resultado = $this->devolverConsultaArray($consulta);
+            return $resultado;
+        }
         
         //INICIAR SESION USUARIO
         public function iniciarSesionUsuario($dni,$pass){
-            $consulta = "SELECT * FROM usuarios WHERE dni_usuario = '$dni' ";
+            $consulta = "SELECT dni_usuario, pass_usuario, rol_usuario FROM usuarios WHERE dni_usuario = '$dni' ";
 
             $resultadoConsulta = $this->ejecutarConsulta($consulta);
 

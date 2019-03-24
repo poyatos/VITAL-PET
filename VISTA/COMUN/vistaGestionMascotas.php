@@ -4,16 +4,16 @@
   if(!isset($_SESSION['usuario']) && !isset($_SESSION['rol'])){
     header("Location: ../../index.php");
   } else {
-    if($_SESSION['rol'] == 'cliente'){
+    if($_SESSION['rol'] == 'Cliente'){
       header("Location: ../../index.php");
     }
   }
 ?>
 <!DOCTYPE html>
-<html lang="en">
+<html lang="es">
 
 <head>
-  <title>Bootstrap Example</title>
+  <title>Mascotas</title>
   <meta charset="utf-8">
   <meta name="viewport" content="width=device-width, initial-scale=1">
   <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.0/css/bootstrap.min.css">
@@ -97,15 +97,19 @@
         <td>50kilos</td>
         <td>M</td>
         <td>
-        <!--DIRECTOR Y RECEPCION-->
-        <a href="#" class="btn btn-danger" role="button">Borrar</a>
-        <a href="#" class="btn btn-info" role="button">Editar</a>
-         <!--VETERINARIO-->
-        <a href="../VETERINARIO/vistaAnadirPrueba.php" class="btn btn-info" role="button">Añadir prueba</a>
-        <!--RECEPCIONISTA-->
-        <a href="../VETERINARIO/vistaAnadirPrueba.php" class="btn btn-info" role="button">Pagar pruebas</a>
-        <a href="#" class="btn btn-danger" role="button">Añadir citas</a>
-
+        <!-- ACCIONES -->
+        <?php
+          if($_SESSION['rol'] == 'Director'){
+            echo '<a href="#" class="btn btn-danger" role="button">Borrar</a>
+            <a href="#" class="btn btn-info" role="button">Editar</a>';
+          } else if ($_SESSION['rol'] == 'Recepcionista'){
+            echo '<a href="../VETERINARIO/vistaAnadirPrueba.php" class="btn btn-info" role="button">Pagar pruebas</a>
+            <a href="#" class="btn btn-danger" role="button">Añadir citas</a>';
+          } else if ($_SESSION['rol'] == 'Veterinario'){
+            echo '<a href="../VETERINARIO/vistaAnadirPrueba.php" class="btn btn-info" role="button">Añadir prueba</a>
+            <a href="#" class="btn btn-info" role="button">Editar</a><a href="#" class="btn btn-danger" role="button">Borrar</a>';
+          }
+        ?>
         </td>
       </tr>
       <tr>

@@ -6,10 +6,10 @@
   }
 ?>
 <!DOCTYPE html>
-<html lang="en">
+<html lang="es">
 
 <head>
-  <title>Bootstrap Example</title>
+  <title>Citas</title>
   <meta charset="utf-8">
   <meta name="viewport" content="width=device-width, initial-scale=1">
   <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.0/css/bootstrap.min.css">
@@ -77,7 +77,11 @@
         <th>Estado de la cita</th>
         <th>id mascota</th>
         <th>Consulta nº</th>
-        <th>Editar</th>
+        <?php
+          if($_SESSION['rol'] == 'Veterinario' || $_SESSION['rol'] == 'Recepcionista'){
+            echo '<th>Editar</th>';
+          }
+        ?>
       </tr>
     </thead>
     <tbody id="myTable">
@@ -89,12 +93,16 @@
         <td>disponible</td>
         <td>#445</td>
         <td>4</td>
-        <td>
-         <!--VETERINARIO Y RECEPCIONISTA-->
-        <a href="#" class="btn btn-danger" role="button">Borrar</a>
-        <a href="#" class="btn btn-info" role="button">Editar</a>
-        <a href="#" class="btn btn-danger" role="button">Finalizar Consulta</a>
-        </td>
+        <!--VETERINARIO Y RECEPCIONISTA-->
+        <?php
+          if($_SESSION['rol'] == 'Veterinario' || $_SESSION['rol'] == 'Recepcionista'){
+            echo '<td>
+            <a href="#" class="btn btn-danger" role="button">Borrar</a>
+            <a href="#" class="btn btn-info" role="button">Editar</a>
+            <a href="#" class="btn btn-danger" role="button">Finalizar Consulta</a>
+            </td>';
+          }
+        ?>
       </tr>
       <tr>
         <td>#456/td>

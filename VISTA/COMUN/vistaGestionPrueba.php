@@ -6,10 +6,10 @@
   }
 ?>
 <!DOCTYPE html>
-<html lang="en">
+<html lang="es">
 
 <head>
-  <title>Bootstrap Example</title>
+  <title>Pruebas</title>
   <meta charset="utf-8">
   <meta name="viewport" content="width=device-width, initial-scale=1">
   <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.0/css/bootstrap.min.css">
@@ -79,7 +79,11 @@
         <th>Resultado de la prueba</th>
         <th>Observaciones</th>
         <th>Precio</th>
-        <th>Editar</th>
+        <?php
+        if ($_SESSION['rol'] == 'Veterinario') {
+            echo '<th>Editar</th>';
+        }
+        ?>
       </tr>
     </thead>
     <tbody id="myTable">
@@ -92,10 +96,14 @@
         <td>2200€</td>
         
         <!-- SOLO SE ACCEDE DESDE VETERINARIO-->
-        <td>
-        <a href="#" class="btn btn-danger" role="button">Borrar</a>
-        <a href="../VETERINARIO/vistaEditarPrueba.php" class="btn btn-info" role="button">Editar</a>
-        </td>
+        <?php
+          if ($_SESSION['rol'] == 'Veterinario') {
+              echo '<td>
+          <a href="#" class="btn btn-danger" role="button">Borrar</a>
+          <a href="../VETERINARIO/vistaEditarPrueba.php" class="btn btn-info" role="button">Editar</a>
+          </td>';
+          }
+        ?>
       </tr>
       <tr>
            

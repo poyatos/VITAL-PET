@@ -4,7 +4,8 @@
 
     session_start();
 
-    unset($_SESSION['logeado']);
+    unset($_SESSION['usuario']);
+    unset($_SESSION['rol']);
 
     $dni = $_POST['dni'];
     $pass = $_POST['pwd'];

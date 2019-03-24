@@ -1,8 +1,19 @@
+<?php
+  session_start();
+
+  if(!isset($_SESSION['usuario']) && !isset($_SESSION['rol'])){
+    header("Location: ../../index.php");
+  } else {
+    if($_SESSION['rol'] != 'Director'){
+      header("Location: ../../index.php");
+    }
+  }
+?>
 <!DOCTYPE html>
-<html lang="en">
+<html lang="es">
 
 <head>
-  <title>Bootstrap Example</title>
+  <title>Inicio</title>
   <meta charset="utf-8">
   <meta name="viewport" content="width=device-width, initial-scale=1">
   <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.0/css/bootstrap.min.css">
