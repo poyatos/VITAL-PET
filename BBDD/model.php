@@ -300,6 +300,15 @@
 
         //BORRAR CITA (OPCIONAL)
 
+        //PAGINACIÓN CITA
+        public function visualizarCitasPaginacion($inicio, $tamano_pagina){
+            $consulta = "SELECT id_cita, dni_cliente, fecha_cita, hora_cita, estado_cita, id_mascota, num_consulta 
+            FROM citas LIMIT ".$inicio."," . $tamano_pagina;
+            $resultado = $this->devolverConsultaArray($consulta);
+            return $resultado;
+        }
+     //PAGINACIÓN CITA
+
         /* ------------------------------------------------------------ PRUEBAS --------------------------------------------------------------*/
 
         //REGISTRAR PRUEBAS

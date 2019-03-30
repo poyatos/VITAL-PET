@@ -56,12 +56,26 @@
       <!-- CONTENIDO-->
 
 <!-- filtro y busqueda-->
- <div class="col-12 col-sm-7 col-md-7 col-lg-7 text-left">
-  <div class="row">
-
-  <div class="col-12 col-sm-12 col-md-12 col-lg-12">
+<div class="logotipo col-12 col-sm-7 col-md-7 col-lg-7">
+      <div class="form-group row">
+      <div class="col-12 col-sm-12 col-md-12 col-lg-12">
  <h1>LISTADO CITAS</h1>
 </div>
+      <div class="col-6 col-sm-6 col-md-6 col-lg-6">
+            <label name="busquedaFecha_lb" id="id_busqueda_fecha">Fecha:
+            <input class="form-control" name="busquedaFecha" id="myInput" type="date">
+            </label>
+      </div>
+
+      <div class="col-6 col-sm-6 col-md-6 col-lg-6">
+            <label name="busquedaDni_lb" id="id_busqueda_nombre">Dni:
+            <input class="form-control" name="busquedaDni" id="myInput" type="text" placeholder="Busqueda..">
+            </label>
+      </div>
+
+</div>
+
+  
 <div class="col-12 col-sm-12 col-md-12 col-lg-12">
             <input class="form-control" id="myInput" type="text" placeholder="Busqueda..">
 </div>
@@ -85,41 +99,54 @@
       </tr>
     </thead>
     <tbody id="myTable">
-      <tr>
-        <td>#445</td>
-        <td>456765457e</td>
-        <td>09/10/2021</td>
-        <td>19:30</td>
-        <td>disponible</td>
-        <td>#445</td>
-        <td>4</td>
-        <!--VETERINARIO Y RECEPCIONISTA-->
-        <?php
+    <?php
+        require_once '../../BBDD/model.php';
+        require_once '../../BBDD/config.php';
+      
+        $conexion = new Model(Config::$host, Config::$user, Config::$pass, Config::$nombreBase);
+      
+        $resultado = $conexion->visualizarCitas();
+
+        if (!empty($resultado)) {
+            $total_registros = count($resultado);
+
+            $tamano_pagina = 5;
+            $pagina = false;
+
+            if (isset($_GET["pagina"])) {
+                $pagina = $_GET["pagina"];
+            }
+            if (!$pagina) {
+                $inicio = 0;
+                $pagina = 1;
+            } else {
+                $inicio = ($pagina - 1) * $tamano_pagina;
+            }
+            $total_paginas = ceil($total_registros / $tamano_pagina);
+            
+            $resultadoPaginacion = $conexion->visualizarCitasPaginacion($inicio, $tamano_pagina);
+            foreach($resultadoPaginacion as $citas){
+     echo" <tr>
+        <td>".$citas['id_cita']."</td>
+        <td>".$citas['dni_cliente']."</td>
+        <td>".$citas['fecha_cita']."</td>
+        <td>".$citas['hora_cita']."</td>
+        <td>".$citas['estado_cita']."</td>
+        <td>".$citas['id_mascota']."</td>
+        <td>".$citas['num_consulta']."</td>";
+
           if($_SESSION['rol'] == 'Veterinario' || $_SESSION['rol'] == 'Recepcionista'){
             echo '<td>
             <a href="#" class="btn btn-danger" role="button">Borrar</a>
             <a href="#" class="btn btn-info" role="button">Editar</a>
             <a href="#" class="btn btn-danger" role="button">Finalizar Consulta</a>
             </td>';
-          }
-        ?>
-      </tr>
-      <tr>
-        <td>#456/td>
-        <td>45875457e</td>
-        <td>09/10/2022</td>
-        <td>17:30</td>
-        <td>no disponible</td>
-        <td>#445</td>
-        <td>4</td>
-        <td>
-          <!--VETERINARIO Y RECEPCIONISTA-->
-        <a href="#" class="btn btn-danger" role="button">Borrar</a>
-        <a href="#" class="btn btn-info" role="button">Editar</a>
-        <a href="#" class="btn btn-danger" role="button">Finalizar Consulta</a>
 
-        </td>
-      </tr>
+          }
+          echo "</tr>";
+        }
+          ?>
+          
     </tbody>
   </table>
 </div>
@@ -127,17 +154,33 @@
 <!-- PAGINACIÓN-->
 
 <div class="col-12 col-sm-12 col-md-12 col-lg-12">
-<nav aria-label="Page navigation example">
-  <ul class="pagination">
-    <li class="page-item"><a class="page-link" href="#"><i class="glyphicon glyphicon-triangle-left"></i> </a></li>
-    <li class="page-item"><a class="page-link" href="#"><i class="glyphicon glyphicon-menu-left"></i> </a></li>
-    <li class="page-item"><a class="page-link" href="#">1</a></li>
-    <li class="page-item"><a class="page-link" href="#">2</a></li>
-    <li class="page-item"><a class="page-link" href="#">3</a></li>
-    <li class="page-item"><a class="page-link" href="#"><i class="glyphicon glyphicon-menu-right"></i> </a></li>
-    <li class="page-item"><a class="page-link" href="#"><i class="glyphicon glyphicon-triangle-right"></i> </a></li>
-  </ul>
-</nav>
+<?php
+    echo '<nav aria-label="Page navigation example"><ul class="pagination">';
+    if ($total_paginas > 1) {
+      echo "<li class='page-item'><a href='vistaGestionEmpleados.php?pagina=0'><i class='glyphicon glyphicon-triangle-left'></i></a></li>";
+      if ($pagina != 1){
+          echo "<li class='page-item'><a href='vistaGestionEmpleados.php?pagina=".($pagina-1)."'><i class='glyphicon glyphicon-menu-left'></i></a></li>";
+      }
+      for ($i=1;$i<=$total_paginas;$i++) {
+          if ($pagina == $i){
+              echo "<li class='page-item'><a id='actual'>$pagina</a></li>";
+          } else {
+              echo "<li class='page-item'><a href='vistaGestionEmpleados.php?pagina=".$i."'>".$i."</a></li>";
+          }
+      }
+      if ($pagina != $total_paginas){
+          echo "<li class='page-item'><a href='vistaGestionEmpleados.php?pagina=".($pagina+1)."'><i class='glyphicon glyphicon-menu-right'></i></a></li>";
+      }
+      echo "<li class='page-item'><a href='vistaGestionEmpleados.php?pagina=".$total_paginas."'><i class='glyphicon glyphicon-triangle-right'></i></a></li>";
+    }
+    echo '</ul></nav>';
+
+  } else {
+    echo "<p>No se han encontrado resultados.</p>";
+  } 
+
+  $conexion->desconectar();
+  ?>
 </div>
 
 </div>
