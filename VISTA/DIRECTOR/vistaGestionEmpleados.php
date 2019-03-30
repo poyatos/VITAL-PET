@@ -2,11 +2,11 @@
   session_start();
 
   if(!isset($_SESSION['usuario']) && !isset($_SESSION['rol'])){
-    header("Location: ../../index.php");
-  } else {
-    if($_SESSION['rol'] != 'Director'){
-      header("Location: ../../index.php");
-    }
+    header("Location: ../index.php");
+    } else {
+        if($_SESSION['rol'] != 'Director'){
+            header("Location: ../VISTA/".$_SESSION['rol']);
+        }
   }
 ?>
 <!DOCTYPE html>
@@ -146,13 +146,11 @@
               <td>
               <form action='../../CONTROLADOR/controladorDirector.php' method='post'>
               
-              <input type='hidden' name='idContrato' value='".$contrato["id_contrato"]."'/>
               <input type='hidden' name='idUsuario' value='".$empleado["id_usuario"]."'/>
 
-
-              <button type='submit' class='btn' name='renovarContrato'>Renovar</button>
-              <button type='submit' class='btn' name='despedirContrato'>Despedir</button>
-              <button type='submit' class='btn' name='modificarEmpleado'>Editar</button>
+              <input type='submit' class='btn' name='renovarContrato' value='Renovar'/>
+              <input type='submit' class='btn' name='despedirContrato'value='Despedir'/>
+              <input type='submit' class='btn' name='modificarEmpleado' value='Editar'/>
               </form>
               </td>
             </tr>";
@@ -168,21 +166,21 @@
   <?php
     echo '<nav aria-label="Page navigation example"><ul class="pagination">';
     if ($total_paginas > 1) {
-      echo "<li class='page-item'><a href='vistaConsultarEmpleados.php?pagina=0'><i class='glyphicon glyphicon-triangle-left'></i></a></li>";
+      echo "<li class='page-item'><a href='vistaGestionEmpleados.php?pagina=0'><i class='glyphicon glyphicon-triangle-left'></i></a></li>";
       if ($pagina != 1){
-          echo "<li class='page-item'><a href='vistaConsultarEmpleados.php?pagina=".($pagina-1)."'><i class='glyphicon glyphicon-menu-left'></i></a></li>";
+          echo "<li class='page-item'><a href='vistaGestionEmpleados.php?pagina=".($pagina-1)."'><i class='glyphicon glyphicon-menu-left'></i></a></li>";
       }
       for ($i=1;$i<=$total_paginas;$i++) {
           if ($pagina == $i){
               echo "<li class='page-item'><a id='actual'>$pagina</a></li>";
           } else {
-              echo "<li class='page-item'><a href='vistaConsultarEmpleados.php?pagina=".$i."'>".$i."</a></li>";
+              echo "<li class='page-item'><a href='vistaGestionEmpleados.php?pagina=".$i."'>".$i."</a></li>";
           }
       }
       if ($pagina != $total_paginas){
-          echo "<li class='page-item'><a href='vistaConsultarEmpleados.php?pagina=".($pagina+1)."'><i class='glyphicon glyphicon-menu-right'></i></a></li>";
+          echo "<li class='page-item'><a href='vistaGestionEmpleados.php?pagina=".($pagina+1)."'><i class='glyphicon glyphicon-menu-right'></i></a></li>";
       }
-      echo "<li class='page-item'><a href='vistaConsultarEmpleados.php?pagina=".$total_paginas."'><i class='glyphicon glyphicon-triangle-right'></i></a></li>";
+      echo "<li class='page-item'><a href='vistaGestionEmpleados.php?pagina=".$total_paginas."'><i class='glyphicon glyphicon-triangle-right'></i></a></li>";
     }
     echo '</ul></nav>';
 

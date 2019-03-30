@@ -49,7 +49,7 @@
         <div class="panel-heading">
           <h2>CONTRATAR</h2>
         </div>
-        <form class="formulario">
+        <form class="formulario" action="../../CONTROLADOR/controladorDirector.php" method="POST">
           <div class="form-group col-12 col-sm-12 col-md-12 col-lg-12">
           </div>
           <div class="form-row">
@@ -63,7 +63,7 @@
             </div>
             <div class="form-group col-12 col-sm-12 col-md-6 col-lg-6">
               <label for="inputPassword">Contraseña</label>
-              <input type="password"  name="contraseña"  class="form-control" id="inputPassword" placeholder="Password">
+              <input type="password"  name="pass"  class="form-control" id="inputPassword" placeholder="Password">
             </div>
             <div class="form-group col-12 col-sm-12 col-md-6 col-lg-6">
               <label for="inputDni">DNI</label>
@@ -85,12 +85,12 @@
             </div>
           </div>
           <div class="form-group col-12 col-sm-12 col-md-6 col-lg-6">
-            <label for="inputFecha">Fecha</label>
+            <label for="inputFecha">Fecha de nacimiento</label>
             <input type="date"  name="fecna"  class="form-control" id="fecha">
           </div>
 
           <div class="form-group col-12 col-sm-12 col-md-6 col-lg-6">
-            <label for="inputJob">Elije la profesión</label>
+            <label for="inputJob">Elige la profesión</label>
             <select  name="profesion"  id="inputJob" class="form-control">
               <option value="veterinario" selected>Veterinario</option>
               <option value ="recepcionista">Recepcionista</option>
@@ -102,11 +102,11 @@
           </div>
           <div class="form-group col-12 col-sm-12 col-md-6 col-lg-6">
             <label for="inputFInicio">Fecha Inicio</label>
-            <input type="date"  name="fecin"  class="form-control" id="fecha">
+            <input type="date"  name="fecini"  class="form-control" id="fecha">
           </div>
           <div class="form-group col-12 col-sm-12 col-md-6 col-lg-6">
             <label for="inputFFin">Fecha Fin</label>
-            <input type="date"  name="fefin"  class="form-control" id="fecha">
+            <input type="date"  name="fecfin"  class="form-control" id="fecha">
           </div>
           <div class="form-group col-12 col-sm-12 col-md-6 col-lg-6">
             <label for="inputSueldo">Sueldo</label>
@@ -114,7 +114,7 @@
           </div>
 
           <div class="form-group col-12 col-sm-12 col-md-6 col-lg-6">
-            <label for="inputJob">Elije el horario</label>
+            <label for="inputJob">Elige el horario</label>
             <select  name="horario"  id="inputJob" class="form-control">
               <option value="matutino" selected>Vespertino</option>
               <option value="vespertino">Matutino</option>
@@ -123,10 +123,10 @@
 
           <div class="form-group col-12 col-sm-12 col-md-12 col-lg-12">
             <label for="inputfevac">Fecha Vacaciones</label>
-            <input type="date"  name="fevac"  class="form-control" id="fechavac">
+            <input type="date"  name="diasvac"  class="form-control" id="fechavac">
           </div>
 
-          <input type="submit" class="btn btn-lg" value="Contratar">
+          <input type="submit" class="btn btn-lg" value="contratar"/>
 
 
         </form>

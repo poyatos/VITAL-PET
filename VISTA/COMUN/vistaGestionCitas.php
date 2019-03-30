@@ -1,9 +1,9 @@
 <?php
-  session_start();
+    session_start();
 
-  if(!isset($_SESSION['usuario']) && !isset($_SESSION['rol'])){
-    header("Location: ../../index.php");
-  }
+    if(!isset($_SESSION['usuario']) && !isset($_SESSION['rol'])){
+        header("Location: ../index.php");
+    }
 ?>
 <!DOCTYPE html>
 <html lang="es">

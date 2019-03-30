@@ -65,7 +65,7 @@
             </div>
             <div class="form-group col-12 col-sm-12 col-md-6 col-lg-6">
               <label for="inputPassword">Contraseña</label>
-              <input type="password"  name="contraseña"  class="form-control" id="inputPassword" placeholder="Password">
+              <input type="password"  name="pass"  class="form-control" id="inputPassword" placeholder="Password">
             </div>
             <div class="form-group col-12 col-sm-12 col-md-6 col-lg-6">
               <label for="inputDni">DNI</label>
@@ -92,8 +92,8 @@
           </div>
           </div>
           <!--INPUT HIDDEN DEL ID-->
-          <input type='hidden' name='idUsuario' value=".$empleado['id_usuario']."/>
-          <input type="submit" class="btn btn-lg" value="Contratar">
+          <input type='hidden' name='idUsuario' value='<?= $_POST['id_usuario'] ?>'/>
+          <input type="submit" class="btn btn-lg" value="editarEmpleado"/>
 
 
         </form>
