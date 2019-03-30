@@ -147,7 +147,7 @@
               <form action='../../CONTROLADOR/controladorDirector.php' method='post'>
               
               <input type='hidden' name='idContrato' value='".$contrato["id_contrato"]."'/>
-              <input type='hidden' name='idUsuario' value='".$empleado["id_usuario"]."'/>
+               
 
 
               <button type='submit' class='btn' name='renovarContrato'>Renovar</button>
