@@ -345,6 +345,13 @@
             $this->ejecutarConsulta($consulta);
         }
 
+          //VISUALIZAR TIPOS DE PRUEBAS(paginacion)------------------------------------------POR HACER ( se requiere de tipo de prueba para NOMBRE Y PRECIO INNER JOIN---------------------------------------
+          public function visualizarPruebaPaginacion($inicio, $tamano_pagina){
+            $consulta = "SELECT * FROM pruebas LIMIT ".$inicio."," . $tamano_pagina;
+            $resultado = $this->devolverConsultaArray($consulta);
+            return $resultado;
+        }
+
         //BORRAR PRUEBA (OPCIONAL)
 
         /* -------------------------------------------------------- TIPOS DE PRUEBAS -----------------------------------------------------------*/
@@ -363,19 +370,19 @@
 
         //VISUALIZAR TIPOS DE PRUEBAS
         public function visualizarTiposPruebas(){
-            $consulta = "SELECT * FROM tipos_pruebas";
-            $resultado = $this->ejecutarConsulta($consulta);
-            return $resultado;
-        }
-
-
-        //VISUALIZAR TIPOS DE PRUEBAS(paginacion)
-        public function visualizarTipoPruebaPaginacion($inicio, $tamano_pagina){
-            $consulta = "SELECT id_tipo_prueba,	nombre_tipo_prueba,	precio_tipo_prueba
-            FROM tipos_pruebas WHERE rol_usuario IN ('Veterinario','Recepcionista') LIMIT ".$inicio."," . $tamano_pagina;
+            $consulta = "SELECT * FROM tipos_pruebas ";
             $resultado = $this->devolverConsultaArray($consulta);
             return $resultado;
         }
+
+
+        //VISUALIZAR TIPOS DE PRUEBAS(paginacion)------------------------------------------
+        public function visualizarTipoPruebaPaginacion($inicio, $tamano_pagina){
+            $consulta = "SELECT * FROM tipos_pruebas LIMIT ".$inicio."," . $tamano_pagina;
+            $resultado = $this->devolverConsultaArray($consulta);
+            return $resultado;
+        }
+
         //MODIFICAR TIPO DE PRUEBA
         public function modificarTipoPrueba($id, $nombre, $precio){
             $consulta = "UPDATE tipos_pruebas SET nombre_tipo_prueba = '$nombre', precio_tipo_prueba = $precio WHERE id_tipo_prueba = $id";

@@ -62,14 +62,22 @@
 
 <!-- filtro y busqueda-->
  <div class="col-12 col-sm-7 col-md-7 col-lg-7 text-left">
-   <div class="row">
+ <div class="form-group row">
+      <div class="col-12 col-sm-12 col-md-12 col-lg-12">
+ <h1>LISTADO CLIENTES</h1>
+</div>
+      <div class="col-6 col-sm-6 col-md-6 col-lg-6">
+            <label name="busquedaNombreMascota_lb" id="id_busqueda_Nombre_Mascota">Nombre de la mascota:
+            <input class="form-control" name="busquedaNombreMascota" id="myInput" type="text" placeholder="Busqueda..">
+            </label>
+      </div>
 
-   <div class="col-12 col-sm-12 col-md-12 col-lg-12">
- <h1>LISTADO MASCOTAS</h1>
- </div>
+      <div class="col-6 col-sm-6 col-md-6 col-lg-6">
+            <label name="busquedaTipo_lb" id="id_busqueda_tipo">tipo:
+            <input class="form-control" name="busquedaTipo" id="myInput" type="text" placeholder="Busqueda..">
+            </label>
+      </div>
 
- <div class="col-12 col-sm-12 col-md-12 col-lg-12">
-            <input class="form-control" id="myInput" type="text" placeholder="Busqueda..">
 </div>
 
   <!-- tabla de busqueda-->

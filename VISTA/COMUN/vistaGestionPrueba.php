@@ -57,15 +57,17 @@
 
 <!-- filtro y busqueda-->
  <div class="col-12 col-sm-7 col-md-7 col-lg-7 text-left">
- <div class="row">
-
-
- <div class="col-12 col-sm-12 col-md-12 col-lg-12">
- <h1>LISTADO MASCOTAS</h1>
+ <div class="form-group row">
+      <div class="col-12 col-sm-12 col-md-12 col-lg-12">
+ <h1>LISTADO CLIENTES</h1>
 </div>
+      <div class="col-12 col-sm-12 col-md-12 col-lg-12">
+            <label name="busquedaNombrePrueba_lb" id="id_busqueda_NombrePrueba">Nombre de la prueba:
+            <input class="form-control" name="busquedaNombrePrueba" id="myInput" type="text" placeholder="Busqueda..">
+            </label>
+      </div>
 
-<div class="col-12 col-sm-12 col-md-12 col-lg-12">
-            <input class="form-control" id="myInput" type="text" placeholder="Busqueda..">
+
 </div>
 
   <!-- tabla de busqueda-->
@@ -87,53 +89,88 @@
       </tr>
     </thead>
     <tbody id="myTable">
-      <tr>
-        
-        <td>#45</td>
-        <td>operacion final</td>
-        <td>***</td>
-        <td>***</td>
-        <td>2200€</td>
-        
-        <!-- SOLO SE ACCEDE DESDE VETERINARIO-->
-        <?php
-          if ($_SESSION['rol'] == 'Veterinario') {
-              echo '<td>
-          <a href="#" class="btn btn-danger" role="button">Borrar</a>
-          <a href="../VETERINARIO/vistaEditarPrueba.php" class="btn btn-info" role="button">Editar</a>
-          </td>';
-          }
-        ?>
-      </tr>
-      <tr>
-           
-        <td>#46</td>
-        <td>operacion final</td>
-        <td>POSITIVO</td>
-        <td>Operacion realizada con exito</td>
-        <td>2200€</td>
-        <td>
-        <a href="#" class="btn btn-danger" role="button">Borrar</a>
-        <a href="../VETERINARIO/vistaEditarPrueba.php" class="btn btn-info" role="button">Editar</a>
-        </td>
-      </tr>
+    <?php
+        require_once '../../BBDD/model.php';
+        require_once '../../BBDD/config.php';
+      
+        $conexion = new Model(Config::$host, Config::$user, Config::$pass, Config::$nombreBase);
+      
+        $resultado = $conexion->visualizarPruebas();
+
+        if (!empty($resultado)) {
+            $total_registros = count($resultado);
+            $tamano_pagina = 5;
+            $pagina = false;
+
+        if (isset($_GET["pagina"])) {
+             $pagina = $_GET["pagina"];
+        }
+        if (!$pagina) {
+             $inicio = 0;
+             $pagina = 1;
+        } else {
+             $inicio = ($pagina - 1) * $tamano_pagina;
+        }
+             $total_paginas = ceil($total_registros / $tamano_pagina);
+            
+            $resultadoPaginacion = $conexion->visualizarPruebaPaginacion($inicio, $tamano_pagina);
+            foreach($resultadoPaginacion as $prueba){
+
+               //por hacer-------------------------------SE RECOGE DE LA TABLA TIPO_PRUEBA
+                  echo" <tr>
+                  <td>".$prueba['nombre_prueba']."</td>
+                  <td>".$prueba['precio_prueba']."</td>
+
+
+
+                  <td>".$prueba['id_prueba']."</td>
+                  <td>".$prueba['resultado_prueba']."</td>
+                  <td>".$prueba['observaciones_prueba']."</td>"; 
+
+                 //por hacer-------------------------------SE RECOGE DE LA TABLA PRUEBA
+
+
+                  if ($_SESSION['rol'] == 'Veterinario') {
+                    echo '<td>
+                    <a href="#" class="btn btn-danger" role="button">Borrar</a>
+                    <a href="../VETERINARIO/vistaEditarPrueba.php" class="btn btn-info" role="button">Editar</a></td>';
+                  }
+              echo "</tr>";
+        }
+          ?>
     </tbody>
   </table>
 </div>
 
 <!-- PAGINACIÓN-->
 <div class="col-12 col-sm-12 col-md-12 col-lg-12">
-<nav aria-label="Page navigation example">
-  <ul class="pagination">
-    <li class="page-item"><a class="page-link" href="#"><i class="glyphicon glyphicon-triangle-left"></i> </a></li>
-    <li class="page-item"><a class="page-link" href="#"><i class="glyphicon glyphicon-menu-left"></i> </a></li>
-    <li class="page-item"><a class="page-link" href="#">1</a></li>
-    <li class="page-item"><a class="page-link" href="#">2</a></li>
-    <li class="page-item"><a class="page-link" href="#">3</a></li>
-    <li class="page-item"><a class="page-link" href="#"><i class="glyphicon glyphicon-menu-right"></i> </a></li>
-    <li class="page-item"><a class="page-link" href="#"><i class="glyphicon glyphicon-triangle-right"></i> </a></li>
-  </ul>
-</nav>
+<?php
+    echo '<nav aria-label="Page navigation example"><ul class="pagination">';
+    if ($total_paginas > 1) {
+      echo "<li class='page-item'><a href='vistaGestionPrueba.php?pagina=0'><i class='glyphicon glyphicon-triangle-left'></i></a></li>";
+      if ($pagina != 1){
+          echo "<li class='page-item'><a href='vistaGestionPrueba.php?pagina=".($pagina-1)."'><i class='glyphicon glyphicon-menu-left'></i></a></li>";
+      }
+      for ($i=1;$i<=$total_paginas;$i++) {
+          if ($pagina == $i){
+              echo "<li class='page-item'><a id='actual'>$pagina</a></li>";
+          } else {
+              echo "<li class='page-item'><a href='vistaGestionPrueba.php?pagina=".$i."'>".$i."</a></li>";
+          }
+      }
+      if ($pagina != $total_paginas){
+          echo "<li class='page-item'><a href='vistaGestionPrueba.php?pagina=".($pagina+1)."'><i class='glyphicon glyphicon-menu-right'></i></a></li>";
+      }
+      echo "<li class='page-item'><a href='vistaGestionPruebas.php?pagina=".$total_paginas."'><i class='glyphicon glyphicon-triangle-right'></i></a></li>";
+    }
+    echo '</ul></nav>';
+
+  } else {
+    echo "<p>No se han encontrado resultados.</p>";
+  } 
+
+  $conexion->desconectar();
+  ?>
 </div>
 </div>
 
@@ -143,3 +180,4 @@
 </body>
 
 </html>
+

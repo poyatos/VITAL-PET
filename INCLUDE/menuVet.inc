@@ -22,7 +22,7 @@
                             <li class="active"><a href="../COMUN/vistaGestionCitas.php"><i class="glyphicon glyphicon-eye-open"></i>Consultar citas</a></li>
                             <li class="active"><a href="../COMUN/vistaGestionMascotas.php"><i class="glyphicon glyphicon-plus-sign"></i>Añadir pruebas</a></li>
                             <li><a href="../COMUN/vistaGestionPrueba.php"><i class="glyphicon glyphicon-cog"></i>Gestionar pruebas</a></li>
-                            <li><a href="../COMUN/vistaConsultarTipoPrueba.php"><i class="glyphicon glyphicon-cog"></i>Consultar Tipo de pruebas</a></li>
+                            <li><a href="../COMUN/vistaGestionTipoPrueba.php"><i class="glyphicon glyphicon-cog"></i>Consultar Tipo de pruebas</a></li>
                         </ul>
 
                     </ul>
