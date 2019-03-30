@@ -119,12 +119,13 @@
         }
 
         //VISUALIZAR CLIENTES (PAGINACION)
-        public function visualizarClientesPaginacion(){
+        public function visualizarClientesPaginacion($inicio, $tamano_pagina){
             $consulta = "SELECT id_usuario, nombre_usuario, apellidos_usuario, dni_usuario, telefono_usuario, correo_usuario, fecna_usuario, 
             direccion_usuario, rol_usuario FROM usuarios WHERE rol_usuario LIKE 'Cliente' LIMIT ".$inicio."," . $tamano_pagina;
             $resultado = $this->devolverConsultaArray($consulta);
             return $resultado;
         }
+
 
         //VISUALIZAR EMPLEADOS
         public function visualizarEmpleados(){
@@ -272,14 +273,14 @@
         //VISUALIZAR CITAS
         public function visualizarCitas(){
             $consulta = "SELECT * FROM citas";
-            $resultado = $this->ejecutarConsulta($consulta);
+            $resultado = $this->devolverConsultaArray($consulta);
             return $resultado;
         }
 
         //VISUALIZAR CITAS CLIENTE
         public function visualizarCitasCliente($dni){
             $consulta = "SELECT * FROM citas WHERE dni_cliente = '$dni' ";
-            $resultado = $this->ejecutarConsulta($consulta);
+            $resultado = $this->devolverConsultaArray($consulta);
             return $resultado;
         }
 
@@ -305,7 +306,7 @@
             $resultado = $this->devolverConsultaArray($consulta);
             return $resultado;
         }
-     //PAGINACIÓN CITA
+        //PAGINACIÓN CITA
 
         /* ------------------------------------------------------------ PRUEBAS --------------------------------------------------------------*/
 
@@ -365,6 +366,14 @@
             return $resultado;
         }
 
+
+        //VISUALIZAR TIPOS DE PRUEBAS(paginacion)
+        public function visualizarTipoPruebaPaginacion($inicio, $tamano_pagina){
+            $consulta = "SELECT id_tipo_prueba,	nombre_tipo_prueba,	precio_tipo_prueba
+            FROM tipos_pruebas WHERE rol_usuario IN ('Veterinario','Recepcionista') LIMIT ".$inicio."," . $tamano_pagina;
+            $resultado = $this->devolverConsultaArray($consulta);
+            return $resultado;
+        }
         //MODIFICAR TIPO DE PRUEBA
         public function modificarTipoPrueba($id, $nombre, $precio){
             $consulta = "UPDATE tipos_pruebas SET nombre_tipo_prueba = '$nombre', precio_tipo_prueba = $precio WHERE id_tipo_prueba = $id";

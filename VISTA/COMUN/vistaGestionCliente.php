@@ -1,6 +1,11 @@
 <?php
-  session_start();
+    session_start();
+
+    if(!isset($_SESSION['usuario']) && !isset($_SESSION['rol'])){
+        header("Location: ../index.php");
+    }
 ?>
+
 <!DOCTYPE html>
 <html lang="es">
 
@@ -38,9 +43,15 @@
 
   <!-- MENU LATERAL -->
       <div class="col-12 col-sm-5 col-md-4  col-lg-4">
-  <?php
-      include "../../INCLUDE/menuDir.inc"
-  ?>
+      <?php
+    if($_SESSION['rol'] == 'Director'){
+      include "../../INCLUDE/menuDir.inc";
+    } else if ($_SESSION['rol'] == 'Recepcionista'){
+      include "../../INCLUDE/menuRec.inc";
+    } else if ($_SESSION['rol'] == 'Veterinario'){
+      include "../../INCLUDE/menuVet.inc";
+    }
+      ?>
       </div>
 
 
@@ -48,14 +59,22 @@
 
 <!-- filtro y busqueda-->
  <div class="col-12 col-sm-7 col-md-7 col-lg-7 text-left">
-   <div class="row">
+ <div class="form-group row">
+      <div class="col-12 col-sm-12 col-md-12 col-lg-12">
+ <h1>LISTADO CLIENTES</h1>
+</div>
+      <div class="col-6 col-sm-6 col-md-6 col-lg-6">
+            <label name="busquedaNombre_lb" id="id_busqueda_Nombre">Nombre:
+            <input class="form-control" name="busquedaNombre" id="myInput" type="text" placeholder="Busqueda..">
+            </label>
+      </div>
 
-   <div class="col-12 col-sm-12 col-md-12 col-lg-12">
- <h1>LISTADO MASCOTAS</h1>
- </div>
+      <div class="col-6 col-sm-6 col-md-6 col-lg-6">
+            <label name="busquedaDni_lb" id="id_busqueda_nombre">Dni:
+            <input class="form-control" name="busquedaDni" id="myInput" type="text" placeholder="Busqueda..">
+            </label>
+      </div>
 
- <div class="col-12 col-sm-12 col-md-12 col-lg-12">
-            <input class="form-control" id="myInput" type="text" placeholder="Busqueda..">
 </div>
 
   <!-- tabla de busqueda-->
@@ -69,68 +88,93 @@
         <th>Telefono</th>
         <th>Correo</th>
         <th>Dirección</th>
-        <th>Editar</th>
+        <?php
+          if($_SESSION['rol'] == 'Veterinario' || $_SESSION['rol'] == 'Recepcionista'){
+            echo '<th>Editar</th>';
+          }
+        ?>
       </tr>
     </thead>
     <tbody id="myTable">
-      <tr>
-        <td>paco</td>
-        <td>John</td>
-        <td>456765457e</td>
-        <td>36653554345</td>
-        <td>cliente@cliente.com</td>
-        <td>CALLE PEPITO</td>
-  
-        <td>
-        <!--RECEPCION-->
-        <a href="#" class="btn btn-danger" role="button">Borrar</a>
-        <a href="#" class="btn btn-info" role="button">Editar</a>
+    <?php
+        require_once '../../BBDD/model.php';
+        require_once '../../BBDD/config.php';
+      
+        $conexion = new Model(Config::$host, Config::$user, Config::$pass, Config::$nombreBase);
+      
+        $resultado = $conexion->visualizarClientes();
 
-        <!--VER COMO ACCEDER A LAS MASCOTAS DE ESTE CLIENTE   SIN HACER-->
-        <a href="../COMUN/vistaGestionMascotas.php" class="btn btn-info" role="button">Ver mascotas</a>
- 
+        if (!empty($resultado)) {
+            $total_registros = count($resultado);
+            $tamano_pagina = 5;
+            $pagina = false;
 
-        </td>
-      </tr>
-      <tr>
-        <td>pepe</td>
-        <td>John</td>
-        <td>456765457e</td>
-        <td>36653554345</td>
-        <td>cliente@cliente.com</td>
-        <td>CALLE PEPITO</td>
-     
-        <td>
-         <!--RECEPCION-->
-         <a href="#" class="btn btn-danger" role="button">Borrar</a>
-        <a href="#" class="btn btn-info" role="button">Editar</a>
+        if (isset($_GET["pagina"])) {
+             $pagina = $_GET["pagina"];
+        }
+        if (!$pagina) {
+             $inicio = 0;
+             $pagina = 1;
+        } else {
+             $inicio = ($pagina - 1) * $tamano_pagina;
+        }
+             $total_paginas = ceil($total_registros / $tamano_pagina);
+            
+            $resultadoPaginacion = $conexion->visualizarClientesPaginacion($inicio, $tamano_pagina);
+            foreach($resultadoPaginacion as $clientes){
+                  echo" <tr>
+                  <td>".$clientes['nombre_usuario']."</td>
+                  <td>".$clientes['apellidos_usuario']."</td>
+                  <td>".$clientes['dni_usuario']."</td>
+                  <td>".$clientes['telefono_usuario']."</td>
+                  <td>".$clientes['correo_usuario']."</td>
+                  <td>".$clientes['direccion_usuario']."</td>";
 
-        <!--VER COMO ACCEDER A LAS MASCOTAS DE ESTE CLIENTE-->
-        <a href="../COMUN/vistaGestionMascotas.php" class="btn btn-info" role="button">Ver mascotas</a>
-       
-        </td>
-      </tr>
+                    if($_SESSION['rol'] == 'Recepcionista'){
+                          echo '<td>
+                          <a href="#" class="btn btn-danger" role="button">Borrar</a>
+                          <a href="#" class="btn btn-info" role="button">Editar</a>
+                          </td>';
+
+                    }else if($_SESSION['rol'] == 'Veterinario'){
+                          echo '<td> <a href="#" class="btn btn-danger" role="button">Ver Mascotas</a></td>';
+                    }
+              echo "</tr>";
+        }
+          ?>
     </tbody>
   </table>
 </div>
-
 <!-- PAGINACIÓN-->
-
 <div class="col-12 col-sm-12 col-md-12 col-lg-12">
-<nav aria-label="Page navigation example">
-  <ul class="pagination">
-    <li class="page-item"><a class="page-link" href="#"><i class="glyphicon glyphicon-triangle-left"></i> </a></li>
-    <li class="page-item"><a class="page-link" href="#"><i class="glyphicon glyphicon-menu-left"></i> </a></li>
-    <li class="page-item"><a class="page-link" href="#">1</a></li>
-    <li class="page-item"><a class="page-link" href="#">2</a></li>
-    <li class="page-item"><a class="page-link" href="#">3</a></li>
-    <li class="page-item"><a class="page-link" href="#"><i class="glyphicon glyphicon-menu-right"></i> </a></li>
-    <li class="page-item"><a class="page-link" href="#"><i class="glyphicon glyphicon-triangle-right"></i> </a></li>
-  </ul>
-</nav>
-</div>
-</div>
-</div>
+<?php
+    echo '<nav aria-label="Page navigation example"><ul class="pagination">';
+    if ($total_paginas > 1) {
+      echo "<li class='page-item'><a href='vistaGestionClientes.php?pagina=0'><i class='glyphicon glyphicon-triangle-left'></i></a></li>";
+      if ($pagina != 1){
+          echo "<li class='page-item'><a href='vistaGestionClientes.php?pagina=".($pagina-1)."'><i class='glyphicon glyphicon-menu-left'></i></a></li>";
+      }
+      for ($i=1;$i<=$total_paginas;$i++) {
+          if ($pagina == $i){
+              echo "<li class='page-item'><a id='actual'>$pagina</a></li>";
+          } else {
+              echo "<li class='page-item'><a href='vistaGestionClientes.php?pagina=".$i."'>".$i."</a></li>";
+          }
+      }
+      if ($pagina != $total_paginas){
+          echo "<li class='page-item'><a href='vistaGestionClientes.php?pagina=".($pagina+1)."'><i class='glyphicon glyphicon-menu-right'></i></a></li>";
+      }
+      echo "<li class='page-item'><a href='vistaGestionClientes.php?pagina=".$total_paginas."'><i class='glyphicon glyphicon-triangle-right'></i></a></li>";
+    }
+    echo '</ul></nav>';
+
+  } else {
+    echo "<p>No se han encontrado resultados.</p>";
+  } 
+
+  $conexion->desconectar();
+  ?>
+
 </div>
 </body>
 

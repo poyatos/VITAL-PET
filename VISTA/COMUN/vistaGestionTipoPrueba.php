@@ -1,5 +1,9 @@
 <?php
-  session_start();
+    session_start();
+
+    if(!isset($_SESSION['usuario']) && !isset($_SESSION['rol'])){
+        header("Location: ../index.php");
+    }
 ?>
 <!DOCTYPE html>
 <html lang="es">
@@ -37,7 +41,11 @@
   <!-- MENU LATERAL -->
       <div class="col-12 col-sm-5 col-md-4 col-lg-4">
       <?php
-      include "../../INCLUDE/menuVet.inc"
+        if ($_SESSION['rol'] == 'Recepcionista'){
+        include "../../INCLUDE/menuRec.inc";
+      } else if ($_SESSION['rol'] == 'Veterinario'){
+        include "../../INCLUDE/menuVet.inc";
+      }
       ?>
       </div>
 
@@ -45,10 +53,17 @@
       <!-- CONTENIDO-->
 
       <div class="col-12 col-sm-7 col-md-7  col-lg-7 text-left">
-      <div class="row">
+      <div class="form-group row">
+      <div class="col-12 col-sm-12 col-md-12 col-lg-12">
+        <h1>TIPO DE PRUEBA</h1>
+          </div>
+      <div class="col-12 col-sm-12 col-md-12 col-lg-12">
+            <label name="busquedaNombre_lb" id="id_busqueda_Nombre">Nombre:
+            <input class="form-control" name="busquedaNombre" id="myInput" type="text" placeholder="Busqueda..">
+            </label>
+      </div>
 
-      <div class="col-12 col-sm-12 col-md-12  col-lg-12">
-        <input class="form-control" id="myInput" type="text" placeholder="Busqueda..">
+      </div>
       <br>
       <table class="table table-bordered table-striped">
     <thead>
@@ -56,20 +71,55 @@
         <th>ID prueba</th>
         <th>Nombre</th>
         <th>Precio</th>
+        <?php
+          if($_SESSION['rol'] == 'Veterinario'){
+            echo '<th>Editar</th>';
+          }
+        ?>
         
       </tr>
     </thead>
     <tbody id="myTable">
-      <tr>
-        <td>#445</td>
-        <td>castración</td>
-        <td>130€</td>
-      </tr>
-      <tr>
-        <td>#456</td>
-        <td>empalmación</td>
-        <td>525€</td>
-      </tr>
+    <?php
+        require_once '../../BBDD/model.php';
+        require_once '../../BBDD/config.php';
+      
+        $conexion = new Model(Config::$host, Config::$user, Config::$pass, Config::$nombreBase);
+      
+        $resultado = $conexion->visualizarTiposPruebas();
+
+        if (!empty($resultado)) {
+            $total_registros = count($resultado);
+            $tamano_pagina = 5;
+            $pagina = false;
+
+        if (isset($_GET["pagina"])) {
+             $pagina = $_GET["pagina"];
+        }
+        if (!$pagina) {
+             $inicio = 0;
+             $pagina = 1;
+        } else {
+             $inicio = ($pagina - 1) * $tamano_pagina;
+        }
+             $total_paginas = ceil($total_registros / $tamano_pagina);
+            
+            $resultadoPaginacion = $conexion->visualizarTipoPruebaPaginacion($inicio, $tamano_pagina);
+            foreach($resultadoPaginacion as $tprueba){
+                  echo" <tr>
+                  <td>".$tprueba['id_tipo_prueba']."</td>
+                  <td>".$tprueba['nombre_tipo_prueba']."</td>
+                  <td>".$tprueba['precio_tipo_prueba']."</td>";
+
+                    if($_SESSION['rol'] == 'Veterinario'){
+                          echo '<td>
+                          <a href="#" class="btn btn-info" role="button">Editar</a>
+                          <a href="#" class="btn btn-danger" role="button">Borrar</a>
+                          </td>';
+                    }
+              echo "</tr>";
+        }
+          ?>
     </tbody>
   </table>
 </div>
@@ -77,17 +127,33 @@
 <!-- PAGINACIÓN-->
 
 <div class="col-12 col-sm-12 col-md-12  col-lg-12">
-<nav aria-label="Page navigation example">
-  <ul class="pagination">
-    <li class="page-item"><a class="page-link" href="#"><i class="glyphicon glyphicon-triangle-left"></i> </a></li>
-    <li class="page-item"><a class="page-link" href="#"><i class="glyphicon glyphicon-menu-left"></i> </a></li>
-    <li class="page-item"><a class="page-link" href="#">1</a></li>
-    <li class="page-item"><a class="page-link" href="#">2</a></li>
-    <li class="page-item"><a class="page-link" href="#">3</a></li>
-    <li class="page-item"><a class="page-link" href="#"><i class="glyphicon glyphicon-menu-right"></i> </a></li>
-    <li class="page-item"><a class="page-link" href="#"><i class="glyphicon glyphicon-triangle-right"></i> </a></li>
-  </ul>
-</nav>
+<?php
+    echo '<nav aria-label="Page navigation example"><ul class="pagination">';
+    if ($total_paginas > 1) {
+      echo "<li class='page-item'><a href='vistaGestionTipoPrueba.php?pagina=0'><i class='glyphicon glyphicon-triangle-left'></i></a></li>";
+      if ($pagina != 1){
+          echo "<li class='page-item'><a href='vistaGestionTipoPrueba.php?pagina=".($pagina-1)."'><i class='glyphicon glyphicon-menu-left'></i></a></li>";
+      }
+      for ($i=1;$i<=$total_paginas;$i++) {
+          if ($pagina == $i){
+              echo "<li class='page-item'><a id='actual'>$pagina</a></li>";
+          } else {
+              echo "<li class='page-item'><a href='vistaGestionTipoPrueba.php?pagina=".$i."'>".$i."</a></li>";
+          }
+      }
+      if ($pagina != $total_paginas){
+          echo "<li class='page-item'><a href='vistaGestionTipoPrueba.php?pagina=".($pagina+1)."'><i class='glyphicon glyphicon-menu-right'></i></a></li>";
+      }
+      echo "<li class='page-item'><a href='vistaGestionTipoPrueba.php?pagina=".$total_paginas."'><i class='glyphicon glyphicon-triangle-right'></i></a></li>";
+    }
+    echo '</ul></nav>';
+
+  } else {
+    echo "<p>No se han encontrado resultados.</p>";
+  } 
+
+  $conexion->desconectar();
+  ?>
 </div>
 </div>
 </div>
