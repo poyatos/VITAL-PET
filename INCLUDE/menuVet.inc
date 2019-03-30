@@ -7,7 +7,14 @@
                 <div class="menu-list">
           
                     <ul id="menu-content" class="menu-content collapse out">
-                           
+
+                        <li  data-toggle="collapse" data-target="#products" class="collapsed active">
+                             <a href="#"><i class="glyphicon glyphicon-plus"></i> PRUEBA <span class="arrow"></span></a>
+                        </li>
+                        <ul class="sub-menu collapse" id="products">
+                            <li class="active"><a href="../VETERINARIO/vistaTipoPrueba.php"><i class="glyphicon glyphicon-plus-sign"></i>Añadir Tipo de prueba</a></li>
+                        </ul>
+
                         <li data-toggle="collapse" data-target="#service" class="collapsed">
                           <a href="#"><i class="glyphicon glyphicon-tint"></i> GESTIÓN <span class="arrow"></span></a>
                         </li>  
