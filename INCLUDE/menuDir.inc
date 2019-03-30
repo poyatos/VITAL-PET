@@ -13,7 +13,7 @@
                         </li>
                         <ul class="sub-menu collapse" id="products">
                             <li class="active"><a href="../DIRECTOR/vistaContratar.php"><i class="glyphicon glyphicon-plus-sign"></i>Contratar empleados</a></li>
-                            <li><a href="../DIRECTOR/vistaConsultarEmpleados.php"><i class="glyphicon glyphicon-cog"></i>Consultar empleados</a></li>
+                            <li><a href="../DIRECTOR/vistaGestionEmpleados.php"><i class="glyphicon glyphicon-cog"></i>Consultar empleados</a></li>
                         </ul>
         
         
