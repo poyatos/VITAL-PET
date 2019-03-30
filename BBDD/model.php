@@ -106,8 +106,10 @@
         //VISUALIZAR USUARIO POR DNI
         public function visualizarUsuarioDni($dni){
             $consulta = "SELECT * FROM usuarios WHERE dni_usuario = '$dni' ";
-            $resultado = $this->ejecutarConsulta($consulta);
-            return $resultado;
+            $resultadoConsulta = $this->ejecutarConsulta($consulta);
+            $resultado = $resultadoConsulta->get_result();
+            $usuario = $resultado->fetch_array();
+            return $usuario;
         }
 
         //VISUALIZAR CLIENTES
@@ -420,8 +422,8 @@
             return $resultado;
         }
 
-        //MODIFICAR CONTRATO ID
-        public function modificarContratoId($id_contratado, $fecini, $fecfin, $sueldo, $diasvac, $horario, $estado){
+        //MODIFICAR CONTRATO
+        public function modificarContrato($id_contratado, $fecini, $fecfin, $sueldo, $diasvac, $horario, $estado){
             $consulta = "UPDATE contratos SET fecini_contrato = '$fecini', fecfin_contrato = '$fecfin', sueldo_contrato = $sueldo, 
             diasvac_contrato = $diasvac, horario_contrato = '$horario', estado_contrato = '$estado' WHERE id_contratado = $id_contratado";
             $this->ejecutarConsulta($consulta);

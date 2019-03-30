@@ -15,7 +15,7 @@ if(!isset($_SESSION['usuario']) && !isset($_SESSION['rol'])){
 
 $conexion = new Model (Config::$host, Config::$user, Config::$pass, Config::$nombreBase);
 
-/*---------CONTROLADOR VISTA_CONSULTAR_EMPLEADOS-------*/
+/*---------CONTROLADOR VISTA GESTION EMPLEADOS-------*/
 
 if(isset($_POST['renovarContrato'])){
     header("Location: ../VISTA/DIRECTOR/vistaEditarContrato.php?idUsuario=".$_POST['idUsuario']);
@@ -29,8 +29,10 @@ if(isset($_POST['renovarContrato'])){
 /*---------CONTROLADOR CONTRATAR-------*/
 if(isset($_POST['contratar'])){
     $conexion->registrarUsuario($_POST['nombre'], $_POST['apellidos'], $_POST['dni'], $_POST['telefono'], $_POST['correo'], $_POST['fecna'], $_POST['direccion'], $_POST['profesion'], $_POST['pass']);
-    $idContratado = $conexion->visualizarUsuarioDni($_POST['dni']);
+    $empleadoContratado = $conexion->visualizarUsuarioDni($_POST['dni']);
+    $idContratado = $empleadoContratado['id_usuario'];
     $conexion->contratarUsuario($_POST['fecini'], $_POST['fecfin'], $_POST['sueldo'], $_POST['diasvac'], $_POST['horario'], 'Activo', $idContratado);
+    header("Location: ../VISTA/DIRECTOR/vistaGestionEmpleados.php");
 }
 
 /*---------CONTROLADOR EDITAR EMPLEADO-------*/
@@ -39,11 +41,12 @@ if(isset($_POST['editarEmpleado'])){
     header("Location: ../VISTA/DIRECTOR/vistaGestionEmpleados.php");
 }
 
-/*---------CONTROLADOR GESTIONAR_CITAS-------*/
-
+/*---------CONTROLADOR EDITAR CONTRATO-------*/
+if(isset($_POST['editarContrato'])){
+    $conexion->editarContrato($_POST['idUsuario'], $_POST['fecini'], $_POST['fecfin'], $_POST['sueldo'], $_POST['diasvac'], $_POST['horario'], 'Activo', $idContratado);
+    header("Location: ../VISTA/DIRECTOR/vistaGestionEmpleados.php");
+}
 
 $conexion->desconectar();
   
-
-
 ?>

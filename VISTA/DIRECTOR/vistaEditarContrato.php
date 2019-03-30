@@ -56,11 +56,11 @@
           </div>
           <div class="form-group col-md-6">
             <label for="inputFInicio">Fecha Inicio</label>
-            <input type="date"  name="fecin"  class="form-control" id="fecha">
+            <input type="date"  name="fecini"  class="form-control" id="fecha">
           </div>
           <div class="form-group col-md-6">
             <label for="inputFFin">Fecha Fin</label>
-            <input type="date"  name="fefin"  class="form-control" id="fecha">
+            <input type="date"  name="fecfin"  class="form-control" id="fecha">
           </div>
           <div class="form-group col-md-6">
             <label for="inputSueldo">Sueldo</label>
@@ -77,10 +77,12 @@
 
           <div class="form-group col-md-12">
             <label for="inputfevac">Fecha Vacaciones</label>
-            <input type="date"  name="fevac"  class="form-control" id="fechavac">
+            <input type="date"  name="diasvac"  class="form-control" id="fechavac">
           </div>
 
-          <input type="submit" class="btn btn-lg" value="Contratar">
+          <input type="hidden" name="idUsuario" value="<?= $_POST['id_usuario']?>"/>
+
+          <input type="submit" class="btn btn-lg" value="editarContrato">
 
 
         </form>
