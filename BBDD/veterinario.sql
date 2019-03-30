@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Servidor: 127.0.0.1
--- Tiempo de generación: 24-03-2019 a las 13:39:28
+-- Tiempo de generación: 30-03-2019 a las 13:26:36
 -- Versión del servidor: 10.1.32-MariaDB
 -- Versión de PHP: 7.1.17
 
@@ -196,6 +196,64 @@ CREATE TABLE `tipos_pruebas` (
   `precio_tipo_prueba` float NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8 COLLATE=utf8_spanish_ci;
 
+--
+-- Volcado de datos para la tabla `tipos_pruebas`
+--
+
+INSERT INTO `tipos_pruebas` (`id_tipo_prueba`, `nombre_tipo_prueba`, `precio_tipo_prueba`) VALUES
+(1, 'Desparasitación interna y externa cachorro (perro/gato) 0-3 Kg', 5),
+(2, 'Desparasitación interna y externa cachorro (perro/gato) 3-10 Kg', 8),
+(3, 'Desparasitación interna perro ADULTO 0-5 Kg', 3),
+(4, 'Desparasitación interna perro ADULTO 5-10 Kg', 5),
+(5, 'Desparasitación interna perro ADULTO 10-20 Kg', 10),
+(6, 'Desparasitación interna perro ADULTO 20-50 Kg', 15),
+(7, 'Desparasitación interna y externa gato ADULTO 0-5 Kg / 5-10 Kg / 10-20 Kg / 20-50 Kg, 10,50', 20),
+(8, 'Tratamiento inyectable subcutáneo o intramuscular 1 inyección (incluyendo medicación)', 10),
+(9, 'Pasaporte europeo canino/felino', 15),
+(10, 'Sedación para manipulación, estudio radiográfico, etc.  < 15 Kg', 16),
+(11, 'Microchip - cambio de propietario', 17),
+(12, 'Tratamiento inyectable subcutáneo o intramuscular 1 inyección (incluyendo medicación)', 20),
+(13, 'Consulta de seguimiento o de revisión sin inyectable', 20),
+(14, 'Consulta de seguimiento o de revisión con 1 inyectable (incluida medicación)', 25),
+(15, 'Consulta de urgencia referidas a ABC', 25),
+(16, 'Vacunación PERRO Parvovirosis incluido Consulta (reconocimiento - exploración completa y vacuna de 1ª marca)', 25),
+(17, 'Análisis de sangre básico - Hemograma completo (incluida toma de muestras e interpretación)', 25),
+(18, 'Vacunación PERRO/GATO Antirrábica incluido consulta (reconocimiento - exploración completa), vacuna de 1ª marca, Sello Oficial y chapa antirrábica)', 26),
+(19, 'Vacunación GATO Tetravalente felina incluido Consulta (reconocimiento - exploración completa) y vacuna de 1ª marca)', 26),
+(20, 'Análisis test serológico rápido Moquillo canino', 28),
+(21, 'Análisis test serológico rápido Lehismaniosis', 28),
+(22, 'Análisis test serológicos rápidos Parvovirosis/Coranavirus canino', 30),
+(23, 'Tratamiento inyectable intravenoso con cateterización venosa', 30),
+(24, 'Vacunación PERRO Tetravalente, incluido Consulta (reconocimiento - exploración completa) y vacuna de 1º marca)', 35),
+(25, 'Microchip - implantación y alta RAIA', 35),
+(26, 'Sedación para manipulación, estudio radiográfico, etc.  > 15 Kg', 35),
+(27, 'Tratamiento inyectable intravenoso con caterterización venosa', 35),
+(28, 'Radiografías digitales simples, sin uso de contraste (1ª)', 35),
+(29, 'Radiografías digitales simples, sin uso de contraste (2ª)', 28),
+(30, 'Radiografías digitales simples, sin uso de contraste (3ª)', 17),
+(31, 'Consulta general completa (anamnesis, reconocimiento, diagnóstico presuntivo y prescripción de tratamiento)', 37),
+(32, 'Certificado Oficial Veterinario', 38),
+(33, 'Vacunación PERRO Heptavalente (incluido reconocimiento - exploración completa y vacuna de 1º marca)', 40),
+(34, 'Análisis test serológico Inmunodeficiencia + Leucemia felina', 42),
+(35, 'Consulta general completa (anamnesis, reconocimiento, diagnóstico presuntivo y prescripción de tratamiento) con 1 inyectable (incluida medicación)', 45),
+(36, 'Vacunación GATO Tetravalente felina + Leucemia felina incluido Consulta (reconocimiento - exploración completa) y vacunas de 1ª marcas)', 50),
+(37, 'Análisis de sangre completo, - Hemograma completo  (anemia/infección) + 10 bioquimicas, incluido toma de muestras e interpretación y resultados inmediatos', 52),
+(38, 'Castración de gato macho (anestesia + cirugía) + Antibioterapia + Analgesia.', 69),
+(39, ' Consulta de Especialidad o de segunda opinión (anamnesis, reconocimiento, diagnóstico presuntivo y prescripción de tratamiento)', 70),
+(40, 'Estudio ecográfico abdominal completo', 95),
+(41, 'Castración de gata (anestesia + cirugía) mediante ovarictomía + Antibioterapia + Analgesia', 120),
+(42, 'Estudio ecográfico cardíaco doble color completo', 120),
+(43, 'Castración de gata (anestesia + cirugía) mediante ovariohisterectomía + Antibioterapia + Analgesia', 170),
+(44, 'Castración perro 0-5 kg', 125),
+(45, 'Castración perro 5-10 kg', 150),
+(46, 'Castración perro 10-20 Kg', 195),
+(47, 'Castración perro 20-30 kg', 320),
+(48, 'Limpieza de boca (sarro) de perro hasta 5 kg con anestesia inhalatoria + monitorización + sueroterapia EV + Antibioterapia + Analgesia + chequeo prequirúrgico', 150),
+(49, 'Esterelizacion perra 0-5 kg', 175),
+(50, 'Esterelizacion perra 5-10 kg', 225),
+(51, 'Esterelizacion perra 10-20 Kg', 285),
+(52, 'Esterelizacion perra 20-30 kg', 390);
+
 -- --------------------------------------------------------
 
 --
@@ -354,7 +412,7 @@ ALTER TABLE `pruebas`
 -- AUTO_INCREMENT de la tabla `tipos_pruebas`
 --
 ALTER TABLE `tipos_pruebas`
-  MODIFY `id_tipo_prueba` int(11) NOT NULL AUTO_INCREMENT;
+  MODIFY `id_tipo_prueba` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=53;
 
 --
 -- AUTO_INCREMENT de la tabla `usuarios`
