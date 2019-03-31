@@ -49,7 +49,7 @@
                     <div class="panel-heading">
                         <h2>AÑADIR CITA</h2>
                     </div>
-                    <form class="formulario">
+                    <form class="formulario" action='../../CONTROLADOR/controladorRecepcionista.php' method='post'>
                         <div class="form-group col-12 col-sm-12 col-md-12 col-lg-12">
                             <h3>INFORMACIÓN</h3>
                         </div>
