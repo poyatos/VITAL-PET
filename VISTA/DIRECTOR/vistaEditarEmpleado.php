@@ -51,7 +51,7 @@
         <div class="panel-heading">
           <h2>CONTRATAR</h2>
         </div>
-        <form class="formulario">
+        <form class="formulario" action="../../CONTROLADOR/controladorDirector.php" method="POST">
           <div class="form-group col-12 col-sm-12 col-md-12 col-lg-12">
           </div>
           <div class="form-row">

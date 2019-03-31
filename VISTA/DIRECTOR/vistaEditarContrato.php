@@ -49,7 +49,7 @@
         <div class="panel-heading">
           <h2>CONTRATO</h2>
         </div>
-        <form class="formulario">
+        <form class="formulario" action="../../CONTROLADOR/controladorDirector.php" method="POST">
           <div class="form-row">
           <div class="form-group col-md-12">
             <h3>EDITAR CONTRATO</h3>
