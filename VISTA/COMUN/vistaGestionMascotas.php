@@ -64,7 +64,7 @@
  <div class="col-12 col-sm-7 col-md-7 col-lg-7 text-left">
  <div class="form-group row">
       <div class="col-12 col-sm-12 col-md-12 col-lg-12">
- <h1>LISTADO CLIENTES</h1>
+ <h1>LISTADO MASCOTAS</h1>
 </div>
       <div class="col-6 col-sm-6 col-md-6 col-lg-6">
             <label name="busquedaNombreMascota_lb" id="id_busqueda_Nombre_Mascota">Nombre de la mascota:
@@ -132,14 +132,25 @@
               <td>".$mascota['peso_mascota']."</td>
               <td>".$mascota['sexo_mascota']."</td><td>";
               if($_SESSION['rol'] == 'Director'){
-                echo '<a href="#" class="btn btn-danger" role="button">Borrar</a>
-                <a href="#" class="btn btn-info" role="button">Editar</a>';
+                echo '<td>
+                      <form action="../../CONTROLADOR/controladorDirector.php" method="POST"> 
+                        <input type="submit" value="Editar" name="editar">
+                        <input type="submit" value="Borrar" name="borrar">
+                      </form>
+                      </td>';
               } else if ($_SESSION['rol'] == 'Recepcionista'){
-                echo '<a href="../VETERINARIO/vistaAnadirPrueba.php" class="btn btn-info" role="button">Pagar pruebas</a>
-                <a href="#" class="btn btn-danger" role="button">Añadir citas</a>';
+                echo '<td>
+                      <form action="../../CONTROLADOR/controladorRecepcionista.php" method="POST"> 
+                        <input type="submit" value="Pagar pruebas" name="pagarPruebas">
+                        <input type="submit" value="Añadir citas" name="anadirCitas">
+                      </form>
+                      </td>';
               } else if ($_SESSION['rol'] == 'Veterinario'){
-                echo '<a href="../VETERINARIO/vistaAnadirPrueba.php" class="btn btn-info" role="button">Añadir prueba</a>
-                <a href="#" class="btn btn-info" role="button">Editar</a><a href="#" class="btn btn-danger" role="button">Borrar</a>';
+                echo '<td>
+                      <form action="../../CONTROLADOR/controladorVeterinario.php" method="POST"> 
+                        <input type="submit" value="Añadir prueba" name="anadirPrueba">
+                        <input type="submit" value="Borrar" name="borrar">
+                      </form>';
               }
               echo "</td></tr>";
             }

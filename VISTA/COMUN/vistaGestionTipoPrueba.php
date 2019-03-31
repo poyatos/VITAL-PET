@@ -64,7 +64,8 @@
       </div>
 
       </div>
-      <br>
+
+      <div class="col-12 col-sm-12 col-md-12 col-lg-12">
       <table class="table table-bordered table-striped">
     <thead>
       <tr>
@@ -80,6 +81,7 @@
       </tr>
     </thead>
     <tbody id="myTable">
+
     <?php
         require_once '../../BBDD/model.php';
         require_once '../../BBDD/config.php';
@@ -113,8 +115,10 @@
 
                     if($_SESSION['rol'] == 'Veterinario'){
                           echo '<td>
-                          <a href="#" class="btn btn-info" role="button">Editar</a>
-                          <a href="#" class="btn btn-danger" role="button">Borrar</a>
+                          <form action="../../CONTROLADOR/controladorVeterinario.php" method="POST"> 
+                         <input type="submit" value="Editar" name="editarTipoPrueba">
+                         <input type="submit" value="Borrar" name="borrarTipoPrueba">
+                          </form>
                           </td>';
                     }
               echo "</tr>";
@@ -126,7 +130,7 @@
 
 <!-- PAGINACIÓN-->
 
-<div class="col-12 col-sm-12 col-md-12  col-lg-12">
+<div class="col-12 col-sm-12 col-md-12 col-lg-12">
 <?php
     echo '<nav aria-label="Page navigation example"><ul class="pagination">';
     if ($total_paginas > 1) {
@@ -158,8 +162,6 @@
 </div>
 </div>
 </div>
-
-
 
 </body>
 
