@@ -5,7 +5,7 @@
     header("Location: ../../index.php");
   } else {
     if($_SESSION['rol'] != 'Director'){
-      header("Location: ../../index.php");
+      header("Location: ../".$_SESSION['rol']);
     }
   }
 ?>

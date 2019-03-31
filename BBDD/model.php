@@ -314,7 +314,7 @@
 
         //REGISTRAR PRUEBAS
         public function registrarPrueba($id_tipo, $id_mascota, $resultado, $observaciones){
-                $sql = "INSERT INTO citas (id_tipo_prueba, id_mascota, resultado_prueba, observaciones_prueba)
+                $sql = "INSERT INTO pruebas (id_tipo_prueba, id_mascota, resultado_prueba, observaciones_prueba)
                 VALUES ($id_tipo, $id_mascota, '$resultado', '$observaciones')";
 
                 if ($this->ejecutarConsulta($sql)) {

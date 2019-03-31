@@ -2,10 +2,10 @@
   session_start();
 
   if(!isset($_SESSION['usuario']) && !isset($_SESSION['rol'])){
-    header("Location: ../index.php");
+    header("Location: ../../index.php");
     } else {
         if($_SESSION['rol'] != 'Director'){
-            header("Location: ../VISTA/".$_SESSION['rol']);
+            header("Location: ../".$_SESSION['rol']);
         }
   }
 ?>
