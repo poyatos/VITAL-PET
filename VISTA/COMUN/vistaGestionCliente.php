@@ -131,13 +131,21 @@
                   <td>".$clientes['direccion_usuario']."</td>";
 
                     if($_SESSION['rol'] == 'Recepcionista'){
-                          echo '<td>
-                          <a href="#" class="btn btn-danger" role="button">Borrar</a>
-                          <a href="#" class="btn btn-info" role="button">Editar</a>
-                          </td>';
+                      echo '<td>
+
+                      <form action="../../CONTROLADOR/controladorRecepcionista.php" method="POST"> 
+                        <input type="submit" value="Editar" name="editarCita">
+                        <input type="submit" value="Borrar" name="borrarCita">
+                      </form>
+                      </td>';
 
                     }else if($_SESSION['rol'] == 'Veterinario'){
-                          echo '<td> <a href="#" class="btn btn-danger" role="button">Ver Mascotas</a></td>';
+                      echo '<td>
+
+                      <form action="../../CONTROLADOR/controladorVeterinario.php" method="POST"> 
+                        <input type="submit" value="Ver mascotas" name="verMascotas">
+                      </form>
+                      </td>';
                     }
               echo "</tr>";
         }

@@ -135,11 +135,24 @@
         <td>".$citas['id_mascota']."</td>
         <td>".$citas['num_consulta']."</td>";
 
-          if($_SESSION['rol'] == 'Veterinario' || $_SESSION['rol'] == 'Recepcionista'){
+          if($_SESSION['rol'] == 'Veterinario'){
             echo '<td>
-            <a href="#" class="btn btn-danger" role="button">Borrar</a>
-            <a href="#" class="btn btn-info" role="button">Editar</a>
-            <a href="#" class="btn btn-danger" role="button">Finalizar Consulta</a>
+
+            <form action="../../CONTROLADOR/controladorVeterinario.php" method="POST"> 
+              <input type="submit" value="Editar" name="editarCita">
+              <input type="submit" value="Borrar" name="borrarCita">
+              <input type="submit" value="Finalizar consulta" name="finalizarConsultaCita">
+            </form>
+            </td>';
+
+          } else if( $_SESSION['rol'] == 'Recepcionista'){
+            echo '<td>
+
+            <form action="../../CONTROLADOR/controladorRecepcionista.php" method="POST"> 
+              <input type="submit" value="Editar" name="editarCita">
+              <input type="submit" value="Borrar" name="borrarCita">
+              <input type="submit" value="Finalizar consulta" name="finalizarConsultaCita">
+            </form>
             </td>';
 
           }

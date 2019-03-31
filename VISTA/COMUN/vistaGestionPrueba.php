@@ -130,8 +130,11 @@
 
                   if ($_SESSION['rol'] == 'Veterinario') {
                     echo '<td>
-                    <a href="#" class="btn btn-danger" role="button">Borrar</a>
-                    <a href="../VETERINARIO/vistaEditarPrueba.php" class="btn btn-info" role="button">Editar</a></td>';
+                      <form action="../../CONTROLADOR/controladorVeterinario.php" method="POST"> 
+                        <input type="submit" value="Editar" name="editar">
+                        <input type="submit" value="Borrar" name="borrar">
+                      </form>
+                      </td>';
                   }
               echo "</tr>";
         }
