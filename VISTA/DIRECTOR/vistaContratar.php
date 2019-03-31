@@ -1,5 +1,16 @@
+<?php
+  session_start();
+
+  if(!isset($_SESSION['usuario']) && !isset($_SESSION['rol'])){
+    header("Location: ../../index.php");
+  } else {
+    if($_SESSION['rol'] != 'Director'){
+      header("Location: ../".$_SESSION['rol']);
+    }
+  }
+?>
 <!DOCTYPE html>
-<html lang="en">
+<html lang="es">
 
 <head>
   <title>Vital-Pet / Contratar empleados</title>

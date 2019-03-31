@@ -1,5 +1,16 @@
+<?php
+  session_start();
+
+  if(!isset($_SESSION['usuario']) && !isset($_SESSION['rol'])){
+    header("Location: ../../index.php");
+  } else {
+    if($_SESSION['rol'] != 'Veterinario'){
+      header("Location: ../".$_SESSION['rol']);
+    }
+  }
+?>
 <!DOCTYPE html>
-<html lang="en">
+<html lang="es">
 
 <head>
   <title>Vital-Pet / Añadir prueba</title>
@@ -54,15 +65,12 @@
                              <h3>Datos de la prueba</h3>
                           </div>
                           <div class="form-group col-12 col-sm-12 col-md-6  col-lg-6">
-                            <label for="inputCliente">Cliente</label>
-                            <br/>
-                            <!-- Aqui se envia por POST el cliente desde la tabla VISTACONSULTARPACIENTES-->
-                            <input type="text" name="cliente" id="cliente_id">
-                            </select>
+                            <label for="inputMascota">Mascota</label>
+                            <input type="text" name="mascota" id="mascota_id"/>
                           </div>
                           <div class="form-group col-12 col-sm-12 col-md-6  col-lg-6">
                             <label for="inputPrueba">Escoja la prueba</label>
-                            <select id="inputPrueba_id" class="form-control">
+                            <select name="tipo_prueba" id="inputPrueba_id" class="form-control">
                               <option selected>Asesinato</option>
                               <option>Mutilación</option>
                             </select>
@@ -70,9 +78,9 @@
 
                           <div class="form-group col-12 col-sm-12 col-md-12  col-lg-12">
                           <label for="inputObservacion">Observaciones:</label>
-                          <textarea class="form-control" rows="4" cols="100"></textarea>
-                  </div>  
-                    <input type="submit" class="btn btn-lg" value="Enviar">
+                          <textarea name="observaciones" class="form-control" rows="4" cols="100"></textarea>
+                    </div>  
+                    <input type="submit" class="btn btn-lg" name="anadirPrueba" value="Añadir prueba"/>
                 </form>
               </div>
               </div>
