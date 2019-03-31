@@ -59,7 +59,7 @@
  <div class="col-12 col-sm-7 col-md-7 col-lg-7 text-left">
  <div class="form-group row">
       <div class="col-12 col-sm-12 col-md-12 col-lg-12">
- <h1>LISTADO CLIENTES</h1>
+ <h1>LISTADO PRUEBAS</h1>
 </div>
       <div class="col-12 col-sm-12 col-md-12 col-lg-12">
             <label name="busquedaNombrePrueba_lb" id="id_busqueda_NombrePrueba">Nombre de la prueba:
@@ -78,7 +78,7 @@
       <tr>
         <th>ID</th>
         <th>Nombre de la prueba</th>
-        <th>Resultado de la prueba</th>
+        <th>Resultado</th>
         <th>Observaciones</th>
         <th>Precio</th>
         <?php
@@ -118,14 +118,12 @@
 
                //por hacer-------------------------------SE RECOGE DE LA TABLA TIPO_PRUEBA
                   echo" <tr>
-                  <td>".$prueba['nombre_prueba']."</td>
-                  <td>".$prueba['precio_prueba']."</td>
-
-
-
                   <td>".$prueba['id_prueba']."</td>
+                  <td>".$prueba['nombre_prueba']."</td>
                   <td>".$prueba['resultado_prueba']."</td>
-                  <td>".$prueba['observaciones_prueba']."</td>"; 
+                  <td>".$prueba['observaciones_prueba']."</td>
+                  <td>".$prueba['precio_prueba']."</td>"; 
+                 
 
                  //por hacer-------------------------------SE RECOGE DE LA TABLA PRUEBA
 
