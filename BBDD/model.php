@@ -346,6 +346,7 @@
         }
 
          /* -------------------------------------------------------- INNER JOIN PRUEBAS/TIPO-PRUEBAS -----------------------------------------------------------*/
+         
           public function visualizarPruebaPaginacion($inicio, $tamano_pagina){
             $consulta = "SELECT pruebas.id_prueba, pruebas.resultado_prueba, pruebas.observaciones_prueba, tipos_pruebas.nombre_tipo_prueba, tipos_pruebas.precio_tipo_prueba 
             FROM pruebas
