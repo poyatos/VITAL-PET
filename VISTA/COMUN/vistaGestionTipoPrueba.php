@@ -111,7 +111,7 @@
                   echo" <tr>
                   <td>".$tprueba['id_tipo_prueba']."</td>
                   <td>".$tprueba['nombre_tipo_prueba']."</td>
-                  <td>".$tprueba['precio_tipo_prueba']."</td>";
+                  <td>".$tprueba['precio_tipo_prueba']." €</td>";
 
                     if($_SESSION['rol'] == 'Veterinario'){
                           echo '<td>

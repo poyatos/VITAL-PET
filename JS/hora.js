@@ -1,5 +1,5 @@
 
- var tick;
+  var tick;
  function stop() {
    clearTimeout(tick);
    }

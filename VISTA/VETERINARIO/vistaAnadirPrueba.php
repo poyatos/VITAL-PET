@@ -60,7 +60,7 @@
               <div class="panel-heading">
                   <h2>AÑADIR PRUEBA</h2>
               </div>
-                  <form class="formulario">
+                  <form class="formulario" action ="../../CONTROLADOR/controladorVeterinario.php" method="POST">
                           <div class="form-group col-12 col-sm-12 col-md-6 col-lg-6">
                              <h3>Datos de la prueba</h3>
                           </div>
@@ -68,12 +68,20 @@
                             <label for="inputMascota">Mascota</label>
                             <input type="text" name="mascota" id="mascota_id"/>
                           </div>
+
                           <div class="form-group col-12 col-sm-12 col-md-6  col-lg-6">
                             <label for="inputPrueba">Escoja la prueba</label>
                             <select name="tipo_prueba" id="inputPrueba_id" class="form-control">
-                              <option selected>Asesinato</option>
-                              <option>Mutilación</option>
-                            </select>
+                            <?php
+                                require_once '../../BBDD/model.php';
+                                require_once '../../BBDD/config.php';
+                                $conexion = new Model(Config::$host, Config::$user, Config::$pass, Config::$nombreBase);
+                                $resultado = $conexion->visualizarTiposPruebas();
+                                foreach($visualizarTiposPruebas as $tipos){
+                                    echo "<option value='id_tipo_prueba'>".$tipos['nombre_tipo_prueba']."</option>";
+                                }
+                          ?>
+                          </select>
                           </div>
 
                           <div class="form-group col-12 col-sm-12 col-md-12  col-lg-12">

@@ -56,7 +56,7 @@
               <div class="panel-heading">
                   <h2>AÑADIR TIPO PRUEBA</h2>
               </div>
-                  <form class="formulario">
+                  <form class="formulario" action="../../CONTROLADOR/controladorVeterinario.php" method="POST">
                           <div class="form-group col-12 col-sm-12 col-md-6 col-lg-6">
                              <h3>Tipo de la prueba</h3>
                           </div>
@@ -70,8 +70,15 @@
                           <div class="form-group col-12 col-sm-12 col-md-6  col-lg-6">
                             <label for="inputPrueba">Escoja el tipo de prueba</label>
                             <select id="inputPrueba_id" class="form-control">
-                              <option selected>Cloroformo</option>
-                              <option>Gaseo</option>
+                            <?php
+                                require_once '../../BBDD/model.php';
+                                require_once '../../BBDD/config.php';
+                                $conexion = new Model(Config::$host, Config::$user, Config::$pass, Config::$nombreBase);
+                                $resultado = $conexion->visualizarTiposPruebas();
+                                foreach($visualizarTiposPruebas as $tipos){
+                                    echo "<option value='id_tipo_prueba'>".$tipos['nombre_tipo_prueba']."</option>";
+                                }
+                            ?>
                             </select>
                           </div>
 

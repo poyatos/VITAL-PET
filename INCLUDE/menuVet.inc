@@ -12,7 +12,7 @@
                              <a href="#"><i class="glyphicon glyphicon-plus"></i> PRUEBA <span class="arrow"></span></a>
                         </li>
                         <ul class="sub-menu collapse" id="products">
-                            <li class="active"><a href="../VETERINARIO/vistaTipoPrueba.php"><i class="glyphicon glyphicon-plus-sign"></i>Añadir Tipo de prueba</a></li>
+                            <li class="active"><a href="../VETERINARIO/vistaAnadirTipoPrueba.php"><i class="glyphicon glyphicon-plus-sign"></i>Añadir Tipo de prueba</a></li>
                         </ul>
 
                         <li data-toggle="collapse" data-target="#service" class="collapsed">
