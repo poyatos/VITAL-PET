@@ -11,7 +11,7 @@
             }
 
             if(!($this->conexion->select_db($nombreBase))){
-                 echo utf8_encode "No se ha podido conectar";
+                 echo  "No se ha podido conectar";
             }
         }
 
@@ -84,8 +84,8 @@
             $consulta = "SELECT * FROM usuarios WHERE dni_usuario = '$dni' ";
 
             if ($this->existeFila($consulta)) {
-                 echo utf8_encode "<br/><h2>El usuario ya existe.</h2><br />";
-                 echo utf8_encode "<a href='registroFormulario.php'>Por favor elige otro nombre.</a>";
+                 echo "<br/><h2>El usuario ya existe.</h2><br />";
+                 echo "<a href='registroFormulario.php'>Por favor elige otro nombre.</a>";
             } else {
                 $passHash = hash("sha512", $pass);
                 $sql = "INSERT INTO usuarios (nombre_usuario, apellidos_usuario, dni_usuario, telefono_usuario, correo_usuario, fecna_usuario, 
@@ -93,10 +93,10 @@
                 '$direccion', '$rol', '$passHash')";
 
                 if ($this->ejecutarConsulta($sql)) {
-                     echo utf8_encode "<br/><h2>Usuario registrado correctamente.</h2>";
+                     echo "<br/><h2>Usuario registrado correctamente.</h2>";
                 } else {
-                     echo utf8_encode "<h2>Error al crear el usuario." . $sql . "</h2><br/>";
-                     echo utf8_encode "<h5><a href='registroFormulario.php'>Intentelo de nuevo</a></h5>"; 
+                     echo "<h2>Error al crear el usuario." . $sql . "</h2><br/>";
+                     echo "<h5><a href='registroFormulario.php'>Intentelo de nuevo</a></h5>"; 
                 }
             }
         }
@@ -188,12 +188,12 @@
                     $rol = strtoupper($columnas['rol_usuario']);
                     header("Location: ../VISTA/$rol");
                 } else {
-                     echo utf8_encode "<br/><h2>La contraseña es incorrecta, por favor introduzca una contraseña válida.</h2>";
-                     echo utf8_encode "<h4>Volver al <a href='../index.php'>formulario</a></h4>";
+                     echo "<br/><h2>La contraseña es incorrecta, por favor introduzca una contraseña válida.</h2>";
+                     echo "<h4>Volver al <a href='../index.php'>formulario</a></h4>";
                 }
             } else {
-                 echo utf8_encode "<br/><h2>El usuario no existe, por favor introduzca un usuario válido.</h2>";
-                 echo utf8_encode "<h4>Volver al <a href='../index.php'>formulario</a></h4>";
+                 echo "<br/><h2>El usuario no existe, por favor introduzca un usuario válido.</h2>";
+                 echo "<h4>Volver al <a href='../index.php'>formulario</a></h4>";
             }
         }
 
@@ -218,16 +218,16 @@
             $consulta = "SELECT * FROM mascotas WHERE dni_cliente = '$dni' AND nombre_mascota = '$nombre' AND tipo_mascota = '$tipo' ";
 
             if ($this->existeFila($consulta)) {
-                 echo utf8_encode "<br/><h2>La mascota ya existe.</h2><br />";
+                 echo "<br/><h2>La mascota ya existe.</h2><br />";
             } else {
                 $sql = "INSERT INTO mascotas (dni_cliente, nombre_mascota, tipo_mascota, raza_mascota, sexo_mascota, fecna_mascota, peso_mascota)
                 VALUES ('$dni', '$nombre', '$tipo', '$raza', '$sexo', '$fecna', $peso)";
 
                 if ($this->ejecutarConsulta($sql)) {
-                     echo utf8_encode "<br/><h2>Mascota registrada correctamente.</h2>";
+                     echo "<br/><h2>Mascota registrada correctamente.</h2>";
                 } else {
-                     echo utf8_encode "<h2>Error al crear la mascota." . $sql . "</h2><br/>";
-                     echo utf8_encode "<h5><a href='registroFormulario.php'>Intentelo de nuevo</a></h5>"; 
+                     echo "<h2>Error al crear la mascota." . $sql . "</h2><br/>";
+                     echo "<h5><a href='registroFormulario.php'>Intentelo de nuevo</a></h5>"; 
                 }
             }            
         }
@@ -275,16 +275,16 @@
             $consulta = "SELECT * FROM citas WHERE fecha_cita = '$fecha' AND hora_cita = '$hora'";
 
             if ($this->existeFila($consulta)) {
-                 echo utf8_encode "<br/><h2>La cita ya existe.</h2><br />";
+                 echo "<br/><h2>La cita ya existe.</h2><br />";
             } else {
                 $sql = "INSERT INTO citas (fecha_cita, hora_cita, estado_cita, num_consulta, id_mascota, dni_cliente)
                 VALUES ('$fecha', '$hora', 'Pendiente', $consulta, $id, '$dni')";
 
                 if ($this->ejecutarConsulta($sql)) {
-                     echo utf8_encode "<br/><h2>Cita registrada correctamente.</h2>";
+                     echo "<br/><h2>Cita registrada correctamente.</h2>";
                 } else {
-                     echo utf8_encode "<h2>Error al crear la cita." . $sql . "</h2><br/>";
-                     echo utf8_encode "<h5><a href='registroFormulario.php'>Intentelo de nuevo</a></h5>"; 
+                     echo "<h2>Error al crear la cita." . $sql . "</h2><br/>";
+                     echo "<h5><a href='registroFormulario.php'>Intentelo de nuevo</a></h5>"; 
                 }
             }
         }
@@ -335,10 +335,10 @@
                 VALUES ($id_tipo, $id_mascota, '$resultado', '$observaciones')";
 
                 if ($this->ejecutarConsulta($sql)) {
-                     echo utf8_encode "<br/><h2>Prueba registrada correctamente.</h2>";
+                     echo "<br/><h2>Prueba registrada correctamente.</h2>";
                 } else {
-                     echo utf8_encode "<h2>Error al crear la prueba." . $sql . "</h2><br/>";
-                     echo utf8_encode "<h5><a href='registroFormulario.php'>Intentelo de nuevo</a></h5>"; 
+                     echo "<h2>Error al crear la prueba." . $sql . "</h2><br/>";
+                     echo "<h5><a href='registroFormulario.php'>Intentelo de nuevo</a></h5>"; 
                 }
         }
 
@@ -394,10 +394,10 @@
             $sql = "INSERT INTO tipos_pruebas (nombre_tipo_prueba, precio_tipo_prueba) VALUES ('$nombre', $precio)";
 
             if ($this->ejecutarConsulta($sql)) {
-                 echo utf8_encode "<br/><h2>Tipo de prueba registrada correctamente.</h2>";
+                 echo "<br/><h2>Tipo de prueba registrada correctamente.</h2>";
             } else {
-                 echo utf8_encode "<h2>Error al crear el tipo de prueba ." . $sql . "</h2><br/>";
-                 echo utf8_encode "<h5><a href='registroFormulario.php'>Intentelo de nuevo</a></h5>"; 
+                 echo "<h2>Error al crear el tipo de prueba ." . $sql . "</h2><br/>";
+                 echo "<h5><a href='registroFormulario.php'>Intentelo de nuevo</a></h5>"; 
             }
         }
 
@@ -446,17 +446,17 @@
             $existeContrato = mysqli_num_rows($resultado);
 
             if ($existeContrato == 1) {
-                 echo utf8_encode "<br/><h2>Este usuario ya tiene contrato.</h2><br />";
-                 echo utf8_encode "<a href='registroFormulario.php'>Por favor elige otra opción.</a>";
+                 echo "<br/><h2>Este usuario ya tiene contrato.</h2><br />";
+                 echo "<a href='registroFormulario.php'>Por favor elige otra opción.</a>";
             } else {
                 $sql = "INSERT INTO contratos (fecini_contrato, fecfin_contrato, sueldo_contrato, diasvac_contrato, horario_contrato, estado_contrato, 
                 id_contratado) VALUES ('$fecini', '$fecfin', $sueldo, $diasvac, '$horario', '$estado', $id_contratado)";
     
                 if ($this->ejecutarConsulta($sql)) {
-                     echo utf8_encode "<br/><h2>Contrato registrado correctamente.</h2>";
+                     echo "<br/><h2>Contrato registrado correctamente.</h2>";
                 } else {
-                     echo utf8_encode "<h2>Error al crear el contrato." . $sql . "</h2><br/>";
-                     echo utf8_encode "<h5><a href='registroFormulario.php'>Intentelo de nuevo</a></h5>"; 
+                     echo "<h2>Error al crear el contrato." . $sql . "</h2><br/>";
+                     echo "<h5><a href='registroFormulario.php'>Intentelo de nuevo</a></h5>"; 
                 }
             }
         }
