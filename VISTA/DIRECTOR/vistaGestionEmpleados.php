@@ -135,7 +135,7 @@
 
               //PENDIENTE DE SACAR FECHA DE FIN DE CONTRATO
               //$contrato = $conexion->visualizarContratoId($empleado['id_usuario'])->get_result()->fetch_array();
-              echo "<tr>
+               echo utf8_encode "<tr>
               <td>".$empleado['id_usuario']."</td>
               <td>".$empleado['nombre_usuario']."</td>
               <td>".$empleado['apellidos_usuario']."</td>
@@ -164,28 +164,28 @@
 <!-- PAGINACIÓN-->
 <div class="col-12 col-sm-12 col-md-12 col-lg-12">
   <?php
-    echo '<nav aria-label="Page navigation example"><ul class="pagination">';
+     echo utf8_encode '<nav aria-label="Page navigation example"><ul class="pagination">';
     if ($total_paginas > 1) {
-      echo "<li class='page-item'><a href='vistaGestionEmpleados.php?pagina=0'><i class='glyphicon glyphicon-triangle-left'></i></a></li>";
+       echo utf8_encode "<li class='page-item'><a href='vistaGestionEmpleados.php?pagina=0'><i class='glyphicon glyphicon-triangle-left'></i></a></li>";
       if ($pagina != 1){
-          echo "<li class='page-item'><a href='vistaGestionEmpleados.php?pagina=".($pagina-1)."'><i class='glyphicon glyphicon-menu-left'></i></a></li>";
+           echo utf8_encode "<li class='page-item'><a href='vistaGestionEmpleados.php?pagina=".($pagina-1)."'><i class='glyphicon glyphicon-menu-left'></i></a></li>";
       }
       for ($i=1;$i<=$total_paginas;$i++) {
           if ($pagina == $i){
-              echo "<li class='page-item'><a id='actual'>$pagina</a></li>";
+               echo utf8_encode "<li class='page-item'><a id='actual'>$pagina</a></li>";
           } else {
-              echo "<li class='page-item'><a href='vistaGestionEmpleados.php?pagina=".$i."'>".$i."</a></li>";
+               echo utf8_encode "<li class='page-item'><a href='vistaGestionEmpleados.php?pagina=".$i."'>".$i."</a></li>";
           }
       }
       if ($pagina != $total_paginas){
-          echo "<li class='page-item'><a href='vistaGestionEmpleados.php?pagina=".($pagina+1)."'><i class='glyphicon glyphicon-menu-right'></i></a></li>";
+           echo utf8_encode "<li class='page-item'><a href='vistaGestionEmpleados.php?pagina=".($pagina+1)."'><i class='glyphicon glyphicon-menu-right'></i></a></li>";
       }
-      echo "<li class='page-item'><a href='vistaGestionEmpleados.php?pagina=".$total_paginas."'><i class='glyphicon glyphicon-triangle-right'></i></a></li>";
+       echo utf8_encode "<li class='page-item'><a href='vistaGestionEmpleados.php?pagina=".$total_paginas."'><i class='glyphicon glyphicon-triangle-right'></i></a></li>";
     }
-    echo '</ul></nav>';
+     echo utf8_encode '</ul></nav>';
 
   } else {
-    echo "<p>No se han encontrado resultados.</p>";
+     echo utf8_encode "<p>No se han encontrado resultados.</p>";
   } 
 
   $conexion->desconectar();

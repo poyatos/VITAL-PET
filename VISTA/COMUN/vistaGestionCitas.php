@@ -126,7 +126,7 @@
             
             $resultadoPaginacion = $conexion->visualizarCitasPaginacion($inicio, $tamano_pagina);
             foreach($resultadoPaginacion as $citas){
-     echo" <tr>
+     echo utf8_encode " <tr>
         <td>".$citas['id_cita']."</td>
         <td>".$citas['dni_cliente']."</td>
         <td>".$citas['fecha_cita']."</td>
@@ -136,7 +136,7 @@
         <td>".$citas['num_consulta']."</td>";
 
           if($_SESSION['rol'] == 'Veterinario'){
-            echo '<td>
+            echo utf8_encode '<td>
 
             <form action="../../CONTROLADOR/controladorVeterinario.php" method="POST"> 
               <input type="submit" value="Editar" name="editarCita">
@@ -146,7 +146,7 @@
             </td>';
 
           } else if( $_SESSION['rol'] == 'Recepcionista'){
-            echo '<td>
+            echo utf8_encode '<td>
 
             <form action="../../CONTROLADOR/controladorRecepcionista.php" method="POST"> 
               <input type="submit" value="Editar" name="editarCita">
@@ -156,7 +156,7 @@
             </td>';
 
           }
-          echo "</tr>";
+          echo utf8_encode "</tr>";
         }
           ?>
           
@@ -168,28 +168,28 @@
 
 <div class="col-12 col-sm-12 col-md-12 col-lg-12">
 <?php
-    echo '<nav aria-label="Page navigation example"><ul class="pagination">';
+     echo utf8_encode '<nav aria-label="Page navigation example"><ul class="pagination">';
     if ($total_paginas > 1) {
-      echo "<li class='page-item'><a href='vistaGestionCitas.php?pagina=0'><i class='glyphicon glyphicon-triangle-left'></i></a></li>";
+      echo utf8_encode "<li class='page-item'><a href='vistaGestionCitas.php?pagina=0'><i class='glyphicon glyphicon-triangle-left'></i></a></li>";
       if ($pagina != 1){
-          echo "<li class='page-item'><a href='vistaGestionCitas.php?pagina=".($pagina-1)."'><i class='glyphicon glyphicon-menu-left'></i></a></li>";
+        echo utf8_encode "<li class='page-item'><a href='vistaGestionCitas.php?pagina=".($pagina-1)."'><i class='glyphicon glyphicon-menu-left'></i></a></li>";
       }
       for ($i=1;$i<=$total_paginas;$i++) {
           if ($pagina == $i){
-              echo "<li class='page-item'><a id='actual'>$pagina</a></li>";
+            echo utf8_encode "<li class='page-item'><a id='actual'>$pagina</a></li>";
           } else {
-              echo "<li class='page-item'><a href='vistaGestionCitas.php?pagina=".$i."'>".$i."</a></li>";
+            echo utf8_encode "<li class='page-item'><a href='vistaGestionCitas.php?pagina=".$i."'>".$i."</a></li>";
           }
       }
       if ($pagina != $total_paginas){
-          echo "<li class='page-item'><a href='vistaGestionCitas.php?pagina=".($pagina+1)."'><i class='glyphicon glyphicon-menu-right'></i></a></li>";
+        echo utf8_encode "<li class='page-item'><a href='vistaGestionCitas.php?pagina=".($pagina+1)."'><i class='glyphicon glyphicon-menu-right'></i></a></li>";
       }
-      echo "<li class='page-item'><a href='vistaGestionCitas.php?pagina=".$total_paginas."'><i class='glyphicon glyphicon-triangle-right'></i></a></li>";
+      echo utf8_encode "<li class='page-item'><a href='vistaGestionCitas.php?pagina=".$total_paginas."'><i class='glyphicon glyphicon-triangle-right'></i></a></li>";
     }
-    echo '</ul></nav>';
+    echo utf8_encode '</ul></nav>';
 
   } else {
-    echo "<p>No se han encontrado resultados.</p>";
+    echo utf8_encode "<p>No se han encontrado resultados.</p>";
   } 
 
   $conexion->desconectar();

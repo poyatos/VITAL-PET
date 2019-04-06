@@ -74,7 +74,7 @@
         <th>Precio</th>
         <?php
           if($_SESSION['rol'] == 'Veterinario'){
-            echo '<th>Editar</th>';
+             echo utf8_encode '<th>Editar</th>';
           }
         ?>
         
@@ -108,20 +108,20 @@
             
             $resultadoPaginacion = $conexion->visualizarTipoPruebaPaginacion($inicio, $tamano_pagina);
             foreach($resultadoPaginacion as $tprueba){
-                  echo" <tr>
+                   echo utf8_encode" <tr>
                   <td>".$tprueba['id_tipo_prueba']."</td>
                   <td>".$tprueba['nombre_tipo_prueba']."</td>
                   <td>".$tprueba['precio_tipo_prueba']." €</td>";
 
                     if($_SESSION['rol'] == 'Veterinario'){
-                          echo '<td>
+                           echo utf8_encode '<td>
                           <form action="../../CONTROLADOR/controladorVeterinario.php" method="POST"> 
                          <input type="submit" value="Editar" name="editarTipoPrueba">
                          <input type="submit" value="Borrar" name="borrarTipoPrueba">
                           </form>
                           </td>';
                     }
-              echo "</tr>";
+               echo utf8_encode "</tr>";
         }
           ?>
     </tbody>
@@ -132,28 +132,28 @@
 
 <div class="col-12 col-sm-12 col-md-12 col-lg-12">
 <?php
-    echo '<nav aria-label="Page navigation example"><ul class="pagination">';
+     echo utf8_encode '<nav aria-label="Page navigation example"><ul class="pagination">';
     if ($total_paginas > 1) {
-      echo "<li class='page-item'><a href='vistaGestionTipoPrueba.php?pagina=0'><i class='glyphicon glyphicon-triangle-left'></i></a></li>";
+       echo utf8_encode "<li class='page-item'><a href='vistaGestionTipoPrueba.php?pagina=0'><i class='glyphicon glyphicon-triangle-left'></i></a></li>";
       if ($pagina != 1){
-          echo "<li class='page-item'><a href='vistaGestionTipoPrueba.php?pagina=".($pagina-1)."'><i class='glyphicon glyphicon-menu-left'></i></a></li>";
+           echo utf8_encode "<li class='page-item'><a href='vistaGestionTipoPrueba.php?pagina=".($pagina-1)."'><i class='glyphicon glyphicon-menu-left'></i></a></li>";
       }
       for ($i=1;$i<=$total_paginas;$i++) {
           if ($pagina == $i){
-              echo "<li class='page-item'><a id='actual'>$pagina</a></li>";
+               echo utf8_encode "<li class='page-item'><a id='actual'>$pagina</a></li>";
           } else {
-              echo "<li class='page-item'><a href='vistaGestionTipoPrueba.php?pagina=".$i."'>".$i."</a></li>";
+               echo utf8_encode "<li class='page-item'><a href='vistaGestionTipoPrueba.php?pagina=".$i."'>".$i."</a></li>";
           }
       }
       if ($pagina != $total_paginas){
-          echo "<li class='page-item'><a href='vistaGestionTipoPrueba.php?pagina=".($pagina+1)."'><i class='glyphicon glyphicon-menu-right'></i></a></li>";
+           echo utf8_encode "<li class='page-item'><a href='vistaGestionTipoPrueba.php?pagina=".($pagina+1)."'><i class='glyphicon glyphicon-menu-right'></i></a></li>";
       }
-      echo "<li class='page-item'><a href='vistaGestionTipoPrueba.php?pagina=".$total_paginas."'><i class='glyphicon glyphicon-triangle-right'></i></a></li>";
+       echo utf8_encode "<li class='page-item'><a href='vistaGestionTipoPrueba.php?pagina=".$total_paginas."'><i class='glyphicon glyphicon-triangle-right'></i></a></li>";
     }
-    echo '</ul></nav>';
+     echo utf8_encode '</ul></nav>';
 
   } else {
-    echo "<p>No se han encontrado resultados.</p>";
+     echo utf8_encode "<p>No se han encontrado resultados.</p>";
   } 
 
   $conexion->desconectar();
