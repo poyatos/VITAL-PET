@@ -1,4 +1,7 @@
 <?php
+  require_once '../../BBDD/model.php';
+  require_once '../../BBDD/config.php';
+
   session_start();
 
   if(!isset($_SESSION['usuario']) && !isset($_SESSION['rol'])){
@@ -8,6 +11,10 @@
       header("Location: ../".$_SESSION['rol']);
     }
   }
+
+  $conexion = new Model(Config::$host, Config::$user, Config::$pass, Config::$nombreBase);
+
+  $prueba = $conexion->visualizarPruebaId($_REQUEST['id_prueba']);
 ?>
 <!DOCTYPE html>
 <html lang="es">
@@ -58,33 +65,21 @@
 
               <div class="panel panel-default">
                 <div class="panel-heading">
-                  <h2>EDITAR PRUEBA / AÑADIR RESULTADO </h2>
+                  <h2>EDITAR PRUEBA </h2>
                 </div>
 
-                  <form class="formulario">
-                    <div class="form-group col-6 col-sm-6 col-md-6 col-lg-6">
-                      <label for="inputCliente">PRUEBA:</label>
-                      <br/>
-                      <!-- Aqui se añade el tipo de prueba recogido previamente en añadirprueba.php-->
-                      <input type="text" name="cliente" id="cliente_id">
-                      </select>
-                    </div>
+                  <form class="formulario" action="../../CONTROLADOR/controladorVeterinario.php" method="POST">
                       <!-- Aqui se elige el resultado de la prueba-->
                     <div class="form-group col-6 col-sm-6 col-md-6 col-lg-6">
                       <label for="inputPrueba">Resultado</label>
-                      <select id="inputPrueba_id" class="form-control">
-                        <option selected>Positivo</option>
-                        <option selected>Positivo Leve</option>
-                        <option selected>Negativo Medio</option>
-                        <option>Negativo</option>
-                      </select>
+                      <textarea class="form-control" rows="4" cols="100" required><?= $prueba['resultado_prueba']?></textarea>
                     </div> 
                     <div class="form-group col-12 col-sm-12 col-md-12  col-lg-12">
                             <label for="inputObservacion">Observaciones:</label>
-                            <textarea class="form-control" rows="4" cols="100"></textarea>
-                    </div>  
-                  
-                      <input type="submit" class="btn btn-lg" value="Editar">
+                            <textarea class="form-control" rows="4" cols="100"><?= $prueba['observaciones_prueba']?></textarea>
+                    </div>
+                  		<input type="hidden" name="id_prueba" value="<?= $prueba['id_prueba']?>">
+                     	<input type="submit" class="btn btn-lg" name="editarPrueba" value="Editar">
                   </form>
                 </div>
               </div>

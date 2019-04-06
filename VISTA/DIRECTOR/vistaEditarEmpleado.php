@@ -104,9 +104,7 @@
           </div>
           <!--INPUT HIDDEN DEL ID-->
           <input type='hidden' name='idUsuario' value='<?= $_POST['id_usuario'] ?>'/>
-          <input type="submit" class="btn btn-lg" value="editarEmpleado"/>
-
-
+          <input type="submit" class="btn btn-lg" name="editarEmpleado" value="Editar empleado"/>
         </form>
       </div>
     </div>

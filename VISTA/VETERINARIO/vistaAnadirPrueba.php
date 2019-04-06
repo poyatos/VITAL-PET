@@ -64,21 +64,17 @@
                           <div class="form-group col-12 col-sm-12 col-md-6 col-lg-6">
                              <h3>Datos de la prueba</h3>
                           </div>
-                          <div class="form-group col-12 col-sm-12 col-md-6  col-lg-6">
-                            <label for="inputMascota">Mascota</label>
-                            <input type="text" name="mascota" id="mascota_id"/>
-                          </div>
 
                           <div class="form-group col-12 col-sm-12 col-md-6  col-lg-6">
                             <label for="inputPrueba">Escoja la prueba</label>
-                            <select name="tipo_prueba" id="inputPrueba_id" class="form-control">
+                            <select name="tipo_prueba" id="inputPrueba_id" class="form-control" required>
                             <?php
                                 require_once '../../BBDD/model.php';
                                 require_once '../../BBDD/config.php';
                                 $conexion = new Model(Config::$host, Config::$user, Config::$pass, Config::$nombreBase);
                                 $resultado = $conexion->visualizarTiposPruebas();
                                 foreach($visualizarTiposPruebas as $tipos){
-                                     echo  "<option value='id_tipo_prueba'>".$tipos['nombre_tipo_prueba']."</option>";
+                                     echo  "<option value='".$tipos['id_tipo_prueba']."'>".$tipos['nombre_tipo_prueba']."</option>";
                                 }
                           ?>
                           </select>
@@ -87,8 +83,10 @@
                           <div class="form-group col-12 col-sm-12 col-md-12  col-lg-12">
                           <label for="inputObservacion">Observaciones:</label>
                           <textarea name="observaciones" class="form-control" rows="4" cols="100"></textarea>
-                    </div>  
-                    <input type="submit" class="btn btn-lg" name="anadirPrueba" value="Añadir prueba"/>
+                    </div>
+                    <input type="hidden" name="mascota" id="mascota_id" value="<?= $_POST['id_mascota']?>"/>
+                    <input type="hidden" name="cita" id="cita_id" value="<?= $_POST['id_cita']?>"/>
+                    <input type="submit" class="btn btn-lg" name="anadirPrueba" value="Añadir"/>
                 </form>
               </div>
               </div>

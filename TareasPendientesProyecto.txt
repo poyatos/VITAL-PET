@@ -1,0 +1,19 @@
+BASE:
+	-Cambiar dni por id en las columnas que relacionan otras tablas con la de USUARIOS. (HECHO, PERO PUEDE QUE QUEDEN COSAS POR CAMBIAR EN CUANTO A CODIGO).
+	-Poner atributo required a inputs de formularios (OJO, NO EN TODOS LOS CAMPOS PUESTO QUE ALGUNOS PUEDEN SER NULOS).
+	-En los formularios de editar se deben mostrar los datos a editar, es decir recoger los datos y mostrarlos en los campos del formulario.
+	-En la vista de añadirPrueba, que se introduzca tambien el resultado en lugar de tener que ir despues a editarPrueba y añadirlo desde ahi.
+	-Modificacion veterinario: Que no pueda editar, borrar y finalizar citas, eso lo hara el recepcionista, y al darle a finalizar que se haga tambien el pago de la cita.
+	-Modificacion director: Que no pueda editar y borrar mascotas puesto que eso debe hacerlo el recepcionista o en todo caso el veterinario. Basicamente, el director solo podra realizar acciones sobre los empleados, el resto solo podra visualizar.
+	-Para las vistas comunes, los formularios van a redirigir al controlador de cada usuario, que controlara las redirecciones a vistas y las acciones que se realizaran.
+	-Las pruebas se añadiran desde vistaGestionCitas mediante un boton, puesto que las pruebas estan relacionadas con las citas. (HECHO)
+	-Para el cliente, puesto que no tiene menu lateral para moverse por las distintas vistas habra que crear un boton/enlace en la barra superior que le llevara de vuelta al inicio o botones de Volver en cada vista para que le lleve a la pagina anterior.
+	-En vistas comunes habra que hacer modificaciones para que el cliente solo pueda ver las mascotas de su propiedad, sus citas y sus pruebas; y para el veterinario para que solo pueda ver sus citas asignadas.
+	-En cuanto al modelo de datos de BBDD, tenemos la posibilidad de borrar la columna id_mascota de la tabla PRUEBAS ya que se puede consultar el ID de la mascota a traves de la cita con la que esta relacionada la prueba.
+	-El controlador de cliente puede que sobre ya que no tiene ninguna funcionalidad.
+	-Del controlador de veterinario, falta añadir control sobre las acciones que se pueden realizar en vistaGestionTipoPrueba, vistaGestionMascotas, vistaGestionCitas y vistaGestionCliente.
+
+AÑADIDOS:
+	-Validación de datos a traves de JS y posibilidad de implementar Ajax.
+	-Envio de correos.
+	-Generación de pdfs.

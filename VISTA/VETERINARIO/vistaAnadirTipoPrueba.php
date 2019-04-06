@@ -60,35 +60,18 @@
                           <div class="form-group col-12 col-sm-12 col-md-6 col-lg-6">
                              <h3>Tipo de la prueba</h3>
                           </div>
+
                           <div class="form-group col-12 col-sm-12 col-md-6  col-lg-6">
-                            <label for="inputCliente">Cliente</label>
-                            <br/>
-                            <!-- Aqui se envia por POST el cliente desde la tabla VISTACONSULTARPACIENTES-->
-                            <input type="text" name="cliente" id="cliente_id">
-                            </select>
-                          </div>
-                          <div class="form-group col-12 col-sm-12 col-md-6  col-lg-6">
-                            <label for="inputPrueba">Escoja el tipo de prueba</label>
-                            <select id="inputPrueba_id" class="form-control">
-                            <?php
-                                require_once '../../BBDD/model.php';
-                                require_once '../../BBDD/config.php';
-                                $conexion = new Model(Config::$host, Config::$user, Config::$pass, Config::$nombreBase);
-                                $resultado = $conexion->visualizarTiposPruebas();
-                                foreach($visualizarTiposPruebas as $tipos){
-                                     echo "<option value='id_tipo_prueba'>".$tipos['nombre_tipo_prueba']."</option>";
-                                }
-                            ?>
-                            </select>
+                            <label for="inputPrueba">Nombre de la prueba:</label>
+                            <input type="text" name="nombre" id="nombre_id" placeholder="Nombre" required />
                           </div>
 
-                          <div class="form-group col-12 col-sm-12 col-md-12  col-lg-12">
-                          <label for="inputObservacion">Observaciones:</label>
-                          <textarea class="form-control" rows="4" cols="100"></textarea>
-                  </div>  
-                    <input type="submit" class="btn btn-lg" value="Añadir">
-                    <input type="hidden" name="dni" value="dni" id="dni_id">
-                    <input type="hidden" name="id_mascota" value="id_mascota" id="id_mascota_id">
+                          <div class="form-group col-12 col-sm-12 col-md-6  col-lg-6">
+                            <label for="inputPrueba">Precio de la prueba:</label>
+                            <input type="number" name="precio" id="precio_id" step="0.01" placeholder="Precio en euros" required />
+                          </div>
+
+                    <input type="submit" class="btn btn-lg" name="anadirTipoPrueba" value="Añadir"/>
                 </form>
               </div>
               </div>

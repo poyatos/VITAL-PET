@@ -139,9 +139,8 @@
             echo utf8_encode ('<td>
 
             <form action="../../CONTROLADOR/controladorVeterinario.php" method="POST"> 
-              <input type="submit" value="Editar" name="editarCita">
-              <input type="submit" value="Borrar" name="borrarCita">
-              <input type="submit" value="Finalizar consulta" name="finalizarConsultaCita">
+                <input type="hidden" value="'.$citas['id_cita'].'" name="id_cita">
+                <input type="submit" value="Añadir prueba" name="vistaAnadirPrueba">
             </form>
             </td>');
 
@@ -149,9 +148,10 @@
             echo utf8_encode ('<td>
 
             <form action="../../CONTROLADOR/controladorRecepcionista.php" method="POST"> 
-              <input type="submit" value="Editar" name="editarCita">
-              <input type="submit" value="Borrar" name="borrarCita">
-              <input type="submit" value="Finalizar consulta" name="finalizarConsultaCita">
+                <input type="hidden" value="'.$citas['id_cita'].'" name="id_cita">
+                <input type="submit" value="Editar" name="vistaEditarCita">
+                <input type="submit" value="Borrar" name="borrarCita">
+                <input type="submit" value="Finalizar consulta" name="finalizarCita">
             </form>
             </td>');
 

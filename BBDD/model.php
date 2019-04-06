@@ -214,13 +214,13 @@
 
 
         //REGISTRAR MASCOTA
-        public function registrarMascota($dni, $nombre, $tipo, $raza, $sexo, $fecna, $peso){
-            $consulta = "SELECT * FROM mascotas WHERE dni_cliente = '$dni' AND nombre_mascota = '$nombre' AND tipo_mascota = '$tipo' ";
+        public function registrarMascota($id, $nombre, $tipo, $raza, $sexo, $fecna, $peso){
+            $consulta = "SELECT * FROM mascotas WHERE id_cliente = '$id' AND nombre_mascota = '$nombre' AND tipo_mascota = '$tipo' ";
 
             if ($this->existeFila($consulta)) {
                  echo "<br/><h2>La mascota ya existe.</h2><br />";
             } else {
-                $sql = "INSERT INTO mascotas (dni_cliente, nombre_mascota, tipo_mascota, raza_mascota, sexo_mascota, fecna_mascota, peso_mascota)
+                $sql = "INSERT INTO mascotas (id_cliente, nombre_mascota, tipo_mascota, raza_mascota, sexo_mascota, fecna_mascota, peso_mascota)
                 VALUES ('$dni', '$nombre', '$tipo', '$raza', '$sexo', '$fecna', $peso)";
 
                 if ($this->ejecutarConsulta($sql)) {
@@ -247,15 +247,15 @@
         }
 
         //VISUALIZAR MASCOTAS CLIENTE
-        public function visualizarMascotasCliente($dni){
-            $consulta = "SELECT * FROM mascotas WHERE dni_cliente = '$dni' ";
+        public function visualizarMascotasCliente($id){
+            $consulta = "SELECT * FROM mascotas WHERE id_cliente = '$id' ";
             $resultado = $this->ejecutarConsulta($consulta);
             return $resultado;
         }
 
         //MODIFICAR MASCOTAS
         public function modificarMascota($id, $dni, $nombre, $tipo, $raza, $sexo, $fecna, $peso){
-            $consulta = "UPDATE usuarios SET dni_cliente = '$dni', nombre_mascota = '$nombre', tipo_mascota = '$tipo', raza_mascota = '$raza', 
+            $consulta = "UPDATE usuarios SET id_cliente = '$id', nombre_mascota = '$nombre', tipo_mascota = '$tipo', raza_mascota = '$raza', 
             sexo_mascota = '$sexo', fecna_mascota = '$fecna', peso_mascota = $peso WHERE id_mascota = $id";
             $this->ejecutarConsulta($consulta);
         }
@@ -271,14 +271,14 @@
 
 
         //REGISTRAR CITAS
-        public function registrarCita($fecha, $hora, $consulta, $id, $dni){
+        public function registrarCita($fecha, $hora, $consulta, $id_mascota, $id_cliente){
             $consulta = "SELECT * FROM citas WHERE fecha_cita = '$fecha' AND hora_cita = '$hora'";
 
             if ($this->existeFila($consulta)) {
                  echo "<br/><h2>La cita ya existe.</h2><br />";
             } else {
-                $sql = "INSERT INTO citas (fecha_cita, hora_cita, estado_cita, num_consulta, id_mascota, dni_cliente)
-                VALUES ('$fecha', '$hora', 'Pendiente', $consulta, $id, '$dni')";
+                $sql = "INSERT INTO citas (fecha_cita, hora_cita, estado_cita, num_consulta, id_mascota, id_cliente)
+                VALUES ('$fecha', '$hora', 'Pendiente', $consulta, $id_mascota, '$id_cliente')";
 
                 if ($this->ejecutarConsulta($sql)) {
                      echo "<br/><h2>Cita registrada correctamente.</h2>";
@@ -297,16 +297,30 @@
         }
 
         //VISUALIZAR CITAS CLIENTE
-        public function visualizarCitasCliente($dni){
-            $consulta = "SELECT * FROM citas WHERE dni_cliente = '$dni' ";
+        public function visualizarCitasCliente($id){
+            $consulta = "SELECT * FROM citas WHERE id_cliente = '$id' ";
+            $resultado = $this->devolverConsultaArray($consulta);
+            return $resultado;
+        }
+
+        //VISUALIZAR CITAS MASCOTA
+        public function visualizarCitasMascota($id){
+            $consulta = "SELECT * FROM citas WHERE id_mascota = '$id' ";
+            $resultado = $this->devolverConsultaArray($consulta);
+            return $resultado;
+        }
+
+        //VISUALIZAR CITAS VETERINARIO
+        public function visualizarCitasVeterinario($id){
+            $consulta = "SELECT * FROM citas WHERE id_veterinario = '$id' ";
             $resultado = $this->devolverConsultaArray($consulta);
             return $resultado;
         }
 
         //MODIFICAR CITA
-        public function modificarCita($id, $fecha, $hora, $estado, $consulta, $id_mascota, $dni_cliente, $dni_veterinario){
+        public function modificarCita($id, $fecha, $hora, $estado, $consulta, $id_mascota, $id_cliente, $id_veterinario){
             $consulta = "UPDATE citas SET fecha_cita = '$fecha', hora_cita = '$hora', estado = '$estado', num_consulta = $consulta, 
-            id_mascota = $id_mascota, dni_cliente = $dni_cliente, dni_veterinario = $dni_veterinario WHERE id_cita = $id";
+            id_mascota = $id_mascota, id_cliente = $id_cliente, id_veterinario = $id_veterinario WHERE id_cita = $id";
             $this->ejecutarConsulta($consulta);
         }
 
@@ -330,9 +344,9 @@
         /* ------------------------------------------------------------ PRUEBAS --------------------------------------------------------------*/
 
         //REGISTRAR PRUEBAS
-        public function registrarPrueba($id_tipo, $id_mascota, $resultado, $observaciones){
-                $sql = "INSERT INTO pruebas (id_tipo_prueba, id_mascota, resultado_prueba, observaciones_prueba)
-                VALUES ($id_tipo, $id_mascota, '$resultado', '$observaciones')";
+        public function registrarPrueba($id_tipo, $id_mascota, $resultado, $observaciones, $id_cita){
+                $sql = "INSERT INTO pruebas (id_tipo_prueba, id_mascota, resultado_prueba, observaciones_prueba, id_cita)
+                VALUES ($id_tipo, $id_mascota, '$resultado', '$observaciones', $id_cita)";
 
                 if ($this->ejecutarConsulta($sql)) {
                      echo "<br/><h2>Prueba registrada correctamente.</h2>";
@@ -347,6 +361,15 @@
             $consulta = "SELECT * FROM pruebas";
             $resultado = $this->devolverConsultaArray($consulta);
             return $resultado;
+        }
+
+        //VISUALIZAR PRUEBA ID
+        public function visualizarPruebaId($id){
+            $consulta = "SELECT * FROM pruebas WHERE id_prueba = '$id' ";
+            $resultadoConsulta = $this->ejecutarConsulta($consulta);
+            $resultado = $resultadoConsulta->get_result();
+            $prueba = $resultado->fetch_array();
+            return $prueba;
         }
 
         //VISUALIZAR PRUEBAS MASCOTA
@@ -379,7 +402,11 @@
         }
         
 
-        //BORRAR PRUEBA (OPCIONAL)
+        //BORRAR PRUEBA
+        public function borrarPrueba($id){
+            $consulta = "DELETE FROM pruebas WHERE id_prueba = $id";
+            $this->ejecutarConsulta($consulta);
+        }
 
         /* -------------------------------------------------------- TIPOS DE PRUEBAS -----------------------------------------------------------*/
         /* ------------------------------------------------------------------------------------------------------------------------------------*/

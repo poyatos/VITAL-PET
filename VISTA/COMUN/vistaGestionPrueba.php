@@ -1,8 +1,8 @@
 <?php
   session_start();
 
-  if(!isset($_SESSION['usuario']) && !isset($_SESSION['rol'])){
-    header("Location: ../../index.php");
+  if (!isset($_SESSION['usuario']) && !isset($_SESSION['rol'])) {
+      header("Location: ../../index.php");
   }
 ?>
 <!DOCTYPE html>
@@ -42,12 +42,12 @@
   <!-- MENU LATERAL -->
       <div class="col-12 col-sm-5 col-md-4  col-lg-4">
   <?php
-      if($_SESSION['rol'] == 'Director'){
-        include "../../INCLUDE/menuDir.inc";
-      } else if ($_SESSION['rol'] == 'Recepcionista'){
-        include "../../INCLUDE/menuRec.inc";
-      } else if ($_SESSION['rol'] == 'Veterinario'){
-        include "../../INCLUDE/menuVet.inc";
+      if ($_SESSION['rol'] == 'Director') {
+          include "../../INCLUDE/menuDir.inc";
+      } elseif ($_SESSION['rol'] == 'Recepcionista') {
+          include "../../INCLUDE/menuRec.inc";
+      } elseif ($_SESSION['rol'] == 'Veterinario') {
+          include "../../INCLUDE/menuVet.inc";
       }
   ?>
       </div>
@@ -83,7 +83,7 @@
         <th>Precio</th>
         <?php
         if ($_SESSION['rol'] == 'Veterinario') {
-             echo'<th>Editar</th>';
+            echo'<th>Editar</th>';
         }
         ?>
       </tr>
@@ -102,43 +102,43 @@
             $tamano_pagina = 5;
             $pagina = false;
 
-        if (isset($_GET["pagina"])) {
-             $pagina = $_GET["pagina"];
-        }
-        if (!$pagina) {
-             $inicio = 0;
-             $pagina = 1;
-        } else {
-             $inicio = ($pagina - 1) * $tamano_pagina;
-        }
-             $total_paginas = ceil($total_registros / $tamano_pagina);
+            if (isset($_GET["pagina"])) {
+                $pagina = $_GET["pagina"];
+            }
+            if (!$pagina) {
+                $inicio = 0;
+                $pagina = 1;
+            } else {
+                $inicio = ($pagina - 1) * $tamano_pagina;
+            }
+            $total_paginas = ceil($total_registros / $tamano_pagina);
             
             $resultadoPaginacion = $conexion->visualizarPruebaPaginacion($inicio, $tamano_pagina);
-            foreach($resultadoPaginacion as $prueba){
+            foreach ($resultadoPaginacion as $prueba) {
 
                //por hacer-------------------------------SE RECOGE DE LA TABLA TIPO_PRUEBA
-                   echo utf8_encode(" <tr>
+                echo utf8_encode(" <tr>
                   <td>".$prueba['id_prueba']."</td>
                   <td>".$prueba['nombre_prueba']."</td>
                   <td>".$prueba['resultado_prueba']."</td>
                   <td>".$prueba['observaciones_prueba']."</td>
-                  <td>".$prueba['precio_prueba']."</td>"); 
+                  <td>".$prueba['precio_prueba']."</td>");
                  
 
-                 //por hacer-------------------------------SE RECOGE DE LA TABLA PRUEBA
+                //por hacer-------------------------------SE RECOGE DE LA TABLA PRUEBA
 
 
-                  if ($_SESSION['rol'] == 'Veterinario') {
-                     echo utf8_encode( '<td>
-                      <form action="../../CONTROLADOR/controladorVeterinario.php" method="POST"> 
-                        <input type="submit" value="Editar" name="editar">
-                        <input type="submit" value="Borrar" name="borrar">
-                      </form>
-                      </td>');
-                  }
-               echo utf8_encode( "</tr>");
-        }
-          ?>
+                if ($_SESSION['rol'] == 'Veterinario') {
+                    echo utf8_encode('<td>
+                        <form action="../../CONTROLADOR/controladorVeterinario.php" method="POST"> 
+                            <input type="hidden" value="'.$prueba['id_prueba'].'" name="id_prueba">
+                            <input type="submit" value="Editar" name="vistaEditarPrueba">
+                            <input type="submit" value="Borrar" name="borrarPrueba">
+                        </form>
+                        </td>');
+                }
+                echo utf8_encode("</tr>");
+            } ?>
     </tbody>
   </table>
 </div>
@@ -146,29 +146,28 @@
 <!-- PAGINACIÓN-->
 <div class="col-12 col-sm-12 col-md-12 col-lg-12">
 <?php
-     echo utf8_encode ('<nav aria-label="Page navigation example"><ul class="pagination">');
-    if ($total_paginas > 1) {
-       echo utf8_encode ("<li class='page-item'><a href='vistaGestionPrueba.php?pagina=0'><i class='glyphicon glyphicon-triangle-left'></i></a></li>");
-      if ($pagina != 1){
-           echo utf8_encode ("<li class='page-item'><a href='vistaGestionPrueba.php?pagina=".($pagina-1)."'><i class='glyphicon glyphicon-menu-left'></i></a></li>");
-      }
-      for ($i=1;$i<=$total_paginas;$i++) {
-          if ($pagina == $i){
-               echo utf8_encode( "<li class='page-item'><a id='actual'>$pagina</a></li>");
-          } else {
-               echo utf8_encode ("<li class='page-item'><a href='vistaGestionPrueba.php?pagina=".$i."'>".$i."</a></li>");
-          }
-      }
-      if ($pagina != $total_paginas){
-           echo utf8_encode( "<li class='page-item'><a href='vistaGestionPrueba.php?pagina=".($pagina+1)."'><i class='glyphicon glyphicon-menu-right'></i></a></li>");
-      }
-       echo utf8_encode( "<li class='page-item'><a href='vistaGestionPruebas.php?pagina=".$total_paginas."'><i class='glyphicon glyphicon-triangle-right'></i></a></li>");
-    }
-     echo utf8_encode ('</ul></nav>');
-
-  } else {
-     echo utf8_encode ("<p>No se han encontrado resultados.</p>");
-  } 
+     echo utf8_encode('<nav aria-label="Page navigation example"><ul class="pagination">');
+            if ($total_paginas > 1) {
+                echo utf8_encode("<li class='page-item'><a href='vistaGestionPrueba.php?pagina=0'><i class='glyphicon glyphicon-triangle-left'></i></a></li>");
+                if ($pagina != 1) {
+                    echo utf8_encode("<li class='page-item'><a href='vistaGestionPrueba.php?pagina=".($pagina-1)."'><i class='glyphicon glyphicon-menu-left'></i></a></li>");
+                }
+                for ($i=1;$i<=$total_paginas;$i++) {
+                    if ($pagina == $i) {
+                        echo utf8_encode("<li class='page-item'><a id='actual'>$pagina</a></li>");
+                    } else {
+                        echo utf8_encode("<li class='page-item'><a href='vistaGestionPrueba.php?pagina=".$i."'>".$i."</a></li>");
+                    }
+                }
+                if ($pagina != $total_paginas) {
+                    echo utf8_encode("<li class='page-item'><a href='vistaGestionPrueba.php?pagina=".($pagina+1)."'><i class='glyphicon glyphicon-menu-right'></i></a></li>");
+                }
+                echo utf8_encode("<li class='page-item'><a href='vistaGestionPruebas.php?pagina=".$total_paginas."'><i class='glyphicon glyphicon-triangle-right'></i></a></li>");
+            }
+            echo utf8_encode('</ul></nav>');
+        } else {
+            echo utf8_encode("<p>No se han encontrado resultados.</p>");
+        }
 
   $conexion->desconectar();
   ?>

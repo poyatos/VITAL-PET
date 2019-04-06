@@ -3,10 +3,6 @@
 
   if(!isset($_SESSION['mascota']) && !isset($_SESSION['rol'])){
     header("Location: ../../index.php");
-  } else {
-    if($_SESSION['rol'] == 'Cliente'){
-      header("Location: ../CLIENTE");
-    }
   }
 ?>
 <!DOCTYPE html>
@@ -148,7 +144,6 @@
               } else if ($_SESSION['rol'] == 'Veterinario'){
                  echo utf8_encode( '<td>
                       <form action="../../CONTROLADOR/controladorVeterinario.php" method="POST"> 
-                        <input type="submit" value="Añadir prueba" name="anadirPrueba">
                         <input type="submit" value="Borrar" name="borrar">
                       </form>');
               }

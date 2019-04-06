@@ -148,9 +148,9 @@
               
               <input type='hidden' name='idUsuario' value='".$empleado["id_usuario"]."'/>
 
-              <input type='submit' class='btn' name='renovarContrato' value='Renovar'/>
+              <input type='submit' class='btn' name='vistaEditarContrato' value='Editar contrato'/>
               <input type='submit' class='btn' name='despedirContrato'value='Despedir'/>
-              <input type='submit' class='btn' name='modificarEmpleado' value='Editar'/>
+              <input type='submit' class='btn' name='vistaEditarEmpleado' value='Editar'/>
               </form>
               </td>
             </tr>");
