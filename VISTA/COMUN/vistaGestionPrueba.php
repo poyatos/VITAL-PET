@@ -117,26 +117,26 @@
             foreach($resultadoPaginacion as $prueba){
 
                //por hacer-------------------------------SE RECOGE DE LA TABLA TIPO_PRUEBA
-                   echo utf8_encode" <tr>
+                   echo utf8_encode(" <tr>
                   <td>".$prueba['id_prueba']."</td>
                   <td>".$prueba['nombre_prueba']."</td>
                   <td>".$prueba['resultado_prueba']."</td>
                   <td>".$prueba['observaciones_prueba']."</td>
-                  <td>".$prueba['precio_prueba']."</td>"; 
+                  <td>".$prueba['precio_prueba']."</td>"); 
                  
 
                  //por hacer-------------------------------SE RECOGE DE LA TABLA PRUEBA
 
 
                   if ($_SESSION['rol'] == 'Veterinario') {
-                     echo utf8_encode '<td>
+                     echo utf8_encode( '<td>
                       <form action="../../CONTROLADOR/controladorVeterinario.php" method="POST"> 
                         <input type="submit" value="Editar" name="editar">
                         <input type="submit" value="Borrar" name="borrar">
                       </form>
-                      </td>';
+                      </td>');
                   }
-               echo utf8_encode "</tr>";
+               echo utf8_encode( "</tr>");
         }
           ?>
     </tbody>
@@ -146,28 +146,28 @@
 <!-- PAGINACIÓN-->
 <div class="col-12 col-sm-12 col-md-12 col-lg-12">
 <?php
-     echo utf8_encode '<nav aria-label="Page navigation example"><ul class="pagination">';
+     echo utf8_encode ('<nav aria-label="Page navigation example"><ul class="pagination">');
     if ($total_paginas > 1) {
-       echo utf8_encode "<li class='page-item'><a href='vistaGestionPrueba.php?pagina=0'><i class='glyphicon glyphicon-triangle-left'></i></a></li>";
+       echo utf8_encode ("<li class='page-item'><a href='vistaGestionPrueba.php?pagina=0'><i class='glyphicon glyphicon-triangle-left'></i></a></li>");
       if ($pagina != 1){
-           echo utf8_encode "<li class='page-item'><a href='vistaGestionPrueba.php?pagina=".($pagina-1)."'><i class='glyphicon glyphicon-menu-left'></i></a></li>";
+           echo utf8_encode ("<li class='page-item'><a href='vistaGestionPrueba.php?pagina=".($pagina-1)."'><i class='glyphicon glyphicon-menu-left'></i></a></li>");
       }
       for ($i=1;$i<=$total_paginas;$i++) {
           if ($pagina == $i){
-               echo utf8_encode "<li class='page-item'><a id='actual'>$pagina</a></li>";
+               echo utf8_encode( "<li class='page-item'><a id='actual'>$pagina</a></li>");
           } else {
-               echo utf8_encode "<li class='page-item'><a href='vistaGestionPrueba.php?pagina=".$i."'>".$i."</a></li>";
+               echo utf8_encode ("<li class='page-item'><a href='vistaGestionPrueba.php?pagina=".$i."'>".$i."</a></li>");
           }
       }
       if ($pagina != $total_paginas){
-           echo utf8_encode "<li class='page-item'><a href='vistaGestionPrueba.php?pagina=".($pagina+1)."'><i class='glyphicon glyphicon-menu-right'></i></a></li>";
+           echo utf8_encode( "<li class='page-item'><a href='vistaGestionPrueba.php?pagina=".($pagina+1)."'><i class='glyphicon glyphicon-menu-right'></i></a></li>");
       }
-       echo utf8_encode "<li class='page-item'><a href='vistaGestionPruebas.php?pagina=".$total_paginas."'><i class='glyphicon glyphicon-triangle-right'></i></a></li>";
+       echo utf8_encode( "<li class='page-item'><a href='vistaGestionPruebas.php?pagina=".$total_paginas."'><i class='glyphicon glyphicon-triangle-right'></i></a></li>");
     }
-     echo utf8_encode '</ul></nav>';
+     echo utf8_encode ('</ul></nav>');
 
   } else {
-     echo utf8_encode "<p>No se han encontrado resultados.</p>";
+     echo utf8_encode ("<p>No se han encontrado resultados.</p>");
   } 
 
   $conexion->desconectar();
