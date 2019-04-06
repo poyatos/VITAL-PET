@@ -59,7 +59,7 @@
         <div class="checkbox">
           <label><input type="checkbox" name="remember"> Recuerdame</label>
         </div>
-          <button type="submit" class="btn btn-default">Iniciar Sesión</button>
+          <button id = "logueo" type="submit" class="btn btn-default">Iniciar Sesión</button>
       </form>
       </div>
     </div>
