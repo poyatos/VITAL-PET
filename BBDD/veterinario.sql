@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Servidor: 127.0.0.1
--- Tiempo de generación: 30-03-2019 a las 13:26:36
+-- Tiempo de generación: 06-04-2019 a las 20:39:57
 -- Versión del servidor: 10.1.32-MariaDB
 -- Versión de PHP: 7.1.17
 
@@ -37,8 +37,8 @@ CREATE TABLE `citas` (
   `estado_cita` varchar(50) COLLATE utf8_spanish_ci NOT NULL,
   `num_consulta` int(11) NOT NULL,
   `id_mascota` int(11) NOT NULL,
-  `dni_cliente` varchar(9) COLLATE utf8_spanish_ci NOT NULL,
-  `dni_veterinario` varchar(9) COLLATE utf8_spanish_ci NOT NULL
+  `id_cliente` int(11) NOT NULL,
+  `id_veterinario` int(11) NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8 COLLATE=utf8_spanish_ci;
 
 -- --------------------------------------------------------
@@ -58,33 +58,6 @@ CREATE TABLE `contratos` (
   `id_contratado` int(11) NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8 COLLATE=utf8_spanish_ci;
 
---
--- Volcado de datos para la tabla `contratos`
---
-
-INSERT INTO `contratos` (`id_contrato`, `fecini_contrato`, `fecfin_contrato`, `sueldo_contrato`, `diasvac_contrato`, `horario_contrato`, `estado_contrato`, `id_contratado`) VALUES
-(54, '10/02/2017', '10/09/2019', 1100, 30, 'VESPERTINO', 'ACTIVO', 29),
-(55, '02/05/2015', '10/02/2021', 1200, 31, 'VESPERTINO', 'ACTIVO', 30),
-(56, '11/11/2017', '24/07/2019', 900, 29, 'VESPERTINO', 'ACTIVO', 31),
-(57, '01/05/2015', '15/07/2017', 1050, 29, 'VESPERTINO', 'FINALIZADO', 32),
-(58, '21/03/2013', '09/09/2022', 1200, 31, 'VESPERTINO', 'ACTIVO', 33),
-(59, '21/07/2014', '21/07/2020', 1100, 31, 'VESPERTINO', 'ACTIVO', 33),
-(60, '12/09/2016', '01/02/2021', 1100, 31, 'VESPERTINO', 'ACTIVO', 34),
-(61, '24/03/2019', '24/10/2019', 950, 29, 'VESPERTINO', 'ACTIVO', 35),
-(62, '12/02/2014', '17/06/2026', 1000, 31, 'VESPERTINO', 'ACTIVO', 36),
-(63, '20/09/2018', '20/06/2020', 1001, 29, 'VESPERTINO', 'ACTIVO', 37),
-(64, '11/01/2011', '14/08/2027', 1300, 31, 'MATUTINO', 'ACTIVO', 38),
-(65, '10/08/2016', '12/09/2021', 1120, 30, 'MATUTINO', 'ACTIVO', 39),
-(66, '02/03/2017', '18/08/2021', 1150, 30, 'MATUTINO', 'ACTIVO', 40),
-(67, '15/01/2010', '25/11/2025', 1320, 31, 'MATUTINO', 'ACTIVO', 41),
-(68, '10/01/2018', '17/12/2019', 950, 28, 'MATUTINO', 'FINALIZADO', 42),
-(69, '16/04/2010', '03/07/2021', 1150, 31, 'MATUTINO', 'ACTIVO', 43),
-(70, '05/05/2016', '06/09/2025', 1150, 31, 'MATUTINO', 'ACTIVO', 44),
-(71, '17/11/2011', '21/12/2027', 1300, 31, 'MATUTINO', 'ACTIVO', 45),
-(72, '15/01/2017', '05/01/2019', 1050, 30, 'MATUTINO', 'FINALIZADO', 46),
-(73, '12/11/2010', '07/07/2028', 1050, 31, 'VESPERTINO', 'ACTIVO', 47),
-(74, '20/11/2012', '12/12/2029', 1050, 31, 'MATUTINO', 'ACTIVO', 48);
-
 -- --------------------------------------------------------
 
 --
@@ -93,7 +66,7 @@ INSERT INTO `contratos` (`id_contrato`, `fecini_contrato`, `fecfin_contrato`, `s
 
 CREATE TABLE `mascotas` (
   `id_mascota` int(11) NOT NULL,
-  `dni_cliente` varchar(9) COLLATE utf8_spanish_ci NOT NULL,
+  `id_cliente` int(11) NOT NULL,
   `nombre_mascota` varchar(50) COLLATE utf8_spanish_ci NOT NULL,
   `tipo_mascota` varchar(50) COLLATE utf8_spanish_ci NOT NULL,
   `raza_mascota` varchar(50) COLLATE utf8_spanish_ci NOT NULL,
@@ -106,56 +79,56 @@ CREATE TABLE `mascotas` (
 -- Volcado de datos para la tabla `mascotas`
 --
 
-INSERT INTO `mascotas` (`id_mascota`, `dni_cliente`, `nombre_mascota`, `tipo_mascota`, `raza_mascota`, `sexo_mascota`, `fecna_mascota`, `peso_mascota`) VALUES
-(1, '77517664M', 'Kira', 'Perro', 'Schnauzer Miniatura', 'Hembra', '06-12-2014', 6.9),
-(2, '77517664M', 'Koch', 'Perro', 'Akita Japones', 'Macho', '12-12-2012', 8.1),
-(3, '80328807L', 'Misaki', 'Gato', 'Selkirk Rex', 'Hembra', '02-04-2010', 8),
-(4, '47490404K', 'Oblonga', 'Reptil', 'Iguana del desierto', 'Macho', 'Desconocid', 3.8),
-(5, '47490404K', 'Cutiepie', 'Gato', 'Bengali', 'Hembra', '19-05-2014', 6),
-(6, '99684155Q', 'Pepper', 'Gato', 'Bombay', 'Macho', '29-03-2010', 4),
-(7, '04152658K', 'Ion', 'Roedor', 'Hamster Chino', 'Macho', '01-11-2018', 0.8),
-(8, '35641701G', 'Ulanoca', 'Perro', 'Basset Hound', 'Hembra', '14-12-2013', 10.2),
-(9, '41909009L', 'Schnitzel', 'Perro', 'Doberman', 'Macho', '02-02-2012', 20),
-(10, '57776644T', 'Furia', 'Perro', 'Bichon Maltes', 'Macho', '01-01-2011', 6),
-(11, '65331468Z', 'Oliva', 'Loro', 'Loro gris', 'Hembra', '15-07-2015', 2.7),
-(12, 'Y1530936R', 'Druida', 'Perro', 'Yorkshire Terrier', 'Hembra', '22-08-2012', 7),
-(13, '79014632H', 'Sahne', 'Huron', 'Huron whippet', 'Hembra', '24-01-2017', 1.8),
-(14, '79014632H', 'Zahn', 'Pajaro', 'Periquito', 'Macho', '01-10-2017', 0.7),
-(15, 'Z9632384N', 'Amy', 'Pajaro', 'Periquito', 'Hembra', '11-11-2016', 0.6),
-(16, '67012985R', 'Dafne', 'Perro', 'Shar Pei', 'Hembra', '02-05-2012', 25),
-(17, '67012985R', 'Malka', 'Reptil', 'Dragon barbudo', 'Hembra', '05-02-2011', 2),
-(18, '67012985R', 'Lana', 'Perro', 'Shiba Inu', 'Hembra', '11-06-2010', 8.1),
-(19, '80858584Z', 'Louise', 'Gato', 'Khao Manee', 'Macho', '08-07-2015', 5),
-(20, '46997747F', 'Bernadette', 'Gato', 'Siames', 'Macho', '05-08-2015', 4.7),
-(21, '91695318E', 'Nova', 'Gato', 'Persa de pelo largo', 'Hembra', 'Desconocid', 5.5),
-(22, '91695318E', 'Uschi', 'Perro', 'Shih Tzu', 'Macho', '01-08-2013', 8),
-(23, '29734113N', 'Luna', 'Perro', 'Rottweiler', 'Hembra', '27-12-2017', 30.7),
-(24, '29734113N', 'Lolo', 'Roedor', 'Hamster Ruso', 'Macho', '24-11-2015', 1.3),
-(25, '15910193N', 'Golfo', 'Gato', 'Mau egipcio', 'Macho', '23-02-2014', 5),
-(26, 'Y8523941V', 'Char', 'Perro', 'Mastin Tibetano', 'Macho', '11-09-2014', 34.7),
-(27, '57297818B', 'Bolita', 'Pajaro', 'Loro Arcoiris', 'Hembra', '05-08-2010', 2.2),
-(28, '57297818B', 'Ian', 'Reptil', 'Iguana verde', 'Macho', '04-04-2014', 4),
-(29, '57297818B', 'Pepe', 'Perro', 'Malinois', 'Macho', '01-04-2016', 26),
-(30, '57297818B', 'Iris', 'Gato', 'Spgnynx', 'Hembra', '21-12-2014', 4),
-(31, '53121661X', 'Goku', 'Huron', 'Huron bull', 'Macho', '07-08-2011', 2.1),
-(32, '53121661X', 'Benji', 'Perro', 'Sin raza', 'Macho', '05-12-2012', 6.6),
-(33, '73510864N', 'Eros', 'Perro', 'Pug', 'Macho', '11-05-2015', 5),
-(34, '30093802G', 'Tommy', 'Gato', 'Sin raza', 'Macho', '10-02-2010', 5),
-(35, '16152523Z', 'Miko', 'Erizo', 'Erizo Somali', 'Macho', '12-12-2012', 1.2),
-(36, '54862977L', 'Wally', 'Gato', 'Sin raza', 'Macho', '10-01-2011', 4),
-(37, '82353546E', 'Ikky', 'Gato', 'Azal ruso', 'Hembra', '12-12-2011', 3.2),
-(38, '82353546E', 'Ania', 'Pajaro', 'Pajaro dodo', 'Hembra', '15-10-2013', 0.5),
-(39, '82353546E', 'Shiva', 'Gato', 'Gato Persa', 'Hembra', '25-03-2015', 4.2),
-(40, '82353546E', 'Cali', 'Roedor', 'Hamster Ruso', 'Hembra', '22-11-2013', 0.7),
-(41, '80729531Z', 'Pantera', 'Perro', 'Chihuahua', 'Hembra', '23-12-2014', 4),
-(42, '80729531Z', 'Merlin', 'Perro', 'Sin raza', 'Macho', 'Desconocid', 22.8),
-(43, '80729531Z', 'Simon', 'Iguana', 'Iguana Comun', 'Macho', '14-07-2015', 3),
-(44, '77511664M', 'Ruffo', 'Loro', 'Loro Azul', 'Macho', 'Desconocid', 2),
-(45, '77511664M', 'Arames', 'Roedor', 'Hamster Roborowski', 'Macho', '12-11-2016', 0.5),
-(46, '77511664M', 'Trufita', 'Gato', 'Maine Coon', 'Hembra', '01-05-2016', 3.7),
-(47, '80328807L', 'Nona', 'Perro', 'Sin raza', 'Hembra', '04-07-2017', 12),
-(48, '80328807L', 'Osito', 'Reptil', 'Tortuga', 'Macho', '12-11-2018', 2.5),
-(49, '99684155Q', 'Nicolas', 'Gato', 'Sin raza', 'Macho', 'Desconocid', 3);
+INSERT INTO `mascotas` (`id_mascota`, `id_cliente`, `nombre_mascota`, `tipo_mascota`, `raza_mascota`, `sexo_mascota`, `fecna_mascota`, `peso_mascota`) VALUES
+(1, 77517664, 'Kira', 'Perro', 'Schnauzer Miniatura', 'Hembra', '06-12-2014', 6.9),
+(2, 77517664, 'Koch', 'Perro', 'Akita Japones', 'Macho', '12-12-2012', 8.1),
+(3, 80328807, 'Misaki', 'Gato', 'Selkirk Rex', 'Hembra', '02-04-2010', 8),
+(4, 47490404, 'Oblonga', 'Reptil', 'Iguana del desierto', 'Macho', 'Desconocid', 3.8),
+(5, 47490404, 'Cutiepie', 'Gato', 'Bengali', 'Hembra', '19-05-2014', 6),
+(6, 99684155, 'Pepper', 'Gato', 'Bombay', 'Macho', '29-03-2010', 4),
+(7, 4152658, 'Ion', 'Roedor', 'Hamster Chino', 'Macho', '01-11-2018', 0.8),
+(8, 35641701, 'Ulanoca', 'Perro', 'Basset Hound', 'Hembra', '14-12-2013', 10.2),
+(9, 41909009, 'Schnitzel', 'Perro', 'Doberman', 'Macho', '02-02-2012', 20),
+(10, 57776644, 'Furia', 'Perro', 'Bichon Maltes', 'Macho', '01-01-2011', 6),
+(11, 65331468, 'Oliva', 'Loro', 'Loro gris', 'Hembra', '15-07-2015', 2.7),
+(12, 0, 'Druida', 'Perro', 'Yorkshire Terrier', 'Hembra', '22-08-2012', 7),
+(13, 79014632, 'Sahne', 'Huron', 'Huron whippet', 'Hembra', '24-01-2017', 1.8),
+(14, 79014632, 'Zahn', 'Pajaro', 'Periquito', 'Macho', '01-10-2017', 0.7),
+(15, 0, 'Amy', 'Pajaro', 'Periquito', 'Hembra', '11-11-2016', 0.6),
+(16, 67012985, 'Dafne', 'Perro', 'Shar Pei', 'Hembra', '02-05-2012', 25),
+(17, 67012985, 'Malka', 'Reptil', 'Dragon barbudo', 'Hembra', '05-02-2011', 2),
+(18, 67012985, 'Lana', 'Perro', 'Shiba Inu', 'Hembra', '11-06-2010', 8.1),
+(19, 80858584, 'Louise', 'Gato', 'Khao Manee', 'Macho', '08-07-2015', 5),
+(20, 46997747, 'Bernadette', 'Gato', 'Siames', 'Macho', '05-08-2015', 4.7),
+(21, 91695318, 'Nova', 'Gato', 'Persa de pelo largo', 'Hembra', 'Desconocid', 5.5),
+(22, 91695318, 'Uschi', 'Perro', 'Shih Tzu', 'Macho', '01-08-2013', 8),
+(23, 29734113, 'Luna', 'Perro', 'Rottweiler', 'Hembra', '27-12-2017', 30.7),
+(24, 29734113, 'Lolo', 'Roedor', 'Hamster Ruso', 'Macho', '24-11-2015', 1.3),
+(25, 15910193, 'Golfo', 'Gato', 'Mau egipcio', 'Macho', '23-02-2014', 5),
+(26, 0, 'Char', 'Perro', 'Mastin Tibetano', 'Macho', '11-09-2014', 34.7),
+(27, 57297818, 'Bolita', 'Pajaro', 'Loro Arcoiris', 'Hembra', '05-08-2010', 2.2),
+(28, 57297818, 'Ian', 'Reptil', 'Iguana verde', 'Macho', '04-04-2014', 4),
+(29, 57297818, 'Pepe', 'Perro', 'Malinois', 'Macho', '01-04-2016', 26),
+(30, 57297818, 'Iris', 'Gato', 'Spgnynx', 'Hembra', '21-12-2014', 4),
+(31, 53121661, 'Goku', 'Huron', 'Huron bull', 'Macho', '07-08-2011', 2.1),
+(32, 53121661, 'Benji', 'Perro', 'Sin raza', 'Macho', '05-12-2012', 6.6),
+(33, 73510864, 'Eros', 'Perro', 'Pug', 'Macho', '11-05-2015', 5),
+(34, 30093802, 'Tommy', 'Gato', 'Sin raza', 'Macho', '10-02-2010', 5),
+(35, 16152523, 'Miko', 'Erizo', 'Erizo Somali', 'Macho', '12-12-2012', 1.2),
+(36, 54862977, 'Wally', 'Gato', 'Sin raza', 'Macho', '10-01-2011', 4),
+(37, 82353546, 'Ikky', 'Gato', 'Azal ruso', 'Hembra', '12-12-2011', 3.2),
+(38, 82353546, 'Ania', 'Pajaro', 'Pajaro dodo', 'Hembra', '15-10-2013', 0.5),
+(39, 82353546, 'Shiva', 'Gato', 'Gato Persa', 'Hembra', '25-03-2015', 4.2),
+(40, 82353546, 'Cali', 'Roedor', 'Hamster Ruso', 'Hembra', '22-11-2013', 0.7),
+(41, 80729531, 'Pantera', 'Perro', 'Chihuahua', 'Hembra', '23-12-2014', 4),
+(42, 80729531, 'Merlin', 'Perro', 'Sin raza', 'Macho', 'Desconocid', 22.8),
+(43, 80729531, 'Simon', 'Iguana', 'Iguana Comun', 'Macho', '14-07-2015', 3),
+(44, 77511664, 'Ruffo', 'Loro', 'Loro Azul', 'Macho', 'Desconocid', 2),
+(45, 77511664, 'Arames', 'Roedor', 'Hamster Roborowski', 'Macho', '12-11-2016', 0.5),
+(46, 77511664, 'Trufita', 'Gato', 'Maine Coon', 'Hembra', '01-05-2016', 3.7),
+(47, 80328807, 'Nona', 'Perro', 'Sin raza', 'Hembra', '04-07-2017', 12),
+(48, 80328807, 'Osito', 'Reptil', 'Tortuga', 'Macho', '12-11-2018', 2.5),
+(49, 99684155, 'Nicolas', 'Gato', 'Sin raza', 'Macho', 'Desconocid', 3);
 
 -- --------------------------------------------------------
 
@@ -165,7 +138,7 @@ INSERT INTO `mascotas` (`id_mascota`, `dni_cliente`, `nombre_mascota`, `tipo_mas
 
 CREATE TABLE `pagos` (
   `id_pago` int(11) NOT NULL,
-  `dni_cliente` varchar(9) COLLATE utf8_spanish_ci NOT NULL,
+  `id_cliente` int(11) NOT NULL,
   `total_precio` float NOT NULL,
   `fecha_pago` varchar(10) COLLATE utf8_spanish_ci NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8 COLLATE=utf8_spanish_ci;
@@ -180,8 +153,9 @@ CREATE TABLE `pruebas` (
   `id_prueba` int(11) NOT NULL,
   `id_tipo_prueba` int(11) NOT NULL,
   `id_mascota` int(11) NOT NULL,
-  `resultado_prueba` varchar(2000) COLLATE utf8_spanish_ci NOT NULL,
-  `observaciones_prueba` varchar(2000) COLLATE utf8_spanish_ci NOT NULL
+  `resultado_prueba` varchar(2000) COLLATE utf8_spanish_ci DEFAULT NULL,
+  `observaciones_prueba` varchar(2000) COLLATE utf8_spanish_ci NOT NULL,
+  `id_cita` int(11) NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8 COLLATE=utf8_spanish_ci;
 
 -- --------------------------------------------------------
@@ -195,64 +169,6 @@ CREATE TABLE `tipos_pruebas` (
   `nombre_tipo_prueba` varchar(200) COLLATE utf8_spanish_ci NOT NULL,
   `precio_tipo_prueba` float NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8 COLLATE=utf8_spanish_ci;
-
---
--- Volcado de datos para la tabla `tipos_pruebas`
---
-
-INSERT INTO `tipos_pruebas` (`id_tipo_prueba`, `nombre_tipo_prueba`, `precio_tipo_prueba`) VALUES
-(1, 'Desparasitación interna y externa cachorro (perro/gato) 0-3 Kg', 5),
-(2, 'Desparasitación interna y externa cachorro (perro/gato) 3-10 Kg', 8),
-(3, 'Desparasitación interna perro ADULTO 0-5 Kg', 3),
-(4, 'Desparasitación interna perro ADULTO 5-10 Kg', 5),
-(5, 'Desparasitación interna perro ADULTO 10-20 Kg', 10),
-(6, 'Desparasitación interna perro ADULTO 20-50 Kg', 15),
-(7, 'Desparasitación interna y externa gato ADULTO 0-5 Kg / 5-10 Kg / 10-20 Kg / 20-50 Kg, 10,50', 20),
-(8, 'Tratamiento inyectable subcutáneo o intramuscular 1 inyección (incluyendo medicación)', 10),
-(9, 'Pasaporte europeo canino/felino', 15),
-(10, 'Sedación para manipulación, estudio radiográfico, etc.  < 15 Kg', 16),
-(11, 'Microchip - cambio de propietario', 17),
-(12, 'Tratamiento inyectable subcutáneo o intramuscular 1 inyección (incluyendo medicación)', 20),
-(13, 'Consulta de seguimiento o de revisión sin inyectable', 20),
-(14, 'Consulta de seguimiento o de revisión con 1 inyectable (incluida medicación)', 25),
-(15, 'Consulta de urgencia referidas a ABC', 25),
-(16, 'Vacunación PERRO Parvovirosis incluido Consulta (reconocimiento - exploración completa y vacuna de 1ª marca)', 25),
-(17, 'Análisis de sangre básico - Hemograma completo (incluida toma de muestras e interpretación)', 25),
-(18, 'Vacunación PERRO/GATO Antirrábica incluido consulta (reconocimiento - exploración completa), vacuna de 1ª marca, Sello Oficial y chapa antirrábica)', 26),
-(19, 'Vacunación GATO Tetravalente felina incluido Consulta (reconocimiento - exploración completa) y vacuna de 1ª marca)', 26),
-(20, 'Análisis test serológico rápido Moquillo canino', 28),
-(21, 'Análisis test serológico rápido Lehismaniosis', 28),
-(22, 'Análisis test serológicos rápidos Parvovirosis/Coranavirus canino', 30),
-(23, 'Tratamiento inyectable intravenoso con cateterización venosa', 30),
-(24, 'Vacunación PERRO Tetravalente, incluido Consulta (reconocimiento - exploración completa) y vacuna de 1º marca)', 35),
-(25, 'Microchip - implantación y alta RAIA', 35),
-(26, 'Sedación para manipulación, estudio radiográfico, etc.  > 15 Kg', 35),
-(27, 'Tratamiento inyectable intravenoso con caterterización venosa', 35),
-(28, 'Radiografías digitales simples, sin uso de contraste (1ª)', 35),
-(29, 'Radiografías digitales simples, sin uso de contraste (2ª)', 28),
-(30, 'Radiografías digitales simples, sin uso de contraste (3ª)', 17),
-(31, 'Consulta general completa (anamnesis, reconocimiento, diagnóstico presuntivo y prescripción de tratamiento)', 37),
-(32, 'Certificado Oficial Veterinario', 38),
-(33, 'Vacunación PERRO Heptavalente (incluido reconocimiento - exploración completa y vacuna de 1º marca)', 40),
-(34, 'Análisis test serológico Inmunodeficiencia + Leucemia felina', 42),
-(35, 'Consulta general completa (anamnesis, reconocimiento, diagnóstico presuntivo y prescripción de tratamiento) con 1 inyectable (incluida medicación)', 45),
-(36, 'Vacunación GATO Tetravalente felina + Leucemia felina incluido Consulta (reconocimiento - exploración completa) y vacunas de 1ª marcas)', 50),
-(37, 'Análisis de sangre completo, - Hemograma completo  (anemia/infección) + 10 bioquimicas, incluido toma de muestras e interpretación y resultados inmediatos', 52),
-(38, 'Castración de gato macho (anestesia + cirugía) + Antibioterapia + Analgesia.', 69),
-(39, ' Consulta de Especialidad o de segunda opinión (anamnesis, reconocimiento, diagnóstico presuntivo y prescripción de tratamiento)', 70),
-(40, 'Estudio ecográfico abdominal completo', 95),
-(41, 'Castración de gata (anestesia + cirugía) mediante ovarictomía + Antibioterapia + Analgesia', 120),
-(42, 'Estudio ecográfico cardíaco doble color completo', 120),
-(43, 'Castración de gata (anestesia + cirugía) mediante ovariohisterectomía + Antibioterapia + Analgesia', 170),
-(44, 'Castración perro 0-5 kg', 125),
-(45, 'Castración perro 5-10 kg', 150),
-(46, 'Castración perro 10-20 Kg', 195),
-(47, 'Castración perro 20-30 kg', 320),
-(48, 'Limpieza de boca (sarro) de perro hasta 5 kg con anestesia inhalatoria + monitorización + sueroterapia EV + Antibioterapia + Analgesia + chequeo prequirúrgico', 150),
-(49, 'Esterelizacion perra 0-5 kg', 175),
-(50, 'Esterelizacion perra 5-10 kg', 225),
-(51, 'Esterelizacion perra 10-20 Kg', 285),
-(52, 'Esterelizacion perra 20-30 kg', 390);
 
 -- --------------------------------------------------------
 
@@ -270,7 +186,7 @@ CREATE TABLE `usuarios` (
   `fecna_usuario` varchar(10) COLLATE utf8_spanish_ci NOT NULL,
   `direccion_usuario` varchar(500) COLLATE utf8_spanish_ci NOT NULL,
   `rol_usuario` varchar(20) COLLATE utf8_spanish_ci NOT NULL,
-  `pass_usuario` text COLLATE utf8_spanish_ci NOT NULL
+  `pass_usuario` varchar(2000) COLLATE utf8_spanish_ci NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8 COLLATE=utf8_spanish_ci;
 
 --
@@ -388,7 +304,7 @@ ALTER TABLE `citas`
 -- AUTO_INCREMENT de la tabla `contratos`
 --
 ALTER TABLE `contratos`
-  MODIFY `id_contrato` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=75;
+  MODIFY `id_contrato` int(11) NOT NULL AUTO_INCREMENT;
 
 --
 -- AUTO_INCREMENT de la tabla `mascotas`
@@ -412,7 +328,7 @@ ALTER TABLE `pruebas`
 -- AUTO_INCREMENT de la tabla `tipos_pruebas`
 --
 ALTER TABLE `tipos_pruebas`
-  MODIFY `id_tipo_prueba` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=53;
+  MODIFY `id_tipo_prueba` int(11) NOT NULL AUTO_INCREMENT;
 
 --
 -- AUTO_INCREMENT de la tabla `usuarios`
