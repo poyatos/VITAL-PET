@@ -78,7 +78,7 @@
                                 $conexion = new Model(Config::$host, Config::$user, Config::$pass, Config::$nombreBase);
                                 $resultado = $conexion->visualizarTiposPruebas();
                                 foreach($visualizarTiposPruebas as $tipos){
-                                     echo utf8_encode "<option value='id_tipo_prueba'>".$tipos['nombre_tipo_prueba']."</option>";
+                                     echo  "<option value='id_tipo_prueba'>".$tipos['nombre_tipo_prueba']."</option>";
                                 }
                           ?>
                           </select>

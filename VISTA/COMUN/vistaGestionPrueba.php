@@ -83,7 +83,7 @@
         <th>Precio</th>
         <?php
         if ($_SESSION['rol'] == 'Veterinario') {
-             echo utf8_encode '<th>Editar</th>';
+             echo'<th>Editar</th>';
         }
         ?>
       </tr>

@@ -90,7 +90,7 @@
         <th>Dirección</th>
         <?php
           if($_SESSION['rol'] == 'Veterinario' || $_SESSION['rol'] == 'Recepcionista'){
-             echo utf8_encode '<th>Editar</th>';
+             echo '<th>Editar</th>';
           }
         ?>
       </tr>
