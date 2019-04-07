@@ -67,20 +67,20 @@
           </div>
           <div class="form-group col-md-6">
             <label for="inputFInicio">Fecha Inicio</label>
-            <input type="date"  name="fecini"  class="form-control" id="fecha">
+            <input type="date"  name="fecini"  class="form-control" id="fecha" required>
           </div>
           <div class="form-group col-md-6">
             <label for="inputFFin">Fecha Fin</label>
-            <input type="date"  name="fecfin"  class="form-control" id="fecha">
+            <input type="date"  name="fecfin"  class="form-control" id="fecha" required>
           </div>
           <div class="form-group col-md-6">
             <label for="inputSueldo">Sueldo</label>
-            <input type="number"  name="sueldo"  class="form-control" id="1000">
+            <input type="number"  name="sueldo"  class="form-control" id="1000" required>
           </div>
 
           <div class="form-group col-md-6">
             <label for="inputJob">Elije el horario</label>
-            <select  name="horario"  id="inputJob" class="form-control">
+            <select  name="horario"  id="inputJob" class="form-control" required>
               <option value="matutino" selected>Vespertino</option>
               <option value="vespertino">Matutino</option>
             </select>
@@ -88,7 +88,7 @@
 
           <div class="form-group col-md-12">
             <label for="inputfevac">Fecha Vacaciones</label>
-            <input type="date"  name="diasvac"  class="form-control" id="fechavac">
+            <input type="date"  name="diasvac"  class="form-control" id="fechavac" required>
           </div>
 
           <input type="hidden" name="idUsuario" value="<?= $_POST['id_usuario']?>"/>

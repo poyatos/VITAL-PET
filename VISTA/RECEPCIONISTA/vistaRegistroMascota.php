@@ -56,32 +56,31 @@
                         <div class="form-row">
                             <div class="form-group col-md-6">
                                 <label for="inputNombre">Nombre</label>
-                                <input type="text" name="nombre" class="form-control" id="inputNombre" placeholder="Nombre">
+                                <input type="text" name="nombre" class="form-control" id="inputNombre" placeholder="Nombre" required>
                             </div>
                             <div class="form-group col-md-6">
                                 <label for="inputTip">Tipo</label>
-                                <input type="text" name="tipo" class="form-control" id="inputTip" placeholder="perro">
+                                <input type="text" name="tipo" class="form-control" id="inputTip" placeholder="perro" required>
                             </div>
                             <div class="form-group col-md-12">
                                 <label for="inputRaz">Raza</label>
-                                <input type="text" name="raza" class="form-control" id="inputRaz" placeholder="labrador..">
+                                <input type="text" name="raza" class="form-control" id="inputRaz" placeholder="labrador.." required>
                             </div>
                             <div class="form-group col-md-12">
                                 <label for="inputSex">Elije el sexo</label>
-                                <select name="sexo" id="inputSex" class="form-control">
+                                <select name="sexo" id="inputSex" class="form-control" required>
                                     <option value="macho" selected>Macho</option>
                                     <option value="hembra">Hembra</option>
                                 </select>
                             </div>
                             <div class="form-group col-md-12">
                                 <label for="inputfecna">fecha nacimiento</label>
-                                <input type="date" name="fecna" class="form-control" id="inputfecna">
+                                <input type="date" name="fecna" class="form-control" id="inputfecna" required>
                             </div>
                         </div>
                         <div class="form-group col-md-12">
                             <label for="inputPeso">peso</label>
-                            <input type="text" name="peso" class="form-control" id="inputPeso"
-                                placeholder="30kilos">
+                            <input type="text" name="peso" class="form-control" id="inputPeso" placeholder="30kilos" required>
                         </div>
                         <div class="form-row">
                         <br />

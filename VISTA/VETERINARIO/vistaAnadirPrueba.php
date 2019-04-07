@@ -81,6 +81,11 @@
                           </div>
 
                           <div class="form-group col-12 col-sm-12 col-md-12  col-lg-12">
+                            <label for="inputObservacion">Observaciones:</label>
+                            <textarea class="form-control" rows="4" cols="100"><?= $prueba['observaciones_prueba']?></textarea>
+                          </div>
+
+                          <div class="form-group col-12 col-sm-12 col-md-12  col-lg-12">
                           <label for="inputObservacion">Observaciones:</label>
                           <textarea name="observaciones" class="form-control" rows="4" cols="100"></textarea>
                     </div>

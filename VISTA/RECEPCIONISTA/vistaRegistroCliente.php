@@ -60,44 +60,42 @@
                         <div class="form-row">
                             <div class="form-group col-12 col-sm-12 col-md-6 col-lg-6">
                                 <label for="inputNombre">Nombre</label>
-                                <input type="text" name="nombre" class="form-control" id="inputNombre" placeholder="Nombre">
+                                <input type="text" name="nombre" class="form-control" id="inputNombre" placeholder="Nombre" required>
                             </div>
                             <div class="form-group col-12 col-sm-12 col-md-6  col-lg-6">
                                 <label for="inputApellidos">Apellidos</label>
-                                <input type="text" name="apellidos" class="form-control" id="inputApellidos" placeholder="Apellidos">
+                                <input type="text" name="apellidos" class="form-control" id="inputApellidos" placeholder="Apellidos" required>
                             </div>
                             <div class="form-group col-12 col-sm-12 col-md-12  col-lg-12">
                                 <label for="inputPassword">Contraseña</label>
-                                <input type="password" name="contrasena" class="form-control" id="inputPassword" placeholder="Contraseña">
+                                <input type="password" name="contrasena" class="form-control" id="inputPassword" placeholder="Contraseña" required>
                             </div>
                             <div class="form-group col-12 col-sm-12 col-md-12  col-lg-12">
                                 <label for="inputPassword2">Repite Contraseña</label>
-                                <input type="password" name="contrasena2" class="form-control" id="inputPassword2"
-                                    placeholder="Repite contraseña">
+                                <input type="password" name="contrasena2" class="form-control" id="inputPassword2" placeholder="Repite contraseña" required>
                             </div>
                             <div class="form-group col-12 col-sm-12 col-md-6 col-lg-6">
                                 <label for="inputDni">DNI</label>
-                                <input type="text" name="dni" class="form-control" id="inputDni" placeholder="492039494E">
+                                <input type="text" name="dni" class="form-control" id="inputDni" placeholder="492039494E" required>
                             </div>
                         </div>
                         <div class="form-group col-12 col-sm-12 col-md-6 col-lg-6">
                             <label for="inputCorreo">Correo</label>
-                            <input type="text" name="correo" class="form-control" id="inputCorreo"
-                                placeholder="ejemplo@ejemplo.ejemplo">
+                            <input type="text" name="correo" class="form-control" id="inputCorreo" placeholder="ejemplo@ejemplo.ejemplo" required>
                         </div>
                         <div class="form-row">
                             <div class="form-group col-12 col-sm-12 col-md-6 col-lg-6">
                                 <label for="inputDireccion">Direccion</label>
-                                <input type="text" name="direccion" class="form-control" id="calle de ejemplo numero 3">
+                                <input type="text" name="direccion" class="form-control" id="calle de ejemplo numero 3" required>
                             </div>
                             <div class="form-group col-12 col-sm-12 col-md-6 col-lg-6">
                                 <label for="inputTelefono">Telefono</label>
-                                <input type="text" name="telefono" class="form-control" id="916652654">
+                                <input type="text" name="telefono" class="form-control" id="916652654" required>
                             </div>
                         </div>
                         <div class="form-group col-12 col-sm-12 col-md-12 col-lg-12">
                             <label for="inputFecha">Fecha de nacimiento</label>
-                            <input type="date" name="fecna" class="form-control" id="fecha">
+                            <input type="date" name="fecna" class="form-control" id="fecha" required>
                         </div>
                         <br />
                         <input type="hidden" name="cliente" value="cliente" id="cliente_id">

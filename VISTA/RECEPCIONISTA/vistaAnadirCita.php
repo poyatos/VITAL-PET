@@ -56,11 +56,11 @@
                         <div class="form-row">
                             <div class="form-group col-12 col-sm-12 col-md-6 col-lg-6">
                                 <label for="inputFecha">Fecha</label>
-                                <input type="date" name="fecha" class="form-control" id="inputFecha">
+                                <input type="date" name="fecha" class="form-control" id="inputFecha" required>
                             </div>
                             <div class="form-group col-12 col-sm-12 col-md-6 col-lg-6">
                             <label for="inputHora">Hora</label>
-                                <select id="inputHora_id" class="form-control">
+                                <select id="inputHora_id" class="form-control" required> 
                                      <option selected>08:00</option>
                                      <option selected>09:00</option>
                                      <option selected>10:00</option>
@@ -78,7 +78,7 @@
                             </div>
                             <div class="form-group col-12 col-sm-12 col-md-12 col-lg-12">
                             <label for="inputPrueba">Sala</label>
-                            <select id="inputSala_id" class="form-control">
+                            <select id="inputSala_id" class="form-control" required>
                                      <option selected>1</option>
                                      <option selected>2</option>
                                      <option selected>3</option>
