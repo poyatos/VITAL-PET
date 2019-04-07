@@ -74,10 +74,15 @@
                                 $conexion = new Model(Config::$host, Config::$user, Config::$pass, Config::$nombreBase);
                                 $resultado = $conexion->visualizarTiposPruebas();
                                 foreach($visualizarTiposPruebas as $tipos){
-                                     echo  "<option value='".$tipos['id_tipo_prueba']."'>".$tipos['nombre_tipo_prueba']."</option>";
+                                     echo "<option value='".$tipos['id_tipo_prueba']."'>".$tipos['nombre_tipo_prueba']."</option>";
                                 }
                           ?>
                           </select>
+                          </div>
+
+                          <div class="form-group col-12 col-sm-12 col-md-12  col-lg-12">
+                            <label for="inputObservacion">Observaciones:</label>
+                            <textarea class="form-control" rows="4" cols="100"><?= $prueba['observaciones_prueba']?></textarea>
                           </div>
 
                           <div class="form-group col-12 col-sm-12 col-md-12  col-lg-12">

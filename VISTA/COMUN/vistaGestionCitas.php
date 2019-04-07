@@ -136,7 +136,7 @@
         <td>".$citas['num_consulta']."</td>");
 
           if($_SESSION['rol'] == 'Veterinario'){
-            echo utf8_encode ('<td>
+            echo ('<td>
 
             <form action="../../CONTROLADOR/controladorVeterinario.php" method="POST"> 
                 <input type="hidden" value="'.$citas['id_cita'].'" name="id_cita">
