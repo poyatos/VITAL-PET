@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Servidor: 127.0.0.1
--- Tiempo de generación: 07-04-2019 a las 11:47:44
+-- Tiempo de generación: 07-04-2019 a las 12:47:58
 -- Versión del servidor: 10.1.32-MariaDB
 -- Versión de PHP: 7.1.17
 
@@ -57,6 +57,33 @@ CREATE TABLE `contratos` (
   `estado_contrato` varchar(50) COLLATE utf8_spanish_ci NOT NULL,
   `id_contratado` int(11) NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8 COLLATE=utf8_spanish_ci;
+
+--
+-- Volcado de datos para la tabla `contratos`
+--
+
+INSERT INTO `contratos` (`id_contrato`, `fecini_contrato`, `fecfin_contrato`, `sueldo_contrato`, `diasvac_contrato`, `horario_contrato`, `estado_contrato`, `id_contratado`) VALUES
+(1, '10/02/2017', '10/09/2019', 1100, 30, 'VESPERTINO', 'ACTIVO', 29),
+(2, '02/05/2015', '10/02/2021', 1200, 31, 'VESPERTINO', 'ACTIVO', 30),
+(3, '11/11/2017', '24/07/2019', 900, 29, 'VESPERTINO', 'ACTIVO', 31),
+(4, '01/05/2015', '15/07/2017', 1050, 29, 'VESPERTINO', 'FINALIZADO', 32),
+(5, '21/03/2013', '09/09/2022', 1200, 31, 'VESPERTINO', 'ACTIVO', 33),
+(6, '21/07/2014', '21/07/2020', 1100, 31, 'VESPERTINO', 'ACTIVO', 33),
+(7, '12/09/2016', '01/02/2021', 1100, 31, 'VESPERTINO', 'ACTIVO', 34),
+(8, '24/03/2019', '24/10/2019', 950, 29, 'VESPERTINO', 'ACTIVO', 35),
+(9, '12/02/2014', '17/06/2026', 1000, 31, 'VESPERTINO', 'ACTIVO', 36),
+(10, '20/09/2018', '20/06/2020', 1001, 29, 'VESPERTINO', 'ACTIVO', 37),
+(11, '11/01/2011', '14/08/2027', 1300, 31, 'VESPERTINO', 'ACTIVO', 38),
+(12, '10/08/2016', '12/09/2021', 1120, 30, 'MATUTINO', 'ACTIVO', 39),
+(13, '02/03/2017', '18/08/2021', 1150, 30, 'MATUTINO', 'ACTIVO', 40),
+(14, '15/01/2010', '25/11/2025', 1320, 31, 'MATUTINO', 'ACTIVO', 41),
+(15, '10/01/2018', '17/12/2019', 950, 28, 'MATUTINO', 'FINALIZADO', 42),
+(16, '16/04/2010', '03/07/2021', 1150, 31, 'MATUTINO', 'ACTIVO', 43),
+(17, '05/05/2016', '06/09/2025', 1150, 31, 'MATUTINO', 'ACTIVO', 44),
+(18, '17/11/2011', '21/12/2027', 1300, 31, 'MATUTINO', 'ACTIVO', 45),
+(19, '15/01/2017', '05/01/2019', 1050, 30, 'MATUTINO', 'FINALIZADO', 46),
+(20, '12/11/2010', '07/07/2028', 1050, 31, 'VESPERTINO', 'ACTIVO', 47),
+(21, '20/11/2012', '12/12/2029', 1050, 31, 'MATUTINO', 'ACTIVO', 48);
 
 -- --------------------------------------------------------
 
@@ -153,8 +180,8 @@ CREATE TABLE `pruebas` (
   `id_prueba` int(11) NOT NULL,
   `id_tipo_prueba` int(11) NOT NULL,
   `id_mascota` int(11) NOT NULL,
-  `resultado_prueba` varchar(2000) COLLATE utf8_spanish_ci DEFAULT NULL,
-  `observaciones_prueba` varchar(2000) COLLATE utf8_spanish_ci NOT NULL,
+  `resultado_prueba` varchar(2000) COLLATE utf8_spanish_ci NOT NULL,
+  `observaciones_prueba` varchar(2000) COLLATE utf8_spanish_ci DEFAULT NULL,
   `id_cita` int(11) NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8 COLLATE=utf8_spanish_ci;
 
@@ -362,7 +389,7 @@ ALTER TABLE `citas`
 -- AUTO_INCREMENT de la tabla `contratos`
 --
 ALTER TABLE `contratos`
-  MODIFY `id_contrato` int(11) NOT NULL AUTO_INCREMENT;
+  MODIFY `id_contrato` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=22;
 
 --
 -- AUTO_INCREMENT de la tabla `mascotas`
