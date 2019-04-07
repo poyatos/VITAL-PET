@@ -8,6 +8,10 @@
       header("Location: ../".$_SESSION['rol']);
     }
   }
+
+  $conexion = new Model(Config::$host, Config::$user, Config::$pass, Config::$nombreBase);
+
+  $empleado = $conexion->visualizarEmpleado($_REQUEST['id_usuario']);
 ?>
 <!DOCTYPE html>
 <html lang="es">
@@ -68,42 +72,39 @@
           <div class="form-row">
             <div class="form-group col-12 col-sm-12 col-md-6 col-lg-6">
               <label for="inputNombre">Nombre</label>
-              <input type="text" name="nombre" class="form-control" id="inputNombre" placeholder="Nombre" required>
+              <input type="text" name="nombre" class="form-control" id="inputNombre" value="<?= $empleado['nombre_usuario']?>" required>
             </div>
             <div class="form-group col-12 col-sm-12 col-md-6 col-lg-6">
               <label for="inputApellidos">Apellidos</label>
-              <input type="text"  name="apellidos" class="form-control" id="inputApellidos" placeholder="Apellidos" required>
+              <input type="text"  name="apellidos" class="form-control" id="inputApellidos" value="<?= $empleado['apellidos_usuario']?>" required>
             </div>
-            <div class="form-group col-12 col-sm-12 col-md-6 col-lg-6">
-              <label for="inputPassword">Contraseña</label>
-              <input type="password"  name="pass"  class="form-control" id="inputPassword" placeholder="Password" required>
-            </div>
+          
             <div class="form-group col-12 col-sm-12 col-md-6 col-lg-6">
               <label for="inputDni">DNI</label>
-              <input type="text"  name="dni"  class="form-control" id="inputDni" placeholder="492039494E" required>
+              <input type="text"  name="dni"  class="form-control" id="inputDni" value="<?= $empleado['dni_usuario']?>" required>
             </div>
           </div>
           <div class="form-group col-12 col-sm-12 col-md-12 col-lg-12">
             <label for="inputCorreo">Correo</label>
-            <input type="text"  name="correo"  class="form-control" id="inputCorreo" placeholder="ejemplo@ejemplo.ejemplo" required>
+            <input type="text"  name="correo"  class="form-control" id="inputCorreo" value="<?= $empleado['correo_usuario']?>" required>
           </div>
           <div class="form-row">
             <div class="form-group col-12 col-sm-12 col-md-6 col-lg-6">
               <label for="inputDireccion">Direccion</label>
-              <input type="text"  name="direccion"  class="form-control" id="calle de ejemplo numero 3" required>
+              <input type="text"  name="direccion"  class="form-control" id="calle de ejemplo numero 3" value="<?= $empleado['direccion_usuario']?>" required>
             </div>
             <div class="form-group col-12 col-sm-12 col-md-6 col-lg-6">
               <label for="inputTelefono">Telefono</label>
-              <input type="text"  name="telefono"  class="form-control" id="916652654" required>
+              <input type="text"  name="telefono"  class="form-control" id="916652654" value="<?= $empleado['telefono_usuario']?>" required>
             </div>
           </div>
           <div class="form-group col-12 col-sm-12 col-md-6 col-lg-6">
             <label for="inputFecha">Fecha</label>
-            <input type="date"  name="fecna"  class="form-control" id="fecha" required>
+            <input type="date"  name="fecna"  class="form-control" id="fecha" value="<?= $empleado['fecna_usuario']?>" required>
           </div>
           </div>
           <!--INPUT HIDDEN DEL ID-->
-          <input type='hidden' name='idUsuario' value='<?= $_POST['id_usuario'] ?>'/>
+          <input type='hidden' name='idUsuario' value="<?= $empleado['id_usuario']?>"/>
           <input type="submit" class="btn btn-lg" name="editarEmpleado" value="Editar empleado"/>
         </form>
       </div>

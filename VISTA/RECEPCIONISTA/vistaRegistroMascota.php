@@ -1,3 +1,17 @@
+<?php
+  session_start();
+
+  if(!isset($_SESSION['usuario']) && !isset($_SESSION['rol'])){
+    header("Location: ../../index.php");
+  } else {
+    if($_SESSION['rol'] != 'Recepcionista'){
+      header("Location: ../".$_SESSION['rol']);
+    }
+  }
+
+
+?>
+
 <!DOCTYPE html>
 <html lang="en">
 
@@ -69,8 +83,10 @@
                             <div class="form-group col-md-12">
                                 <label for="inputSex">Elije el sexo</label>
                                 <select name="sexo" id="inputSex" class="form-control" required>
+                               
                                     <option value="macho" selected>Macho</option>
                                     <option value="hembra">Hembra</option>
+                              
                                 </select>
                             </div>
                             <div class="form-group col-md-12">
@@ -84,7 +100,8 @@
                         </div>
                         <div class="form-row">
                         <br />
-                        <input type="submit" class="btn btn-lg" value="Dar de alta">
+                        <input type ="hidden" name="id_cliente" value = "<?= $_REQUEST['id_cliente'] ?>">
+                        <input type="submit" name ="anadirMascota" class="btn btn-lg" value="Dar de alta">
                     </form>
                 </div>
             </div>

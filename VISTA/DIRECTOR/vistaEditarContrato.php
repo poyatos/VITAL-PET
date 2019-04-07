@@ -8,6 +8,10 @@
       header("Location: ../".$_SESSION['rol']);
     }
   }
+
+  $conexion = new Model(Config::$host, Config::$user, Config::$pass, Config::$nombreBase);
+
+  $contrato = $conexion->visualizarContrato($_REQUEST['id_contratado']);
 ?>
 <!DOCTYPE html>
 <html lang="es">
@@ -67,33 +71,40 @@
           </div>
           <div class="form-group col-md-6">
             <label for="inputFInicio">Fecha Inicio</label>
-            <input type="date"  name="fecini"  class="form-control" id="fecha" required>
+            <input type="date"  name="fecini"  class="form-control" id="fecha" value="<?= $contrato['fecini_contrato']?>" required>
           </div>
           <div class="form-group col-md-6">
             <label for="inputFFin">Fecha Fin</label>
-            <input type="date"  name="fecfin"  class="form-control" id="fecha" required>
+            <input type="date"  name="fecfin"  class="form-control" id="fecha" value="<?= $contrato['fecfin_contrato']?>" required>
           </div>
           <div class="form-group col-md-6">
             <label for="inputSueldo">Sueldo</label>
-            <input type="number"  name="sueldo"  class="form-control" id="1000" required>
+            <input type="number"  name="sueldo"  class="form-control" id="1000" value="<?= $contrato['sueldo_contrato']?>" required>
           </div>
 
           <div class="form-group col-md-6">
             <label for="inputJob">Elije el horario</label>
             <select  name="horario"  id="inputJob" class="form-control" required>
-              <option value="matutino" selected>Vespertino</option>
-              <option value="vespertino">Matutino</option>
+            <?php
+            if($contrato['horario_contrato'] == "Vespertino"){
+             echo " <option value='Vespertino' selected>Vespertino</option>
+              <option value='matutino'>Matutino</option>";
+            }else{
+              echo"<option value='Vespertino'>Vespertino</option>
+              <option value='matutino' selected>Matutino</option>";
+            }
+              ?>
             </select>
           </div>
 
           <div class="form-group col-md-12">
             <label for="inputfevac">Fecha Vacaciones</label>
-            <input type="date"  name="diasvac"  class="form-control" id="fechavac" required>
+            <input type="date"  name="diasvac"  class="form-control" id="fechavac" value="<?= $contrato['diasvac_contrato']?>" required>
           </div>
 
-          <input type="hidden" name="idUsuario" value="<?= $_POST['id_usuario']?>"/>
+          <input type="hidden" name="id_usuario" value="<?= $contrato['id_contratado']?>"/>
 
-          <input type="submit" class="btn btn-lg" value="editarContrato">
+          <input type="submit" name="editarContrato" class="btn btn-lg" value="Editar contrato">
 
 
         </form>
