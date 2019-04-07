@@ -127,24 +127,18 @@
               <td>".$mascota['raza_mascota']."</td>
               <td>".$mascota['peso_mascota']."</td>
               <td>".$mascota['sexo_mascota']."</td><td>");
-              if($_SESSION['rol'] == 'Director'){
-                 echo utf8_encode ('<td>
-                      <form action="../../CONTROLADOR/controladorDirector.php" method="POST"> 
-                        <input type="submit" value="Editar" name="editar">
-                        <input type="submit" value="Borrar" name="borrar">
-                      </form>
-                      </td>');
-              } else if ($_SESSION['rol'] == 'Recepcionista'){
+              if ($_SESSION['rol'] == 'Recepcionista'){
                  echo utf8_encode ('<td>
                       <form action="../../CONTROLADOR/controladorRecepcionista.php" method="POST"> 
-                        <input type="submit" value="Pagar pruebas" name="pagarPruebas">
                         <input type="submit" value="Añadir citas" name="anadirCitas">
                       </form>
                       </td>');
               } else if ($_SESSION['rol'] == 'Veterinario'){
                  echo utf8_encode( '<td>
                       <form action="../../CONTROLADOR/controladorVeterinario.php" method="POST"> 
-                        <input type="submit" value="Borrar" name="borrar">
+                        <input type="hidden" value="'.$mascota['id_mascota'].'" name="id_mascota">
+                        <input type="submit" value="Editar" name="vistaEditarMascota">
+                        <input type="submit" value="Borrar" name="borrarMascota">
                       </form>');
               }
                echo utf8_encode( "</td></tr>");

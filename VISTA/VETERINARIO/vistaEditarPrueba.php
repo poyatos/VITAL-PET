@@ -71,12 +71,12 @@
                   <form class="formulario" action="../../CONTROLADOR/controladorVeterinario.php" method="POST">
                       <!-- Aqui se elige el resultado de la prueba-->
                     <div class="form-group col-6 col-sm-6 col-md-6 col-lg-6">
-                      <label for="inputPrueba">Resultado</label>
-                      <textarea class="form-control" rows="4" cols="100" required><?= $prueba['resultado_prueba']?></textarea>
+                        <label for="inputPrueba">Resultado</label>
+                        <textarea name="resultado" class="form-control" rows="4" cols="100" required><?= $prueba['resultado_prueba']?></textarea>
                     </div> 
                     <div class="form-group col-12 col-sm-12 col-md-12  col-lg-12">
-                            <label for="inputObservacion">Observaciones:</label>
-                            <textarea class="form-control" rows="4" cols="100"><?= $prueba['observaciones_prueba']?></textarea>
+                        <label for="inputObservacion">Observaciones:</label>
+                        <textarea name="observaciones" class="form-control" rows="4" cols="100"><?= $prueba['observaciones_prueba']?></textarea>
                     </div>
                   		<input type="hidden" name="id_prueba" value="<?= $prueba['id_prueba']?>">
                      	<input type="submit" class="btn btn-lg" name="editarPrueba" value="Editar">

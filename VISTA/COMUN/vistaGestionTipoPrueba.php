@@ -120,8 +120,9 @@
                     if($_SESSION['rol'] == 'Veterinario'){
                            echo utf8_encode ('<td>
                           <form action="../../CONTROLADOR/controladorVeterinario.php" method="POST"> 
-                         <input type="submit" value="Editar" name="editarTipoPrueba">
-                         <input type="submit" value="Borrar" name="borrarTipoPrueba">
+                          <input type="hidden" value="'.$tprueba['id_tipo_prueba'].'" name="id_tipo_prueba">
+                          <input type="submit" value="Editar" name="vistaEditarTipoPrueba">
+                          <input type="submit" value="Borrar" name="borrarTipoPrueba">
                           </form>
                           </td>');
                     }

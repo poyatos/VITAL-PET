@@ -198,9 +198,9 @@
         }
 
         //MODIFICAR USUARIO
-        public function modificarUsuario($id, $nombre, $apellidos, $dni, $telefono, $correo, $fecna, $direccion, $rol, $pass){
+        public function modificarUsuario($id, $nombre, $apellidos, $dni, $telefono, $correo, $fecna, $direccion, $rol){
             $consulta = "UPDATE usuarios SET nombre_usuario = '$nombre', apellidos_usuario = '$apellidos', dni_usuario = '$dni', telefono_usuario = $telefono, correo_usuario = '$correo', fecna_usuario = '$fecna', 
-            direccion_usuario = '$direccion', rol_usuario = '$rol', pass_usuario = '$pass' WHERE id_usuario = $id";
+            direccion_usuario = '$direccion', rol_usuario = '$rol' WHERE id_usuario = $id";
             $this->ejecutarConsulta($consulta);
         }
 
@@ -246,6 +246,15 @@
             return $resultado;
         }
 
+        //VISUALIZAR MASCOTA ID
+        public function visualizarMascotaId($id){
+            $consulta = "SELECT * FROM mascotas WHERE id_mascota = '$id' ";
+            $resultadoConsulta = $this->ejecutarConsulta($consulta);
+            $resultado = $resultadoConsulta->get_result();
+            $mascota = $resultado->fetch_array();
+            return $mascota;
+        }
+
         //VISUALIZAR MASCOTAS CLIENTE
         public function visualizarMascotasCliente($id){
             $consulta = "SELECT * FROM mascotas WHERE id_cliente = '$id' ";
@@ -260,7 +269,11 @@
             $this->ejecutarConsulta($consulta);
         }
 
-        //BORRAR MASCOTAS (OPCIONAL)
+        //BORRAR MASCOTAS
+        public function borrarMascota($id){
+            $consulta = "DELETE FROM mascotas WHERE id_mascota = $id";
+            $this->ejecutarConsulta($consulta);
+        }
 
         /* ------------------------------------------------------------- CITAS --------------------------------------------------------------*/
         /* ------------------------------------------------------------------------------------------------------------------------------------*/
@@ -443,6 +456,15 @@
             return $resultado;
         }
 
+        //VISUALIZAR PRUEBA ID
+        public function visualizarTipoPruebaId($id){
+            $consulta = "SELECT * FROM tipos_pruebas WHERE id_tipo_prueba = '$id' ";
+            $resultadoConsulta = $this->ejecutarConsulta($consulta);
+            $resultado = $resultadoConsulta->get_result();
+            $tipoPrueba = $resultado->fetch_array();
+            return $tipoPrueba;
+        }
+
         //MODIFICAR TIPO DE PRUEBA
         public function modificarTipoPrueba($id, $nombre, $precio){
             $consulta = "UPDATE tipos_pruebas SET nombre_tipo_prueba = '$nombre', precio_tipo_prueba = $precio WHERE id_tipo_prueba = $id";
@@ -451,7 +473,11 @@
 
         //DESACTIVAR TIPO DE PRUEBA (OPCIONAL)
 
-        //BORRAR TIPO DE PRUEBA (OPCIONAL)
+        //BORRAR TIPO DE PRUEBA
+        public function borrarTipoPrueba($id){
+            $consulta = "DELETE FROM tipos_pruebas WHERE id_tipo_prueba = $id";
+            $this->ejecutarConsulta($consulta);
+        }
 
         /* ----------------------------------------------------------- CONTRATOS --------------------------------------------------------------*/
         /* ------------------------------------------------------------------------------------------------------------------------------------*/

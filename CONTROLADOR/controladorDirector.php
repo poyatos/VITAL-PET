@@ -38,13 +38,13 @@ if ($_POST) {
 
     /*---------CONTROLADOR EDITAR EMPLEADO-------*/
     if (isset($_POST['editarEmpleado'])) {
-        $conexion->modificarUsuario($_POST['idUsuario'], $_POST['nombre'], $_POST['apellidos'], $_POST['dni'], $_POST['telefono'], $_POST['correo'], $_POST['fecna'], $_POST['direccion'], $_POST['profesion'], $_POST['pass']);
+        $conexion->modificarUsuario($_POST['idUsuario'], $_POST['nombre'], $_POST['apellidos'], $_POST['dni'], $_POST['telefono'], $_POST['correo'], $_POST['fecna'], $_POST['direccion'], $_POST['profesion']);
         header("Location: ../VISTA/DIRECTOR/vistaGestionEmpleados.php");
     }
 
     /*---------CONTROLADOR EDITAR CONTRATO-------*/
     if (isset($_POST['editarContrato'])) {
-        $conexion->editarContrato($_POST['idUsuario'], $_POST['fecini'], $_POST['fecfin'], $_POST['sueldo'], $_POST['diasvac'], $_POST['horario'], 'Activo', $idContratado);
+        $conexion->modificarContrato($_POST['id_contratado'], $_POST['fecini'], $_POST['fecfin'], $_POST['sueldo'], $_POST['diasvac'], $_POST['horario'], $_POST['estado']);
         header("Location: ../VISTA/DIRECTOR/vistaGestionEmpleados.php");
     }
 } else {
