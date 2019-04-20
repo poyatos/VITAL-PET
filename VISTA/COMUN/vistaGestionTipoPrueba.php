@@ -112,13 +112,13 @@
             
             $resultadoPaginacion = $conexion->visualizarTipoPruebaPaginacion($inicio, $tamano_pagina);
             foreach($resultadoPaginacion as $tprueba){
-                   echo utf8_encode(" <tr>
+                   echo utf8_encode (" <tr>
                   <td>".$tprueba['id_tipo_prueba']."</td>
                   <td>".$tprueba['nombre_tipo_prueba']."</td>
-                  <td>".$tprueba['precio_tipo_prueba']." €</td>");
+                  <td>".$tprueba['precio_tipo_prueba']." &euro;</td>");
 
                     if($_SESSION['rol'] == 'Veterinario'){
-                           echo utf8_encode ('<td>
+                           echo ('<td>
                           <form action="../../CONTROLADOR/controladorVeterinario.php" method="POST"> 
                           <input type="hidden" value="'.$tprueba['id_tipo_prueba'].'" name="id_tipo_prueba">
                           <input type="submit" value="Editar" name="vistaEditarTipoPrueba">
