@@ -99,9 +99,10 @@
                             </div>
                         <div class="form-row">   
                         <br/>
-                        <input type="hidden" name="dni" value="dni" id="dni_id">
-                        <input type="hidden" name="id_mascota" value="id_mascota" id="id_mascota_id">
-                        <input type="submit"  class="btn btn-lg" value="Añadir cita">
+                        <!--EN LOS INPUT HIDDEN DEBEN RELLENARSE LOS VALUES CON LOS VALORES DEL CLIENTE Y LA MASCOTA -->
+                        <input type="hidden" name="id_cliente" value="<?= $_REQUEST['id_cliente'] ?>" id="dni_id">
+                        <input type="hidden" name="id_mascota" value="<?= $_REQUEST['id_mascota'] ?>" id="id_mascota_id">
+                        <input type="submit"  class="btn btn-lg" name="anadirCita" value="Añadir cita">
                     </form>
                 </div>
             </div>

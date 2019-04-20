@@ -23,6 +23,9 @@ if ($_POST) {
     } elseif (isset($_POST['despedirContrato'])) {
         $conexion->finalizarContrato($_POST['idUsuario']);
         header("Location: ../VISTA/DIRECTOR/vistaGestionEmpleados.php");
+    } elseif (isset($_POST['renovarContrato'])) {
+        $conexion->renovarContrato($_POST['idUsuario']);
+        header("Location: ../VISTA/DIRECTOR/vistaGestionEmpleados.php");
     } elseif (isset($_POST['vistaEditarEmpleado'])) {
         header("Location: ../VISTA/DIRECTOR/vistaEditarEmpleado.php?idUsuario=".$_POST['idUsuario']);
     }

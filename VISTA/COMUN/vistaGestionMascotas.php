@@ -88,7 +88,11 @@
         <th>Raza</th>
         <th>Peso (Kg)</th>
         <th>Sexo</th>
-        <th>Editar</th>
+        <?php
+          if ($_SESSION['rol'] == 'Recepcionista'){
+          echo utf8_encode("<th>Editar</th>");
+          }
+        ?>
       </tr>
     </thead>
     <tbody id="myTable">
@@ -122,11 +126,11 @@
                echo utf8_encode ("<tr>
               <td>".$mascota['id_mascota']."</td>
               <td>".$mascota['nombre_mascota']."</td>
-              <td>".$mascota['dni_cliente']."</td>
+              <td>".$mascota['id_cliente']."</td>
               <td>".$mascota['tipo_mascota']."</td>
               <td>".$mascota['raza_mascota']."</td>
               <td>".$mascota['peso_mascota']."</td>
-              <td>".$mascota['sexo_mascota']."</td><td>");
+              <td>".$mascota['sexo_mascota']."</td>");
               if ($_SESSION['rol'] == 'Recepcionista'){
                  echo utf8_encode ('<td>
                       <form action="../../CONTROLADOR/controladorRecepcionista.php" method="POST"> 
@@ -139,9 +143,10 @@
                         <input type="hidden" value="'.$mascota['id_mascota'].'" name="id_mascota">
                         <input type="submit" value="Editar" name="vistaEditarMascota">
                         <input type="submit" value="Borrar" name="borrarMascota">
-                      </form>');
+                      </form>
+                      </td>');
               }
-               echo utf8_encode( "</td></tr>");
+               echo utf8_encode( "</tr>");
             }
         
       ?>

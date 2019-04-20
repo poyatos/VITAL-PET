@@ -1,4 +1,7 @@
 <?php
+  require_once '../../BBDD/model.php';
+  require_once '../../BBDD/config.php';
+
   session_start();
 
   if(!isset($_SESSION['usuario']) && !isset($_SESSION['rol'])){
@@ -11,7 +14,7 @@
 
   $conexion = new Model(Config::$host, Config::$user, Config::$pass, Config::$nombreBase);
 
-  $empleado = $conexion->visualizarEmpleado($_REQUEST['id_usuario']);
+  $empleado = $conexion->visualizarUsuarioId($_REQUEST['idUsuario']);
 ?>
 <!DOCTYPE html>
 <html lang="es">

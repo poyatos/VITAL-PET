@@ -109,8 +109,7 @@
                             <input type="date" name="fecna" class="form-control" id="fecha" required>
                         </div>
                         <br />
-                        <input type="hidden" name="cliente" value="cliente" id="cliente_id">
-                        <input type="submit"  class="btn btn-lg" value="Dar de alta">
+                        <input type="submit"  class="btn btn-lg" name="anadirCliente" value="Dar de alta">
                     </form>
                 </div>
             </div>

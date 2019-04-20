@@ -100,7 +100,7 @@
         <th>DNI</th>
         <th>Telefono</th>
         <th>Profesión</th>
-        <th>Fecha fin de contrato</th>
+        <th>Estado contrato</th>
         <th>Editar</th>
       </tr>
     </thead>
@@ -133,8 +133,7 @@
             $resultadoPaginacion = $conexion->visualizarEmpleadosPaginacion($inicio, $tamano_pagina);
             foreach($resultadoPaginacion as $empleado){
 
-              //PENDIENTE DE SACAR FECHA DE FIN DE CONTRATO
-              //$contrato = $conexion->visualizarContratoId($empleado['id_usuario'])->get_result()->fetch_array();
+              $contrato = $conexion->visualizarContratoId($empleado['id_usuario']);
                echo utf8_encode ("<tr>
               <td>".$empleado['id_usuario']."</td>
               <td>".$empleado['nombre_usuario']."</td>
@@ -142,15 +141,19 @@
               <td>".$empleado['dni_usuario']."</td>
               <td>".$empleado['telefono_usuario']."</td>
               <td>".$empleado['rol_usuario']."</td>
-              <td>PENDIENTE</td>
+              <td>".$contrato['estado_contrato']."</td>
               <td>
               <form action='../../CONTROLADOR/controladorDirector.php' method='post'>
               
               <input type='hidden' name='idUsuario' value='".$empleado["id_usuario"]."'/>
 
-              <input type='submit' class='btn' name='vistaEditarContrato' value='Editar contrato'/>
-              <input type='submit' class='btn' name='despedirContrato'value='Despedir'/>
-              <input type='submit' class='btn' name='vistaEditarEmpleado' value='Editar'/>
+              <input type='submit' class='btn' name='vistaEditarContrato' value='Editar contrato'/>");
+              if($contrato['estado_contrato'] != 'Finalizado'){
+                echo utf8_encode("<input type='submit' class='btn' name='despedirContrato' value='Despedir'/>");
+              } else {
+                echo utf8_encode("<input type='submit' class='btn' name='renovarContrato' value='Renovar'/>");
+              }
+              echo utf8_encode("<input type='submit' class='btn' name='vistaEditarEmpleado' value='Editar'/>
               </form>
               </td>
             </tr>");

@@ -118,6 +118,15 @@
             return $usuario;
         }
 
+        //VISUALIZAR USUARIO POR ID
+        public function visualizarUsuarioId($id){
+            $consulta = "SELECT * FROM usuarios WHERE id_usuario = $id ";
+            $resultadoConsulta = $this->ejecutarConsulta($consulta);
+            $resultado = $resultadoConsulta->get_result();
+            $usuario = $resultado->fetch_array();
+            return $usuario;
+        }
+
         //VISUALIZAR CLIENTES
         public function visualizarClientes(){
             $consulta = "SELECT id_usuario, nombre_usuario, apellidos_usuario, dni_usuario, telefono_usuario, correo_usuario, fecna_usuario, 
@@ -284,7 +293,7 @@
 
 
         //REGISTRAR CITAS
-        public function registrarCita($fecha, $hora, $consulta, $id_mascota, $id_cliente){
+        public function anadirCita($fecha, $hora, $consulta, $id_mascota, $id_cliente){
             $consulta = "SELECT * FROM citas WHERE fecha_cita = '$fecha' AND hora_cita = '$hora'";
 
             if ($this->existeFila($consulta)) {
@@ -517,8 +526,10 @@
         //VISUALIZAR CONTRATO ID
         public function visualizarContratoId($id){
             $consulta = "SELECT * FROM contratos WHERE id_contratado = $id ";
-            $resultado = $this->ejecutarConsulta($consulta);
-            return $resultado;
+            $resultadoConsulta = $this->ejecutarConsulta($consulta);
+            $resultado = $resultadoConsulta->get_result();
+            $contrato = $resultado->fetch_array();
+            return $contrato;
         }
 
         //MODIFICAR CONTRATO

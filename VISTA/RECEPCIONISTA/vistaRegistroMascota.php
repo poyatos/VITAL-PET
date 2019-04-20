@@ -90,12 +90,12 @@
                                 </select>
                             </div>
                             <div class="form-group col-md-12">
-                                <label for="inputfecna">fecha nacimiento</label>
+                                <label for="inputfecna">Fecha nacimiento</label>
                                 <input type="date" name="fecna" class="form-control" id="inputfecna" required>
                             </div>
                         </div>
                         <div class="form-group col-md-12">
-                            <label for="inputPeso">peso</label>
+                            <label for="inputPeso">Peso</label>
                             <input type="text" name="peso" class="form-control" id="inputPeso" placeholder="30kilos" required>
                         </div>
                         <div class="form-row">
