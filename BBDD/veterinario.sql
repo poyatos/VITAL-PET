@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Servidor: 127.0.0.1
--- Tiempo de generación: 07-04-2019 a las 13:43:34
+-- Tiempo de generación: 20-04-2019 a las 19:27:51
 -- Versión del servidor: 10.1.32-MariaDB
 -- Versión de PHP: 7.1.17
 
@@ -167,7 +167,8 @@ CREATE TABLE `pagos` (
   `id_pago` int(11) NOT NULL,
   `id_cliente` int(11) NOT NULL,
   `total_precio` float NOT NULL,
-  `fecha_pago` varchar(10) COLLATE utf8_spanish_ci NOT NULL
+  `fecha_pago` varchar(10) COLLATE utf8_spanish_ci NOT NULL,
+  `id_cita` int(11) NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8 COLLATE=utf8_spanish_ci;
 
 -- --------------------------------------------------------

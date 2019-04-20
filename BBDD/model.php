@@ -547,6 +547,15 @@
 
         /* ------------------------------------------------------------- PAGOS --------------------------------------------------------------*/
 
+        public function visualizarPagos($id){
+            $consulta = "SELECT tipos_pruebas.nombre_tipo_prueba, tipos_pruebas.precio_tipo_prueba
+            FROM tipos_pruebas
+            INNER JOIN pruebas
+            WHERE pruebas.id_cita = $id ";
+            $resultado = $this->devolverConsultaArray($consulta);
+            return $resultado;
+        }
+
         /* ------------------------------------------------------ CONSULTAS (OPCIONAL) ---------------------------------------------------------*/
     }
 ?>
