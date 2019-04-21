@@ -146,7 +146,7 @@
               if($contrato['estado_contrato'] != 'Finalizado'){
                 echo utf8_encode("<form action='vistaEditarContrato.php' method='POST'>       
                 <input type='hidden' name='id_usuario' value='".$empleado["id_usuario"]."'/>
-                <input type='submit' class='btn' value='Editar contrato'/>
+                <input type='submit' class='btn' name='editarContrato' value='Editar contrato'/>
               </form>
               <form action='../../CONTROLADOR/controladorDirector.php' method='POST'>
                 <input type='hidden' name='id_usuario' value='".$empleado["id_usuario"]."'/><input type='submit' class='btn' name='despedirContrato' value='Despedir'/>");

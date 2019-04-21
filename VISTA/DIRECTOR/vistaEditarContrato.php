@@ -65,7 +65,17 @@
         <div class="row">
             <div class="panel panel-default">
             <div class="panel-heading">
-                  <h2>EDITAR CONTRATO</h2>
+              <?php
+              if(isset($_POST['editarContrato'])){
+
+                 echo" <h2>EDITAR CONTRATO</h2>";
+
+                }else{
+
+                  echo"<h2>RENOVAR CONTRATO</h2>";
+                  
+                }
+                ?>
             </div>
             <form class="formulario" action='../../CONTROLADOR/controladorDirector.php' method='post'>
               <div class="form-row">
