@@ -62,17 +62,16 @@
 
     <!-- CONTENIDO-->
     <div class="logotipo col-12 col-sm-7 col-md-7 col-lg-7 text-left">
+        <div class="row">
+            <div class="panel panel-default">
+            <div class="panel-heading">
+                  <h2>EDITAR CONTRATO</h2>
+            </div>
+            <form class="formulario" action='../../CONTROLADOR/controladorDirector.php' method='post'>
+              <div class="form-row">
 
-      <div class="panel panel-default">
-        <div class="panel-heading">
-          <h2>CONTRATO</h2>
-        </div>
-        <form class="formulario" action="../../CONTROLADOR/controladorDirector.php" method="POST">
-          <div class="form-row">
-          <div class="form-group col-md-12">
-            <h3>EDITAR CONTRATO</h3>
-          </div>
-          <div class="form-group col-md-6">
+
+                <div class="form-group col-12 col-sm-12 col-md-6 col-lg-6">
             <label for="inputFInicio">Fecha Inicio</label>
             <input type="date"  name="fecini"  class="form-control" id="fecha" value="<?= $contrato['fecini_contrato']?>" required>
           </div>
@@ -109,10 +108,12 @@
 
           <input type="submit" name="editarContrato" class="btn btn-lg" value="Editar contrato">
 
-
-        </form>
+          </div>
+          </form>
+        </div>
       </div>
     </div>
+
   </div>
 
 </body>
