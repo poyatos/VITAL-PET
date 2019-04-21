@@ -13,7 +13,7 @@
 
   $conexion = new Model(Config::$host, Config::$user, Config::$pass, Config::$nombreBase);
 
-  $mascota = $conexion->visualizarMascota($_REQUEST['id_mascota']);
+  $mascota = $conexion->visualizarMascotaId($_REQUEST['id_mascota']);
 ?>
 <!DOCTYPE html>
 <html lang="en">
@@ -51,7 +51,7 @@
   <!-- MENU LATERAL -->
       <div class="col-12 col-sm-5 col-md-4  col-lg-4">
       <?php
-      include "../../INCLUDE/menuRec.inc"
+      include "../../INCLUDE/menuVet.inc"
        ?>
       </div>
 
