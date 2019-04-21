@@ -8,6 +8,7 @@ var dni = document.getElementById("dni")
 var numero
 var letra
 var expresion_regular_dni = /^[XYZ]?\d{5,8}[A-Z]$/;
+var exprexion_regunar_2 = /(([X-Z]{1})([-]?)(\d{7})([-]?)([A-Z]{1}))|((\d{8})([-]?)([A-Z]{1}))/;
 //validacion DNI
 
 //validacion PASS
