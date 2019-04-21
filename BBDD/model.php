@@ -293,14 +293,14 @@
 
 
         //REGISTRAR CITAS
-        public function anadirCita($fecha, $hora, $consulta, $id_mascota, $id_cliente){
+        public function anadirCita($fecha, $hora, $consulta, $id_mascota, $id_cliente, $id_veterinario){
             $consulta = "SELECT * FROM citas WHERE fecha_cita = '$fecha' AND hora_cita = '$hora'";
 
             if ($this->existeFila($consulta)) {
                  echo "<br/><h2>La cita ya existe.</h2><br />";
             } else {
-                $sql = "INSERT INTO citas (fecha_cita, hora_cita, estado_cita, num_consulta, id_mascota, id_cliente)
-                VALUES ('$fecha', '$hora', 'Pendiente', $consulta, $id_mascota, '$id_cliente')";
+                $sql = "INSERT INTO citas (fecha_cita, hora_cita, estado_cita, num_consulta, id_mascota, id_cliente, id_veterinario)
+                VALUES ('$fecha', '$hora', 'Pendiente', $consulta, $id_mascota, $id_cliente, $id_veterinario)";
 
                 if ($this->ejecutarConsulta($sql)) {
                      echo "<br/><h2>Cita registrada correctamente.</h2>";
@@ -340,9 +340,8 @@
         }
 
         //MODIFICAR CITA
-        public function modificarCita($id, $fecha, $hora, $estado, $consulta, $id_mascota, $id_cliente, $id_veterinario){
-            $consulta = "UPDATE citas SET fecha_cita = '$fecha', hora_cita = '$hora', estado = '$estado', num_consulta = $consulta, 
-            id_mascota = $id_mascota, id_cliente = $id_cliente, id_veterinario = $id_veterinario WHERE id_cita = $id";
+        public function modificarCita($id, $fecha, $hora, $consulta){
+            $consulta = "UPDATE citas SET fecha_cita = '$fecha', hora_cita = '$hora', num_consulta = $consulta WHERE id_cita = $id";
             $this->ejecutarConsulta($consulta);
         }
 

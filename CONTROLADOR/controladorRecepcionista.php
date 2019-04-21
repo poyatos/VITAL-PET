@@ -17,17 +17,38 @@
     if($_POST){
         /*---------CONTROLADOR VISTA AÑADIR CITA-------*/
         if(isset($_POST['anadirCita'])){
-            $conexion->anadirCita($_POST['fecha'], $_POST['hora'], $_POST['consulta'], $_POST['id_mascota'], $_POST['id_cliente']);
+            $conexion->anadirCita($_POST['fecha'], $_POST['hora'], $_POST['consulta'], $_POST['id_mascota'], $_POST['id_cliente'], $_POST['id_veterinario']);
+            header("Location: ../VISTA/VETERINARIO/vistaGestionMascotas.php");
+        }
+
+        /*---------CONTROLADOR VISTA EDITAR CITA-------*/  
+        elseif(isset($_POST['editarCita'])){
+            $conexion->modificarCita($_POST['id_cita'], $_POST['fecha'], $_POST['hora'], $_POST['consulta']);
+            header("Location: ../VISTA/VETERINARIO/vistaGestionCitas.php");
+        }      
+
+        /*---------CONTROLADOR VISTA GESTION CITAS-------*/
+        elseif(isset($_POST['borrarCita'])){
+            $conexion->borrarCita($_POST['fecha'], $_POST['hora'], $_POST['consulta'], $_POST['id_mascota'], $_POST['id_cliente']);
+            header("Location: ../VISTA/VETERINARIO/vistaGestionCitas.php");
+        } elseif(isset($_POST['finalizarCita'])){
+            $conexion->finalizarCita($_POST['fecha'], $_POST['hora'], $_POST['consulta'], $_POST['id_mascota'], $_POST['id_cliente']);
+            header("Location: ../VISTA/VETERINARIO/vistaGestionCitas.php");
         }
 
         /*---------CONTROLADOR VISTA AÑADIR CLIENTE-------*/
-        if(isset($_POST['anadirCliente'])){
+        elseif(isset($_POST['anadirCliente'])){
             $conexion->registrarUsuario($_POST['nombre'], $_POST['apellidos'], $_POST['dni'], $_POST['telefono'], $_POST['correo'], $_POST['fecna'], $_POST['direccion'], 'Cliente', $_POST['pass']);
+            header("Location: ../VISTA/VETERINARIO/vistaRegistroCliente.php");
         }
 
         /*---------CONTROLADOR VISTA AÑADIR MASCOTA-------*/
-        if(isset($_POST['anadirMascota'])){
+        elseif(isset($_POST['anadirMascota'])){
             $conexion->registrarMascota($_POST['id_cliente'], $_POST['nombre'], $_POST['tipo'], $_POST['raza'], $_POST['sexo'], $_POST['fecna'], $_POST['peso']);
+            header("Location: ../VISTA/VETERINARIO/vistaRegistroMascota.php");
         }
+
+        /*---------PENDIENTE-------*/
+        /*---------CONTROLAR FUNCIONES DE VISTA DE GESTION DE CLIENTES, MASCOTAS, PRUEBAS Y TIPOS DE PRUEBAS-------*/
     }
 ?>
