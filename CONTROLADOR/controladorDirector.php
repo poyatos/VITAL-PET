@@ -18,20 +18,18 @@ $conexion = new Model (Config::$host, Config::$user, Config::$pass, Config::$nom
 if ($_POST) {
     /*---------CONTROLADOR VISTA GESTION EMPLEADOS-------*/
 
-    if (isset($_POST['vistaEditarContrato'])) {
-        header("Location: ../VISTA/DIRECTOR/vistaEditarContrato.php?idUsuario=".$_POST['idUsuario']);
-    } elseif (isset($_POST['despedirContrato'])) {
-        $conexion->finalizarContrato($_POST['idUsuario']);
+    if (isset($_POST['despedirContrato'])) {
+        $conexion->finalizarContrato($_POST['id_usuario']);
         header("Location: ../VISTA/DIRECTOR/vistaGestionEmpleados.php");
-    } elseif (isset($_POST['renovarContrato'])) {
-        $conexion->renovarContrato($_POST['idUsuario']);
+    } 
+    /* PENDIENTE */
+    /*elseif (isset($_POST['renovarContrato'])) {
+        $conexion->renovarContrato($_POST['id_usuario']);
         header("Location: ../VISTA/DIRECTOR/vistaGestionEmpleados.php");
-    } elseif (isset($_POST['vistaEditarEmpleado'])) {
-        header("Location: ../VISTA/DIRECTOR/vistaEditarEmpleado.php?idUsuario=".$_POST['idUsuario']);
-    }
+    }*/
 
     /*---------CONTROLADOR CONTRATAR-------*/
-    if (isset($_POST['contratar'])) {
+    elseif (isset($_POST['contratar'])) {
         $conexion->registrarUsuario($_POST['nombre'], $_POST['apellidos'], $_POST['dni'], $_POST['telefono'], $_POST['correo'], $_POST['fecna'], $_POST['direccion'], $_POST['profesion'], $_POST['pass']);
         $empleadoContratado = $conexion->visualizarUsuarioDni($_POST['dni']);
         $idContratado = $empleadoContratado['id_usuario'];
@@ -40,15 +38,17 @@ if ($_POST) {
     }
 
     /*---------CONTROLADOR EDITAR EMPLEADO-------*/
-    if (isset($_POST['editarEmpleado'])) {
-        $conexion->modificarUsuario($_POST['idUsuario'], $_POST['nombre'], $_POST['apellidos'], $_POST['dni'], $_POST['telefono'], $_POST['correo'], $_POST['fecna'], $_POST['direccion'], $_POST['profesion']);
+    elseif (isset($_POST['editarEmpleado'])) {
+        $conexion->modificarUsuario($_POST['id_usuario'], $_POST['nombre'], $_POST['apellidos'], $_POST['dni'], $_POST['telefono'], $_POST['correo'], $_POST['fecna'], $_POST['direccion'], $_POST['profesion']);
         header("Location: ../VISTA/DIRECTOR/vistaGestionEmpleados.php");
     }
 
     /*---------CONTROLADOR EDITAR CONTRATO-------*/
-    if (isset($_POST['editarContrato'])) {
-        $conexion->modificarContrato($_POST['id_contratado'], $_POST['fecini'], $_POST['fecfin'], $_POST['sueldo'], $_POST['diasvac'], $_POST['horario'], $_POST['estado']);
+    elseif (isset($_POST['editarContrato'])) {
+        $conexion->modificarContrato($_POST['id_contratado'], $_POST['fecini'], $_POST['fecfin'], $_POST['sueldo'], $_POST['diasvac'], $_POST['horario']);
         header("Location: ../VISTA/DIRECTOR/vistaGestionEmpleados.php");
+    } else {
+        ("Location: ../VISTA/DIRECTOR");
     }
 } else {
     header("Location: ../VISTA/DIRECTOR");

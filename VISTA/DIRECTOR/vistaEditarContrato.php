@@ -14,7 +14,7 @@
 
   $conexion = new Model(Config::$host, Config::$user, Config::$pass, Config::$nombreBase);
 
-  $contrato = $conexion->visualizarContratoId($_REQUEST['idUsuario']);
+  $contrato = $conexion->visualizarContratoId($_POST['id_usuario']);
 ?>
 <!DOCTYPE html>
 <html lang="es">
@@ -86,7 +86,7 @@
           </div>
 
           <div class="form-group col-md-6">
-            <label for="inputJob">Elije el horario</label>
+            <label for="inputJob">Elige el horario</label>
             <select  name="horario"  id="inputJob" class="form-control" required>
             <?php
             if($contrato['horario_contrato'] == "Vespertino"){
@@ -101,11 +101,11 @@
           </div>
 
           <div class="form-group col-md-12">
-            <label for="inputfevac">Fecha Vacaciones</label>
-            <input type="date"  name="diasvac"  class="form-control" id="fechavac" value="<?= $contrato['diasvac_contrato']?>" required>
+            <label for="inputfevac">Dias de vacaciones</label>
+            <input type="number"  name="diasvac"  class="form-control" id="fechavac" value="<?= $contrato['diasvac_contrato']?>" required>
           </div>
 
-          <input type="hidden" name="id_usuario" value="<?= $contrato['id_contratado']?>"/>
+          <input type="hidden" name="id_contratado" value="<?= $contrato['id_contratado']?>"/>
 
           <input type="submit" name="editarContrato" class="btn btn-lg" value="Editar contrato">
 

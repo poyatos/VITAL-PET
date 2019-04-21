@@ -143,17 +143,21 @@
               <td>".$empleado['rol_usuario']."</td>
               <td>".$contrato['estado_contrato']."</td>
               <td>
-              <form action='../../CONTROLADOR/controladorDirector.php' method='post'>
-              
-              <input type='hidden' name='idUsuario' value='".$empleado["id_usuario"]."'/>
-
-              <input type='submit' class='btn' name='vistaEditarContrato' value='Editar contrato'/>");
+              <form action='vistaEditarContrato.php' method='POST'>       
+                <input type='hidden' name='id_usuario' value='".$empleado["id_usuario"]."'/>
+                <input type='submit' class='btn' name='vistaEditarContrato' value='Editar contrato'/>
+              </form>
+              <form action='../../CONTROLADOR/controladorDirector.php' method='POST'>
+                <input type='hidden' name='id_usuario' value='".$empleado["id_usuario"]."'/>");
               if($contrato['estado_contrato'] != 'Finalizado'){
                 echo utf8_encode("<input type='submit' class='btn' name='despedirContrato' value='Despedir'/>");
               } else {
                 echo utf8_encode("<input type='submit' class='btn' name='renovarContrato' value='Renovar'/>");
               }
-              echo utf8_encode("<input type='submit' class='btn' name='vistaEditarEmpleado' value='Editar'/>
+              echo utf8_encode("</form>
+              <form action='vistaEditarEmpleado.php' method='POST'>
+                <input type='hidden' name='id_usuario' value='".$empleado["id_usuario"]."'/>
+                <input type='submit' class='btn' name='vistaEditarEmpleado' value='Editar'/>
               </form>
               </td>
             </tr>");

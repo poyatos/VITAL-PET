@@ -89,7 +89,7 @@
         <th>Peso (Kg)</th>
         <th>Sexo</th>
         <?php
-          if ($_SESSION['rol'] == 'Recepcionista'){
+          if ($_SESSION['rol'] == 'Recepcionista' || $_SESSION['rol'] == 'Veterinario'){
           echo utf8_encode("<th>Editar</th>");
           }
         ?>
