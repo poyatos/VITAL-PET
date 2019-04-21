@@ -64,55 +64,59 @@
 
     <!--FALTA MOSTRAR SEGUN LA SELECCION DEL CONTROLADOR_DIRECTOR-->
     <div class="logotipo col-12 col-sm-7 col-md-7 col-lg-7 text-left">
-      <div class="row">
-      <div class="panel panel-default">
-        <div class="panel-heading">
-          <h2>CONTRATAR</h2>
-        </div>
-        <form class="formulario" action="../../CONTROLADOR/controladorDirector.php" method="POST">
-          <div class="form-group col-12 col-sm-12 col-md-12 col-lg-12">
+        <div class="row">
+                <div class="panel panel-default">
+                    <div class="panel-heading">
+                        <h2>EDITAR EMPLEADO</h2>
+                    </div>
+                    <form class="formulario" action='../../CONTROLADOR/controladorDirector.php' method='post'>
+                        <div class="form-row">
+
+                              <div class="form-group col-12 col-sm-12 col-md-6 col-lg-6">
+                                <label for="inputNombre">Nombre</label>
+                                <input type="text" name="nombre" class="form-control" id="inputNombre" value="<?= $empleado['nombre_usuario']?>" required>
+                              </div>
+
+                              <div class="form-group col-12 col-sm-12 col-md-6 col-lg-6">
+                                <label for="inputApellidos">Apellidos</label>
+                                <input type="text"  name="apellidos" class="form-control" id="inputApellidos" value="<?= $empleado['apellidos_usuario']?>" required>
+                              </div>
+                            
+                              <div class="form-group col-12 col-sm-12 col-md-6 col-lg-6">
+                                <label for="inputDni">DNI</label>
+                                <input type="text"  name="dni"  class="form-control" id="inputDni" value="<?= $empleado['dni_usuario']?>" required>
+                              </div>
+                           
+
+                            <div class="form-group col-12 col-sm-12 col-md-6 col-lg-6">
+                              <label for="inputCorreo">Correo</label>
+                              <input type="text"  name="correo"  class="form-control" id="inputCorreo" value="<?= $empleado['correo_usuario']?>" required>
+                            </div>
+                            <div class="form-row">
+                              <div class="form-group col-12 col-sm-12 col-md-6 col-lg-6">
+                                <label for="inputDireccion">Direccion</label>
+                                <input type="text"  name="direccion"  class="form-control" id="calle de ejemplo numero 3" value="<?= $empleado['direccion_usuario']?>" required>
+                              </div>
+                              <div class="form-group col-12 col-sm-12 col-md-6 col-lg-6">
+                                <label for="inputTelefono">Telefono</label>
+                                <input type="text"  name="telefono"  class="form-control" id="916652654" value="<?= $empleado['telefono_usuario']?>" required>
+                              </div>
+                            </div>
+                            <div class="form-group col-12 col-sm-12 col-md-6 col-lg-6">
+                              <label for="inputFecha">Fecha</label>
+                              <input type="date"  name="fecna"  class="form-control" id="fecha" value="<?= $empleado['fecna_usuario']?>" required>
+                            </div>
+                            </div>
+                            <!--INPUT HIDDEN DEL ID-->
+                            <input type='hidden' name='id_usuario' value="<?= $empleado['id_usuario']?>"/>
+                            <input type="submit" class="btn btn-lg" name="editarEmpleado" value="Editar empleado"/>
+
+                          </div>
+                      </form>
+                  </div>
           </div>
-          <div class="form-row">
-            <div class="form-group col-12 col-sm-12 col-md-6 col-lg-6">
-              <label for="inputNombre">Nombre</label>
-              <input type="text" name="nombre" class="form-control" id="inputNombre" value="<?= $empleado['nombre_usuario']?>" required>
-            </div>
-            <div class="form-group col-12 col-sm-12 col-md-6 col-lg-6">
-              <label for="inputApellidos">Apellidos</label>
-              <input type="text"  name="apellidos" class="form-control" id="inputApellidos" value="<?= $empleado['apellidos_usuario']?>" required>
-            </div>
-          
-            <div class="form-group col-12 col-sm-12 col-md-6 col-lg-6">
-              <label for="inputDni">DNI</label>
-              <input type="text"  name="dni"  class="form-control" id="inputDni" value="<?= $empleado['dni_usuario']?>" required>
-            </div>
-          </div>
-          <div class="form-group col-12 col-sm-12 col-md-6 col-lg-6">
-            <label for="inputCorreo">Correo</label>
-            <input type="text"  name="correo"  class="form-control" id="inputCorreo" value="<?= $empleado['correo_usuario']?>" required>
-          </div>
-          <div class="form-row">
-            <div class="form-group col-12 col-sm-12 col-md-6 col-lg-6">
-              <label for="inputDireccion">Direccion</label>
-              <input type="text"  name="direccion"  class="form-control" id="calle de ejemplo numero 3" value="<?= $empleado['direccion_usuario']?>" required>
-            </div>
-            <div class="form-group col-12 col-sm-12 col-md-6 col-lg-6">
-              <label for="inputTelefono">Telefono</label>
-              <input type="text"  name="telefono"  class="form-control" id="916652654" value="<?= $empleado['telefono_usuario']?>" required>
-            </div>
-          </div>
-          <div class="form-group col-12 col-sm-12 col-md-6 col-lg-6">
-            <label for="inputFecha">Fecha</label>
-            <input type="date"  name="fecna"  class="form-control" id="fecha" value="<?= $empleado['fecna_usuario']?>" required>
-          </div>
-          </div>
-          <!--INPUT HIDDEN DEL ID-->
-          <input type='hidden' name='id_usuario' value="<?= $empleado['id_usuario']?>"/>
-          <input type="submit" class="btn btn-lg" name="editarEmpleado" value="Editar empleado"/>
-        </form>
-      </div>
     </div>
-</div>
+
   </div>
 
 </body>

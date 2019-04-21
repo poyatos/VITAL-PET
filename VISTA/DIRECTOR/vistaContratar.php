@@ -38,11 +38,11 @@
 <body>
   <!-- MENU PRINCIPAL -->
   <div class="row">
-  <div class="col-12 col-sm-12 col-md-12  col-lg-12">
-  <?php
+    <div class="col-12 col-sm-12 col-md-12  col-lg-12">
+      <?php
       include "../../INCLUDE/menuPrincipal.inc"
       ?>
-  </div>
+    </div>
 
 
     <!-- MENU LATERAL -->
@@ -54,115 +54,117 @@
 
 
     <!-- CONTENIDO-->
-    <div class="logotipo col-12 col-sm-7 col-md-7 col-lg-7 text-left">
-    <form class="formulario" action="../../CONTROLADOR/controladorDirector.php" method="POST">
-      <div class="row">
-      <div class="panel panel-default">
-        <div class="panel-heading">
-          <h2>CONTRATAR</h2>
-        </div>
-          <div class="form-group col-12 col-sm-12 col-md-12 col-lg-12">
-          
-          <div class="form-row">
-            <div class="form-group col-12 col-sm-12 col-md-6 col-lg-6">
-              <label for="inputNombre">Nombre</label>
-              <input type="text" name="nombre" class="form-control" id="inputNombre" placeholder="Nombre" required>
-            </div>
+      <!-- CONTENIDO-->
+      <div class="logotipo col-12 col-sm-7 col-md-7 col-lg-7 text-left">
+               <div class="row">
+                      <div class="panel panel-default">
+                          <div class="panel-heading">
+                              <h2>CONTRATAR</h2>
+                          </div>
+                              <form class="formulario" action='../../CONTROLADOR/controladorDirector.php' method='post'>
+                                  <div class="form-row">
+                          <div class="form-group col-12 col-sm-12 col-md-6 col-lg-6">
+                            <label for="inputNombre">Nombre</label>
+                            <input type="text" name="nombre" class="form-control" id="inputNombre" placeholder="Nombre" required>
+                          </div>
 
-            <div class="form-group col-12 col-sm-12 col-md-6 col-lg-6">
-              <label for="inputApellidos">Apellidos</label>
-              <input type="text"  name="apellidos" class="form-control" id="inputApellidos" placeholder="Apellidos" required>
-            </div>
+                          <div class="form-group col-12 col-sm-12 col-md-6 col-lg-6">
+                            <label for="inputApellidos">Apellidos</label>
+                            <input type="text" name="apellidos" class="form-control" id="inputApellidos" placeholder="Apellidos"
+                              required>
+                          </div>
 
-            <div class="form-group col-12 col-sm-12 col-md-6 col-lg-6">
-              <label for="inputPassword">Contraseña</label>
-              <input type="password"  name="pass"  class="form-control" id="inputPassword" placeholder="Contraseña" required>
-            </div>
+                          <div class="form-group col-12 col-sm-12 col-md-6 col-lg-6">
+                            <label for="inputPassword">Contraseña</label>
+                            <input type="password" name="pass" class="form-control" id="inputPassword" placeholder="Contraseña"
+                              required>
+                          </div>
 
-            <div class="form-group col-12 col-sm-12 col-md-6 col-lg-6">
-              <label for="inputRePassword">Repite la contraseña</label>
-              <input type="password"  name="rePass"  class="form-control" id="inputRePassword" placeholder="Repite la contraseña" required>
-            </div>
+                          <div class="form-group col-12 col-sm-12 col-md-6 col-lg-6">
+                            <label for="inputRePassword">Repite la contraseña</label>
+                            <input type="password" name="rePass" class="form-control" id="inputRePassword"
+                              placeholder="Repite la contraseña" required>
+                          </div>
 
-            <div class="form-group col-12 col-sm-12 col-md-6 col-lg-6">
-              <label for="inputDni">DNI</label>
-              <input type="text"  name="dni"  class="form-control" id="inputDni" placeholder="492039494E" maxlength="9" required>
-            </div>
+                          <div class="form-group col-12 col-sm-12 col-md-6 col-lg-6">
+                            <label for="inputDni">DNI</label>
+                            <input type="text" name="dni" class="form-control" id="inputDni" placeholder="492039494E" required>
+                          </div>
+                        
+
+                        <div class="form-group col-12 col-sm-12 col-md-6 col-lg-6">
+                          <label for="inputCorreo">Correo</label>
+                          <input type="email" name="correo" class="form-control" id="inputCorreo"
+                            placeholder="ejemplo@ejemplo.ejemplo" required>
+                        </div>
+
+                        <div class="form-row">
+                          <div class="form-group col-12 col-sm-12 col-md-6 col-lg-6">
+                            <label for="inputDireccion">Direccion</label>
+                            <input type="text" name="direccion" class="form-control" id="calle de ejemplo numero 3" required>
+                          </div>
+
+                          <div class="form-group col-12 col-sm-12 col-md-6 col-lg-6">
+                            <label for="inputTelefono">Telefono</label>
+                            <input type="tel" name="telefono" class="form-control" id="916652654" required>
+                          </div>
+                        </div>
+
+                        <div class="form-group col-12 col-sm-12 col-md-6 col-lg-6">
+                          <label for="inputFecha">Fecha de nacimiento</label>
+                          <input type="date" name="fecna" class="form-control" id="fecha" required>
+                        </div>
+
+                        <div class="form-group col-12 col-sm-12 col-md-6 col-lg-6">
+                          <label for="inputJob">Elige la profesión</label>
+                          <select name="profesion" id="inputJob" class="form-control" required>
+                            <option value="veterinario" selected>Veterinario</option>
+                            <option value="recepcionista">Recepcionista</option>
+                          </select>
+                        </div>
+
+                        <br />
+
+                        <div class="form-group col-12 col-sm-12 col-md-12 col-lg-12">
+                          <h3>CONTRATO</h3>
+                        </div>
+
+                        <div class="form-group col-12 col-sm-12 col-md-6 col-lg-6">
+                          <label for="inputFInicio">Fecha Inicio</label>
+                          <input type="date" name="fecini" class="form-control" id="fecha" required>
+                        </div>
+
+                        <div class="form-group col-12 col-sm-12 col-md-6 col-lg-6">
+                          <label for="inputFFin">Fecha Fin</label>
+                          <input type="date" name="fecfin" class="form-control" id="fecha" required>
+                        </div>
+
+                        <div class="form-group col-12 col-sm-12 col-md-6 col-lg-6">
+                          <label for="inputSueldo">Sueldo</label>
+                          <input type="number" name="sueldo" class="form-control" id="1000" required>
+                        </div>
+
+                        <div class="form-group col-12 col-sm-12 col-md-6 col-lg-6">
+                          <label for="inputJob">Elige el horario</label>
+                          <select name="horario" id="inputJob" class="form-control" required>
+                            <option value="matutino" selected>Vespertino</option>
+                            <option value="vespertino">Matutino</option>
+                          </select>
+                        </div>
+
+                        <div class="form-group col-12 col-sm-12 col-md-12 col-lg-12">
+                          <label for="inputfevac">Dias de vacaciones</label>
+                          <input type="number" name="diasvac" class="form-control" id="fechavac" required>
+                        </div>
+
+                        <input type="submit" class="btn btn-lg" name="contratar" value="contratar" />
+
           </div>
-
-          <div class="form-group col-12 col-sm-12 col-md-6 col-lg-6">
-            <label for="inputCorreo">Correo</label>
-            <input type="email"  name="correo"  class="form-control" id="inputCorreo" placeholder="ejemplo@ejemplo.ejemplo" required>
-          </div>
-
-          <div class="form-row">
-            <div class="form-group col-12 col-sm-12 col-md-6 col-lg-6">
-              <label for="inputDireccion">Direccion</label>
-              <input type="text"  name="direccion"  class="form-control" id="calle de ejemplo numero 3" required>
-            </div>
-
-            <div class="form-group col-12 col-sm-12 col-md-6 col-lg-6">
-              <label for="inputTelefono">Telefono</label>
-              <input type="tel"  name="telefono"  class="form-control" id="916652654" required>
-            </div>
-          </div>
-
-          <div class="form-group col-12 col-sm-12 col-md-6 col-lg-6">
-            <label for="inputFecha">Fecha de nacimiento</label>
-            <input type="date"  name="fecna"  class="form-control" id="fecha" required>
-          </div>
-
-          <div class="form-group col-12 col-sm-12 col-md-6 col-lg-6">
-            <label for="inputJob">Elige la profesión</label>
-            <select  name="profesion"  id="inputJob" class="form-control" required>
-              <option value="Veterinario" selected>Veterinario</option>
-              <option value ="Recepcionista">Recepcionista</option>
-            </select>
-          </div>
-
-          <br/>
-
-          <div class="form-group col-12 col-sm-12 col-md-12 col-lg-12">
-            <h3>CONTRATO</h3>
-          </div>
-
-          <div class="form-group col-12 col-sm-12 col-md-6 col-lg-6">
-            <label for="inputFInicio">Fecha Inicio</label>
-            <input type="date"  name="fecini"  class="form-control" id="fecha" required>
-          </div>
-
-          <div class="form-group col-12 col-sm-12 col-md-6 col-lg-6">
-            <label for="inputFFin">Fecha Fin</label>
-            <input type="date"  name="fecfin"  class="form-control" id="fecha" required>
-          </div>
-
-          <div class="form-group col-12 col-sm-12 col-md-6 col-lg-6">
-            <label for="inputSueldo">Sueldo</label>
-            <input type="number"  name="sueldo"  class="form-control" id="1000" required>
-          </div>
-
-          <div class="form-group col-12 col-sm-12 col-md-6 col-lg-6">
-            <label for="inputJob">Elige el horario</label>
-            <select  name="horario"  id="inputJob" class="form-control" required>
-              <option value="Matutino" selected>Vespertino</option>
-              <option value="Vespertino">Matutino</option>
-            </select>
-          </div>
-
-          <div class="form-group col-12 col-sm-12 col-md-12 col-lg-12">
-            <label for="inputfevac">Dias de vacaciones</label>
-            <input type="number"  name="diasvac"  class="form-control" id="fechavac" required>
-          </div>
-
-          <input type="submit" class="btn btn-lg" name="contratar" value="Contratar"/>
-
-
-        
+          </form>
         </div>
       </div>
     </div>
-</div>
-</form>
+
   </div>
 
 </body>
