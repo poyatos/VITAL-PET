@@ -21,12 +21,10 @@ if ($_POST) {
     if (isset($_POST['despedirContrato'])) {
         $conexion->finalizarContrato($_POST['id_usuario']);
         header("Location: ../VISTA/DIRECTOR/vistaGestionEmpleados.php");
-    } 
-    /* PENDIENTE */
-    /*elseif (isset($_POST['renovarContrato'])) {
-        $conexion->renovarContrato($_POST['id_usuario']);
+    } elseif (isset($_POST['renovarContrato'])) {
+        $conexion->renovarContrato($_POST['id_contratado'], $_POST['fecini'], $_POST['fecfin'], $_POST['sueldo'], $_POST['diasvac'], $_POST['horario']);
         header("Location: ../VISTA/DIRECTOR/vistaGestionEmpleados.php");
-    }*/
+    }
 
     /*---------CONTROLADOR CONTRATAR-------*/
     elseif (isset($_POST['contratar'])) {

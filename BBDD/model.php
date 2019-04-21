@@ -538,6 +538,13 @@
             $this->ejecutarConsulta($consulta);
         }
 
+        //RENOVAR CONTRATO
+        public function renovarContrato($id_contratado, $fecini, $fecfin, $sueldo, $diasvac, $horario){
+            $consulta = "UPDATE contratos SET fecini_contrato = '$fecini', fecfin_contrato = '$fecfin', sueldo_contrato = $sueldo, 
+            diasvac_contrato = $diasvac, horario_contrato = '$horario', estado_contrato = 'Activo' WHERE id_contratado = $id_contratado";
+            $this->ejecutarConsulta($consulta);
+        }
+
         //FINALIZAR CONTRATO
         public function finalizarContrato($id_contratado){
             $consulta = "UPDATE contratos SET fecfin_contrato = SYSDATE(), estado_contrato = 'Finalizado' WHERE id_contratado = $id_contratado";
