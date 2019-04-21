@@ -12,7 +12,7 @@
   }
 
   $conexion = new Model(Config::$host, Config::$user, Config::$pass, Config::$nombreBase);
-  $citas = $conexion->visualizarCitasMascota($_REQUEST['id_mascota']);
+  $citas = $conexion->visualizarCitasMascota($_POST['id_mascota']);
 ?>
 <!DOCTYPE html>
 <html lang="en">
@@ -63,9 +63,9 @@
         <div class="row">
                 <div class="panel panel-default">
                     <div class="panel-heading">
-                        <h2>AÑADIR CITA</h2>
+                        <h2>EDITAR CITA</h2>
                     </div>
-                    <form class="formulario" action='../../CONTROLADOR/controladorRecepcionista.php' method='post'>
+                    <form class="formulario" action='../../CONTROLADOR/controladorRecepcionista.php' method='POST'>
                         <div class="form-group col-12 col-sm-12 col-md-12 col-lg-12">
                             <h3>INFORMACIÓN</h3>
                         </div>
@@ -311,7 +311,8 @@
                         <br/>
                         <!--EN LOS INPUT HIDDEN DEBEN RELLENARSE LOS VALUES CON LOS VALORES DEL CLIENTE Y LA MASCOTA -->
                         <input type="hidden" name="id_mascota" value="<?= $citas['id_mascota'] ?>" id="id_mascota_id">
-                        <input type="submit"  class="btn btn-lg" name="anadirCita" value="Añadir cita">
+                        <input type="hidden" name="id_cita" value="<?= $citas['id_cita'] ?>" id="id_cita_id">
+                        <input type="submit"  class="btn btn-lg" name="editarCita" value="Editar cita">
                     </form>
                 </div>
             </div>

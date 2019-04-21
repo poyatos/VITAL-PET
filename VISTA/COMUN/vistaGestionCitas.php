@@ -138,7 +138,7 @@
           if($_SESSION['rol'] == 'Veterinario'){
             echo ('<td>
 
-            <form action="../../CONTROLADOR/controladorVeterinario.php" method="POST"> 
+            <form action="../VETERINARIO/vistaAnadirPrueba.php" method="POST"> 
                 <input type="hidden" value="'.$citas['id_cita'].'" name="id_cita">
                 <input type="submit" value="Añadir prueba" name="vistaAnadirPrueba">
             </form>
@@ -146,10 +146,12 @@
 
           } else if( $_SESSION['rol'] == 'Recepcionista'){
             echo utf8_encode ('<td>
-
-            <form action="../../CONTROLADOR/controladorRecepcionista.php" method="POST"> 
+            <form action="../RECEPCIONISTA/vistaEditarCita.php" method="POST"> 
                 <input type="hidden" value="'.$citas['id_cita'].'" name="id_cita">
                 <input type="submit" value="Editar" name="vistaEditarCita">
+            </form>
+            <form action="../../CONTROLADOR/controladorVeterinario.php" method="POST"> 
+                <input type="hidden" value="'.$citas['id_cita'].'" name="id_cita">
                 <input type="submit" value="Borrar" name="borrarCita">
                 <input type="submit" value="Finalizar consulta" name="finalizarCita">
             </form>

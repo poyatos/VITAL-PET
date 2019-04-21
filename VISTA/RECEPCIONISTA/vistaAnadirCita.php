@@ -71,7 +71,7 @@
                             </div>
                             <div class="form-group col-12 col-sm-12 col-md-6 col-lg-6">
                             <label for="inputHora">Hora</label>
-                                <select id="inputHora_id" class="form-control" required> 
+                                <select name="hora" id="inputHora_id" class="form-control" required> 
                                      <option value='08:00' selected>08:00</option>
                                      <option value='09:00' >09:00</option>
                                      <option value='10:00' >10:00</option>
@@ -89,7 +89,7 @@
                             </div>
                             <div class="form-group col-12 col-sm-12 col-md-12 col-lg-12">
                             <label for="inputPrueba">Sala</label>
-                            <select id="inputSala_id" class="form-control" required>
+                            <select name="consulta" id="inputSala_id" class="form-control" required>
                                     <option value='1' selected>1</option>
                                     <option value='2'>2</option>
                                     <option value='3'>3</option>
@@ -97,6 +97,7 @@
                                     <option value='5'>5</option>
                                 </select>
                             </div>
+                            <!--CREAR INPUT PARA ELEGIR EL VETERINARIO-->
                         <div class="form-row">   
                         <br/>
                         <!--EN LOS INPUT HIDDEN DEBEN RELLENARSE LOS VALUES CON LOS VALORES DEL CLIENTE Y LA MASCOTA -->
