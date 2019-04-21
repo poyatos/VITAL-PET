@@ -132,13 +132,13 @@
               <td>".$mascota['peso_mascota']."</td>
               <td>".$mascota['sexo_mascota']."</td>");
               if ($_SESSION['rol'] == 'Recepcionista'){
-                 echo utf8_encode ('<td>
+                 echo  ('<td>
                       <form action="../../CONTROLADOR/controladorRecepcionista.php" method="POST"> 
                         <input type="submit" value="Añadir citas" name="anadirCitas">
                       </form>
                       </td>');
               } else if ($_SESSION['rol'] == 'Veterinario'){
-                 echo utf8_encode( '<td>
+                 echo ( '<td>
                       <form action="../../CONTROLADOR/controladorVeterinario.php" method="POST"> 
                         <input type="hidden" value="'.$mascota['id_mascota'].'" name="id_mascota">
                         <input type="submit" value="Editar" name="vistaEditarMascota">

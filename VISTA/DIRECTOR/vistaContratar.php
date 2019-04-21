@@ -162,7 +162,49 @@
 
 
           </div>
+<<<<<<< HEAD
           </form>
+=======
+
+          <br/>
+
+          <div class="form-group col-12 col-sm-12 col-md-12 col-lg-12">
+            <h3>CONTRATO</h3>
+          </div>
+
+          <div class="form-group col-12 col-sm-12 col-md-6 col-lg-6">
+            <label for="inputFInicio">Fecha Inicio</label>
+            <input type="date"  name="fecini"  class="form-control" id="fecha" required>
+          </div>
+
+          <div class="form-group col-12 col-sm-12 col-md-6 col-lg-6">
+            <label for="inputFFin">Fecha Fin</label>
+            <input type="date"  name="fecfin"  class="form-control" id="fecha" required>
+          </div>
+
+          <div class="form-group col-12 col-sm-12 col-md-6 col-lg-6">
+            <label for="inputSueldo">Sueldo</label>
+            <input type="number"  name="sueldo"  class="form-control" id="1000" required>
+          </div>
+
+          <div class="form-group col-12 col-sm-12 col-md-6 col-lg-6">
+            <label for="inputJob">Elige el horario</label>
+            <select  name="horario"  id="inputJob" class="form-control" required>
+              <option value="matutino" selected>Vespertino</option>
+              <option value="vespertino">Matutino</option>
+            </select>
+          </div>
+
+          <div class="form-group col-12 col-sm-12 col-md-12 col-lg-12">
+            <label for="inputfevac">Dias de vacaciones</label>
+            <input type="number"  name="diasvac"  class="form-control" id="fechavac" required>
+          </div>
+
+          <input type="submit" class="btn btn-lg" name="contratar" value="Contratar"/>
+
+
+        
+>>>>>>> master
         </div>
       </div>
     </div>

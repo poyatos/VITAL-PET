@@ -119,10 +119,13 @@
 
                     if($_SESSION['rol'] == 'Veterinario'){
                            echo ('<td>
+                          <form action="../VETERINARIO/vistaEditarTipoPrueba.php" method="POST">
+                            <input type="hidden" value="'.$tprueba['id_tipo_prueba'].'" name="id_tipo_prueba">
+                            <input type="submit" value="Editar">
+                          </form>
                           <form action="../../CONTROLADOR/controladorVeterinario.php" method="POST"> 
-                          <input type="hidden" value="'.$tprueba['id_tipo_prueba'].'" name="id_tipo_prueba">
-                          <input type="submit" value="Editar" name="vistaEditarTipoPrueba">
-                          <input type="submit" value="Borrar" name="borrarTipoPrueba">
+                            <input type="hidden" value="'.$tprueba['id_tipo_prueba'].'" name="id_tipo_prueba">
+                            <input type="submit" value="Borrar" name="borrarTipoPrueba">
                           </form>
                           </td>');
                     }
