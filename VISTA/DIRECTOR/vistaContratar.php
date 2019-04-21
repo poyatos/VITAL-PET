@@ -74,7 +74,11 @@
             </div>
             <div class="form-group col-12 col-sm-12 col-md-6 col-lg-6">
               <label for="inputPassword">Contraseña</label>
-              <input type="password"  name="pass"  class="form-control" id="inputPassword" placeholder="Password" required>
+              <input type="password"  name="pass"  class="form-control" id="inputPassword" placeholder="Contraseña" required>
+            </div>
+            <div class="form-group col-12 col-sm-12 col-md-6 col-lg-6">
+              <label for="inputRePassword">Repite la contraseña</label>
+              <input type="password"  name="rePass"  class="form-control" id="inputRePassword" placeholder="Repite la contraseña" required>
             </div>
             <div class="form-group col-12 col-sm-12 col-md-6 col-lg-6">
               <label for="inputDni">DNI</label>

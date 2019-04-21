@@ -13,7 +13,6 @@
                         </li>
                         <ul class="sub-menu collapse" id="products">
                             <li class="active"><a href="../RECEPCIONISTA/vistaRegistroCliente.php"><i class="glyphicon glyphicon-plus-sign"></i>Añadir cliente</a></li>
-                            <li><a href="../RECEPCIONISTA/vistaRegistroMascota.php"><i class="glyphicon glyphicon-plus-sign"></i>Añadir mascota</a></li>
                         </ul>
 
                         <li data-toggle="collapse" data-target="#service" class="collapsed">

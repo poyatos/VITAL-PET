@@ -495,7 +495,6 @@
         /* ------------------------------------------------------------------------------------------------------------------------------------*/
         /* ------------------------------------------------------------------------------------------------------------------------------------*/
         
-
         //REGISTRAR CONTRATO
         public function contratarUsuario($fecini, $fecfin, $sueldo, $diasvac, $horario, $estado, $id_contratado){
             $consulta = "SELECT * FROM contratos WHERE id_contratado = '$id_contratado' ";
@@ -557,5 +556,14 @@
         }
 
         /* ------------------------------------------------------ CONSULTAS (OPCIONAL) ---------------------------------------------------------*/
+
+        public function visualizarClientesMascotas($id){
+            $consulta = "SELECT COUNT (*) FROM usuarios, mascotas";
+            $resultado = $this->devolverConsultaArray($consulta);
+            return $resultado;
+        }
+
+
+
     }
 ?>
