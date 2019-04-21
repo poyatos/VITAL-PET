@@ -94,7 +94,7 @@
 
                         <div class="form-group col-12 col-sm-12 col-md-6 col-lg-6">
                           <label for="inputCorreo">Correo</label>
-                          <input type="text" name="correo" class="form-control" id="inputCorreo"
+                          <input type="email" name="correo" class="form-control" id="inputCorreo"
                             placeholder="ejemplo@ejemplo.ejemplo" required>
                         </div>
 
@@ -106,7 +106,7 @@
 
                           <div class="form-group col-12 col-sm-12 col-md-6 col-lg-6">
                             <label for="inputTelefono">Telefono</label>
-                            <input type="text" name="telefono" class="form-control" id="916652654" required>
+                            <input type="tel" name="telefono" class="form-control" id="916652654" required>
                           </div>
                         </div>
 
@@ -153,11 +153,11 @@
                         </div>
 
                         <div class="form-group col-12 col-sm-12 col-md-12 col-lg-12">
-                          <label for="inputfevac">Fecha Vacaciones</label>
-                          <input type="date" name="diasvac" class="form-control" id="fechavac" required>
+                          <label for="inputfevac">Dias de vacaciones</label>
+                          <input type="number" name="diasvac" class="form-control" id="fechavac" required>
                         </div>
 
-                        <input type="submit" class="btn btn-lg" value="contratar" />
+                        <input type="submit" class="btn btn-lg" name="contratar" value="contratar" />
 
           </div>
           </form>
