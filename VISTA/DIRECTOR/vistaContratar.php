@@ -86,13 +86,13 @@
 
             <div class="form-group col-12 col-sm-12 col-md-6 col-lg-6">
               <label for="inputDni">DNI</label>
-              <input type="text"  name="dni"  class="form-control" id="inputDni" placeholder="492039494E" required>
+              <input type="text"  name="dni"  class="form-control" id="inputDni" placeholder="492039494E" maxlength="9" required>
             </div>
           </div>
 
           <div class="form-group col-12 col-sm-12 col-md-6 col-lg-6">
             <label for="inputCorreo">Correo</label>
-            <input type="text"  name="correo"  class="form-control" id="inputCorreo" placeholder="ejemplo@ejemplo.ejemplo" required>
+            <input type="email"  name="correo"  class="form-control" id="inputCorreo" placeholder="ejemplo@ejemplo.ejemplo" required>
           </div>
 
           <div class="form-row">
@@ -103,7 +103,7 @@
 
             <div class="form-group col-12 col-sm-12 col-md-6 col-lg-6">
               <label for="inputTelefono">Telefono</label>
-              <input type="text"  name="telefono"  class="form-control" id="916652654" required>
+              <input type="tel"  name="telefono"  class="form-control" id="916652654" required>
             </div>
           </div>
 
@@ -115,8 +115,8 @@
           <div class="form-group col-12 col-sm-12 col-md-6 col-lg-6">
             <label for="inputJob">Elige la profesión</label>
             <select  name="profesion"  id="inputJob" class="form-control" required>
-              <option value="veterinario" selected>Veterinario</option>
-              <option value ="recepcionista">Recepcionista</option>
+              <option value="Veterinario" selected>Veterinario</option>
+              <option value ="Recepcionista">Recepcionista</option>
             </select>
           </div>
 
@@ -144,8 +144,8 @@
           <div class="form-group col-12 col-sm-12 col-md-6 col-lg-6">
             <label for="inputJob">Elige el horario</label>
             <select  name="horario"  id="inputJob" class="form-control" required>
-              <option value="matutino" selected>Vespertino</option>
-              <option value="vespertino">Matutino</option>
+              <option value="Matutino" selected>Vespertino</option>
+              <option value="Vespertino">Matutino</option>
             </select>
           </div>
 
