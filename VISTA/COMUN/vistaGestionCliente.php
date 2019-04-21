@@ -137,7 +137,8 @@
                     if($_SESSION['rol'] == 'Recepcionista'){
                        echo utf8_encode ('<td>
 
-                      <form action="../../CONTROLADOR/controladorRecepcionista.php" method="POST"> 
+                      <form action="../../CONTROLADOR/controladorRecepcionista.php" method="POST">
+                         <input type="submit" value="Añadir mascota" name="anadirMascota"> 
                         <input type="submit" value="Editar" name="editarCita">
                         <input type="submit" value="Borrar" name="borrarCita">
                       </form>
