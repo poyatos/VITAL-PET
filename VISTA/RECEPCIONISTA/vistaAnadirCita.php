@@ -4,7 +4,7 @@
   if(!isset($_SESSION['usuario']) && !isset($_SESSION['rol'])){
     header("Location: ../../index.php");
   } else {
-    if($_SESSION['rol'] != 'Veterinario'){
+    if($_SESSION['rol'] != 'Recepcionista'){
       header("Location: ../".$_SESSION['rol']);
     }
   }
@@ -72,29 +72,29 @@
                             <div class="form-group col-12 col-sm-12 col-md-6 col-lg-6">
                             <label for="inputHora">Hora</label>
                                 <select id="inputHora_id" class="form-control" required> 
-                                     <option selected>08:00</option>
-                                     <option selected>09:00</option>
-                                     <option selected>10:00</option>
-                                     <option selected>11:00</option>
-                                     <option selected>12:00</option>
-                                     <option selected>13:00</option>
-                                     <option selected>14:00</option>
-                                     <option selected>15:00</option>
-                                     <option selected>16:00</option>
-                                     <option selected>17:00</option>
-                                     <option selected>18:00</option>
-                                     <option selected>19:00</option>
-                                     <option selected>20:00</option>
+                                     <option value='08:00' selected>08:00</option>
+                                     <option value='09:00' >09:00</option>
+                                     <option value='10:00' >10:00</option>
+                                     <option value='11:00' >11:00</option>
+                                     <option value='12:00' >12:00</option>
+                                     <option value='13:00' >13:00</option>
+                                     <option value='14:00' >14:00</option>
+                                     <option value='15:00' >15:00</option>
+                                     <option value='16:00' >16:00</option>
+                                     <option value='17:00' >17:00</option>
+                                     <option value='18:00' >18:00</option>
+                                     <option value='19:00' >19:00</option>
+                                     <option value='20:00' >20:00</option>
                                 </select>
                             </div>
                             <div class="form-group col-12 col-sm-12 col-md-12 col-lg-12">
                             <label for="inputPrueba">Sala</label>
                             <select id="inputSala_id" class="form-control" required>
-                                     <option selected>1</option>
-                                     <option selected>2</option>
-                                     <option selected>3</option>
-                                     <option selected>4</option>
-                                     <option selected>5</option>
+                                    <option value='1' selected>1</option>
+                                    <option value='2'>2</option>
+                                    <option value='3'>3</option>
+                                    <option value='4'>4</option>
+                                    <option value='5'>5</option>
                                 </select>
                             </div>
                         <div class="form-row">   

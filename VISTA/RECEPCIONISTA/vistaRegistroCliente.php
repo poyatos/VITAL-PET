@@ -4,7 +4,7 @@
   if(!isset($_SESSION['usuario']) && !isset($_SESSION['rol'])){
     header("Location: ../../index.php");
   } else {
-    if($_SESSION['rol'] != 'Veterinario'){
+    if($_SESSION['rol'] != 'Recepcionista'){
       header("Location: ../".$_SESSION['rol']);
     }
   }

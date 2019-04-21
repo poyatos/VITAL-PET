@@ -84,8 +84,15 @@
                             <div class="form-group col-md-12">
                                 <label for="inputSex">Elije el sexo</label>
                                 <select name="sexo" id="inputSex" class="form-control" required>
-                                    <option value="macho" selected>Macho</option>
-                                    <option value="hembra">Hembra</option>
+                                <?php
+                                 if($mascota['sexo_mascota'] == "Macho"){
+                                    echo " <option value='macho' selected>Macho</option>
+                                    <option value='hembra'>Hembra</option>";
+                                    }else{
+                                        echo " <option value='macho' >Macho</option>
+                                        <option value='hembra' selected >Hembra</option>";
+                                    }
+                                    ?>
                                 </select>
                             </div>
                             <div class="form-group col-md-12">
