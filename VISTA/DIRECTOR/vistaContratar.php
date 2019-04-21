@@ -150,11 +150,11 @@
           </div>
 
           <div class="form-group col-12 col-sm-12 col-md-12 col-lg-12">
-            <label for="inputfevac">Fecha Vacaciones</label>
-            <input type="date"  name="diasvac"  class="form-control" id="fechavac" required>
+            <label for="inputfevac">Dias de vacaciones</label>
+            <input type="number"  name="diasvac"  class="form-control" id="fechavac" required>
           </div>
 
-          <input type="submit" class="btn btn-lg" value="contratar"/>
+          <input type="submit" class="btn btn-lg" name="contratar" value="Contratar"/>
 
 
         

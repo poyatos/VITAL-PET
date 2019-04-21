@@ -540,7 +540,7 @@
 
         //FINALIZAR CONTRATO
         public function finalizarContrato($id_contratado){
-            $consulta = "UPDATE contratos SET estado_contrato = 'Finalizado' WHERE id_contratado = $id_contratado";
+            $consulta = "UPDATE contratos SET fecfin_contrato = SYSDATE(), estado_contrato = 'Finalizado' WHERE id_contratado = $id_contratado";
             $this->ejecutarConsulta($consulta);
         }
 

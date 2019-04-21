@@ -17,10 +17,8 @@ $conexion = new Model(Config::$host, Config::$user, Config::$pass, Config::$nomb
 
 if (isset($_POST)) {
     /*---------CONTROLADOR VISTA GESTION PRUEBA-------*/
-    if (isset($_POST['vistaEditarPrueba'])) {
-        header("Location: ../VISTA/VETERINARIO/vistaEditarPrueba.php?id_prueba=".$_POST['id_prueba']);
-    } elseif (isset($_POST['anadirPrueba'])) {
-        $conexion->registrarPrueba($_POST['tipo_prueba'], $_POST['mascota'], $_POST['resultado'], $_POST['observaciones'], $_POST['cita']);
+    if (isset($_POST['anadirPrueba'])) {
+        $conexion->registrarPrueba($_POST['tipo_prueba'], $_POST['id_mascota'], $_POST['resultado'], $_POST['observaciones'], $_POST['id_cita']);
         header("Location: ../VISTA/COMUN/vistaGestionPrueba.php");
     } elseif (isset($_POST['editarPrueba'])) {
         $conexion->modificarPrueba($_POST['id_prueba'], $_POST['resultado'], $_POST['observaciones']);
