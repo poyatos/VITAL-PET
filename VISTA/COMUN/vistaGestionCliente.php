@@ -135,7 +135,7 @@
                   <td>".$clientes['direccion_usuario']."</td>");
 
                     if($_SESSION['rol'] == 'Recepcionista'){
-                       echo utf8_encode ('<td>
+                       echo ('<td>
 
                       <form action="../../CONTROLADOR/controladorRecepcionista.php" method="POST">
                          <input type="submit" value="Añadir mascota" name="anadirMascota"> 
