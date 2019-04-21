@@ -120,11 +120,11 @@
           <?php
               if(isset($_POST['editarContrato'])){
 
-                 echo"<input type='submit' name='editarContrato' class='btn btn-lg' value='Editar contrato'>";
+                 echo"<input type='submit' name='editarContrato' class='btn btn-lg' value='Editar Contrato'>";
 
                 }else{
 
-                  echo"<input type='submit' name='renovarContrato' class='btn btn-lg' value='Renovar contrato'>";
+                  echo"<input type='submit' name='renovarContrato' class='btn btn-lg' value='Renovar Contrato'>";
                   
                 }
                 ?>
