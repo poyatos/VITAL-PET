@@ -556,14 +556,14 @@
         }
 
         /* ------------------------------------------------------ CONSULTAS (OPCIONAL) ---------------------------------------------------------*/
-
         public function visualizarClientesMascotas($id){
-            $consulta = "SELECT COUNT (*) FROM usuarios, mascotas";
+            $consulta = "SELECT usuarios.dni_usuario, mascotas.id_mascota, mascotas.nombre_mascota, mascotas.tipo_mascota, mascotas.raza_mascota, mascotas.peso_mascota, mascotas.sexo_mascota
+            FROM usuarios
+            INNER JOIN mascotas
+            WHERE usuarios.dni_usuario = $id ";
             $resultado = $this->devolverConsultaArray($consulta);
             return $resultado;
         }
-
-
 
     }
 ?>
