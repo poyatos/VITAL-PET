@@ -532,9 +532,9 @@
         }
 
         //MODIFICAR CONTRATO
-        public function modificarContrato($id_contratado, $fecini, $fecfin, $sueldo, $diasvac, $horario, $estado){
+        public function modificarContrato($id_contratado, $fecini, $fecfin, $sueldo, $diasvac, $horario){
             $consulta = "UPDATE contratos SET fecini_contrato = '$fecini', fecfin_contrato = '$fecfin', sueldo_contrato = $sueldo, 
-            diasvac_contrato = $diasvac, horario_contrato = '$horario', estado_contrato = '$estado' WHERE id_contratado = $id_contratado";
+            diasvac_contrato = $diasvac, horario_contrato = '$horario' WHERE id_contratado = $id_contratado";
             $this->ejecutarConsulta($consulta);
         }
 

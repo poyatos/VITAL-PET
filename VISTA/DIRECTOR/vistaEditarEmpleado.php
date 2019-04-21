@@ -14,7 +14,7 @@
 
   $conexion = new Model(Config::$host, Config::$user, Config::$pass, Config::$nombreBase);
 
-  $empleado = $conexion->visualizarUsuarioId($_REQUEST['idUsuario']);
+  $empleado = $conexion->visualizarUsuarioId($_POST['id_usuario']);
 ?>
 <!DOCTYPE html>
 <html lang="es">
@@ -107,7 +107,7 @@
           </div>
           </div>
           <!--INPUT HIDDEN DEL ID-->
-          <input type='hidden' name='idUsuario' value="<?= $empleado['id_usuario']?>"/>
+          <input type='hidden' name='id_usuario' value="<?= $empleado['id_usuario']?>"/>
           <input type="submit" class="btn btn-lg" name="editarEmpleado" value="Editar empleado"/>
         </form>
       </div>
