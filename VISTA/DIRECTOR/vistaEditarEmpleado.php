@@ -87,7 +87,7 @@
               <input type="text"  name="dni"  class="form-control" id="inputDni" value="<?= $empleado['dni_usuario']?>" required>
             </div>
           </div>
-          <div class="form-group col-12 col-sm-12 col-md-12 col-lg-12">
+          <div class="form-group col-12 col-sm-12 col-md-6 col-lg-6">
             <label for="inputCorreo">Correo</label>
             <input type="text"  name="correo"  class="form-control" id="inputCorreo" value="<?= $empleado['correo_usuario']?>" required>
           </div>
