@@ -119,10 +119,10 @@
                //por hacer-------------------------------SE RECOGE DE LA TABLA TIPO_PRUEBA
                 echo utf8_encode(" <tr>
                   <td>".$prueba['id_prueba']."</td>
-                  <td>".$prueba['nombre_prueba']."</td>
+                  <td>Nombre prueba</td>
                   <td>".$prueba['resultado_prueba']."</td>
                   <td>".$prueba['observaciones_prueba']."</td>
-                  <td>".$prueba['precio_prueba']."</td>");
+                  <td>Precio prueba</td>");
                  
 
                 //por hacer-------------------------------SE RECOGE DE LA TABLA PRUEBA

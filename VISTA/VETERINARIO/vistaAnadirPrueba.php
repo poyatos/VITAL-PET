@@ -1,4 +1,6 @@
 <?php
+  require_once '../../BBDD/model.php';
+  require_once '../../BBDD/config.php';
   session_start();
 
   if(!isset($_SESSION['usuario']) && !isset($_SESSION['rol'])){
@@ -8,6 +10,12 @@
       header("Location: ../".$_SESSION['rol']);
     }
   }
+
+  $conexion = new Model(Config::$host, Config::$user, Config::$pass, Config::$nombreBase);
+  
+  $resultado = $conexion->visualizarTiposPruebas();
+
+  $conexion->desconectar();
 ?>
 <!DOCTYPE html>
 <html lang="es">
@@ -67,12 +75,8 @@
 
                           <div class="form-group col-12 col-sm-12 col-md-6  col-lg-6">
                             <label for="inputPrueba">Escoja la prueba</label>
-                            <select name="tipo_prueba" id="inputPrueba_id" class="form-control" required>
+                            <select name="id_tipo_prueba" id="inputPrueba_id" class="form-control" required>
                             <?php
-                                require_once '../../BBDD/model.php';
-                                require_once '../../BBDD/config.php';
-                                $conexion = new Model(Config::$host, Config::$user, Config::$pass, Config::$nombreBase);
-                                $resultado = $conexion->visualizarTiposPruebas();
                                 foreach($visualizarTiposPruebas as $tipos){
                                      echo "<option value='".$tipos['id_tipo_prueba']."'>".$tipos['nombre_tipo_prueba']."</option>";
                                 }

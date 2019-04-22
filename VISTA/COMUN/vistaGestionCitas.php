@@ -140,7 +140,7 @@
 
             <form action="../VETERINARIO/vistaAnadirPrueba.php" method="POST"> 
                 <input type="hidden" value="'.$citas['id_cita'].'" name="id_cita">
-                <input type="submit" value="Añadir prueba" name="vistaAnadirPrueba">
+                <input type="submit" value="Añadir prueba">
             </form>
             </td>');
 
@@ -148,9 +148,9 @@
             echo utf8_encode ('<td>
             <form action="../RECEPCIONISTA/vistaEditarCita.php" method="POST"> 
                 <input type="hidden" value="'.$citas['id_cita'].'" name="id_cita">
-                <input type="submit" value="Editar" name="vistaEditarCita">
+                <input type="submit" value="Editar">
             </form>
-            <form action="../../CONTROLADOR/controladorVeterinario.php" method="POST"> 
+            <form action="../../CONTROLADOR/controladorRecepcionista.php" method="POST"> 
                 <input type="hidden" value="'.$citas['id_cita'].'" name="id_cita">
                 <input type="submit" value="Borrar" name="borrarCita">
                 <input type="submit" value="Finalizar consulta" name="finalizarCita">

@@ -21,7 +21,7 @@
 <html lang="en">
 
 <head>
-  <title>Vital-Pet / Registro mascota</title>
+  <title>Vital-Pet / Editar mascota</title>
   <meta charset="utf-8">
   <meta name="viewport" content="width=device-width, initial-scale=1">
   <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.0/css/bootstrap.min.css">
@@ -65,11 +65,11 @@
             <div class="col-12 col-sm-12 col-md-12 col-lg-12">
                 <div class="panel panel-default">
                     <div class="panel-heading">
-                        <h2>REGISTRO DE MASCOTA</h2>
+                        <h2>EDITAR MASCOTA</h2>
                     </div>
 
                     <div class="form-group col-12 col-sm-12 col-md-12 col-lg-12">
-                    <form class="formulario" action='../../CONTROLADOR/controladorRecepcionista.php' method='post'>
+                    <form class="formulario" action='../../CONTROLADOR/controladorVeterinario.php' method='POST'>
                             <h3>INFORMACIÓN</h3>
                         </div>
                         <div class="form-row">
@@ -86,32 +86,32 @@
                                 <input type="text" name="raza" class="form-control" id="inputRaz" value = "<?= $mascota['raza_mascota'] ?>"  required>
                             </div>
                             <div class="form-group col-md-12">
-                                <label for="inputSex">Elije el sexo</label>
+                                <label for="inputSex">Elige el sexo</label>
                                 <select name="sexo" id="inputSex" class="form-control" required>
                                 <?php
                                  if($mascota['sexo_mascota'] == "Macho"){
-                                    echo " <option value='macho' selected>Macho</option>
-                                    <option value='hembra'>Hembra</option>";
+                                    echo " <option value='Macho' selected>Macho</option>
+                                    <option value='Hembra'>Hembra</option>";
                                     }else{
-                                        echo " <option value='macho' >Macho</option>
-                                        <option value='hembra' selected >Hembra</option>";
+                                        echo " <option value='Macho' >Macho</option>
+                                        <option value='Hembra' selected >Hembra</option>";
                                     }
                                     ?>
                                 </select>
                             </div>
                             <div class="form-group col-md-12">
-                                <label for="inputfecna">fecha nacimiento</label>
+                                <label for="inputfecna">Fecha de nacimiento</label>
                                 <input type="date" name="fecna" class="form-control" id="inputfecna" value = "<?= $mascota['fecna_mascota'] ?>"  required>
                             </div>
                         </div>
                         <div class="form-group col-md-12">
                             <label for="inputPeso">peso</label>
-                            <input type="text" name="peso" class="form-control" id="inputPeso"  value = "<?= $mascota['peso_mascota'] ?>" required>
+                            <input type="number" name="peso" class="form-control" id="inputPeso"  value = "<?= $mascota['peso_mascota'] ?>" required>
                         </div>
                         <div class="form-row">
                         <br />
-                        <input type ="hidden" name="id_cliente" value = "<?= $mascota['id_mascota'] ?>">
-                        <input type="submit" name ="editarMascota" class="btn btn-lg" value="Dar de alta">
+                        <input type ="hidden" name="id_mascota" value = "<?= $mascota['id_mascota'] ?>">
+                        <input type="submit" name ="editarMascota" class="btn btn-lg" value="Editar">
                     </form>
                 </div>
             </div>

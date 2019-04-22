@@ -141,9 +141,12 @@
                       </td>');
               } else if ($_SESSION['rol'] == 'Veterinario'){
                  echo ( '<td>
+                      <form action="../VETERINARIO/vistaEditarMascota.php" method="POST">
+                        <input type="hidden" value="'.$mascota['id_mascota'].'" name="id_mascota">
+                        <input type="submit" value="Editar">
+                      </form>
                       <form action="../../CONTROLADOR/controladorVeterinario.php" method="POST"> 
                         <input type="hidden" value="'.$mascota['id_mascota'].'" name="id_mascota">
-                        <input type="submit" value="Editar" name="vistaEditarMascota">
                         <input type="submit" value="Borrar" name="borrarMascota">
                       </form>
                       </td>');

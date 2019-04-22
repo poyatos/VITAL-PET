@@ -278,9 +278,9 @@
             return $resultado;
         }
 
-        //MODIFICAR MASCOTAS
-        public function modificarMascota($id, $dni, $nombre, $tipo, $raza, $sexo, $fecna, $peso){
-            $consulta = "UPDATE usuarios SET id_cliente = '$id', nombre_mascota = '$nombre', tipo_mascota = '$tipo', raza_mascota = '$raza', 
+        //MODIFICAR MASCOTA
+        public function modificarMascota($id, $nombre, $tipo, $raza, $sexo, $fecna, $peso){
+            $consulta = "UPDATE mascotas SET nombre_mascota = '$nombre', tipo_mascota = '$tipo', raza_mascota = '$raza', 
             sexo_mascota = '$sexo', fecna_mascota = '$fecna', peso_mascota = $peso WHERE id_mascota = $id";
             $this->ejecutarConsulta($consulta);
         }
