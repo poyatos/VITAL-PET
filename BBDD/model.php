@@ -177,6 +177,13 @@
             $resultado = $this->devolverConsultaArray($consulta);
             return $resultado;
         }
+
+        //VISUALIZAR VETERINARIOS
+        public function visualizarVeterinarios(){
+            $consulta = "SELECT id_usuario, nombre_usuario, apellidos_usuario, dni_usuario FROM usuarios WHERE rol_usuario LIKE 'Veterinario'";
+            $resultado = $this->devolverConsultaArray($consulta);
+            return $resultado;
+        }
         
         //INICIAR SESION USUARIO
         public function iniciarSesionUsuario($dni,$pass){

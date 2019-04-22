@@ -15,6 +15,8 @@
   $conexion = new Model(Config::$host, Config::$user, Config::$pass, Config::$nombreBase);
 
   $empleado = $conexion->visualizarUsuarioId($_POST['id_usuario']);
+
+  $conexion->desconectar();
 ?>
 <!DOCTYPE html>
 <html lang="es">

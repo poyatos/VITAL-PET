@@ -16,6 +16,7 @@
 
   $cliente = $conexion->visualizarUsuarioId($_REQUEST['idUsuario']);
 
+  $conexion->desconectar();
 ?>
 <!DOCTYPE html>
 <html lang="en">

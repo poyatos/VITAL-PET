@@ -12,7 +12,10 @@
   }
 
   $conexion = new Model(Config::$host, Config::$user, Config::$pass, Config::$nombreBase);
+
   $citas = $conexion->visualizarCitasMascota($_POST['id_mascota']);
+
+  $conexion->desconectar();
 ?>
 <!DOCTYPE html>
 <html lang="en">

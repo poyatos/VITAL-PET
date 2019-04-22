@@ -133,8 +133,10 @@
               <td>".$mascota['sexo_mascota']."</td>");
               if ($_SESSION['rol'] == 'Recepcionista'){
                  echo  ('<td>
-                      <form action="../../CONTROLADOR/controladorRecepcionista.php" method="POST"> 
-                        <input type="submit" value="Añadir citas" name="anadirCitas">
+                      <form action="../RECEPCIONISTA/vistaAnadirCita.php" method="POST">
+                      <input type="hidden" value="'.$mascota['id_cliente'].'" name="id_cliente">
+                      <input type="hidden" value="'.$mascota['id_mascota'].'" name="id_mascota"> 
+                        <input type="submit" value="Añadir citas">
                       </form>
                       </td>');
               } else if ($_SESSION['rol'] == 'Veterinario'){
@@ -158,26 +160,7 @@
 
 <div class="col-12 col-sm-12 col-md-12 col-lg-12">
 <?php
-     echo utf8_encode( '<nav aria-label="Page navigation example"><ul class="pagination">');
-    if ($total_paginas > 1) {
-       echo utf8_encode( "<li class='page-item'><a href='vistaGestionMascotas.php?pagina=0'><i class='glyphicon glyphicon-triangle-left'></i></a></li>");
-      if ($pagina != 1){
-           echo utf8_encode( "<li class='page-item'><a href='vistaGestionMascotas.php?pagina=".($pagina-1)."'><i class='glyphicon glyphicon-menu-left'></i></a></li>");
-      }
-      for ($i=1;$i<=$total_paginas;$i++) {
-          if ($pagina == $i){
-               echo utf8_encode ("<li class='page-item'><a id='actual'>$pagina</a></li>");
-          } else {
-               echo utf8_encode ("<li class='page-item'><a href='vistaGestionMascotas.php?pagina=".$i."'>".$i."</a></li>");
-          }
-      }
-      if ($pagina != $total_paginas){
-           echo utf8_encode ("<li class='page-item'><a href='vistaGestionMascotas.php?pagina=".($pagina+1)."'><i class='glyphicon glyphicon-menu-right'></i></a></li>");
-      }
-       echo utf8_encode("<li class='page-item'><a href='vistaGestionMascotas.php?pagina=".$total_paginas."'><i class='glyphicon glyphicon-triangle-right'></i></a></li>");
-    }
-     echo utf8_encode( '</ul></nav>');
-
+     include '../../INCLUDE/piePaginacion.php';
   } else {
      echo utf8_encode( "<p>No se han encontrado resultados.</p>");
   } 

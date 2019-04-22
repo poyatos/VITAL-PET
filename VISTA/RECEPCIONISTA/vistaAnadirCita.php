@@ -1,4 +1,7 @@
 <?php
+    require_once '../../BBDD/model.php';
+    require_once '../../BBDD/config.php';
+
   session_start();
 
   if(!isset($_SESSION['usuario']) && !isset($_SESSION['rol'])){
@@ -8,6 +11,11 @@
       header("Location: ../".$_SESSION['rol']);
     }
   }
+  $conexion = new Model(Config::$host, Config::$user, Config::$pass, Config::$nombreBase);
+
+  $veterinarios = $conexion->visualizarVeterinarios();
+
+  $conexion->desconectar();
 ?>
 <!DOCTYPE html>
 <html lang="en">
@@ -27,10 +35,6 @@
     <!-- prueba -->
 
     <link href="//maxcdn.bootstrapcdn.com/font-awesome/4.2.0/css/font-awesome.min.css" rel="stylesheet">
-
-
-
-
     <link rel="stylesheet" type="text/css" href="../../CSS/estilo.css">
 
 </head>
@@ -60,7 +64,7 @@
                     <div class="panel-heading">
                         <h2>AÑADIR CITA</h2>
                     </div>
-                    <form class="formulario" action='../../CONTROLADOR/controladorRecepcionista.php' method='post'>
+                    <form class="formulario" action='../../CONTROLADOR/controladorRecepcionista.php' method='POST'>
                         <div class="form-group col-12 col-sm-12 col-md-12 col-lg-12">
                             <h3>INFORMACIÓN</h3>
                         </div>
@@ -97,12 +101,22 @@
                                     <option value='5'>5</option>
                                 </select>
                             </div>
+                            <div class="form-group col-12 col-sm-12 col-md-12 col-lg-12">
+                            <label for="inputPrueba">Veterinario</label>
+                            <select name="id_veterinario" id="inputVeterinario_id" class="form-control" required>
+                                <?php
+                                    foreach($veterinarios as $vet){
+                                        echo utf8_encode("<option value='".$vet['id_usuario']."'>".$vet['nombre_usuario']." ".$vet['apellidos_usuario']." ".$vet['dni_usuario']."</option>");
+                                    }
+                                ?>
+                                </select>
+                            </div>
                             <!--CREAR INPUT PARA ELEGIR EL VETERINARIO-->
                         <div class="form-row">   
                         <br/>
                         <!--EN LOS INPUT HIDDEN DEBEN RELLENARSE LOS VALUES CON LOS VALORES DEL CLIENTE Y LA MASCOTA -->
-                        <input type="hidden" name="id_cliente" value="<?= $_REQUEST['id_cliente'] ?>" id="dni_id">
-                        <input type="hidden" name="id_mascota" value="<?= $_REQUEST['id_mascota'] ?>" id="id_mascota_id">
+                        <input type="hidden" name="id_cliente" value="<?= $_POST['id_cliente'] ?>" id="dni_id">
+                        <input type="hidden" name="id_mascota" value="<?= $_POST['id_mascota'] ?>" id="id_mascota_id">
                         <input type="submit"  class="btn btn-lg" name="anadirCita" value="Añadir cita">
                     </form>
                 </div>

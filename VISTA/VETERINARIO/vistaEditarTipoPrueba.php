@@ -13,7 +13,9 @@
 
   $conexion = new Model(Config::$host, Config::$user, Config::$pass, Config::$nombreBase);
 
-  $tipoPrueba = $conexion->visualizarTipoPruebaId($_REQUEST['id_tipo_prueba']);
+  $tipoPrueba = $conexion->visualizarTipoPruebaId($_POST['id_tipo_prueba']);
+
+  $conexion->desconectar();
 ?>
 <!DOCTYPE html>
 <html lang="es">
