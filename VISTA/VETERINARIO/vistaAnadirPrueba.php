@@ -77,8 +77,8 @@
                             <label for="inputPrueba">Escoja la prueba</label>
                             <select name="id_tipo_prueba" id="inputPrueba_id" class="form-control" required>
                             <?php
-                                foreach($visualizarTiposPruebas as $tipos){
-                                     echo "<option value='".$tipos['id_tipo_prueba']."'>".$tipos['nombre_tipo_prueba']."</option>";
+                                foreach($resultado as $tipos){
+                                     echo utf8_encode("<option value='".$tipos['id_tipo_prueba']."'>".$tipos['id_tipo_prueba'].". ".$tipos['nombre_tipo_prueba']."</option>");
                                 }
                           ?>
                           </select>

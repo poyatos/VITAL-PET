@@ -263,7 +263,7 @@
             $consulta = "SELECT usuarios.dni_usuario, mascotas.id_mascota, mascotas.nombre_mascota, mascotas.tipo_mascota, mascotas.raza_mascota, mascotas.peso_mascota, mascotas.sexo_mascota
             FROM mascotas
             INNER JOIN usuarios
-            ON mascotas.id_cliente = usuarios.id_usuario ".$inicio."," . $tamano_pagina;
+            ON mascotas.id_cliente = usuarios.id_usuario LIMIT ".$inicio."," . $tamano_pagina;
             $resultado = $this->devolverConsultaArray($consulta);
             return $resultado;
         }
@@ -326,7 +326,20 @@
 
         //VISUALIZAR CITAS
         public function visualizarCitas(){
-            $consulta = "SELECT * FROM citas";
+            $consulta = "SELECT usuarios.dni_usuario, id_cita, fecha_cita, hora_cita, estado_cita, num_consulta, id_mascota, id_cliente, id_veterinario 
+            FROM citas
+            INNER JOIN usuarios
+            ON citas.id_cliente = usuarios.id_usuario";
+            $resultado = $this->devolverConsultaArray($consulta);
+            return $resultado;
+        }
+
+        //VISUALIZAR CITAS PAGINACION
+        public function visualizarCitasPaginacion($inicio, $tamano_pagina){
+            $consulta = "SELECT usuarios.dni_usuario, id_cita, fecha_cita, hora_cita, estado_cita, num_consulta, id_mascota, id_cliente, id_veterinario 
+            FROM citas
+            INNER JOIN usuarios
+            ON citas.id_cliente = usuarios.id_usuario LIMIT ".$inicio."," . $tamano_pagina;
             $resultado = $this->devolverConsultaArray($consulta);
             return $resultado;
         }
@@ -365,15 +378,6 @@
         }
 
         //BORRAR CITA (OPCIONAL)
-
-        //PAGINACIÓN CITA
-        public function visualizarCitasPaginacion($inicio, $tamano_pagina){
-            $consulta = "SELECT id_cita, dni_cliente, fecha_cita, hora_cita, estado_cita, id_mascota, num_consulta 
-            FROM citas LIMIT ".$inicio."," . $tamano_pagina;
-            $resultado = $this->devolverConsultaArray($consulta);
-            return $resultado;
-        }
-        //PAGINACIÓN CITA
 
         /* ------------------------------------------------------------ PRUEBAS --------------------------------------------------------------*/
 
@@ -417,8 +421,8 @@
         }
 
         //MODIFICAR PRUEBA
-        public function modificarPrueba($id, $id_tipo, $id_mascota, $resultado, $observaciones){
-            $consulta = "UPDATE pruebas SET id_tipo = $id_tipo, id_mascota = $id_mascota, resultado_prueba = '$resultado', observaciones = '$observaciones' WHERE id_prueba = $id";
+        public function modificarPrueba($id, $resultado, $observaciones){
+            $consulta = "UPDATE pruebas SET resultado_prueba = '$resultado', observaciones_prueba = '$observaciones' WHERE id_prueba = $id";
             $this->ejecutarConsulta($consulta);
         }
 
@@ -460,7 +464,7 @@
 
         //VISUALIZAR TIPOS DE PRUEBAS
         public function visualizarTiposPruebas(){
-            $consulta = "SELECT * FROM tipos_pruebas ";
+            $consulta = "SELECT * FROM tipos_pruebas";
             $resultado = $this->devolverConsultaArray($consulta);
             return $resultado;
         }
@@ -487,8 +491,6 @@
             $consulta = "UPDATE tipos_pruebas SET nombre_tipo_prueba = '$nombre', precio_tipo_prueba = $precio WHERE id_tipo_prueba = $id";
             $this->ejecutarConsulta($consulta);
         }
-
-        //DESACTIVAR TIPO DE PRUEBA (OPCIONAL)
 
         //BORRAR TIPO DE PRUEBA
         public function borrarTipoPrueba($id){

@@ -126,7 +126,7 @@
                echo utf8_encode ("<tr>
               <td>".$mascota['id_mascota']."</td>
               <td>".$mascota['nombre_mascota']."</td>
-              <td>".$mascota['id_cliente']."</td>
+              <td>".$mascota['dni_usuario']."</td>
               <td>".$mascota['tipo_mascota']."</td>
               <td>".$mascota['raza_mascota']."</td>
               <td>".$mascota['peso_mascota']."</td>

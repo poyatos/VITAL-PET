@@ -106,7 +106,7 @@
                         </div>
                         <div class="form-group col-md-12">
                             <label for="inputPeso">peso</label>
-                            <input type="number" name="peso" class="form-control" id="inputPeso"  value = "<?= $mascota['peso_mascota'] ?>" required>
+                            <input type="number" name="peso" class="form-control" id="inputPeso" step="0.01" value = "<?= $mascota['peso_mascota'] ?>" required>
                         </div>
                         <div class="form-row">
                         <br />
