@@ -76,7 +76,7 @@
             foreach($resultado as $pagos){
                echo utf8_encode ("<tr>
               <td>".$pagos['nombre_tipo_prueba']."</td>
-              <td>".$pagos['precio_tipo_prueba']."</td>
+              <td>".$pagos['precio_tipo_prueba']."&euro</td>
               </tr>");
               $total += $pagos['precio_tipo_prueba'];
             }
@@ -84,7 +84,8 @@
             ?>
     </tbody>
   </table>
-  <p><?=$total?></p>
+  <p><?=$total?>€</p>
+  <input type="submit" value="PAGAR" name="pagar">
 </div>
 </div>
 </div>
