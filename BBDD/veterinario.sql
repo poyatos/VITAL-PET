@@ -3,7 +3,11 @@
 -- https://www.phpmyadmin.net/
 --
 -- Servidor: 127.0.0.1
+<<<<<<< HEAD
+-- Tiempo de generación: 27-04-2019 a las 19:28:24
+=======
 -- Tiempo de generación: 27-04-2019 a las 19:00:28
+>>>>>>> f068fe85ba29e10b9789d1b304ce88f4fdd7633d
 -- Versión del servidor: 10.1.32-MariaDB
 -- Versión de PHP: 7.1.17
 
@@ -351,13 +355,15 @@ ALTER TABLE `citas`
 -- Indices de la tabla `contratos`
 --
 ALTER TABLE `contratos`
-  ADD PRIMARY KEY (`id_contrato`);
+  ADD PRIMARY KEY (`id_contrato`),
+  ADD KEY `FK_CONTRATOS_1` (`id_contratado`);
 
 --
 -- Indices de la tabla `mascotas`
 --
 ALTER TABLE `mascotas`
-  ADD PRIMARY KEY (`id_mascota`);
+  ADD PRIMARY KEY (`id_mascota`),
+  ADD KEY `FK_MASCOTAS_1` (`id_cliente`);
 
 --
 -- Indices de la tabla `pagos`
@@ -428,6 +434,22 @@ ALTER TABLE `tipos_pruebas`
 --
 ALTER TABLE `usuarios`
   MODIFY `id_usuario` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=50;
+
+--
+-- Restricciones para tablas volcadas
+--
+
+--
+-- Filtros para la tabla `contratos`
+--
+ALTER TABLE `contratos`
+  ADD CONSTRAINT `FK_CONTRATOS_1` FOREIGN KEY (`id_contratado`) REFERENCES `usuarios` (`id_usuario`) ON DELETE CASCADE ON UPDATE CASCADE;
+
+--
+-- Filtros para la tabla `mascotas`
+--
+ALTER TABLE `mascotas`
+  ADD CONSTRAINT `FK_MASCOTAS_1` FOREIGN KEY (`id_cliente`) REFERENCES `usuarios` (`id_usuario`) ON DELETE CASCADE ON UPDATE CASCADE;
 COMMIT;
 
 /*!40101 SET CHARACTER_SET_CLIENT=@OLD_CHARACTER_SET_CLIENT */;
