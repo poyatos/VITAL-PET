@@ -571,5 +571,11 @@
 
         /* ------------------------------------------------------ CONSULTAS (OPCIONAL) ---------------------------------------------------------*/        
 
+
+        public function visualizarCitasXfecha($fecha){
+            $consulta = "SELECT hora_cita FROM citas WHERE fecha_cita = $fecha";
+            $resultado = $this->devolverConsultaArray($consulta);
+            return $resultado;
+        }
     }
 ?>
