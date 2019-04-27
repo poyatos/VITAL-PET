@@ -113,7 +113,7 @@ if($_SESSION['rol'] != 'Cliente'){
       
         $conexion = new Model(Config::$host, Config::$user, Config::$pass, Config::$nombreBase);
       
-        $resultado = $conexion-> visualizarPruebasYTpruebas();
+        $resultado = $conexion-> visualizarPruebas();
 
         if (!empty($resultado)) {
             $total_registros = count($resultado);
@@ -131,20 +131,15 @@ if($_SESSION['rol'] != 'Cliente'){
             }
             $total_paginas = ceil($total_registros / $tamano_pagina);
             
-            $resultadoPaginacion = $conexion->visualizarPruebaPaginacion($inicio, $tamano_pagina);
+            $resultadoPaginacion = $conexion->visualizarPruebasPaginacion($inicio, $tamano_pagina);
             foreach ($resultadoPaginacion as $prueba) {
 
-               //por hacer-------------------------------SE RECOGE DE LA TABLA TIPO_PRUEBA
                 echo utf8_encode(" <tr>
                   <td>".$prueba['id_prueba']."</td>
-                  <td>Nombre prueba</td>
+                  <td>".$prueba['nombre_tipo_prueba']."</td>
                   <td>".$prueba['resultado_prueba']."</td>
                   <td>".$prueba['observaciones_prueba']."</td>
-                  <td>Precio prueba</td>");
-                 
-
-                //por hacer-------------------------------SE RECOGE DE LA TABLA PRUEBA
-
+                  <td>".$prueba['precio_tipo_prueba']." &euro;</td>");
 
                 if ($_SESSION['rol'] == 'Veterinario') {
                     echo utf8_encode('<td>

@@ -250,14 +250,20 @@
 
         //VISUALIZAR MASCOTAS
         public function visualizarMascotas(){
-            $consulta = "SELECT * FROM mascotas";
+            $consulta = "SELECT usuarios.dni_usuario, mascotas.id_mascota, mascotas.nombre_mascota, mascotas.tipo_mascota, mascotas.raza_mascota, mascotas.peso_mascota, mascotas.sexo_mascota
+            FROM mascotas
+            INNER JOIN usuarios
+            ON mascotas.id_cliente = usuarios.id_usuario";
             $resultado = $this->devolverConsultaArray($consulta);
             return $resultado;
         }
 
         //VISUALIZAR MASCOTAS (PAGINACION)
         public function visualizarMascotasPaginacion($inicio, $tamano_pagina){
-            $consulta = "SELECT * FROM mascotas LIMIT ".$inicio."," . $tamano_pagina;
+            $consulta = "SELECT usuarios.dni_usuario, mascotas.id_mascota, mascotas.nombre_mascota, mascotas.tipo_mascota, mascotas.raza_mascota, mascotas.peso_mascota, mascotas.sexo_mascota
+            FROM mascotas
+            INNER JOIN usuarios
+            ON mascotas.id_cliente = usuarios.id_usuario ".$inicio."," . $tamano_pagina;
             $resultado = $this->devolverConsultaArray($consulta);
             return $resultado;
         }
@@ -386,7 +392,10 @@
 
         //VISUALIZAR PRUEBAS
         public function visualizarPruebas(){
-            $consulta = "SELECT * FROM pruebas";
+            $consulta = "SELECT tipos_pruebas.nombre_tipo_prueba, tipos_pruebas.precio_tipo_prueba, pruebas.id_prueba, pruebas.resultado_prueba, pruebas.observaciones_prueba
+            FROM pruebas
+            INNER JOIN tipos_pruebas
+            ON pruebas.id_tipo_prueba = tipos_pruebas.id_tipo_prueba";
             $resultado = $this->devolverConsultaArray($consulta);
             return $resultado;
         }
@@ -413,22 +422,15 @@
             $this->ejecutarConsulta($consulta);
         }
 
-         /* -------------------------------------------------------- INNER JOIN PRUEBAS/TIPO-PRUEBAS -----------------------------------------------------------*/
-         /* ------------------------------------------------------------------------------------------------------------------------------------*/
-         /* ------------------------------------------------------------------------------------------------------------------------------------*/
-         /* ------------------------------------------------------------------------------------------------------------------------------------*/
-         /* ------------------------------------------------------------------------------------------------------------------------------------*/
-         /* ------------------------------------------------------------------------------------------------------------------------------------*/
-         
-          public function visualizarPruebaPaginacion($inicio, $tamano_pagina){
-            $consulta = "SELECT pruebas.id_prueba, pruebas.resultado_prueba, pruebas.observaciones_prueba, tipos_pruebas.nombre_tipo_prueba, tipos_pruebas.precio_tipo_prueba 
+        //VISUALIZAR PRUEBA PAGINACION
+        public function visualizarPruebasPaginacion($inicio, $tamano_pagina){
+            $consulta = "SELECT tipos_pruebas.nombre_tipo_prueba, tipos_pruebas.precio_tipo_prueba, pruebas.id_prueba, pruebas.resultado_prueba, pruebas.observaciones_prueba
             FROM pruebas
             INNER JOIN tipos_pruebas
-            WHERE pruebas.id_tipo_prueba = tipos_pruebas.id_tipo_prueba LIMIT".$inicio."," . $tamano_pagina;
+            ON pruebas.id_tipo_prueba = tipos_pruebas.id_tipo_prueba LIMIT ".$inicio."," . $tamano_pagina;
             $resultado = $this->devolverConsultaArray($consulta);
             return $resultado;
         }
-        
 
         //BORRAR PRUEBA
         public function borrarPrueba($id){
@@ -559,33 +561,13 @@
 
         /* ------------------------------------------------------------- PAGOS --------------------------------------------------------------*/
 
-        public function visualizarPagos($id){
-            $consulta = "SELECT tipos_pruebas.nombre_tipo_prueba, tipos_pruebas.precio_tipo_prueba
-            FROM tipos_pruebas
-            INNER JOIN pruebas
-            WHERE pruebas.id_cita = $id ";
+        public function visualizarPagos(){
+            $consulta = "SELECT * FROM pagos";
             $resultado = $this->devolverConsultaArray($consulta);
             return $resultado;
         }
 
-        /* ------------------------------------------------------ CONSULTAS (OPCIONAL) ---------------------------------------------------------*/
-        public function visualizarClientesMascotas($id){
-            $consulta = "SELECT usuarios.dni_usuario, mascotas.id_mascota, mascotas.nombre_mascota, mascotas.tipo_mascota, mascotas.raza_mascota, mascotas.peso_mascota, mascotas.sexo_mascota
-            FROM usuarios
-            INNER JOIN mascotas
-            WHERE usuarios.dni_usuario = $id ";
-            $resultado = $this->devolverConsultaArray($consulta);
-            return $resultado;
-        }
-
-        public function visualizarPruebasYTpruebas($id){
-            $consulta = "SELECT tipos_pruebas.nombre_tipo_prueba, tipos_pruebas.precio_tipo_prueba, pruebas.id_prueba, pruebas.resultado_prueba, pruebas.observaciones_prueba
-            FROM pruebas
-            INNER JOIN tipos_pruebas
-            WHERE pruebas.id_prueba = $id ";
-            $resultado = $this->devolverConsultaArray($consulta);
-            return $resultado;
-        }
+        /* ------------------------------------------------------ CONSULTAS (OPCIONAL) ---------------------------------------------------------*/        
 
     }
 ?>
