@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Servidor: 127.0.0.1
--- Tiempo de generación: 21-04-2019 a las 18:26:20
+-- Tiempo de generación: 27-04-2019 a las 19:00:28
 -- Versión del servidor: 10.1.32-MariaDB
 -- Versión de PHP: 7.1.17
 
@@ -32,7 +32,7 @@ USE `veterinario`;
 
 CREATE TABLE `citas` (
   `id_cita` int(11) NOT NULL,
-  `fecha_cita` varchar(10) COLLATE utf8_spanish_ci NOT NULL,
+  `fecha_cita` date NOT NULL,
   `hora_cita` varchar(10) COLLATE utf8_spanish_ci NOT NULL,
   `estado_cita` varchar(50) COLLATE utf8_spanish_ci NOT NULL,
   `num_consulta` int(11) NOT NULL,
@@ -40,6 +40,13 @@ CREATE TABLE `citas` (
   `id_cliente` int(11) NOT NULL,
   `id_veterinario` int(11) NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8 COLLATE=utf8_spanish_ci;
+
+--
+-- Volcado de datos para la tabla `citas`
+--
+
+INSERT INTO `citas` (`id_cita`, `fecha_cita`, `hora_cita`, `estado_cita`, `num_consulta`, `id_mascota`, `id_cliente`, `id_veterinario`) VALUES
+(1, '2019-04-30', '11.00', 'Pendiente', 1, 1, 1, 29);
 
 -- --------------------------------------------------------
 
@@ -154,8 +161,7 @@ INSERT INTO `mascotas` (`id_mascota`, `id_cliente`, `nombre_mascota`, `tipo_masc
 (45, 5, 'Arames', 'Roedor', 'Hamster Roborowski', 'Macho', '0000-00-00', 0.5),
 (46, 6, 'Trufita', 'Gato', 'Maine Coon', 'Hembra', '0000-00-00', 3.7),
 (47, 12, 'Nona', 'Perro', 'Sin raza', 'Hembra', '0000-00-00', 12),
-(48, 11, 'Osito', 'Reptil', 'Tortuga', 'Macho', '0000-00-00', 2.5),
-(49, 12, 'Nicolas', 'Gato', 'Sin raza', 'Macho', '0000-00-00', 3);
+(48, 11, 'Osito', 'Reptil', 'Tortuga', 'Macho', '0000-00-00', 2.5);
 
 -- --------------------------------------------------------
 
@@ -254,7 +260,8 @@ INSERT INTO `tipos_pruebas` (`id_tipo_prueba`, `nombre_tipo_prueba`, `precio_tip
 (49, 'Esterelización perra 0-5 kg', 175),
 (50, 'Esterelización perra 5-10 kg', 225),
 (51, 'Esterelización perra 10-20 Kg', 285),
-(52, 'Esterelización perra 20-30 kg', 390);
+(52, 'Esterelización perra 20-30 kg', 390),
+(53, 'Radiografia dorsal dcho.', 19.99);
 
 -- --------------------------------------------------------
 
@@ -384,7 +391,7 @@ ALTER TABLE `usuarios`
 -- AUTO_INCREMENT de la tabla `citas`
 --
 ALTER TABLE `citas`
-  MODIFY `id_cita` int(11) NOT NULL AUTO_INCREMENT;
+  MODIFY `id_cita` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=2;
 
 --
 -- AUTO_INCREMENT de la tabla `contratos`
@@ -396,7 +403,7 @@ ALTER TABLE `contratos`
 -- AUTO_INCREMENT de la tabla `mascotas`
 --
 ALTER TABLE `mascotas`
-  MODIFY `id_mascota` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=50;
+  MODIFY `id_mascota` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=49;
 
 --
 -- AUTO_INCREMENT de la tabla `pagos`
@@ -414,7 +421,7 @@ ALTER TABLE `pruebas`
 -- AUTO_INCREMENT de la tabla `tipos_pruebas`
 --
 ALTER TABLE `tipos_pruebas`
-  MODIFY `id_tipo_prueba` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=53;
+  MODIFY `id_tipo_prueba` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=54;
 
 --
 -- AUTO_INCREMENT de la tabla `usuarios`
