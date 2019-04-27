@@ -1,0 +1,7 @@
+/* Acceso para la entrada al correo del Veterinario Vital-Pet */
+
+-CORREO:
+ veterinariovitalpet@gmail.com
+
+-CONTRASEÑA:
+ vitalpetclinica
