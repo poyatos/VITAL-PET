@@ -95,7 +95,7 @@
       
         $conexion = new Model(Config::$host, Config::$user, Config::$pass, Config::$nombreBase);
       
-        $resultado = $conexion->visualizarPruebas();
+        $resultado = $conexion-> visualizarPruebasYTpruebas();
 
         if (!empty($resultado)) {
             $total_registros = count($resultado);

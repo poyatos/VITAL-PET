@@ -578,5 +578,14 @@
             return $resultado;
         }
 
+        public function visualizarPruebasYTpruebas($id){
+            $consulta = "SELECT tipos_pruebas.nombre_tipo_prueba, tipos_pruebas.precio_tipo_prueba, pruebas.id_prueba, pruebas.resultado_prueba, pruebas.observaciones_prueba
+            FROM pruebas
+            INNER JOIN tipos_pruebas
+            WHERE pruebas.id_prueba = $id ";
+            $resultado = $this->devolverConsultaArray($consulta);
+            return $resultado;
+        }
+
     }
 ?>
