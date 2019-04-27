@@ -21,7 +21,11 @@
   <script src="//netdna.bootstrapcdn.com/bootstrap/3.2.0/js/bootstrap.min.js"></script>
   <script src="//code.jquery.com/jquery-1.11.1.min.js"></script>
 <!-- prueba -->
-
+<?php
+      if($_SESSION['rol'] == 'Cliente'){
+  echo "<link rel='stylesheet' type='text/css' href='../../CSS/estiloClienteIndex.css'>";
+      }
+ ?>
   <link href="//maxcdn.bootstrapcdn.com/font-awesome/4.2.0/css/font-awesome.min.css" rel="stylesheet">
 
   <link rel="stylesheet" type="text/css" href="../../CSS/estilo.css">
@@ -35,18 +39,26 @@
   <div class="row">
   <div class="col-12 col-sm-12 col-md-12  col-lg-12">
       <?php
-      include "../../INCLUDE/menuPrincipal.inc"
+      if($_SESSION['rol'] == 'Cliente'){
+      include "../../INCLUDE/menuCli.inc";
+      echo"<button type='button' class='btn btn-primary btn-block'><a href='../CLIENTE/index.php'><h1>INICIO</h1></a></button>";
+      }else {
+      include "../../INCLUDE/menuPrincipal.inc"; 
+      }
       ?>
 </div>
 
   <!-- MENU LATERAL -->
-      <div class="col-12 col-sm-5 col-md-4  col-lg-4">
+      
   <?php
     if($_SESSION['rol'] == 'Director'){
+      echo"<div class='col-12 col-sm-5 col-md-4  col-lg-4'>";
       include "../../INCLUDE/menuDir.inc";
     } else if ($_SESSION['rol'] == 'Recepcionista'){
+      echo"<div class='col-12 col-sm-5 col-md-4  col-lg-4'>";
       include "../../INCLUDE/menuRec.inc";
     } else if ($_SESSION['rol'] == 'Veterinario'){
+      echo"<div class='col-12 col-sm-5 col-md-4  col-lg-4'>";
       include "../../INCLUDE/menuVet.inc";
     }
   ?>
@@ -56,7 +68,14 @@
       <!-- CONTENIDO-->
 
 <!-- filtro y busqueda-->
-<div class="logotipo col-12 col-sm-7 col-md-7 col-lg-7">
+<?php
+if($_SESSION['rol'] != 'Cliente'){
+  echo "<div class='logotipo col-12 col-sm-7 col-md-7 col-lg-7'>";
+}else{
+  echo "<div class='logotipo col-12 col-sm-12 col-md-12 col-lg-12'>";
+}
+?>
+
       <div class="form-group row">
       <div class="col-12 col-sm-12 col-md-12 col-lg-12">
  <h1>LISTADO CITAS</h1>
