@@ -28,7 +28,7 @@
 
   <link href="//maxcdn.bootstrapcdn.com/font-awesome/4.2.0/css/font-awesome.min.css" rel="stylesheet">
 
-
+ <script src="JS/validacion.js"></script>
 
 
   <link rel="stylesheet" type="text/css" href="../../CSS/estilo.css">
@@ -61,7 +61,7 @@
                           <div class="panel-heading">
                               <h2>CONTRATAR</h2>
                           </div>
-                              <form class="formulario" action='../../CONTROLADOR/controladorDirector.php' method='POST'>
+                              <form class="formulario" action='../../CONTROLADOR/controladorDirector.php' method='POST' onsubmit="return validarContrato()">
                                   <div class="form-row">
                           <div class="form-group col-12 col-sm-12 col-md-6 col-lg-6">
                             <label for="inputNombre">Nombre</label>
@@ -106,7 +106,7 @@
 
                           <div class="form-group col-12 col-sm-12 col-md-6 col-lg-6">
                             <label for="inputTelefono">Telefono</label>
-                            <input type="number" name="telefono" class="form-control" id="916652654" required>
+                            <input type="number" name="telefono" class="form-control" id="telefono_id" required>
                           </div>
                         </div>
 
@@ -166,6 +166,32 @@
     </div>
 
   </div>
+<!--
+<script>
+
+function validarContrato() {
+    var puno = document.getElementById("inputPassword").value;
+    var pdos = document.getElementById("inputRePassword").value;
+    var dni = document.getElementById("inputDni").value;
+    var expresionRegularDni = /^[XYZ]?\d{5,8}[A-Z]$/;
+    
+    if (puno != pdos) {
+      alert("La contraseña tiene que ser igual");
+      return false;
+    } 
+  
+    if (dni != expresionRegularDni) {
+      alert("El dni no es válido");
+      return false;
+    }
+  
+    return true;
+    
+  }
+
+
+</script>
+-->
 
 </body>
 

@@ -92,7 +92,7 @@
 
                             <div class="form-group col-12 col-sm-12 col-md-6 col-lg-6">
                               <label for="inputCorreo">Correo</label>
-                              <input type="text"  name="correo"  class="form-control" id="inputCorreo" value="<?= $empleado['correo_usuario']?>" required>
+                              <input type="email"  name="correo"  class="form-control" id="inputCorreo" value="<?= $empleado['correo_usuario']?>" required>
                             </div>
                             <div class="form-row">
                               <div class="form-group col-12 col-sm-12 col-md-6 col-lg-6">
@@ -101,7 +101,7 @@
                               </div>
                               <div class="form-group col-12 col-sm-12 col-md-6 col-lg-6">
                                 <label for="inputTelefono">Telefono</label>
-                                <input type="text"  name="telefono"  class="form-control" id="916652654" value="<?= $empleado['telefono_usuario']?>" required>
+                                <input type="text"  name="telefono"  class="form-control" id="telefono_id" value="<?= $empleado['telefono_usuario']?>" required>
                               </div>
                             </div>
                             <div class="form-group col-12 col-sm-12 col-md-6 col-lg-6">
