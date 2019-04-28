@@ -134,8 +134,8 @@
               if ($_SESSION['rol'] == 'Recepcionista'){
                  echo  ('<td>
                       <form action="../RECEPCIONISTA/vistaAnadirCita.php" method="POST">
-                      <input type="hidden" value="'.$mascota['id_cliente'].'" name="id_cliente">
-                      <input type="hidden" value="'.$mascota['id_mascota'].'" name="id_mascota"> 
+                        <input type="hidden" value="'.$mascota['id_cliente'].'" name="id_cliente">
+                        <input type="hidden" value="'.$mascota['id_mascota'].'" name="id_mascota"> 
                         <input type="submit" value="Añadir citas">
                       </form>
                       </td>');

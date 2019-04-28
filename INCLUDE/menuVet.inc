@@ -20,9 +20,10 @@
                         </li>  
                         <ul class="sub-menu collapse" id="service">
                             <li class="active"><a href="../COMUN/vistaGestionCitas.php"><i class="glyphicon glyphicon-eye-open"></i>Consultar citas / Añadir pruebas </a></li>
-                            <li class="active"><a href="../COMUN/vistaGestionMascotas.php"><i class="glyphicon glyphicon-cog"></i>Gestionar mascotas</a></li>
+                            <li><a href="../COMUN/vistaGestionCliente.php"><i class="glyphicon glyphicon-cog"></i>Consultar clientes</a></li>
+                            <li><a href="../COMUN/vistaGestionMascotas.php"><i class="glyphicon glyphicon-cog"></i>Gestionar mascotas</a></li>
                             <li><a href="../COMUN/vistaGestionPrueba.php"><i class="glyphicon glyphicon-cog"></i>Gestionar pruebas</a></li>
-                            <li><a href="../COMUN/vistaGestionTipoPrueba.php"><i class="glyphicon glyphicon-cog"></i>Consultar Tipo de pruebas</a></li>
+                            <li><a href="../COMUN/vistaGestionTipoPrueba.php"><i class="glyphicon glyphicon-cog"></i>Gestionar tipo de pruebas</a></li>
                         </ul>
 
                     </ul>

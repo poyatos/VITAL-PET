@@ -156,7 +156,6 @@ if($_SESSION['rol'] != 'Cliente'){
 
           if($_SESSION['rol'] == 'Veterinario'){
             echo ('<td>
-
             <form action="../VETERINARIO/vistaAnadirPrueba.php" method="POST"> 
                 <input type="hidden" value="'.$citas['id_mascota'].'" name="id_mascota">
                 <input type="hidden" value="'.$citas['id_cita'].'" name="id_cita">

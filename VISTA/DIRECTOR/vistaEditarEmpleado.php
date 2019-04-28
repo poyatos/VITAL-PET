@@ -108,22 +108,6 @@
                               <label for="inputFecha">Fecha</label>
                               <input type="date"  name="fecna"  class="form-control" id="fecha" value="<?= $empleado['fecna_usuario']?>" required>
                             </div>
-                            <div class="form-group col-12 col-sm-12 col-md-6 col-lg-6">
-                          <label for="inputJob">Elige la profesión</label>
-                          <select name="profesion" id="inputJob" class="form-control" required>
-                            <?php
-                            if($empleado['rol_usuario'] == "Veterinario"){
-
-                            echo"<option value='Veterinario' selected>Veterinario</option>
-                                 <option value='Recepcionista'>Recepcionista</option>";
-                            }else{
-                              echo"<option value='Veterinario'>Veterinario</option>
-                              <option value='Recepcionista' selected>Recepcionista</option>";
-                            }
-                            ?>
-                          </select>
-
-                            </div>
                             <!--INPUT HIDDEN DEL ID-->
                             <input type='hidden' name='id_usuario' value="<?= $empleado['id_usuario']?>"/>
                             <input type="submit" class="btn btn-lg" name="editarEmpleado" value="Editar empleado"/>
