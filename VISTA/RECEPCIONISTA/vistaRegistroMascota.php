@@ -100,7 +100,7 @@
                         </div>
                         <div class="form-row">
                         <br />
-                        <input type ="hidden" name="id_cliente" value = "<?= $_REQUEST['id_cliente'] ?>">
+                        <input type ="hidden" name="id_cliente" value = "<?= $_POST['id_cliente'] ?>">
                         <input type="submit" name ="anadirMascota" class="btn btn-lg" value="Dar de alta">
                     </form>
                 </div>

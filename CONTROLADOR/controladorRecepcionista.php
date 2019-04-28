@@ -48,7 +48,16 @@
             header("Location: ../VISTA/VETERINARIO/vistaRegistroMascota.php");
         }
 
-        /*---------PENDIENTE-------*/
-        /*---------CONTROLAR FUNCIONES DE VISTA DE GESTION DE CLIENTES, MASCOTAS, PRUEBAS Y TIPOS DE PRUEBAS-------*/
+        /*---------CONTROLADOR VISTA EDITAR CLIENTE-------*/        
+        elseif(isset($_POST['editarCliente'])){
+            $conexion->modificarUsuario($_POST['id_cliente'], $_POST['nombre'], $_POST['apellidos'], $_POST['dni'], $_POST['telefono'], $_POST['correo'],  $_POST['fecna'],  $_POST['direccion']);
+            header("Location: ../VISTA/RECEPCIONISTA/vistaGestionCliente.php");
+        } 
+
+        /*---------CONTROLADOR VISTA GESTION CLIENTE-------*/ 
+        elseif(isset($_POST['borrarCliente'])){
+            $conexion->borrarUsuario($_POST['id_cliente']);
+            header("Location: ../VISTA/RECEPCIONISTA/vistaGestionCliente.php");
+        }
     }
 ?>

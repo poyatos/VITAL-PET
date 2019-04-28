@@ -136,18 +136,24 @@
 
                     if($_SESSION['rol'] == 'Recepcionista'){
                        echo ('<td>
-
+                      <form action="../RECEPCIONISTA/vistaRegistroMascota.php" method="POST">
+                        <input type="hidden" value="'.$clientes['id_usuario'].'" name="id_cliente">
+                        <input type="submit" value="Añadir mascota" name="anadirMascota"> 
+                      </form>
+                      <form action="../RECEPCIONISTA/vistaEditarCliente.php" method="POST">
+                        <input type="hidden" value="'.$clientes['id_usuario'].'" name="id_cliente">
+                        <input type="submit" value="Editar" name="editarCliente">
+                      </form>
                       <form action="../../CONTROLADOR/controladorRecepcionista.php" method="POST">
-                         <input type="submit" value="Añadir mascota" name="anadirMascota"> 
-                        <input type="submit" value="Editar" name="editarCita">
-                        <input type="submit" value="Borrar" name="borrarCita">
+                        <input type="hidden" value="'.$clientes['id_usuario'].'" name="id_cliente">
+                        <input type="submit" value="Borrar" name="borrarCliente">
                       </form>
                       </td>');
 
                     }else if($_SESSION['rol'] == 'Veterinario'){
+                      /* PENDIENTE DE VER COMO HACERLO */
                        echo utf8_encode ('<td>
-
-                      <form action="../../CONTROLADOR/controladorVeterinario.php" method="POST"> 
+                      <form action="" method="POST"> 
                         <input type="submit" value="Ver mascotas" name="verMascotas">
                       </form>
                       </td>');

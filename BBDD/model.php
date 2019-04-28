@@ -214,13 +214,17 @@
         }
 
         //MODIFICAR USUARIO
-        public function modificarUsuario($id, $nombre, $apellidos, $dni, $telefono, $correo, $fecna, $direccion, $rol){
+        public function modificarUsuario($id, $nombre, $apellidos, $dni, $telefono, $correo, $fecna, $direccion){
             $consulta = "UPDATE usuarios SET nombre_usuario = '$nombre', apellidos_usuario = '$apellidos', dni_usuario = '$dni', telefono_usuario = $telefono, correo_usuario = '$correo', fecna_usuario = '$fecna', 
-            direccion_usuario = '$direccion', rol_usuario = '$rol' WHERE id_usuario = $id";
+            direccion_usuario = '$direccion' WHERE id_usuario = $id";
             $this->ejecutarConsulta($consulta);
         }
 
         //BORRAR USUARIO (POSIBLE IMPLEMENTACION, PERO IMPLICARIA ELIMINAR OTROS ELEMENTOS RELACIONADOS CON USUARIO)
+        public function borrarUsuario($id){
+            $consulta = "DELETE FROM usuarios WHERE id_usuario = $id";
+            $this->ejecutarConsulta($consulta);
+        }
 
         /* ----------------------------------------------------------- MASCOTAS --------------------------------------------------------------*/
         /* ------------------------------------------------------------------------------------------------------------------------------------*/

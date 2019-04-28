@@ -14,7 +14,7 @@
   
   $conexion = new Model(Config::$host, Config::$user, Config::$pass, Config::$nombreBase);
 
-  $cliente = $conexion->visualizarUsuarioId($_REQUEST['idUsuario']);
+  $cliente = $conexion->visualizarUsuarioId($_POST['id_cliente']);
 
   $conexion->desconectar();
 ?>
@@ -118,7 +118,7 @@
                             <input type="date" name="fecna" class="form-control" id="fecha" value ="<?= $cliente['fecna_usuario']?>" required>
                         </div>
                         <br />
-                        <input type='hidden' name='idUsuario' value="<?= $cliente['id_usuario']?>"/>
+                        <input type='hidden' name='id_cliente' value="<?= $cliente['id_usuario']?>"/>
                         <input type="submit"  class="btn btn-lg" name="editarCliente" value="Editar">
                     </form>
                 </div>

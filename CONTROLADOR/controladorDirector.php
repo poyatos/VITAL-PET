@@ -37,7 +37,7 @@ if ($_POST) {
 
     /*---------CONTROLADOR EDITAR EMPLEADO-------*/
     elseif (isset($_POST['editarEmpleado'])) {
-        $conexion->modificarUsuario($_POST['id_usuario'], $_POST['nombre'], $_POST['apellidos'], $_POST['dni'], $_POST['telefono'], $_POST['correo'], $_POST['fecna'], $_POST['direccion'], $_POST['profesion']);
+        $conexion->modificarUsuario($_POST['id_usuario'], $_POST['nombre'], $_POST['apellidos'], $_POST['dni'], $_POST['telefono'], $_POST['correo'], $_POST['fecna'], $_POST['direccion']);
         header("Location: ../VISTA/DIRECTOR/vistaGestionEmpleados.php");
     }
 
