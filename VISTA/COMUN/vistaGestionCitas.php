@@ -108,7 +108,7 @@ if($_SESSION['rol'] != 'Cliente'){
         <th>Fecha</th>
         <th>Hora</th>
         <th>Estado de la cita</th>
-        <th>id mascota</th>
+        <th>ID mascota</th>
         <th>Consulta nº</th>
         <?php
           if($_SESSION['rol'] == 'Veterinario' || $_SESSION['rol'] == 'Recepcionista'){
@@ -147,7 +147,7 @@ if($_SESSION['rol'] != 'Cliente'){
             foreach($resultadoPaginacion as $citas){
      echo utf8_encode(" <tr>
         <td>".$citas['id_cita']."</td>
-        <td>".$citas['dni_cliente']."</td>
+        <td>".$citas['dni_usuario']."</td>
         <td>".$citas['fecha_cita']."</td>
         <td>".$citas['hora_cita']."</td>
         <td>".$citas['estado_cita']."</td>
@@ -158,6 +158,7 @@ if($_SESSION['rol'] != 'Cliente'){
             echo ('<td>
 
             <form action="../VETERINARIO/vistaAnadirPrueba.php" method="POST"> 
+                <input type="hidden" value="'.$citas['id_mascota'].'" name="id_mascota">
                 <input type="hidden" value="'.$citas['id_cita'].'" name="id_cita">
                 <input type="submit" value="Añadir prueba">
             </form>

@@ -36,17 +36,17 @@ if (isset($_POST)) {
         $conexion->modificarTipoPrueba($_POST['id_tipo_prueba'], $_POST['nombre'], $_POST['precio']);
         header("Location: ../VISTA/COMUN/vistaGestionTipoPrueba.php");
     } elseif (isset($_POST['borrarTipoPrueba'])){
-        $conexion->borrarPrueba($_POST['id_tipo_prueba']);
+        $conexion->borrarTipoPrueba($_POST['id_tipo_prueba']);
         header("Location: ../VISTA/COMUN/vistaGestionTipoPrueba.php");
     }
 
     /*---------CONTROLADOR VISTA GESTION MASCOTAS-------*/
     elseif (isset($_POST['editarMascota'])){
-        $conexion->modificarMascota($POST['id_mascota'], $POST['nombre'], $POST['tipo'], $POST['raza'], $POST['sexo'], $POST['fecna'], $POST['peso']);
-        header("Location: ../VISTA/VETERINARIO/vistaGestionMascotas.php");
+        $conexion->modificarMascota($_POST['id_mascota'], $_POST['nombre'], $_POST['tipo'], $_POST['raza'], $_POST['sexo'], $_POST['fecna'], $_POST['peso']);
+        header("Location: ../VISTA/COMUN/vistaGestionMascotas.php");
     } elseif (isset($_POST['borrarMascota'])){
         $conexion->borrarMascota($_POST['id_mascota']);
-        header("Location: ../VISTA/VETERINARIO/vistaGestionMascotas.php");
+        header("Location: ../VISTA/COMUN/vistaGestionMascotas.php");
     } else {
         header("Location: ../VISTA/VETERINARIO");
     }
