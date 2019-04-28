@@ -61,7 +61,7 @@
                           <div class="panel-heading">
                               <h2>CONTRATAR</h2>
                           </div>
-                              <form class="formulario" action='../../CONTROLADOR/controladorDirector.php' method='POST'>
+                              <form class="formulario" action='../../CONTROLADOR/controladorDirector.php' method='POST' onsubmit="validarContrato()">
                                   <div class="form-row">
                           <div class="form-group col-12 col-sm-12 col-md-6 col-lg-6">
                             <label for="inputNombre">Nombre</label>
@@ -106,7 +106,7 @@
 
                           <div class="form-group col-12 col-sm-12 col-md-6 col-lg-6">
                             <label for="inputTelefono">Telefono</label>
-                            <input type="number" name="telefono" class="form-control" id="916652654" required>
+                            <input type="number" name="telefono" class="form-control" id="telefono_id" required>
                           </div>
                         </div>
 

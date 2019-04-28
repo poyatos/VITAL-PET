@@ -75,7 +75,7 @@
                         <div class="form-row">
                             <div class="form-group col-12 col-sm-12 col-md-6 col-lg-6">
                                 <label for="inputFecha">Fecha</label>
-                                <input type="date" name="fecha" class="form-control" id="inputFecha" required>
+                                <input type="date" name="fecha" class="form-control" id="inputFecha" onchange="fechaSeleccionada(this.value)  required>
                             </div>
                             <div class="form-group col-12 col-sm-12 col-md-6 col-lg-6">
                             <label for="inputHora">Hora</label>
