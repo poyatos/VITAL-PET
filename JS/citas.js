@@ -4,10 +4,10 @@ function fechaSeleccionada(fecsel) {
     xhttp = new XMLHttpRequest();
     xhttp.onreadystatechange = function() {
         if (this.readyState == 4 && this.status == 200) {
-            var fechaSeleccionada = document.getElementById("inputFecha").value;
+            var fechaSelec = document.getElementById("inputFecha").value;
            }
 
-           if (fechaSeleccionada != ""){
+           if (fechaSelec != ""){
                alert ("esta fecha no esta disponible");
                return fecsel;
            }else{
