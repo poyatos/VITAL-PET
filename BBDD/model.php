@@ -235,13 +235,13 @@
 
         //REGISTRAR MASCOTA
         public function registrarMascota($id, $nombre, $tipo, $raza, $sexo, $fecna, $peso){
-            $consulta = "SELECT * FROM mascotas WHERE id_cliente = '$id' AND nombre_mascota = '$nombre' AND tipo_mascota = '$tipo' ";
+            $consulta = "SELECT * FROM mascotas WHERE id_cliente = $id AND nombre_mascota = '$nombre' AND tipo_mascota = '$tipo' ";
 
             if ($this->existeFila($consulta)) {
                  echo "<br/><h2>La mascota ya existe.</h2><br />";
             } else {
                 $sql = "INSERT INTO mascotas (id_cliente, nombre_mascota, tipo_mascota, raza_mascota, sexo_mascota, fecna_mascota, peso_mascota)
-                VALUES ('$dni', '$nombre', '$tipo', '$raza', '$sexo', '$fecna', $peso)";
+                VALUES ($id, '$nombre', '$tipo', '$raza', '$sexo', '$fecna', $peso)";
 
                 if ($this->ejecutarConsulta($sql)) {
                      echo "<br/><h2>Mascota registrada correctamente.</h2>";
@@ -254,7 +254,7 @@
 
         //VISUALIZAR MASCOTAS
         public function visualizarMascotas(){
-            $consulta = "SELECT usuarios.dni_usuario, mascotas.id_mascota, mascotas.nombre_mascota, mascotas.tipo_mascota, mascotas.raza_mascota, mascotas.peso_mascota, mascotas.sexo_mascota
+            $consulta = "SELECT usuarios.dni_usuario, mascotas.id_mascota, mascotas.id_cliente, mascotas.nombre_mascota, mascotas.tipo_mascota, mascotas.raza_mascota, mascotas.peso_mascota, mascotas.sexo_mascota
             FROM mascotas
             INNER JOIN usuarios
             ON mascotas.id_cliente = usuarios.id_usuario";
@@ -264,7 +264,7 @@
 
         //VISUALIZAR MASCOTAS (PAGINACION)
         public function visualizarMascotasPaginacion($inicio, $tamano_pagina){
-            $consulta = "SELECT usuarios.dni_usuario, mascotas.id_mascota, mascotas.nombre_mascota, mascotas.tipo_mascota, mascotas.raza_mascota, mascotas.peso_mascota, mascotas.sexo_mascota
+            $consulta = "SELECT usuarios.dni_usuario, mascotas.id_mascota, mascotas.id_cliente, mascotas.nombre_mascota, mascotas.tipo_mascota, mascotas.raza_mascota, mascotas.peso_mascota, mascotas.sexo_mascota
             FROM mascotas
             INNER JOIN usuarios
             ON mascotas.id_cliente = usuarios.id_usuario LIMIT ".$inicio."," . $tamano_pagina;
@@ -382,6 +382,10 @@
         }
 
         //BORRAR CITA (OPCIONAL)
+        public function borrarCita($id){
+            $consulta = "DELETE FROM citas WHERE id_cita = $id";
+            $this->ejecutarConsulta($consulta);
+        }
 
         /* ------------------------------------------------------------ PRUEBAS --------------------------------------------------------------*/
 

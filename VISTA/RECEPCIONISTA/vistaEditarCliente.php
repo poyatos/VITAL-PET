@@ -86,14 +86,6 @@
                                 <label for="inputApellidos">Apellidos</label>
                                 <input type="text" name="apellidos" class="form-control" id="inputApellidos" value ="<?= $cliente['apellidos_usuario']?>" required>
                             </div>
-                            <div class="form-group col-12 col-sm-12 col-md-12  col-lg-12">
-                                <label for="inputPassword">Contraseña</label>
-                                <input type="password" name="contrasena" class="form-control" id="inputPassword" placeholder="Contraseña" required>
-                            </div>
-                            <div class="form-group col-12 col-sm-12 col-md-12  col-lg-12">
-                                <label for="inputPassword2">Repite Contraseña</label>
-                                <input type="password" name="contrasena2" class="form-control" id="inputPassword2" placeholder="Repite contraseña" required>
-                            </div>
                             <div class="form-group col-12 col-sm-12 col-md-6 col-lg-6">
                                 <label for="inputDni">DNI</label>
                                 <input type="text" name="dni" class="form-control" id="inputDni" value ="<?= $cliente['dni_usuario']?>" required>

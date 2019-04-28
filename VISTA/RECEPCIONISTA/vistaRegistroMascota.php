@@ -64,7 +64,7 @@
                     </div>
 
                     <div class="form-group col-12 col-sm-12 col-md-12 col-lg-12">
-                    <form class="formulario" action='../../CONTROLADOR/controladorRecepcionista.php' method='post'>
+                    <form class="formulario" action='../../CONTROLADOR/controladorRecepcionista.php' method='POST'>
                             <h3>INFORMACIÓN</h3>
                         </div>
                         <div class="form-row">
@@ -82,11 +82,9 @@
                             </div>
                             <div class="form-group col-md-12">
                                 <label for="inputSex">Elije el sexo</label>
-                                <select name="sexo" id="inputSex" class="form-control" required>
-                               
-                                    <option value="macho" selected>Macho</option>
-                                    <option value="hembra">Hembra</option>
-                              
+                                <select name="sexo" id="inputSex" class="form-control" required>          
+                                    <option value="Macho" selected>Macho</option>
+                                    <option value="Hembra">Hembra</option>     
                                 </select>
                             </div>
                             <div class="form-group col-md-12">
@@ -96,7 +94,7 @@
                         </div>
                         <div class="form-group col-md-12">
                             <label for="inputPeso">Peso</label>
-                            <input type="text" name="peso" class="form-control" id="inputPeso" placeholder="30kilos" required>
+                            <input type="number" name="peso" class="form-control" id="inputPeso" placeholder="30kilos" required>
                         </div>
                         <div class="form-row">
                         <br />
