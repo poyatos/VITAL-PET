@@ -110,14 +110,23 @@ padding:2%;
 textarea{
 
 resize:none;
-
 }
+
+table {
+  text-align: center;
+}
+
+ td{
+  display: inline-block;
+  text-align: left;
+}
+
 
 /*------------------------------------CONTENIDO----------------------------------*/
 
 .logotipo{
-text-align: center;
 margin:8% auto;
+text-align:center;
 }
 
 

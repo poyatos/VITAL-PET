@@ -27,6 +27,8 @@
   <link href="//maxcdn.bootstrapcdn.com/font-awesome/4.2.0/css/font-awesome.min.css" rel="stylesheet">
   <link rel="stylesheet" type="text/css" href="../../CSS/estilo.css">
   <script type="text/javascript" src="../../JS/consultar.js"></script>
+  
+
 
 </head>
 
@@ -56,7 +58,7 @@
 
       <!-- CONTENIDO-->
 
-      <div class="col-12 col-sm-7 col-md-7  col-lg-7 text-left">
+      <div class="col-12 col-sm-7 col-md-7  col-lg-7 text-left logotipo">
       <div class="form-group row">
       <div class="col-12 col-sm-12 col-md-12 col-lg-12">
         <h1>TIPO DE PRUEBA</h1>

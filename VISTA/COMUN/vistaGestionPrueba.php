@@ -98,10 +98,10 @@ if($_SESSION['rol'] != 'Cliente'){
         <th>Nombre de la prueba</th>
         <th>Resultado</th>
         <th>Observaciones</th>
-        <th>Precio</th>
+        <th >Precio</th>
         <?php
         if ($_SESSION['rol'] == 'Veterinario') {
-            echo'<th>Editar</th>';
+            echo'<th style="width:200px;" >Editar</th>';
         }
         ?>
       </tr>
