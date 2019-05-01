@@ -54,6 +54,22 @@
             return $total;
         }
 
+        //FUNCION GENERAL PARA DEVOLVER CONSULTAS DE UNA SOLA FILA
+        public function devolverConsultaFila($consulta){
+            $resultadoConsulta = $this->ejecutarConsulta($consulta);
+            $fila = null;
+
+            if($resultadoConsulta){
+                $resultado = $resultadoConsulta->get_result();
+            }  
+
+            if($resultado){
+                $fila = $resultado->fetch_array();
+            }
+
+            return $fila;
+        }
+
         //FUNCION PARA COMPROBAR SI YA EXISTE UNA MISMA FILA DENTRO DE UNA TABLA
         public function existeFila($consulta){
             $existe = false;
@@ -112,18 +128,14 @@
         //VISUALIZAR USUARIO POR DNI
         public function visualizarUsuarioDni($dni){
             $consulta = "SELECT * FROM usuarios WHERE dni_usuario = '$dni' ";
-            $resultadoConsulta = $this->ejecutarConsulta($consulta);
-            $resultado = $resultadoConsulta->get_result();
-            $usuario = $resultado->fetch_array();
+            $usuario = $this->devolverConsultaFila($consulta);
             return $usuario;
         }
 
         //VISUALIZAR USUARIO POR ID
         public function visualizarUsuarioId($id){
             $consulta = "SELECT * FROM usuarios WHERE id_usuario = $id ";
-            $resultadoConsulta = $this->ejecutarConsulta($consulta);
-            $resultado = $resultadoConsulta->get_result();
-            $usuario = $resultado->fetch_array();
+            $usuario = $this->devolverConsultaFila($consulta);
             return $usuario;
         }
 
@@ -274,17 +286,15 @@
 
         //VISUALIZAR MASCOTA ID
         public function visualizarMascotaId($id){
-            $consulta = "SELECT * FROM mascotas WHERE id_mascota = '$id' ";
-            $resultadoConsulta = $this->ejecutarConsulta($consulta);
-            $resultado = $resultadoConsulta->get_result();
-            $mascota = $resultado->fetch_array();
+            $consulta = "SELECT * FROM mascotas WHERE id_mascota = $id ";
+            $mascota = $this->devolverConsultaFila($consulta);
             return $mascota;
         }
 
         //VISUALIZAR MASCOTAS CLIENTE
         public function visualizarMascotasCliente($id){
-            $consulta = "SELECT * FROM mascotas WHERE id_cliente = '$id' ";
-            $resultado = $this->ejecutarConsulta($consulta);
+            $consulta = "SELECT * FROM mascotas WHERE id_cliente = $id ";
+            $resultado = $this->devolverConsultaArray($consulta);
             return $resultado;
         }
 
@@ -350,21 +360,21 @@
 
         //VISUALIZAR CITAS CLIENTE
         public function visualizarCitasCliente($id){
-            $consulta = "SELECT * FROM citas WHERE id_cliente = '$id' ";
+            $consulta = "SELECT * FROM citas WHERE id_cliente = $id ";
             $resultado = $this->devolverConsultaArray($consulta);
             return $resultado;
         }
 
         //VISUALIZAR CITAS MASCOTA
         public function visualizarCitasMascota($id){
-            $consulta = "SELECT * FROM citas WHERE id_mascota = '$id' ";
+            $consulta = "SELECT * FROM citas WHERE id_mascota = $id ";
             $resultado = $this->devolverConsultaArray($consulta);
             return $resultado;
         }
 
         //VISUALIZAR CITAS VETERINARIO
         public function visualizarCitasVeterinario($id){
-            $consulta = "SELECT * FROM citas WHERE id_veterinario = '$id' ";
+            $consulta = "SELECT * FROM citas WHERE id_veterinario = $id ";
             $resultado = $this->devolverConsultaArray($consulta);
             return $resultado;
         }
@@ -414,10 +424,8 @@
 
         //VISUALIZAR PRUEBA ID
         public function visualizarPruebaId($id){
-            $consulta = "SELECT * FROM pruebas WHERE id_prueba = '$id' ";
-            $resultadoConsulta = $this->ejecutarConsulta($consulta);
-            $resultado = $resultadoConsulta->get_result();
-            $prueba = $resultado->fetch_array();
+            $consulta = "SELECT * FROM pruebas WHERE id_prueba = $id ";
+            $prueba = $this->devolverConsultaFila($consulta);
             return $prueba;
         }
 
@@ -488,9 +496,7 @@
         //VISUALIZAR PRUEBA ID
         public function visualizarTipoPruebaId($id){
             $consulta = "SELECT * FROM tipos_pruebas WHERE id_tipo_prueba = '$id' ";
-            $resultadoConsulta = $this->ejecutarConsulta($consulta);
-            $resultado = $resultadoConsulta->get_result();
-            $tipoPrueba = $resultado->fetch_array();
+            $tipoPrueba = $this->devolverConsultaFila($consulta);
             return $tipoPrueba;
         }
 
@@ -543,9 +549,7 @@
         //VISUALIZAR CONTRATO ID
         public function visualizarContratoId($id){
             $consulta = "SELECT * FROM contratos WHERE id_contratado = $id ";
-            $resultadoConsulta = $this->ejecutarConsulta($consulta);
-            $resultado = $resultadoConsulta->get_result();
-            $contrato = $resultado->fetch_array();
+            $contrato = $this->devolverConsultaFila($consulta);
             return $contrato;
         }
 
