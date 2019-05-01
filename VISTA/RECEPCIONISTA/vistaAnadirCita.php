@@ -36,7 +36,7 @@
     <!-- prueba -->
 
     <!--AJAX -->
-    <script src="../../JS/citas.js" type="text/javascript"></script>
+    <script src="citas.js" type="text/javascript"></script>
 
     <link href="//maxcdn.bootstrapcdn.com/font-awesome/4.2.0/css/font-awesome.min.css" rel="stylesheet">
     <link rel="stylesheet" type="text/css" href="../../CSS/estilo.css">
@@ -75,27 +75,23 @@
                         <div class="form-row">
                             <div class="form-group col-12 col-sm-12 col-md-6 col-lg-6">
                                 <label for="inputFecha">Fecha</label>
-                                <input type="date" name="fecha" class="form-control" id="inputFecha" onchange="fechaSeleccionada(this.value)  required>
+                                <input type="date" name="fecha" class="form-control" id="inputFecha" required>
                             </div>
                             <div class="form-group col-12 col-sm-12 col-md-6 col-lg-6">
                             <label for="inputHora">Hora</label>
-                                <select name="hora" id="inputHora_id" class="form-control" required> 
+                                <select name="hora" id="inputHora" class="form-control" required> 
                                      
                                 </select>
                             </div>
                             <div class="form-group col-12 col-sm-12 col-md-12 col-lg-12">
                             <label for="inputPrueba">Sala</label>
-                            <select name="consulta" id="inputSala_id" class="form-control" required>
-                                    <option value='1' selected>1</option>
-                                    <option value='2'>2</option>
-                                    <option value='3'>3</option>
-                                    <option value='4'>4</option>
-                                    <option value='5'>5</option>
+                            <select name="consulta" id="inputSala" class="form-control" required>
+                                    
                                 </select>
                             </div>
                             <div class="form-group col-12 col-sm-12 col-md-12 col-lg-12">
                             <label for="inputPrueba">Veterinario</label>
-                            <select name="id_veterinario" id="inputVeterinario_id" class="form-control" required>
+                            <select name="id_veterinario" id="inputVeterinario" class="form-control" required>
                                 <?php
                                     foreach($veterinarios as $vet){
                                         echo utf8_encode("<option value='".$vet['id_usuario']."'>".$vet['nombre_usuario']." ".$vet['apellidos_usuario']." ".$vet['dni_usuario']."</option>");

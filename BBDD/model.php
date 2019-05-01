@@ -396,6 +396,13 @@
             return $resultado;
         }
 
+        //VISUALIZAR CITAS DE UNA FECHA Y HORA
+        public function visualizarCitasFechaHora($fecha, $hora){
+            $consulta = "SELECT * FROM citas WHERE fecha_cita = '$fecha' AND hora_cita = '$hora' AND estado_cita = 'Pendiente'";
+            $resultado = $this->devolverConsultaArray($consulta);
+            return $resultado;
+        }
+
         //MODIFICAR CITA
         public function modificarCita($id, $fecha, $hora, $consulta){
             $consulta = "UPDATE citas SET fecha_cita = '$fecha', hora_cita = '$hora', num_consulta = $consulta WHERE id_cita = $id";
