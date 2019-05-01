@@ -124,7 +124,14 @@ if($_SESSION['rol'] != 'Cliente'){
       
         $conexion = new Model(Config::$host, Config::$user, Config::$pass, Config::$nombreBase);
       
-        $resultado = $conexion->visualizarCitas();
+        if($_SESSION['rol'] == 'Veterinario'){
+          $resultado = $conexion->visualizarCitasVeterinario($_SESSION['id_usuario']);
+        } else if($_SESSION['rol'] == 'Cliente'){
+          $resultado = $conexion->visualizarCitasCliente($_SESSION['id_usuario']);
+        } else {
+          $resultado = $conexion->visualizarCitas();
+        }
+        
 
         if (!empty($resultado)) {
             $total_registros = count($resultado);
@@ -143,7 +150,14 @@ if($_SESSION['rol'] != 'Cliente'){
             }
             $total_paginas = ceil($total_registros / $tamano_pagina);
             
-            $resultadoPaginacion = $conexion->visualizarCitasPaginacion($inicio, $tamano_pagina);
+            if($_SESSION['rol'] == 'Veterinario'){
+              $resultadoPaginacion = $conexion->visualizarCitasVeterinarioPaginacion($_SESSION['id_usuario'], $inicio, $tamano_pagina);
+            } else if($_SESSION['rol'] == 'Cliente'){
+              $resultadoPaginacion = $conexion->visualizarCitasClientePaginacion($_SESSION['id_usuario'], $inicio, $tamano_pagina);
+            } else {
+              $resultadoPaginacion = $conexion->visualizarCitasPaginacion($inicio, $tamano_pagina);
+            }
+            
             foreach($resultadoPaginacion as $citas){
      echo utf8_encode(" <tr>
         <td>".$citas['id_cita']."</td>

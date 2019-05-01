@@ -127,14 +127,16 @@
 
         //VISUALIZAR USUARIO POR DNI
         public function visualizarUsuarioDni($dni){
-            $consulta = "SELECT * FROM usuarios WHERE dni_usuario = '$dni' ";
+            $consulta = "SELECT id_usuario, nombre_usuario, apellidos_usuario, dni_usuario, telefono_usuario, correo_usuario, fecna_usuario, 
+            direccion_usuario, rol_usuario FROM usuarios WHERE dni_usuario = '$dni' ";
             $usuario = $this->devolverConsultaFila($consulta);
             return $usuario;
         }
 
         //VISUALIZAR USUARIO POR ID
         public function visualizarUsuarioId($id){
-            $consulta = "SELECT * FROM usuarios WHERE id_usuario = $id ";
+            $consulta = "SELECT id_usuario, nombre_usuario, apellidos_usuario, dni_usuario, telefono_usuario, correo_usuario, fecna_usuario, 
+            direccion_usuario, rol_usuario FROM usuarios WHERE id_usuario = $id ";
             $usuario = $this->devolverConsultaFila($consulta);
             return $usuario;
         }
@@ -211,6 +213,7 @@
 
             if ($existeUsuario == 1) {
                 if ($columnas['pass_usuario'] == hash("sha512",$pass)) {
+                    $_SESSION['id_usuario'] = $columnas['id_usuario'];
                     $_SESSION['usuario'] = $columnas['nombre_usuario'] + " " + $columnas['apellidos_usuario'];
                     $_SESSION['rol'] = $columnas['rol_usuario'];
                     $rol = strtoupper($columnas['rol_usuario']);
@@ -365,6 +368,13 @@
             return $resultado;
         }
 
+        //VISUALIZAR CITAS CLIENTE PAGINACION
+        public function visualizarCitasClientePaginacion($id, $inicio, $tamano_pagina){
+            $consulta = "SELECT * FROM citas WHERE id_cliente = $id LIMIT ".$inicio."," . $tamano_pagina;
+            $resultado = $this->devolverConsultaArray($consulta);
+            return $resultado;
+        }
+
         //VISUALIZAR CITAS MASCOTA
         public function visualizarCitasMascota($id){
             $consulta = "SELECT * FROM citas WHERE id_mascota = $id ";
@@ -375,6 +385,13 @@
         //VISUALIZAR CITAS VETERINARIO
         public function visualizarCitasVeterinario($id){
             $consulta = "SELECT * FROM citas WHERE id_veterinario = $id ";
+            $resultado = $this->devolverConsultaArray($consulta);
+            return $resultado;
+        }
+
+        //VISUALIZAR CITAS VETERINARIO PAGINACION
+        public function visualizarCitasVeterinarioPaginacion($id, $inicio, $tamano_pagina){
+            $consulta = "SELECT * FROM citas WHERE id_veterinario = $id LIMIT ".$inicio."," . $tamano_pagina;
             $resultado = $this->devolverConsultaArray($consulta);
             return $resultado;
         }
