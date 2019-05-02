@@ -4,12 +4,12 @@
 
   session_start();
 
-  if(!isset($_SESSION['usuario']) && !isset($_SESSION['rol'])){
-    header("Location: ../../index.php");
+  if (!isset($_SESSION['usuario']) && !isset($_SESSION['rol'])) {
+      header("Location: ../../index.php");
   } else {
-    if($_SESSION['rol'] != 'Recepcionista'){
-      header("Location: ../".$_SESSION['rol']);
-    }
+      if ($_SESSION['rol'] != 'Recepcionista') {
+          header("Location: ../".$_SESSION['rol']);
+      }
   }
   $conexion = new Model(Config::$host, Config::$user, Config::$pass, Config::$nombreBase);
 
@@ -84,22 +84,17 @@
                                 </select>
                             </div>
                             <div class="form-group col-12 col-sm-12 col-md-12 col-lg-12">
-                            <label for="inputPrueba">Sala</label>
+                            <label for="inputSala">Sala</label>
                             <select name="consulta" id="inputSala" class="form-control" required>
                                     
-                                </select>
+                            </select>
                             </div>
                             <div class="form-group col-12 col-sm-12 col-md-12 col-lg-12">
-                            <label for="inputPrueba">Veterinario</label>
+                            <label for="inputVeterinario">Veterinario</label>
                             <select name="id_veterinario" id="inputVeterinario" class="form-control" required>
-                                <?php
-                                    foreach($veterinarios as $vet){
-                                        echo utf8_encode("<option value='".$vet['id_usuario']."'>".$vet['nombre_usuario']." ".$vet['apellidos_usuario']." ".$vet['dni_usuario']."</option>");
-                                    }
-                                ?>
-                                </select>
+
+                            </select>
                             </div>
-                            <!--CREAR INPUT PARA ELEGIR EL VETERINARIO-->
                         <div class="form-row">   
                         <br/>
                         <!--EN LOS INPUT HIDDEN DEBEN RELLENARSE LOS VALUES CON LOS VALORES DEL CLIENTE Y LA MASCOTA -->

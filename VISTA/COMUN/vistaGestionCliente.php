@@ -126,7 +126,7 @@
             
             $resultadoPaginacion = $conexion->visualizarClientesPaginacion($inicio, $tamano_pagina);
             foreach($resultadoPaginacion as $clientes){
-                   echo utf8_encode(" <tr>
+                   echo (" <tr>
                   <td>".$clientes['nombre_usuario']."</td>
                   <td>".$clientes['apellidos_usuario']."</td>
                   <td>".$clientes['dni_usuario']."</td>

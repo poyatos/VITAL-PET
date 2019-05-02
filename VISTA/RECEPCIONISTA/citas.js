@@ -16,16 +16,14 @@ function mostrarHorasDisponibles() {
 
     if (peticion_http) {
         peticion_http.onreadystatechange = function () {
-            if (peticion_http.readyState == 4 && peticion_http.status == 200) {
-                var selectHora = document.getElementById("inputHora");
+            if (peticion_http.readyState == 4 && peticion_http.status == 200) {    
                 var arrayHorasDisponibles = JSON.parse(peticion_http.responseText);
+                var selectHora = document.getElementById("inputHora");
                 selectHora.innerHTML = "";
                 if (arrayHorasDisponibles == null || arrayHorasDisponibles.length == 0) {
-                    document.getElementById("inputHora").innerHTML = "<option value='0' selected></option>";
                     alert("No hay horas disponibles para la fecha elegida. Elige otra fecha porfavor.");
                 } else {
                     for (var hora of arrayHorasDisponibles) {
-                        var selectHora = document.getElementById("inputHora");
                         var option = document.createElement('option');
                         option.textContent = hora;
                         option.value = hora;
@@ -40,6 +38,70 @@ function mostrarHorasDisponibles() {
     peticion_http.send("fecha=" + fecha + "&accion=comprobarHoras");
 }
 
+function mostrarSalasDisponibles() {
+
+    crearPeticion();
+
+    var fecha = document.getElementById("inputFecha").value;
+    var hora = document.getElementById("inputHora").value;
+
+    if (peticion_http) {
+        peticion_http.onreadystatechange = function () {
+            if (peticion_http.readyState == 4 && peticion_http.status == 200) {
+                var arraySalasDisponibles = JSON.parse(peticion_http.responseText);
+                var selectSala = document.getElementById("inputSala");
+                selectSala.innerHTML = "";
+                if (arraySalasDisponibles == null || arraySalasDisponibles.length == 0) {
+                    alert("No hay salas disponibles para la fecha y hora elegida. Elige otra fecha y hora porfavor.");
+                } else {
+                    for (var sala of arraySalasDisponibles) {
+                        var option = document.createElement('option');
+                        option.textContent = sala;
+                        option.value = sala;
+                        selectSala.appendChild(option);
+                    }
+                }
+            }
+        }
+    }
+    peticion_http.open("POST", "citas.php", true);
+    peticion_http.setRequestHeader("Content-Type", "application/x-www-form-urlencoded");
+    peticion_http.send("fecha=" + fecha + "&hora=" + hora + "&accion=comprobarSalas");
+}
+
+function mostrarVeterinariosDisponibles() {
+
+    crearPeticion();
+
+    var fecha = document.getElementById("inputFecha").value;
+    var hora = document.getElementById("inputHora").value;
+
+    if (peticion_http) {
+        peticion_http.onreadystatechange = function () {
+            if (peticion_http.readyState == 4 && peticion_http.status == 200) {
+                var arrayVeterinariosDisponibles = JSON.parse(peticion_http.responseText);
+                var selectVeterinario = document.getElementById("inputVeterinario");
+                selectVeterinario.innerHTML = "";
+                if (arrayVeterinariosDisponibles == null || arrayVeterinariosDisponibles.length == 0) {
+                    alert("No hay veterinarios disponibles para la fecha y hora elegida. Elige otra fecha y hora porfavor.");
+                } else {
+                    for (var veterinario of arrayVeterinariosDisponibles) {
+                        var option = document.createElement('option');
+                        option.textContent = veterinario['nombre_usuario'] + " " + veterinario['apellidos_usuario'] + " " + veterinario['dni_usuario'];
+                        option.value = veterinario['id_usuario'];
+                        selectVeterinario.appendChild(option);
+                    }
+                }
+            }
+        }
+    }
+    peticion_http.open("POST", "citas.php", true);
+    peticion_http.setRequestHeader("Content-Type", "application/x-www-form-urlencoded");
+    peticion_http.send("fecha=" + fecha + "&hora=" + hora + "&accion=comprobarVeterinarios");
+}
+
 window.onload = function () {
     document.getElementById("inputFecha").onchange = mostrarHorasDisponibles;
+    document.getElementById("inputHora").onchange = mostrarSalasDisponibles;
+    document.getElementById("inputSala").onchange = mostrarVeterinariosDisponibles;
 }

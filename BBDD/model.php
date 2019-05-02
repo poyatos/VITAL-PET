@@ -13,6 +13,8 @@
             if(!($this->conexion->select_db($nombreBase))){
                  echo  "No se ha podido conectar";
             }
+
+            $this->conexion->set_charset("utf8");
         }
 
         //FUNCION PARA CERRAR LA CONEXION
@@ -198,7 +200,14 @@
             $resultado = $this->devolverConsultaArray($consulta);
             return $resultado;
         }
-        
+
+        //VISUALIZAR VETERINARIOS DISPONIBLES
+        public function visualizarVeterinariosDisponibles($fecha, $hora){
+            $consulta = "SELECT id_usuario, nombre_usuario, apellidos_usuario, dni_usuario FROM usuarios WHERE rol_usuario LIKE 'Veterinario' AND id_usuario NOT IN (SELECT id_veterinario FROM citas WHERE fecha_cita = '$fecha' AND hora_cita = '$hora' AND estado_cita = 'Pendiente')";
+            $resultado = $this->devolverConsultaArray($consulta);
+            return $resultado;
+        }
+
         //INICIAR SESION USUARIO
         public function iniciarSesionUsuario($dni,$pass){
             $consulta = "SELECT dni_usuario, pass_usuario, rol_usuario FROM usuarios WHERE dni_usuario = '$dni' ";
@@ -605,13 +614,5 @@
             return $resultado;
         }
 
-        /* ------------------------------------------------------ CONSULTAS (OPCIONAL) ---------------------------------------------------------*/        
-
-
-        public function visualizarCitasXfecha($fecha){
-            $consulta = "SELECT hora_cita FROM citas WHERE fecha_cita = $fecha";
-            $resultado = $this->devolverConsultaArray($consulta);
-            return $resultado;
-        }
     }
 ?>
