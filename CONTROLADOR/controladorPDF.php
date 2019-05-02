@@ -15,8 +15,8 @@
                 //pdf la factura numero 1 de la tipica BBDD de facturacion
                 $pdf->AddPage();
                 $pdf->SetFont('Arial', 'B', 11);
-                // Imprimimos el logo a 300 ppp
-                $pdf->Image('IMAGENES/logon.png',5,5,-300);
+                // Imprimimos el logo
+                $pdf->Image('IMAGENES/logon.png',5,5,-700);
                 $pdf->Cell(90, 70, "Correo: ".$_SESSION['logeado'], 0, 0, 'C');
                 $pdf->Ln(50);
                 $pdf->SetTextColor(0,0,0);
