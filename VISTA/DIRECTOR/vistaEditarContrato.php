@@ -37,7 +37,7 @@
 
   <link href="//maxcdn.bootstrapcdn.com/font-awesome/4.2.0/css/font-awesome.min.css" rel="stylesheet">
 
-
+  <script src="JS/validacion.js"></script>
 
 
   <link rel="stylesheet" type="text/css" href="../../CSS/estilo.css">
@@ -79,7 +79,7 @@
                 }
                 ?>
             </div>
-            <form class="formulario" action='../../CONTROLADOR/controladorDirector.php' method='post'>
+            <form class="formulario" action='../../CONTROLADOR/controladorDirector.php' method='post' onsubmit="return validarContrato()">
               <div class="form-row">
 
 

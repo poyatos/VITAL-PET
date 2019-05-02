@@ -126,7 +126,7 @@
                echo utf8_encode ("<tr>
               <td>".$mascota['id_mascota']."</td>
               <td>".$mascota['nombre_mascota']."</td>
-              <td>".$mascota['id_cliente']."</td>
+              <td>".$mascota['dni_usuario']."</td>
               <td>".$mascota['tipo_mascota']."</td>
               <td>".$mascota['raza_mascota']."</td>
               <td>".$mascota['peso_mascota']."</td>
@@ -134,8 +134,8 @@
               if ($_SESSION['rol'] == 'Recepcionista'){
                  echo  ('<td>
                       <form action="../RECEPCIONISTA/vistaAnadirCita.php" method="POST">
-                      <input type="hidden" value="'.$mascota['id_cliente'].'" name="id_cliente">
-                      <input type="hidden" value="'.$mascota['id_mascota'].'" name="id_mascota"> 
+                        <input type="hidden" value="'.$mascota['id_cliente'].'" name="id_cliente">
+                        <input type="hidden" value="'.$mascota['id_mascota'].'" name="id_mascota"> 
                         <input type="submit" value="Añadir citas">
                       </form>
                       </td>');

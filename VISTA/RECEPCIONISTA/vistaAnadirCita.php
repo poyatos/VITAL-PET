@@ -26,6 +26,7 @@
     <meta name="viewport" content="width=device-width, initial-scale=1">
     <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.0/css/bootstrap.min.css">
     <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
+    <script type="text/javascript" src="http://ajax.googleapis.com/ajax/libs/jquery/1.8.2/jquery.min.js"></script>
     <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.0/js/bootstrap.min.js"></script>
 
     <!-- prueba -->
@@ -33,6 +34,9 @@
     <script src="//netdna.bootstrapcdn.com/bootstrap/3.2.0/js/bootstrap.min.js"></script>
     <script src="//code.jquery.com/jquery-1.11.1.min.js"></script>
     <!-- prueba -->
+
+    <!--AJAX -->
+    <script src="citas.js" type="text/javascript"></script>
 
     <link href="//maxcdn.bootstrapcdn.com/font-awesome/4.2.0/css/font-awesome.min.css" rel="stylesheet">
     <link rel="stylesheet" type="text/css" href="../../CSS/estilo.css">
@@ -75,35 +79,19 @@
                             </div>
                             <div class="form-group col-12 col-sm-12 col-md-6 col-lg-6">
                             <label for="inputHora">Hora</label>
-                                <select name="hora" id="inputHora_id" class="form-control" required> 
-                                     <option value='08:00' selected>08:00</option>
-                                     <option value='09:00' >09:00</option>
-                                     <option value='10:00' >10:00</option>
-                                     <option value='11:00' >11:00</option>
-                                     <option value='12:00' >12:00</option>
-                                     <option value='13:00' >13:00</option>
-                                     <option value='14:00' >14:00</option>
-                                     <option value='15:00' >15:00</option>
-                                     <option value='16:00' >16:00</option>
-                                     <option value='17:00' >17:00</option>
-                                     <option value='18:00' >18:00</option>
-                                     <option value='19:00' >19:00</option>
-                                     <option value='20:00' >20:00</option>
+                                <select name="hora" id="inputHora" class="form-control" required> 
+                                     
                                 </select>
                             </div>
                             <div class="form-group col-12 col-sm-12 col-md-12 col-lg-12">
                             <label for="inputPrueba">Sala</label>
-                            <select name="consulta" id="inputSala_id" class="form-control" required>
-                                    <option value='1' selected>1</option>
-                                    <option value='2'>2</option>
-                                    <option value='3'>3</option>
-                                    <option value='4'>4</option>
-                                    <option value='5'>5</option>
+                            <select name="consulta" id="inputSala" class="form-control" required>
+                                    
                                 </select>
                             </div>
                             <div class="form-group col-12 col-sm-12 col-md-12 col-lg-12">
                             <label for="inputPrueba">Veterinario</label>
-                            <select name="id_veterinario" id="inputVeterinario_id" class="form-control" required>
+                            <select name="id_veterinario" id="inputVeterinario" class="form-control" required>
                                 <?php
                                     foreach($veterinarios as $vet){
                                         echo utf8_encode("<option value='".$vet['id_usuario']."'>".$vet['nombre_usuario']." ".$vet['apellidos_usuario']." ".$vet['dni_usuario']."</option>");

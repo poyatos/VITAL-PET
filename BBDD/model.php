@@ -54,6 +54,22 @@
             return $total;
         }
 
+        //FUNCION GENERAL PARA DEVOLVER CONSULTAS DE UNA SOLA FILA
+        public function devolverConsultaFila($consulta){
+            $resultadoConsulta = $this->ejecutarConsulta($consulta);
+            $fila = null;
+
+            if($resultadoConsulta){
+                $resultado = $resultadoConsulta->get_result();
+            }  
+
+            if($resultado){
+                $fila = $resultado->fetch_array();
+            }
+
+            return $fila;
+        }
+
         //FUNCION PARA COMPROBAR SI YA EXISTE UNA MISMA FILA DENTRO DE UNA TABLA
         public function existeFila($consulta){
             $existe = false;
@@ -111,19 +127,17 @@
 
         //VISUALIZAR USUARIO POR DNI
         public function visualizarUsuarioDni($dni){
-            $consulta = "SELECT * FROM usuarios WHERE dni_usuario = '$dni' ";
-            $resultadoConsulta = $this->ejecutarConsulta($consulta);
-            $resultado = $resultadoConsulta->get_result();
-            $usuario = $resultado->fetch_array();
+            $consulta = "SELECT id_usuario, nombre_usuario, apellidos_usuario, dni_usuario, telefono_usuario, correo_usuario, fecna_usuario, 
+            direccion_usuario, rol_usuario FROM usuarios WHERE dni_usuario = '$dni' ";
+            $usuario = $this->devolverConsultaFila($consulta);
             return $usuario;
         }
 
         //VISUALIZAR USUARIO POR ID
         public function visualizarUsuarioId($id){
-            $consulta = "SELECT * FROM usuarios WHERE id_usuario = $id ";
-            $resultadoConsulta = $this->ejecutarConsulta($consulta);
-            $resultado = $resultadoConsulta->get_result();
-            $usuario = $resultado->fetch_array();
+            $consulta = "SELECT id_usuario, nombre_usuario, apellidos_usuario, dni_usuario, telefono_usuario, correo_usuario, fecna_usuario, 
+            direccion_usuario, rol_usuario FROM usuarios WHERE id_usuario = $id ";
+            $usuario = $this->devolverConsultaFila($consulta);
             return $usuario;
         }
 
@@ -199,6 +213,7 @@
 
             if ($existeUsuario == 1) {
                 if ($columnas['pass_usuario'] == hash("sha512",$pass)) {
+                    $_SESSION['id_usuario'] = $columnas['id_usuario'];
                     $_SESSION['usuario'] = $columnas['nombre_usuario'] + " " + $columnas['apellidos_usuario'];
                     $_SESSION['rol'] = $columnas['rol_usuario'];
                     $rol = strtoupper($columnas['rol_usuario']);
@@ -214,13 +229,17 @@
         }
 
         //MODIFICAR USUARIO
-        public function modificarUsuario($id, $nombre, $apellidos, $dni, $telefono, $correo, $fecna, $direccion, $rol){
+        public function modificarUsuario($id, $nombre, $apellidos, $dni, $telefono, $correo, $fecna, $direccion){
             $consulta = "UPDATE usuarios SET nombre_usuario = '$nombre', apellidos_usuario = '$apellidos', dni_usuario = '$dni', telefono_usuario = $telefono, correo_usuario = '$correo', fecna_usuario = '$fecna', 
-            direccion_usuario = '$direccion', rol_usuario = '$rol' WHERE id_usuario = $id";
+            direccion_usuario = '$direccion' WHERE id_usuario = $id";
             $this->ejecutarConsulta($consulta);
         }
 
         //BORRAR USUARIO (POSIBLE IMPLEMENTACION, PERO IMPLICARIA ELIMINAR OTROS ELEMENTOS RELACIONADOS CON USUARIO)
+        public function borrarUsuario($id){
+            $consulta = "DELETE FROM usuarios WHERE id_usuario = $id";
+            $this->ejecutarConsulta($consulta);
+        }
 
         /* ----------------------------------------------------------- MASCOTAS --------------------------------------------------------------*/
         /* ------------------------------------------------------------------------------------------------------------------------------------*/
@@ -231,13 +250,13 @@
 
         //REGISTRAR MASCOTA
         public function registrarMascota($id, $nombre, $tipo, $raza, $sexo, $fecna, $peso){
-            $consulta = "SELECT * FROM mascotas WHERE id_cliente = '$id' AND nombre_mascota = '$nombre' AND tipo_mascota = '$tipo' ";
+            $consulta = "SELECT * FROM mascotas WHERE id_cliente = $id AND nombre_mascota = '$nombre' AND tipo_mascota = '$tipo' ";
 
             if ($this->existeFila($consulta)) {
                  echo "<br/><h2>La mascota ya existe.</h2><br />";
             } else {
                 $sql = "INSERT INTO mascotas (id_cliente, nombre_mascota, tipo_mascota, raza_mascota, sexo_mascota, fecna_mascota, peso_mascota)
-                VALUES ('$dni', '$nombre', '$tipo', '$raza', '$sexo', '$fecna', $peso)";
+                VALUES ($id, '$nombre', '$tipo', '$raza', '$sexo', '$fecna', $peso)";
 
                 if ($this->ejecutarConsulta($sql)) {
                      echo "<br/><h2>Mascota registrada correctamente.</h2>";
@@ -250,7 +269,7 @@
 
         //VISUALIZAR MASCOTAS
         public function visualizarMascotas(){
-            $consulta = "SELECT usuarios.dni_usuario, mascotas.id_mascota, mascotas.nombre_mascota, mascotas.tipo_mascota, mascotas.raza_mascota, mascotas.peso_mascota, mascotas.sexo_mascota
+            $consulta = "SELECT usuarios.dni_usuario, mascotas.id_mascota, mascotas.id_cliente, mascotas.nombre_mascota, mascotas.tipo_mascota, mascotas.raza_mascota, mascotas.peso_mascota, mascotas.sexo_mascota
             FROM mascotas
             INNER JOIN usuarios
             ON mascotas.id_cliente = usuarios.id_usuario";
@@ -260,27 +279,25 @@
 
         //VISUALIZAR MASCOTAS (PAGINACION)
         public function visualizarMascotasPaginacion($inicio, $tamano_pagina){
-            $consulta = "SELECT usuarios.dni_usuario, mascotas.id_mascota, mascotas.nombre_mascota, mascotas.tipo_mascota, mascotas.raza_mascota, mascotas.peso_mascota, mascotas.sexo_mascota
+            $consulta = "SELECT usuarios.dni_usuario, mascotas.id_mascota, mascotas.id_cliente, mascotas.nombre_mascota, mascotas.tipo_mascota, mascotas.raza_mascota, mascotas.peso_mascota, mascotas.sexo_mascota
             FROM mascotas
             INNER JOIN usuarios
-            ON mascotas.id_cliente = usuarios.id_usuario ".$inicio."," . $tamano_pagina;
+            ON mascotas.id_cliente = usuarios.id_usuario LIMIT ".$inicio."," . $tamano_pagina;
             $resultado = $this->devolverConsultaArray($consulta);
             return $resultado;
         }
 
         //VISUALIZAR MASCOTA ID
         public function visualizarMascotaId($id){
-            $consulta = "SELECT * FROM mascotas WHERE id_mascota = '$id' ";
-            $resultadoConsulta = $this->ejecutarConsulta($consulta);
-            $resultado = $resultadoConsulta->get_result();
-            $mascota = $resultado->fetch_array();
+            $consulta = "SELECT * FROM mascotas WHERE id_mascota = $id ";
+            $mascota = $this->devolverConsultaFila($consulta);
             return $mascota;
         }
 
         //VISUALIZAR MASCOTAS CLIENTE
         public function visualizarMascotasCliente($id){
-            $consulta = "SELECT * FROM mascotas WHERE id_cliente = '$id' ";
-            $resultado = $this->ejecutarConsulta($consulta);
+            $consulta = "SELECT * FROM mascotas WHERE id_cliente = $id ";
+            $resultado = $this->devolverConsultaArray($consulta);
             return $resultado;
         }
 
@@ -326,28 +343,62 @@
 
         //VISUALIZAR CITAS
         public function visualizarCitas(){
-            $consulta = "SELECT * FROM citas";
+            $consulta = "SELECT usuarios.dni_usuario, id_cita, fecha_cita, hora_cita, estado_cita, num_consulta, id_mascota, id_cliente, id_veterinario 
+            FROM citas
+            INNER JOIN usuarios
+            ON citas.id_cliente = usuarios.id_usuario";
+            $resultado = $this->devolverConsultaArray($consulta);
+            return $resultado;
+        }
+
+        //VISUALIZAR CITAS PAGINACION
+        public function visualizarCitasPaginacion($inicio, $tamano_pagina){
+            $consulta = "SELECT usuarios.dni_usuario, id_cita, fecha_cita, hora_cita, estado_cita, num_consulta, id_mascota, id_cliente, id_veterinario 
+            FROM citas
+            INNER JOIN usuarios
+            ON citas.id_cliente = usuarios.id_usuario LIMIT ".$inicio."," . $tamano_pagina;
             $resultado = $this->devolverConsultaArray($consulta);
             return $resultado;
         }
 
         //VISUALIZAR CITAS CLIENTE
         public function visualizarCitasCliente($id){
-            $consulta = "SELECT * FROM citas WHERE id_cliente = '$id' ";
+            $consulta = "SELECT * FROM citas WHERE id_cliente = $id ";
+            $resultado = $this->devolverConsultaArray($consulta);
+            return $resultado;
+        }
+
+        //VISUALIZAR CITAS CLIENTE PAGINACION
+        public function visualizarCitasClientePaginacion($id, $inicio, $tamano_pagina){
+            $consulta = "SELECT * FROM citas WHERE id_cliente = $id LIMIT ".$inicio."," . $tamano_pagina;
             $resultado = $this->devolverConsultaArray($consulta);
             return $resultado;
         }
 
         //VISUALIZAR CITAS MASCOTA
         public function visualizarCitasMascota($id){
-            $consulta = "SELECT * FROM citas WHERE id_mascota = '$id' ";
+            $consulta = "SELECT * FROM citas WHERE id_mascota = $id ";
             $resultado = $this->devolverConsultaArray($consulta);
             return $resultado;
         }
 
         //VISUALIZAR CITAS VETERINARIO
         public function visualizarCitasVeterinario($id){
-            $consulta = "SELECT * FROM citas WHERE id_veterinario = '$id' ";
+            $consulta = "SELECT * FROM citas WHERE id_veterinario = $id ";
+            $resultado = $this->devolverConsultaArray($consulta);
+            return $resultado;
+        }
+
+        //VISUALIZAR CITAS VETERINARIO PAGINACION
+        public function visualizarCitasVeterinarioPaginacion($id, $inicio, $tamano_pagina){
+            $consulta = "SELECT * FROM citas WHERE id_veterinario = $id LIMIT ".$inicio."," . $tamano_pagina;
+            $resultado = $this->devolverConsultaArray($consulta);
+            return $resultado;
+        }
+
+        //VISUALIZAR CITAS DE UNA FECHA Y HORA
+        public function visualizarCitasFechaHora($fecha, $hora){
+            $consulta = "SELECT * FROM citas WHERE fecha_cita = '$fecha' AND hora_cita = '$hora' AND estado_cita = 'Pendiente'";
             $resultado = $this->devolverConsultaArray($consulta);
             return $resultado;
         }
@@ -365,15 +416,10 @@
         }
 
         //BORRAR CITA (OPCIONAL)
-
-        //PAGINACIÓN CITA
-        public function visualizarCitasPaginacion($inicio, $tamano_pagina){
-            $consulta = "SELECT id_cita, dni_cliente, fecha_cita, hora_cita, estado_cita, id_mascota, num_consulta 
-            FROM citas LIMIT ".$inicio."," . $tamano_pagina;
-            $resultado = $this->devolverConsultaArray($consulta);
-            return $resultado;
+        public function borrarCita($id){
+            $consulta = "DELETE FROM citas WHERE id_cita = $id";
+            $this->ejecutarConsulta($consulta);
         }
-        //PAGINACIÓN CITA
 
         /* ------------------------------------------------------------ PRUEBAS --------------------------------------------------------------*/
 
@@ -402,10 +448,8 @@
 
         //VISUALIZAR PRUEBA ID
         public function visualizarPruebaId($id){
-            $consulta = "SELECT * FROM pruebas WHERE id_prueba = '$id' ";
-            $resultadoConsulta = $this->ejecutarConsulta($consulta);
-            $resultado = $resultadoConsulta->get_result();
-            $prueba = $resultado->fetch_array();
+            $consulta = "SELECT * FROM pruebas WHERE id_prueba = $id ";
+            $prueba = $this->devolverConsultaFila($consulta);
             return $prueba;
         }
 
@@ -417,8 +461,8 @@
         }
 
         //MODIFICAR PRUEBA
-        public function modificarPrueba($id, $id_tipo, $id_mascota, $resultado, $observaciones){
-            $consulta = "UPDATE pruebas SET id_tipo = $id_tipo, id_mascota = $id_mascota, resultado_prueba = '$resultado', observaciones = '$observaciones' WHERE id_prueba = $id";
+        public function modificarPrueba($id, $resultado, $observaciones){
+            $consulta = "UPDATE pruebas SET resultado_prueba = '$resultado', observaciones_prueba = '$observaciones' WHERE id_prueba = $id";
             $this->ejecutarConsulta($consulta);
         }
 
@@ -460,7 +504,7 @@
 
         //VISUALIZAR TIPOS DE PRUEBAS
         public function visualizarTiposPruebas(){
-            $consulta = "SELECT * FROM tipos_pruebas ";
+            $consulta = "SELECT * FROM tipos_pruebas";
             $resultado = $this->devolverConsultaArray($consulta);
             return $resultado;
         }
@@ -476,9 +520,7 @@
         //VISUALIZAR PRUEBA ID
         public function visualizarTipoPruebaId($id){
             $consulta = "SELECT * FROM tipos_pruebas WHERE id_tipo_prueba = '$id' ";
-            $resultadoConsulta = $this->ejecutarConsulta($consulta);
-            $resultado = $resultadoConsulta->get_result();
-            $tipoPrueba = $resultado->fetch_array();
+            $tipoPrueba = $this->devolverConsultaFila($consulta);
             return $tipoPrueba;
         }
 
@@ -487,8 +529,6 @@
             $consulta = "UPDATE tipos_pruebas SET nombre_tipo_prueba = '$nombre', precio_tipo_prueba = $precio WHERE id_tipo_prueba = $id";
             $this->ejecutarConsulta($consulta);
         }
-
-        //DESACTIVAR TIPO DE PRUEBA (OPCIONAL)
 
         //BORRAR TIPO DE PRUEBA
         public function borrarTipoPrueba($id){
@@ -533,9 +573,7 @@
         //VISUALIZAR CONTRATO ID
         public function visualizarContratoId($id){
             $consulta = "SELECT * FROM contratos WHERE id_contratado = $id ";
-            $resultadoConsulta = $this->ejecutarConsulta($consulta);
-            $resultado = $resultadoConsulta->get_result();
-            $contrato = $resultado->fetch_array();
+            $contrato = $this->devolverConsultaFila($consulta);
             return $contrato;
         }
 
@@ -569,5 +607,11 @@
 
         /* ------------------------------------------------------ CONSULTAS (OPCIONAL) ---------------------------------------------------------*/        
 
+
+        public function visualizarCitasXfecha($fecha){
+            $consulta = "SELECT hora_cita FROM citas WHERE fecha_cita = $fecha";
+            $resultado = $this->devolverConsultaArray($consulta);
+            return $resultado;
+        }
     }
 ?>
