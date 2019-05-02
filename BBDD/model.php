@@ -303,6 +303,27 @@
             return $resultado;
         }
 
+         //FILTRAR MASCOTAS FILTRO 
+         public function visualizarMascotasFiltrado($nombre, $tipo){
+            $consulta = "SELECT usuarios.dni_usuario, mascotas.id_mascota, mascotas.id_cliente, mascotas.nombre_mascota, mascotas.tipo_mascota, mascotas.raza_mascota, mascotas.peso_mascota, mascotas.sexo_mascota
+            FROM mascotas
+            INNER JOIN usuarios
+            ON mascotas.id_cliente = usuarios.id_usuario WHERE  nombre_mascota LIKE '%$nombre%' AND tipo_mascota LIKE '%$tipo%'";
+            $resultado = $this->devolverConsultaArray($consulta);
+            return $resultado;
+        }
+
+        //FILTRAR MASCOTAS FILTRO 
+        public function visualizarMascotasFiltradoPaginacion($nombre, $tipo, $inicio, $tamano_pagina){
+            $consulta = "SELECT usuarios.dni_usuario, mascotas.id_mascota, mascotas.id_cliente, mascotas.nombre_mascota, mascotas.tipo_mascota, mascotas.raza_mascota, mascotas.peso_mascota, mascotas.sexo_mascota
+            FROM mascotas
+            INNER JOIN usuarios
+            ON mascotas.id_cliente = usuarios.id_usuario WHERE  nombre_mascota LIKE '%$nombre%' AND tipo_mascota LIKE '%$tipo%' LIMIT ".$inicio."," . $tamano_pagina;
+            $resultado = $this->devolverConsultaArray($consulta);
+            return $resultado;
+        }
+
+
         //VISUALIZAR MASCOTA ID
         public function visualizarMascotaId($id){
             $consulta = "SELECT * FROM mascotas WHERE id_mascota = $id ";
