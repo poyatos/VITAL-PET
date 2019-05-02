@@ -190,6 +190,24 @@
             return $resultado;
         }
 
+        //FILTRAR EMPLEADOS FILTRO 
+        public function filtrarEmpleados($nombre, $dni){
+            $consulta = "SELECT id_usuario, nombre_usuario, apellidos_usuario, dni_usuario, telefono_usuario, correo_usuario, fecna_usuario, 
+            direccion_usuario, rol_usuario FROM usuarios WHERE rol_usuario IN ('Veterinario','Recepcionista') AND nombre_usuario LIKE '%$nombre%' 
+            AND dni_usuario LIKE '%$dni%'";
+            $resultado = $this->devolverConsultaArray($consulta);
+            return $resultado;
+        }
+
+        //FILTRAR EMPLEADOS FILTRO 
+        public function filtrarEmpleadosPaginacion($nombre, $dni, $inicio, $tamano_pagina){
+            $consulta = "SELECT id_usuario, nombre_usuario, apellidos_usuario, dni_usuario, telefono_usuario, correo_usuario, fecna_usuario, 
+            direccion_usuario, rol_usuario FROM usuarios WHERE rol_usuario IN ('Veterinario','Recepcionista') AND nombre_usuario LIKE '%$nombre%' 
+            AND dni_usuario LIKE '%$dni%'LIMIT ".$inicio."," . $tamano_pagina;
+            $resultado = $this->devolverConsultaArray($consulta);
+            return $resultado;
+        }
+
         //FILTRAR EMPLEADOS
         public function filtarEmpleados($nombre, $apellidos, $dni){
             $consulta = "SELECT id_usuario, nombre_usuario, apellidos_usuario, dni_usuario, telefono_usuario, correo_usuario, fecna_usuario, 
@@ -398,6 +416,26 @@
             return $resultado;
         }
 
+        //FILTRAR CITAS FILTRO 
+        public function visualizarCitasFiltrado($fecha, $dni){
+            $consulta = "SELECT usuarios.dni_usuario, id_cita, fecha_cita, hora_cita, estado_cita, num_consulta, id_mascota, id_cliente, id_veterinario 
+            FROM citas
+            INNER JOIN usuarios
+            ON citas.id_cliente = usuarios.id_usuario WHERE  fecha_cita LIKE '%$fecha%' AND dni_usuario LIKE '%$dni%'";
+            $resultado = $this->devolverConsultaArray($consulta);
+            return $resultado;
+        }
+
+        //FILTRAR  CITAS FILTRO 
+        public function visualizarCitasFiltradoPaginacion($fecha, $dni, $inicio, $tamano_pagina){
+            $consulta = "SELECT usuarios.dni_usuario, id_cita, fecha_cita, hora_cita, estado_cita, num_consulta, id_mascota, id_cliente, id_veterinario 
+            FROM citas
+            INNER JOIN usuarios
+            ON citas.id_cliente = usuarios.id_usuario WHERE  fecha_cita LIKE '%$fecha%' AND dni_usuario LIKE '%$dni%' LIMIT ".$inicio."," . $tamano_pagina;
+            $resultado = $this->devolverConsultaArray($consulta);
+            return $resultado;
+        }
+
         //VISUALIZAR CITAS CLIENTE
         public function visualizarCitasCliente($id){
             $consulta = "SELECT * FROM citas WHERE id_cliente = $id ";
@@ -432,6 +470,22 @@
             $resultado = $this->devolverConsultaArray($consulta);
             return $resultado;
         }
+
+         //FILTRAR VETERINARIO FILTRO 
+         public function visualizarCitasVeterinarioFiltrado($id, $fecha, $dni){
+            $consulta = "SELECT * FROM citas WHERE id_veterinario = $id AND fecha_cita LIKE '%$fecha%' AND dni_usuario LIKE '%$dni%'";
+            $resultado = $this->devolverConsultaArray($consulta);
+            return $resultado;
+        }
+
+        //FILTRAR  VETERINARIO  FILTRO 
+        public function visualizarCitasVeterinarioFiltradoPaginacion($id, $fecha, $dni, $inicio, $tamano_pagina){
+            $consulta = "SELECT * FROM citas WHERE id_veterinario = $id AND fecha_cita LIKE '%$fecha%' 
+            AND dni_usuario LIKE '%$dni%'LIMIT ".$inicio."," . $tamano_pagina;
+            $resultado = $this->devolverConsultaArray($consulta);
+            return $resultado;
+        }
+
 
         //VISUALIZAR CITAS DE UNA FECHA Y HORA
         public function visualizarCitasFechaHora($fecha, $hora){

@@ -54,37 +54,23 @@
 <!-- CONTENIDO-->
 
 <!-- filtro y busqueda-->
-<div class="logotipo col-12 col-sm-7 col-md-7 col-lg-7">
-      <div class="form-group row">
-      <div class="col-4 col-sm-4 col-md-4 col-lg-4">
-            <label name="busquedaNombre_lb" id="id_busqueda_nombre">Nombre:
-            <input class="form-control" name="busquedaNombre" id="myInput" type="text" placeholder="Busqueda..">
+<form class="formulario" action='vistaGestionCliente.php' method='POST'>
+      <div class="col-12 col-sm-12 col-md-4 col-lg-4">
+            <label name="busquedaNombre_lb" id="id_busqueda_Nombre">Nombre:
+            <input class="form-control" name="nombre" id="myInput" type="text" placeholder="Busqueda..">
             </label>
       </div>
-
-      <div class="col-4 col-sm-4 col-md-4 col-lg-4">
-            <label name="busquedaApellido_lb" id="id_busqueda_nombre">Apellidos:
-            <input class="form-control" name="busquedaApellido" id="myInput" type="text" placeholder="Busqueda..">
-            </label>
-      </div>
-
-      <div class="col-4 col-sm-4 col-md-4 col-lg-4">
+      <div class="col-12 col-sm-12 col-md-4 col-lg-4">
             <label name="busquedaDni_lb" id="id_busqueda_nombre">Dni:
-            <input class="form-control" name="busquedaDni" id="myInput" type="text" placeholder="Busqueda..">
+            <input class="form-control" name="dni" id="myInput" type="text" placeholder="Busqueda..">
             </label>
       </div>
-
-</div>
-
-
-<div class="container col-12 col-sm-12 col-md-12 col-lg-12">
-      <div class="form-group">  
-            <select id="inputState" class="form-control" name="profesion">
-                <option value="Todos" selected>Todos</option>
-                <option value="Veterinario">Veterinario</option>
-                <option value="Recepcionista">Recepcionista</option>
-            </select>
+      <div class="col-12 col-sm-12 col-md-4 col-lg-4">
+            <input type="submit" class="btn btn-info botonsitobb" value="buscar" name="busqueda">
       </div>
+            
+      </form>
+
 
   <br>
 
@@ -111,8 +97,11 @@
       
         $conexion = new Model(Config::$host, Config::$user, Config::$pass, Config::$nombreBase);
       
+        if (isset($_POST["busqueda"])){
+          $resultado = $conexion->filtrarEmpleados($_POST["nombre"], $_POST["dni"]);
+        }else{
         $resultado = $conexion->visualizarEmpleados();
-
+        }
         if (!empty($resultado)) {
             $total_registros = count($resultado);
 
@@ -130,7 +119,11 @@
             }
             $total_paginas = ceil($total_registros / $tamano_pagina);
             
+            if (isset($_POST["busqueda"])){
+              $resultadoPaginacion = $conexion->filtrarEmpleadosPaginacion($_POST["nombre"], $_POST["dni"], $inicio, $tamano_pagina);
+             }else{
             $resultadoPaginacion = $conexion->visualizarEmpleadosPaginacion($inicio, $tamano_pagina);
+             }
             foreach($resultadoPaginacion as $empleado){
 
               $contrato = $conexion->visualizarContratoId($empleado['id_usuario']);
