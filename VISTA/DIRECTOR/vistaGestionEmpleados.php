@@ -29,7 +29,7 @@
   <link href="//maxcdn.bootstrapcdn.com/font-awesome/4.2.0/css/font-awesome.min.css" rel="stylesheet">
 
   <link rel="stylesheet" type="text/css" href="../../CSS/estilo.css">
-  <script type="text/javascript" src="../../JS/consultar.js"></script>
+  
 
 </head>
 
@@ -54,29 +54,29 @@
 <!-- CONTENIDO-->
 
 <!-- filtro y busqueda-->
+<div class="col-12 col-sm-7 col-md-7 col-lg-7 text-left">
+ <div class="form-group row">
 <form class="formulario" action='vistaGestionCliente.php' method='POST'>
-      <div class="col-12 col-sm-12 col-md-4 col-lg-4">
+      <div class="col-12 col-sm-12 col-md-3 col-lg-3">
             <label name="busquedaNombre_lb" id="id_busqueda_Nombre">Nombre:
             <input class="form-control" name="nombre" id="myInput" type="text" placeholder="Busqueda..">
             </label>
       </div>
-      <div class="col-12 col-sm-12 col-md-4 col-lg-4">
+      <div class="col-12 col-sm-12 col-md-3 col-lg-3">
             <label name="busquedaDni_lb" id="id_busqueda_nombre">Dni:
             <input class="form-control" name="dni" id="myInput" type="text" placeholder="Busqueda..">
             </label>
       </div>
-      <div class="col-12 col-sm-12 col-md-4 col-lg-4">
+      <div class="col-12 col-sm-12 col-md-2 col-lg-2">
             <input type="submit" class="btn btn-info botonsitobb" value="buscar" name="busqueda">
       </div>
             
       </form>
 
 
-  <br>
-
-  </div>
+ 
   <!-- tabla de busqueda-->
-  <div class="col-12 col-sm-12 col-md-12 col-lg-12">
+  <div class="col-12 col-sm-7 col-md-7 col-lg-7">
   <table class="table table-bordered table-striped">
     <thead>
       <tr>
@@ -161,18 +161,21 @@
       ?>
     </tbody>
   </table>
-</div>
+  </div>
 
-<!-- PAGINACIÓN-->
-<div class="col-12 col-sm-12 col-md-12 col-lg-12">
-  <?php
-     include '../../INCLUDE/piePaginacion.php';
-  } else {
-     echo utf8_encode ("<p>No se han encontrado resultados.</p>");
-  } 
 
-  $conexion->desconectar();
-  ?>
+      <!-- PAGINACIÓN-->
+      <div class="col-12 col-sm-12 col-md-12 col-lg-12">
+        <?php
+          include '../../INCLUDE/piePaginacion.php';
+        } else {
+          echo utf8_encode ("<p>No se han encontrado resultados.</p>");
+        } 
+
+        $conexion->desconectar();
+        ?>
+      </div>
+
 </div>
 </div>
 </div>
