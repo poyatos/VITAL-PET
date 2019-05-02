@@ -149,6 +149,22 @@
             return $resultado;
         }
 
+        //FILTRAR CLIENTES FILTRO 
+        public function filtrarClientes($nombre, $dni){
+            $consulta = "SELECT id_usuario, nombre_usuario, apellidos_usuario, dni_usuario, telefono_usuario, correo_usuario, direccion_usuario 
+            FROM usuarios WHERE rol_usuario LIKE 'Cliente' AND nombre_usuario LIKE '%$nombre%' AND dni_usuario LIKE '%$dni%'";
+            $resultado = $this->devolverConsultaArray($consulta);
+            return $resultado;
+        }
+
+        //FILTRAR CLIENTES FILTRO 
+        public function filtrarClientesPaginacion($nombre, $dni, $inicio, $tamano_pagina){
+            $consulta = "SELECT id_usuario, nombre_usuario, apellidos_usuario, dni_usuario, telefono_usuario, correo_usuario, direccion_usuario 
+            FROM usuarios WHERE rol_usuario LIKE 'Cliente' AND nombre_usuario LIKE '%$nombre%' AND dni_usuario LIKE '%$dni%'LIMIT ".$inicio."," . $tamano_pagina;
+            $resultado = $this->devolverConsultaArray($consulta);
+            return $resultado;
+        }
+
         //VISUALIZAR CLIENTES (PAGINACION)
         public function visualizarClientesPaginacion($inicio, $tamano_pagina){
             $consulta = "SELECT id_usuario, nombre_usuario, apellidos_usuario, dni_usuario, telefono_usuario, correo_usuario, fecna_usuario, 

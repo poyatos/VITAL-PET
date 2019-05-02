@@ -30,7 +30,7 @@
   <link href="//maxcdn.bootstrapcdn.com/font-awesome/4.2.0/css/font-awesome.min.css" rel="stylesheet">
 
   <link rel="stylesheet" type="text/css" href="../../CSS/estilo.css">
-  <script type="text/javascript" src="../../JS/consultar.js"></script>
+
 
 </head>
 
@@ -67,17 +67,25 @@
       <div class="col-12 col-sm-12 col-md-12 col-lg-12">
  <h1>LISTADO CLIENTES</h1>
 </div>
-      <div class="col-6 col-sm-6 col-md-6 col-lg-6">
+      
+      <form class="formulario" action='vistaGestionCliente.php' method='POST'>
+      <div class="col-12 col-sm-12 col-md-4 col-lg-4">
             <label name="busquedaNombre_lb" id="id_busqueda_Nombre">Nombre:
-            <input class="form-control" name="busquedaNombre" id="myInput" type="text" placeholder="Busqueda..">
+            <input class="form-control" name="nombre" id="myInput" type="text" placeholder="Busqueda..">
             </label>
       </div>
-
-      <div class="col-6 col-sm-6 col-md-6 col-lg-6">
+      <div class="col-12 col-sm-12 col-md-4 col-lg-4">
             <label name="busquedaDni_lb" id="id_busqueda_nombre">Dni:
-            <input class="form-control" name="busquedaDni" id="myInput" type="text" placeholder="Busqueda..">
+            <input class="form-control" name="dni" id="myInput" type="text" placeholder="Busqueda..">
             </label>
       </div>
+      <div class="col-12 col-sm-12 col-md-4 col-lg-4">
+            <input type="submit" class="btn btn-info botonsitobb" value="buscar" name="busqueda">
+      </div>
+            
+      </form>
+
+    
 
 </div>
 
@@ -105,8 +113,12 @@
         require_once '../../BBDD/config.php';
       
         $conexion = new Model(Config::$host, Config::$user, Config::$pass, Config::$nombreBase);
-      
+
+      if (isset($_POST["busqueda"])){
+        $resultado = $conexion->filtrarClientes($_POST["nombre"], $_POST["dni"]);
+      }else{
         $resultado = $conexion->visualizarClientes();
+      }
 
         if (!empty($resultado)) {
             $total_registros = count($resultado);
@@ -123,8 +135,11 @@
              $inicio = ($pagina - 1) * $tamano_pagina;
         }
              $total_paginas = ceil($total_registros / $tamano_pagina);
-            
-            $resultadoPaginacion = $conexion->visualizarClientesPaginacion($inicio, $tamano_pagina);
+             if (isset($_POST["busqueda"])){
+              $resultadoPaginacion = $conexion->filtrarClientesPaginacion($_POST["nombre"], $_POST["dni"], $inicio, $tamano_pagina);
+             }else{
+              $resultadoPaginacion = $conexion->visualizarClientesPaginacion($inicio, $tamano_pagina);
+             }
             foreach($resultadoPaginacion as $clientes){
                    echo utf8_encode(" <tr>
                   <td>".$clientes['nombre_usuario']."</td>
