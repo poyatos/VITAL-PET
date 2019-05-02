@@ -127,7 +127,7 @@
             $resultadoPaginacion = $conexion->visualizarTipoPruebaPaginacion($inicio, $tamano_pagina);
             }
             foreach($resultadoPaginacion as $tprueba){
-                   echo utf8_encode (" <tr>
+                   echo (" <tr>
                   <td>".$tprueba['id_tipo_prueba']."</td>
                   <td>".$tprueba['nombre_tipo_prueba']."</td>
                   <td>".$tprueba['precio_tipo_prueba']." &euro;</td>");
@@ -144,7 +144,7 @@
                           </form>
                           </td>');
                     }
-               echo utf8_encode ("</tr>");
+               echo ("</tr>");
         }
           ?>
     </tbody>
@@ -157,7 +157,7 @@
 <?php
      include '../../INCLUDE/piePaginacion.php';
   } else {
-     echo utf8_encode ("<p>No se han encontrado resultados.</p>");
+     echo ("<p>No se han encontrado resultados.</p>");
   } 
 
   $conexion->desconectar();

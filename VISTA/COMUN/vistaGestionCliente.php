@@ -166,13 +166,13 @@
 
                     }else if($_SESSION['rol'] == 'Veterinario'){
                       /* PENDIENTE DE VER COMO HACERLO */
-                       echo utf8_encode ('<td>
+                       echo ('<td>
                       <form action="" method="POST"> 
                         <input type="submit" value="Ver mascotas" name="verMascotas">
                       </form>
                       </td>');
                     }
-               echo utf8_encode ("</tr>");
+               echo ("</tr>");
         }
           ?>
     </tbody>
@@ -183,7 +183,7 @@
 <?php
     include '../../INCLUDE/piePaginacion.php';
   } else {
-     echo utf8_encode ("<p>No se han encontrado resultados.</p>");
+     echo ("<p>No se han encontrado resultados.</p>");
   }
 
   $conexion->desconectar();

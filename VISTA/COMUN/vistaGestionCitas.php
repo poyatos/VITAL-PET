@@ -183,7 +183,7 @@ echo '<form class="formulario" action="vistaGestionCliente.php" method="POST">
             }
             
             foreach($resultadoPaginacion as $citas){
-     echo utf8_encode(" <tr>
+     echo (" <tr>
         <td>".$citas['id_cita']."</td>
         <td>".$citas['dni_usuario']."</td>
         <td>".$citas['fecha_cita']."</td>
@@ -202,7 +202,7 @@ echo '<form class="formulario" action="vistaGestionCliente.php" method="POST">
             </td>');
 
           } else if( $_SESSION['rol'] == 'Recepcionista'){
-            echo utf8_encode ('<td>
+            echo ('<td>
             <form action="../RECEPCIONISTA/vistaEditarCita.php" method="POST"> 
                 <input type="hidden" value="'.$citas['id_cita'].'" name="id_cita">
                 <input type="submit" value="Editar">
@@ -215,7 +215,7 @@ echo '<form class="formulario" action="vistaGestionCliente.php" method="POST">
             </td>');
 
           }
-          echo utf8_encode ("</tr>");
+          echo ("</tr>");
         }
           ?>
           
@@ -229,7 +229,7 @@ echo '<form class="formulario" action="vistaGestionCliente.php" method="POST">
 <?php
      include '../../INCLUDE/piePaginacion.php';
   } else {
-    echo utf8_encode ("<p>No se han encontrado resultados.</p>");
+    echo ("<p>No se han encontrado resultados.</p>");
   } 
 
   $conexion->desconectar();

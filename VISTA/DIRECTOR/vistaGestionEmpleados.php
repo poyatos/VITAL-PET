@@ -127,7 +127,7 @@
             foreach($resultadoPaginacion as $empleado){
 
               $contrato = $conexion->visualizarContratoId($empleado['id_usuario']);
-               echo utf8_encode ("<tr>
+               echo ("<tr>
               <td>".$empleado['id_usuario']."</td>
               <td>".$empleado['nombre_usuario']."</td>
               <td>".$empleado['apellidos_usuario']."</td>
@@ -137,20 +137,20 @@
               <td>".$contrato['estado_contrato']."</td>
               <td>");
               
-                echo utf8_encode("<form action='vistaEditarContrato.php' method='POST'>       
+                echo ("<form action='vistaEditarContrato.php' method='POST'>       
                 <input type='hidden' name='id_usuario' value='".$empleado["id_usuario"]."'/>");
                 if ($contrato['estado_contrato'] == 'Finalizado') {
-                    echo utf8_encode("<input type='submit' class='btn' name='renovarContrato' value='Renovar'/>
+                    echo ("<input type='submit' class='btn' name='renovarContrato' value='Renovar'/>
                     </form>");
                 } else {
-                  echo utf8_encode("<input type='submit' class='btn' name='editarContrato' value='Editar contrato'/>
+                  echo ("<input type='submit' class='btn' name='editarContrato' value='Editar contrato'/>
                   </form>
                   <form action='../../CONTROLADOR/controladorDirector.php' method='POST'>
                     <input type='hidden' name='id_usuario' value='".$empleado["id_usuario"]."'/>
                     <input type='submit' class='btn' name='despedirContrato' value='Despedir'/>
                     </form>");
                 }
-              echo utf8_encode("<form action='vistaEditarEmpleado.php' method='POST'>
+              echo ("<form action='vistaEditarEmpleado.php' method='POST'>
                 <input type='hidden' name='id_usuario' value='".$empleado["id_usuario"]."'/>
                 <input type='submit' class='btn' value='Editar'/>
               </form>

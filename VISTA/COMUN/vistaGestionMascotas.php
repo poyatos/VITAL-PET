@@ -94,7 +94,7 @@
         <th>Sexo</th>
         <?php
           if ($_SESSION['rol'] == 'Recepcionista' || $_SESSION['rol'] == 'Veterinario'){
-          echo utf8_encode("<th>Editar</th>");
+          echo ("<th>Editar</th>");
           }
         ?>
       </tr>
@@ -133,7 +133,7 @@
               $resultadoPaginacion = $conexion->visualizarMascotasPaginacion($inicio, $tamano_pagina);
             }
             foreach($resultadoPaginacion as $mascota){
-               echo utf8_encode ("<tr>
+               echo ("<tr>
               <td>".$mascota['id_mascota']."</td>
               <td>".$mascota['nombre_mascota']."</td>
               <td>".$mascota['dni_usuario']."</td>
@@ -161,7 +161,7 @@
                       </form>
                       </td>');
               }
-               echo utf8_encode( "</tr>");
+               echo ( "</tr>");
             }
         
       ?>
@@ -175,7 +175,7 @@
 <?php
      include '../../INCLUDE/piePaginacion.php';
   } else {
-     echo utf8_encode( "<p>No se han encontrado resultados.</p>");
+     echo ( "<p>No se han encontrado resultados.</p>");
   } 
 
   $conexion->desconectar();

@@ -11,21 +11,42 @@
             $conexion = new Model (Config::$host, Config::$user, Config::$pass, Config::$nombreBase);
 
           
-                $pdf = new FPDF();
-                //pdf la factura numero 1 de la tipica BBDD de facturacion
-                $pdf->AddPage();
-                $pdf->SetFont('Arial', 'B', 11);
-                // Imprimimos el logo
-                $pdf->Image('IMAGENES/logon.png',5,5,-700);
-                $pdf->Cell(90, 70, "Correo: ".$_SESSION['logeado'], 0, 0, 'C');
-                $pdf->Ln(50);
-                $pdf->SetTextColor(0,0,0);
-                $pdf->SetFont('Arial', '', 11);              
-                $pdf->Cell(100, 6, "PRODUCTO", 1, 0, 'C');
-                $pdf->Cell(20, 6, "PRECIO", 1, 0, 'C');
-                $pdf->Cell(30, 6, "CANTIDAD", 1, 0, 'C');
-                $pdf->Cell(30, 6, "TOTAL", 1, 0, 'C');
-                $pdf->Ln(10);
+            $pdf = new FPDF();
+            //pdf la factura numero 1 de la tipica BBDD de facturacion
+            $pdf->AddPage();
+            $pdf->SetFont('Arial', 'B', 12);
+            // Imprimimos el logo a 300 ppp
+            $pdf->Image('IMAGENES/logon.png',5,5,-700);
+            //Datos veterinario  
+            $pdf->Cell(50, 70, "Datos de nuestra empresa", 0, 0, 'C');
+            $pdf->Ln(7);
+            $pdf->SetFont('Arial', '', 9);
+            $pdf->Cell(90, 70, "- Direccion: Calle de Mostoles 70, 28942 Fuenlabrada, Madrid", 0, 0, 'C');
+            $pdf->Ln(5);
+            $pdf->Cell(70, 70, "- Telefonos de interes: 910256254 / 605963254", 0, 0, 'C');
+            $pdf->Ln(5);
+            $pdf->Cell(80, 70, "- Ponte en contacto en: veterinariovitalpet@gmail.com", 0, 0, 'C');
+            $pdf->Ln(10);
+            //Datos del cliente y mascota 
+            $pdf->SetFont('Arial', 'B', 12);
+            $pdf->Cell(57, 70, "Datos del cliente y de la mascota", 0, 0, 'C');
+            $pdf->Ln(7);
+            $pdf->SetFont('Arial', '', 9);
+            $pdf->Cell(35, 70, "- Nombre y apellidos:", 0, 0, 'C');
+            $pdf->Ln(5);
+            $pdf->Cell(34, 70, "- Correo electronico:", 0, 0, 'C');
+            $pdf->Ln(5);
+            $pdf->Cell(20, 70, "- NIE / NIF:", 0, 0, 'C');
+            $pdf->Ln(5);
+            $pdf->Cell(20, 70, "- Mascota:", 0, 0, 'C');
+            $pdf->Ln(50);
+            $pdf->SetTextColor(0,0,0);
+            $pdf->SetFont('Arial', '', 10);              
+            $pdf->Cell(100, 6, "PRUEBA", 1, 0, 'C');
+            $pdf->Cell(20, 6, "PRECIO", 1, 0, 'C');
+            $pdf->Cell(30, 6, "CANTIDAD", 1, 0, 'C');
+            $pdf->Cell(30, 6, "TOTAL", 1, 0, 'C');
+            $pdf->Ln(10);
 
                 foreach ($_SESSION['cesta']->getArticulos() as $codigo => $cantidad) {
                     $pdf->SetFont('Arial', '', 10);

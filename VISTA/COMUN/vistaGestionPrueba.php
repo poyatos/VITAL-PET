@@ -147,7 +147,7 @@ if($_SESSION['rol'] != 'Cliente'){
             }
             foreach ($resultadoPaginacion as $prueba) {
 
-                echo utf8_encode(" <tr>
+                echo (" <tr>
                   <td>".$prueba['id_prueba']."</td>
                   <td>".$prueba['nombre_tipo_prueba']."</td>
                   <td>".$prueba['resultado_prueba']."</td>
@@ -155,7 +155,7 @@ if($_SESSION['rol'] != 'Cliente'){
                   <td>".$prueba['precio_tipo_prueba']." &euro;</td>");
 
                 if ($_SESSION['rol'] == 'Veterinario') {
-                    echo utf8_encode('<td>
+                    echo ('<td>
                         <form action="../VETERINARIO/vistaEditarPrueba.php" method="POST">
                             <input type="hidden" value="'.$prueba['id_prueba'].'" name="id_prueba">
                             <input type="submit" value="Editar">
@@ -166,7 +166,7 @@ if($_SESSION['rol'] != 'Cliente'){
                         </form>
                         </td>');
                 }
-                echo utf8_encode("</tr>");
+                echo ("</tr>");
             } ?>
     </tbody>
   </table>
@@ -177,7 +177,7 @@ if($_SESSION['rol'] != 'Cliente'){
 <?php
      include '../../INCLUDE/piePaginacion.php';
         } else {
-            echo utf8_encode("<p>No se han encontrado resultados.</p>");
+            echo ("<p>No se han encontrado resultados.</p>");
         }
 
   $conexion->desconectar();
