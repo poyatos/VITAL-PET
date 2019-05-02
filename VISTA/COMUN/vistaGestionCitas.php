@@ -29,7 +29,7 @@
   <link href="//maxcdn.bootstrapcdn.com/font-awesome/4.2.0/css/font-awesome.min.css" rel="stylesheet">
 
   <link rel="stylesheet" type="text/css" href="../../CSS/estilo.css">
-  <script type="text/javascript" src="../../JS/consultar.js"></script>
+
 
 </head>
 
@@ -80,20 +80,28 @@ if($_SESSION['rol'] != 'Cliente'){
       <div class="col-12 col-sm-12 col-md-12 col-lg-12">
  <h1>LISTADO CITAS</h1>
 </div>
-      <div class="col-6 col-sm-6 col-md-6 col-lg-6">
-            <label name="busquedaFecha_lb" id="id_busqueda_fecha">Fecha:
-            <input class="form-control" name="busquedaFecha" id="myInput" type="date">
+<?php
+if($_SESSION['rol'] != 'Cliente'){
+echo '<form class="formulario" action="vistaGestionCliente.php" method="POST">
+      <div class="col-12 col-sm-12 col-md-4 col-lg-4">
+            <label name="busquedaFecha_lb" id="id_busqueda_Nombre">fecha:
+            <input class="form-control" name="fecha" id="myInput" type="date">
             </label>
       </div>
-
-      <div class="col-6 col-sm-6 col-md-6 col-lg-6">
+      <div class="col-12 col-sm-12 col-md-4 col-lg-4">
             <label name="busquedaDni_lb" id="id_busqueda_nombre">Dni:
-            <input class="form-control" name="busquedaDni" id="myInput" type="text" placeholder="Busqueda..">
+            <input class="form-control" name="dni" id="myInput" type="text" placeholder="Busqueda..">
             </label>
       </div>
+      <div class="col-12 col-sm-12 col-md-4 col-lg-4">
+            <input type="submit" class="btn btn-info botonsitobb" value="buscar" name="busqueda">
+      </div>
+            
+      </form>
+';
+}
 
-</div>
-
+?>
   
 <div class="col-12 col-sm-12 col-md-12 col-lg-12">
             <input class="form-control" id="myInput" type="text" placeholder="Busqueda..">
@@ -125,11 +133,19 @@ if($_SESSION['rol'] != 'Cliente'){
         $conexion = new Model(Config::$host, Config::$user, Config::$pass, Config::$nombreBase);
       
         if($_SESSION['rol'] == 'Veterinario'){
+          if (isset($_POST["busqueda"])){
+            $resultado = $conexion->visualizarCitasVeterinarioFiltrado($_SESSION['id_usuario'], $_POST["fecha"], $_POST["dni"]);
+          }else{
           $resultado = $conexion->visualizarCitasVeterinario($_SESSION['id_usuario']);
+          }
         } else if($_SESSION['rol'] == 'Cliente'){
           $resultado = $conexion->visualizarCitasCliente($_SESSION['id_usuario']);
         } else {
+          if (isset($_POST["busqueda"])){
+            $resultado = $conexion->visualizarCitasFiltrado($_POST["fecha"], $_POST["dni"]);
+          }else{
           $resultado = $conexion->visualizarCitas();
+          }
         }
         
 
@@ -151,11 +167,19 @@ if($_SESSION['rol'] != 'Cliente'){
             $total_paginas = ceil($total_registros / $tamano_pagina);
             
             if($_SESSION['rol'] == 'Veterinario'){
+              if (isset($_POST["busqueda"])){
+                $resultadoPaginacion = $conexion->visualizarCitasVeterinarioFiltradoPaginacion($_SESSION['id_usuario'], $_POST["fecha"], $_POST["dni"], $inicio, $tamano_pagina);
+              }else{
               $resultadoPaginacion = $conexion->visualizarCitasVeterinarioPaginacion($_SESSION['id_usuario'], $inicio, $tamano_pagina);
+              }
             } else if($_SESSION['rol'] == 'Cliente'){
               $resultadoPaginacion = $conexion->visualizarCitasClientePaginacion($_SESSION['id_usuario'], $inicio, $tamano_pagina);
             } else {
+              if (isset($_POST["busqueda"])){
+                $resultadoPaginacion = $conexion->visualizarCitasFiltradoPaginacion($_POST["fecha"], $_POST["dni"], $inicio, $tamano_pagina);
+              }else{
               $resultadoPaginacion = $conexion->visualizarCitasPaginacion($inicio, $tamano_pagina);
+              }
             }
             
             foreach($resultadoPaginacion as $citas){
@@ -217,5 +241,5 @@ if($_SESSION['rol'] != 'Cliente'){
 </div>
 </div>
 </body>
-
+</head>
 </html>

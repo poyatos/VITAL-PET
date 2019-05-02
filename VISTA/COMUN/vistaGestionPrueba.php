@@ -29,7 +29,7 @@
   <link href="//maxcdn.bootstrapcdn.com/font-awesome/4.2.0/css/font-awesome.min.css" rel="stylesheet">
 
   <link rel="stylesheet" type="text/css" href="../../CSS/estilo.css">
-  <script type="text/javascript" src="../../JS/consultar.js"></script>
+  
 
 </head>
 
@@ -79,11 +79,18 @@ if($_SESSION['rol'] != 'Cliente'){
       <div class="col-12 col-sm-12 col-md-12 col-lg-12">
  <h1>LISTADO PRUEBAS</h1>
 </div>
-      <div class="col-12 col-sm-12 col-md-12 col-lg-12">
+     
+      <form class="formulario" action='vistaGestionPrueba.php' method='POST'>
+      <div class="col-12 col-sm-12 col-md-6 col-lg-6">
             <label name="busquedaNombrePrueba_lb" id="id_busqueda_NombrePrueba">Nombre de la prueba:
-            <input class="form-control" name="busquedaNombrePrueba" id="myInput" type="text" placeholder="Busqueda..">
+            <input class="form-control" name="nombre" id="myInput" type="text" placeholder="Busqueda..">
             </label>
-      </div>
+            </div>
+            <div class="col-12 col-sm-12 col-md-6 col-lg-6">
+            <input type="submit" class="btn btn-info botonsitobb" value="buscar" name="busqueda">
+        </div>
+      </form>  
+      
 
 
 </div>
@@ -112,9 +119,11 @@ if($_SESSION['rol'] != 'Cliente'){
         require_once '../../BBDD/config.php';
       
         $conexion = new Model(Config::$host, Config::$user, Config::$pass, Config::$nombreBase);
-      
+        if (isset($_POST["busqueda"])){
+          $resultado = $conexion->visualizarPruebasFiltrado($_POST["nombre"]);
+        }else{
         $resultado = $conexion-> visualizarPruebas();
-
+        }
         if (!empty($resultado)) {
             $total_registros = count($resultado);
             $tamano_pagina = 5;
@@ -130,8 +139,12 @@ if($_SESSION['rol'] != 'Cliente'){
                 $inicio = ($pagina - 1) * $tamano_pagina;
             }
             $total_paginas = ceil($total_registros / $tamano_pagina);
-            
-            $resultadoPaginacion = $conexion->visualizarPruebasPaginacion($inicio, $tamano_pagina);
+
+            if (isset($_POST["busqueda"])){
+              $resultadoPaginacion = $conexion->visualizarPruebasFiltradoPaginacion($_POST["nombre"], $inicio, $tamano_pagina);
+            }else{
+              $resultadoPaginacion = $conexion->visualizarPruebasPaginacion($inicio, $tamano_pagina);
+            }
             foreach ($resultadoPaginacion as $prueba) {
 
                 echo utf8_encode(" <tr>

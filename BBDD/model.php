@@ -151,6 +151,22 @@
             return $resultado;
         }
 
+        //FILTRAR CLIENTES FILTRO 
+        public function filtrarClientes($nombre, $dni){
+            $consulta = "SELECT id_usuario, nombre_usuario, apellidos_usuario, dni_usuario, telefono_usuario, correo_usuario, direccion_usuario 
+            FROM usuarios WHERE rol_usuario LIKE 'Cliente' AND nombre_usuario LIKE '%$nombre%' AND dni_usuario LIKE '%$dni%'";
+            $resultado = $this->devolverConsultaArray($consulta);
+            return $resultado;
+        }
+
+        //FILTRAR CLIENTES FILTRO 
+        public function filtrarClientesPaginacion($nombre, $dni, $inicio, $tamano_pagina){
+            $consulta = "SELECT id_usuario, nombre_usuario, apellidos_usuario, dni_usuario, telefono_usuario, correo_usuario, direccion_usuario 
+            FROM usuarios WHERE rol_usuario LIKE 'Cliente' AND nombre_usuario LIKE '%$nombre%' AND dni_usuario LIKE '%$dni%'LIMIT ".$inicio."," . $tamano_pagina;
+            $resultado = $this->devolverConsultaArray($consulta);
+            return $resultado;
+        }
+
         //VISUALIZAR CLIENTES (PAGINACION)
         public function visualizarClientesPaginacion($inicio, $tamano_pagina){
             $consulta = "SELECT id_usuario, nombre_usuario, apellidos_usuario, dni_usuario, telefono_usuario, correo_usuario, fecna_usuario, 
@@ -172,6 +188,24 @@
         public function visualizarEmpleadosPaginacion($inicio, $tamano_pagina){
             $consulta = "SELECT id_usuario, nombre_usuario, apellidos_usuario, dni_usuario, telefono_usuario, correo_usuario, fecna_usuario, 
             direccion_usuario, rol_usuario FROM usuarios WHERE rol_usuario IN ('Veterinario','Recepcionista') LIMIT ".$inicio."," . $tamano_pagina;
+            $resultado = $this->devolverConsultaArray($consulta);
+            return $resultado;
+        }
+
+        //FILTRAR EMPLEADOS FILTRO 
+        public function filtrarEmpleados($nombre, $dni){
+            $consulta = "SELECT id_usuario, nombre_usuario, apellidos_usuario, dni_usuario, telefono_usuario, correo_usuario, fecna_usuario, 
+            direccion_usuario, rol_usuario FROM usuarios WHERE rol_usuario IN ('Veterinario','Recepcionista') AND nombre_usuario LIKE '%$nombre%' 
+            AND dni_usuario LIKE '%$dni%'";
+            $resultado = $this->devolverConsultaArray($consulta);
+            return $resultado;
+        }
+
+        //FILTRAR EMPLEADOS FILTRO 
+        public function filtrarEmpleadosPaginacion($nombre, $dni, $inicio, $tamano_pagina){
+            $consulta = "SELECT id_usuario, nombre_usuario, apellidos_usuario, dni_usuario, telefono_usuario, correo_usuario, fecna_usuario, 
+            direccion_usuario, rol_usuario FROM usuarios WHERE rol_usuario IN ('Veterinario','Recepcionista') AND nombre_usuario LIKE '%$nombre%' 
+            AND dni_usuario LIKE '%$dni%'LIMIT ".$inicio."," . $tamano_pagina;
             $resultado = $this->devolverConsultaArray($consulta);
             return $resultado;
         }
@@ -296,6 +330,27 @@
             return $resultado;
         }
 
+         //FILTRAR MASCOTAS FILTRO 
+         public function visualizarMascotasFiltrado($nombre, $tipo){
+            $consulta = "SELECT usuarios.dni_usuario, mascotas.id_mascota, mascotas.id_cliente, mascotas.nombre_mascota, mascotas.tipo_mascota, mascotas.raza_mascota, mascotas.peso_mascota, mascotas.sexo_mascota
+            FROM mascotas
+            INNER JOIN usuarios
+            ON mascotas.id_cliente = usuarios.id_usuario WHERE  nombre_mascota LIKE '%$nombre%' AND tipo_mascota LIKE '%$tipo%'";
+            $resultado = $this->devolverConsultaArray($consulta);
+            return $resultado;
+        }
+
+        //FILTRAR MASCOTAS FILTRO 
+        public function visualizarMascotasFiltradoPaginacion($nombre, $tipo, $inicio, $tamano_pagina){
+            $consulta = "SELECT usuarios.dni_usuario, mascotas.id_mascota, mascotas.id_cliente, mascotas.nombre_mascota, mascotas.tipo_mascota, mascotas.raza_mascota, mascotas.peso_mascota, mascotas.sexo_mascota
+            FROM mascotas
+            INNER JOIN usuarios
+            ON mascotas.id_cliente = usuarios.id_usuario WHERE  nombre_mascota LIKE '%$nombre%' AND tipo_mascota LIKE '%$tipo%' LIMIT ".$inicio."," . $tamano_pagina;
+            $resultado = $this->devolverConsultaArray($consulta);
+            return $resultado;
+        }
+
+
         //VISUALIZAR MASCOTA ID
         public function visualizarMascotaId($id){
             $consulta = "SELECT * FROM mascotas WHERE id_mascota = $id ";
@@ -370,6 +425,26 @@
             return $resultado;
         }
 
+        //FILTRAR CITAS FILTRO 
+        public function visualizarCitasFiltrado($fecha, $dni){
+            $consulta = "SELECT usuarios.dni_usuario, id_cita, fecha_cita, hora_cita, estado_cita, num_consulta, id_mascota, id_cliente, id_veterinario 
+            FROM citas
+            INNER JOIN usuarios
+            ON citas.id_cliente = usuarios.id_usuario WHERE  fecha_cita LIKE '%$fecha%' AND dni_usuario LIKE '%$dni%'";
+            $resultado = $this->devolverConsultaArray($consulta);
+            return $resultado;
+        }
+
+        //FILTRAR  CITAS FILTRO 
+        public function visualizarCitasFiltradoPaginacion($fecha, $dni, $inicio, $tamano_pagina){
+            $consulta = "SELECT usuarios.dni_usuario, id_cita, fecha_cita, hora_cita, estado_cita, num_consulta, id_mascota, id_cliente, id_veterinario 
+            FROM citas
+            INNER JOIN usuarios
+            ON citas.id_cliente = usuarios.id_usuario WHERE  fecha_cita LIKE '%$fecha%' AND dni_usuario LIKE '%$dni%' LIMIT ".$inicio."," . $tamano_pagina;
+            $resultado = $this->devolverConsultaArray($consulta);
+            return $resultado;
+        }
+
         //VISUALIZAR CITAS CLIENTE
         public function visualizarCitasCliente($id){
             $consulta = "SELECT * FROM citas WHERE id_cliente = $id ";
@@ -404,6 +479,22 @@
             $resultado = $this->devolverConsultaArray($consulta);
             return $resultado;
         }
+
+         //FILTRAR VETERINARIO FILTRO 
+         public function visualizarCitasVeterinarioFiltrado($id, $fecha, $dni){
+            $consulta = "SELECT * FROM citas WHERE id_veterinario = $id AND fecha_cita LIKE '%$fecha%' AND dni_usuario LIKE '%$dni%'";
+            $resultado = $this->devolverConsultaArray($consulta);
+            return $resultado;
+        }
+
+        //FILTRAR  VETERINARIO  FILTRO 
+        public function visualizarCitasVeterinarioFiltradoPaginacion($id, $fecha, $dni, $inicio, $tamano_pagina){
+            $consulta = "SELECT * FROM citas WHERE id_veterinario = $id AND fecha_cita LIKE '%$fecha%' 
+            AND dni_usuario LIKE '%$dni%'LIMIT ".$inicio."," . $tamano_pagina;
+            $resultado = $this->devolverConsultaArray($consulta);
+            return $resultado;
+        }
+
 
         //VISUALIZAR CITAS DE UNA FECHA Y HORA
         public function visualizarCitasFechaHora($fecha, $hora){
@@ -485,6 +576,28 @@
             return $resultado;
         }
 
+         //FILTRAR PRUEBA FILTRO 
+         public function visualizarPruebasFiltrado($nombre){
+            $consulta = "SELECT tipos_pruebas.nombre_tipo_prueba, tipos_pruebas.precio_tipo_prueba, pruebas.id_prueba, pruebas.resultado_prueba, pruebas.observaciones_prueba
+            FROM pruebas
+            INNER JOIN tipos_pruebas
+            ON pruebas.id_tipo_prueba = tipos_pruebas.id_tipo_prueba WHERE nombre_tipo_prueba LIKE '%$nombre%'";
+            $resultado = $this->devolverConsultaArray($consulta);
+            return $resultado;
+        }
+
+        //FILTRAR PRUEBA FILTRO 
+        public function visualizarPruebasFiltradoPaginacion($nombre, $inicio, $tamano_pagina){
+            $consulta = "SELECT tipos_pruebas.nombre_tipo_prueba, tipos_pruebas.precio_tipo_prueba, pruebas.id_prueba, pruebas.resultado_prueba, pruebas.observaciones_prueba
+            FROM pruebas
+            INNER JOIN tipos_pruebas
+            ON pruebas.id_tipo_prueba = tipos_pruebas.id_tipo_prueba WHERE nombre_tipo_prueba LIKE '%$nombre%' LIMIT ".$inicio."," . $tamano_pagina;
+            $resultado = $this->devolverConsultaArray($consulta);
+            return $resultado;
+        }
+
+
+
         //BORRAR PRUEBA
         public function borrarPrueba($id){
             $consulta = "DELETE FROM pruebas WHERE id_prueba = $id";
@@ -522,6 +635,20 @@
         //VISUALIZAR TIPOS DE PRUEBAS(paginacion)------------------------------------------
         public function visualizarTipoPruebaPaginacion($inicio, $tamano_pagina){
             $consulta = "SELECT * FROM tipos_pruebas LIMIT ".$inicio."," . $tamano_pagina;
+            $resultado = $this->devolverConsultaArray($consulta);
+            return $resultado;
+        }
+
+         //FILTRAR T PRUEBAS FILTRO 
+         public function visualizarTipoPruebasFiltrado($nombre){
+            $consulta = "SELECT * FROM tipos_pruebas WHERE  nombre_tipo_prueba LIKE '%$nombre%'";
+            $resultado = $this->devolverConsultaArray($consulta);
+            return $resultado;
+        }
+
+        //FILTRAR T PRUEBAS FILTRO 
+        public function visualizarTipoPruebasFiltradoPaginacion($nombre, $inicio, $tamano_pagina){
+            $consulta = "SELECT * FROM tipos_pruebas WHERE  nombre_tipo_prueba LIKE '%$nombre%' LIMIT ".$inicio."," . $tamano_pagina;
             $resultado = $this->devolverConsultaArray($consulta);
             return $resultado;
         }
