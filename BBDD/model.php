@@ -513,6 +513,28 @@
             return $resultado;
         }
 
+         //FILTRAR PRUEBA FILTRO 
+         public function visualizarPruebasFiltrado($nombre){
+            $consulta = "SELECT tipos_pruebas.nombre_tipo_prueba, tipos_pruebas.precio_tipo_prueba, pruebas.id_prueba, pruebas.resultado_prueba, pruebas.observaciones_prueba
+            FROM pruebas
+            INNER JOIN tipos_pruebas
+            ON pruebas.id_tipo_prueba = tipos_pruebas.id_tipo_prueba WHERE nombre_tipo_prueba LIKE '%$nombre%'";
+            $resultado = $this->devolverConsultaArray($consulta);
+            return $resultado;
+        }
+
+        //FILTRAR PRUEBA FILTRO 
+        public function visualizarPruebasFiltradoPaginacion($nombre, $inicio, $tamano_pagina){
+            $consulta = "SELECT tipos_pruebas.nombre_tipo_prueba, tipos_pruebas.precio_tipo_prueba, pruebas.id_prueba, pruebas.resultado_prueba, pruebas.observaciones_prueba
+            FROM pruebas
+            INNER JOIN tipos_pruebas
+            ON pruebas.id_tipo_prueba = tipos_pruebas.id_tipo_prueba WHERE nombre_tipo_prueba LIKE '%$nombre%' LIMIT ".$inicio."," . $tamano_pagina;
+            $resultado = $this->devolverConsultaArray($consulta);
+            return $resultado;
+        }
+
+
+
         //BORRAR PRUEBA
         public function borrarPrueba($id){
             $consulta = "DELETE FROM pruebas WHERE id_prueba = $id";
