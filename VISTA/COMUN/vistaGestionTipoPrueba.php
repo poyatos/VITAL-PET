@@ -26,7 +26,7 @@
 <!-- prueba -->
   <link href="//maxcdn.bootstrapcdn.com/font-awesome/4.2.0/css/font-awesome.min.css" rel="stylesheet">
   <link rel="stylesheet" type="text/css" href="../../CSS/estilo.css">
-  <script type="text/javascript" src="../../JS/consultar.js"></script>
+ 
   
 
 
@@ -63,11 +63,17 @@
       <div class="col-12 col-sm-12 col-md-12 col-lg-12">
         <h1>TIPO DE PRUEBA</h1>
           </div>
-      <div class="col-12 col-sm-12 col-md-12 col-lg-12">
-            <label name="busquedaNombre_lb" id="id_busqueda_Nombre">Nombre:
-            <input class="form-control" name="busquedaNombre" id="myInput" type="text" placeholder="Busqueda..">
+          <form class="formulario" action='vistaGestionTipoPrueba.php' method='POST'>
+      <div class="col-12 col-sm-12 col-md-6 col-lg-6">
+            <label name="busquedaNombrePrueba_lb" id="id_busqueda_NombrePrueba">Nombre:
+            <input class="form-control" name="nombre" id="myInput" type="text" placeholder="Busqueda..">
             </label>
-      </div>
+            </div>
+            <div class="col-12 col-sm-12 col-md-6 col-lg-6">
+            <input type="submit" class="btn btn-info botonsitobb" value="buscar" name="busqueda">
+        </div>
+      </form>  
+      
 
       </div>
 
@@ -93,9 +99,12 @@
         require_once '../../BBDD/config.php';
       
         $conexion = new Model(Config::$host, Config::$user, Config::$pass, Config::$nombreBase);
-      
+        
+        if (isset($_POST["busqueda"])){
+          $resultado = $conexion->visualizarTipoPruebasFiltrado($_POST["nombre"]);
+        }else{
         $resultado = $conexion->visualizarTiposPruebas();
-
+        }
         if (!empty($resultado)) {
             $total_registros = count($resultado);
             $tamano_pagina = 5;
@@ -111,8 +120,12 @@
              $inicio = ($pagina - 1) * $tamano_pagina;
         }
              $total_paginas = ceil($total_registros / $tamano_pagina);
-            
+
+             if (isset($_POST["busqueda"])){
+              $resultadoPaginacion = $conexion->visualizarTipoPruebasFiltradoPaginacion($_POST["nombre"], $inicio, $tamano_pagina);
+            }else{
             $resultadoPaginacion = $conexion->visualizarTipoPruebaPaginacion($inicio, $tamano_pagina);
+            }
             foreach($resultadoPaginacion as $tprueba){
                    echo utf8_encode (" <tr>
                   <td>".$tprueba['id_tipo_prueba']."</td>

@@ -576,6 +576,20 @@
             return $resultado;
         }
 
+         //FILTRAR T PRUEBAS FILTRO 
+         public function visualizarTipoPruebasFiltrado($nombre){
+            $consulta = "SELECT * FROM tipos_pruebas WHERE  nombre_tipo_prueba LIKE '%$nombre%'";
+            $resultado = $this->devolverConsultaArray($consulta);
+            return $resultado;
+        }
+
+        //FILTRAR T PRUEBAS FILTRO 
+        public function visualizarTipoPruebasFiltradoPaginacion($nombre, $inicio, $tamano_pagina){
+            $consulta = "SELECT * FROM tipos_pruebas WHERE  nombre_tipo_prueba LIKE '%$nombre%' LIMIT ".$inicio."," . $tamano_pagina;
+            $resultado = $this->devolverConsultaArray($consulta);
+            return $resultado;
+        }
+
         //VISUALIZAR PRUEBA ID
         public function visualizarTipoPruebaId($id){
             $consulta = "SELECT * FROM tipos_pruebas WHERE id_tipo_prueba = '$id' ";
