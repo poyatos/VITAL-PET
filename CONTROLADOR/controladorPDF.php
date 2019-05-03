@@ -10,42 +10,70 @@
 
             $conexion = new Model (Config::$host, Config::$user, Config::$pass, Config::$nombreBase);
 
+            //Recibir detalles de factura
+            $id_factura = $_POST["id_factura"];
+            $fecha_factura = $_POST["fecha_factura"];
+
+            //Recibir los datos del cliente y de la mascota
+            $nombre_cliente = $_POST["nombre_cliente"];
+            $apellidos_cliente = $_POST["apellidos_cliente"];
+            $direccion_cliente = $_POST["direccion_cliente"];
+            $provincia_cliente = $_POST["provincia_cliente"];
+            $codigo_postal_cliente = $_POST["codigo_postal_cliente"];
+            $nienif = $_POST["nienif"];
+            $mascota = $_POST["nombre_mascota"];
+
+            //Recibir los datos de las pruebas
+            $prueba = $_POST["prueba"];
+            $precio = $_POST["precio"];
+            $cantidad = $_POST["cantidad"];
           
             $pdf = new FPDF();
+
             //pdf la factura numero 1 de la tipica BBDD de facturacion
             $pdf->AddPage();
-            $pdf->SetFont('Arial', 'B', 12);
-            // Imprimimos el logo a 300 ppp
+
+            // Logo del veterinario
             $pdf->Image('IMAGENES/logon.png',5,5,-700);
-            //Datos veterinario  
-            $pdf->Cell(50, 70, "Datos de nuestra empresa", 0, 0, 'C');
-            $pdf->Ln(7);
-            $pdf->SetFont('Arial', '', 9);
-            $pdf->Cell(90, 70, "- Direccion: Calle de Mostoles 70, 28942 Fuenlabrada, Madrid", 0, 0, 'C');
-            $pdf->Ln(5);
-            $pdf->Cell(70, 70, "- Telefonos de interes: 910256254 / 605963254", 0, 0, 'C');
-            $pdf->Ln(5);
-            $pdf->Cell(80, 70, "- Ponte en contacto en: veterinariovitalpet@gmail.com", 0, 0, 'C');
-            $pdf->Ln(10);
-            //Datos del cliente y mascota 
-            $pdf->SetFont('Arial', 'B', 12);
-            $pdf->Cell(57, 70, "Datos del cliente y de la mascota", 0, 0, 'C');
-            $pdf->Ln(7);
-            $pdf->SetFont('Arial', '', 9);
-            $pdf->Cell(35, 70, "- Nombre y apellidos:", 0, 0, 'C');
-            $pdf->Ln(5);
-            $pdf->Cell(34, 70, "- Correo electronico:", 0, 0, 'C');
-            $pdf->Ln(5);
-            $pdf->Cell(20, 70, "- NIE / NIF:", 0, 0, 'C');
-            $pdf->Ln(5);
-            $pdf->Cell(20, 70, "- Mascota:", 0, 0, 'C');
-            $pdf->Ln(50);
-            $pdf->SetTextColor(0,0,0);
-            $pdf->SetFont('Arial', '', 10);              
-            $pdf->Cell(100, 6, "PRUEBA", 1, 0, 'C');
-            $pdf->Cell(20, 6, "PRECIO", 1, 0, 'C');
-            $pdf->Cell(30, 6, "CANTIDAD", 1, 0, 'C');
-            $pdf->Cell(30, 6, "TOTAL", 1, 0, 'C');
+
+            // Encabezado de la factura
+            $pdf->SetFont('Arial','B',14);
+            $pdf->Cell(190, 10, "FACTURA DE COMPRA", 0, 2, "C");
+            $pdf->SetFont('Arial','B',10);
+            $pdf->MultiCell(190,5, "Número de factura: $id_factura"."\n"."Fecha: $fecha_factura", 0, "C", false);
+            $pdf->Ln(2);
+
+            // Datos del veterinario
+            $pdf->SetFont('Arial','B',12);
+            $top_datos=45;
+            $pdf->SetXY(40, $top_datos);
+            $pdf->Cell(190, 10, "Datos de la tienda:", 0, 2, "J");
+            $pdf->SetFont('Arial','',9);
+            $pdf->MultiCell(190, 5,
+            "Vital-Pet".\n.
+            "Dirección: Calle de Móstoles 70A".\n.
+            "Población: Fuenlabrada".\n.
+            "Provincia: Madrid".\n.
+            "Código Postal: 28942".\n.
+            "Teléfono: 910256254 / 605963254".\n.
+            "Fax: 910256254 / 605963254",
+            0,"J",false);
+
+            // Datos del cliente/mascota
+            $pdf->SetFont('Arial','B',12);
+            $pdf->SetXY(125, $top_datos);
+            $pdf->Cell(190, 10, "Datos del cliente:", 0, 2, "J");
+            $pdf->SetFont('Arial','',9);
+            $pdf->MultiCell(190, 5,
+            "Nombre: ".$nombre_cliente."\n".
+            "Apellidos: ".$apellidos_cliente."\n".
+            "Dirección: ".$direccion_cliente."\n".
+            "Provincia: ".$provincia_cliente."\n".
+            "Código Postal: ".$codigo_postal_cliente."\n".
+            "NIE / NIF: ".$nienif."\n".
+            "Nombre de la mascota: .$mascota.", 
+            0,"J", false);
+
             $pdf->Ln(10);
 
                 foreach ($_SESSION['cesta']->getArticulos() as $codigo => $cantidad) {
