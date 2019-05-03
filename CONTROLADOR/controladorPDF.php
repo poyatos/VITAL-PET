@@ -74,7 +74,15 @@
             "Nombre de la mascota: .$mascota.", 
             0,"J", false);
 
-            $pdf->Ln(10);
+            $pdf->Ln(40);
+            
+            //Tabla para describir factura
+            $pdf->SetTextColor(0,0,0);
+            $pdf->SetFont('Arial', '', 10);              
+            $pdf->Cell(100, 6, "PRUEBA", 1, 0, 'C');
+            $pdf->Cell(20, 6, "PRECIO", 1, 0, 'C');
+            $pdf->Cell(30, 6, "CANTIDAD", 1, 0, 'C');
+            $pdf->Cell(30, 6, "TOTAL", 1, 0, 'C');
 
                 foreach ($_SESSION['cesta']->getArticulos() as $codigo => $cantidad) {
                     $pdf->SetFont('Arial', '', 10);
