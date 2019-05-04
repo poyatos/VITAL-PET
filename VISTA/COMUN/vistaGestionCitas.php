@@ -155,7 +155,7 @@
                   if (isset($_POST["busqueda"])){
                     $resultadoPaginacion = $conexion->visualizarCitasFiltradoPaginacion($_POST["fecha"], $_POST["dni"], $inicio, $tamano_pagina);
                   }else{
-                  $resultadoPaginacion = $conexion->visualizarCitasPaginacion($inicio, $tamano_pagina);
+                    $resultadoPaginacion = $conexion->visualizarCitasPaginacion($inicio, $tamano_pagina);
                   }
                 }
                 foreach($resultadoPaginacion as $citas){
@@ -184,7 +184,10 @@
                 <form action="../../CONTROLADOR/controladorRecepcionista.php" method="POST"> 
                     <input type="hidden" value="'.$citas['id_cita'].'" name="id_cita">
                     <input type="submit" value="Borrar" name="borrarCita">
-                    <input type="submit" value="Finalizar consulta" name="finalizarCita">
+                </form>
+                <form action="../RECEPCIONISTA/vistaRealizarPago.php" method="POST">
+                  <input type="hidden" value="'.$citas['id_cita'].'" name="id_cita">
+                  <input type="submit" value="Finalizar cita">
                 </form>
                 </td>');
               }

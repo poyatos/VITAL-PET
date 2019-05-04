@@ -472,28 +472,40 @@
 
         //VISUALIZAR CITAS VETERINARIO
         public function visualizarCitasVeterinario($id){
-            $consulta = "SELECT * FROM citas WHERE id_veterinario = $id ";
+            $consulta = "SELECT usuarios.dni_usuario, id_cita, fecha_cita, hora_cita, estado_cita, num_consulta, id_mascota, id_cliente, id_veterinario 
+            FROM citas
+            INNER JOIN usuarios
+            ON citas.id_cliente = usuarios.id_usuario WHERE id_veterinario = $id";
             $resultado = $this->devolverConsultaArray($consulta);
             return $resultado;
         }
 
         //VISUALIZAR CITAS VETERINARIO PAGINACION
         public function visualizarCitasVeterinarioPaginacion($id, $inicio, $tamano_pagina){
-            $consulta = "SELECT * FROM citas WHERE id_veterinario = $id LIMIT ".$inicio."," . $tamano_pagina;
+            $consulta = "SELECT usuarios.dni_usuario, id_cita, fecha_cita, hora_cita, estado_cita, num_consulta, id_mascota, id_cliente, id_veterinario 
+            FROM citas
+            INNER JOIN usuarios
+            ON citas.id_cliente = usuarios.id_usuario WHERE id_veterinario = $id LIMIT ".$inicio."," . $tamano_pagina;
             $resultado = $this->devolverConsultaArray($consulta);
             return $resultado;
         }
 
          //FILTRAR VETERINARIO FILTRO 
          public function visualizarCitasVeterinarioFiltrado($id, $fecha, $dni){
-            $consulta = "SELECT * FROM citas WHERE id_veterinario = $id AND fecha_cita LIKE '%$fecha%' AND dni_usuario LIKE '%$dni%'";
+            $consulta = "SELECT usuarios.dni_usuario, id_cita, fecha_cita, hora_cita, estado_cita, num_consulta, id_mascota, id_cliente, id_veterinario 
+            FROM citas
+            INNER JOIN usuarios
+            ON citas.id_cliente = usuarios.id_usuario WHERE id_veterinario = $id AND fecha_cita = '$fecha' AND dni_usuario LIKE '%$dni%'";
             $resultado = $this->devolverConsultaArray($consulta);
             return $resultado;
         }
 
         //FILTRAR  VETERINARIO  FILTRO 
         public function visualizarCitasVeterinarioFiltradoPaginacion($id, $fecha, $dni, $inicio, $tamano_pagina){
-            $consulta = "SELECT * FROM citas WHERE id_veterinario = $id AND fecha_cita LIKE '%$fecha%' 
+            $consulta = "SELECT usuarios.dni_usuario, id_cita, fecha_cita, hora_cita, estado_cita, num_consulta, id_mascota, id_cliente, id_veterinario 
+            FROM citas
+            INNER JOIN usuarios
+            ON citas.id_cliente = usuarios.id_usuario citas WHERE id_veterinario = $id AND fecha_cita = '$fecha' 
             AND dni_usuario LIKE '%$dni%'LIMIT ".$inicio."," . $tamano_pagina;
             $resultado = $this->devolverConsultaArray($consulta);
             return $resultado;
@@ -739,8 +751,25 @@
 
         /* ------------------------------------------------------------- PAGOS --------------------------------------------------------------*/
 
+        public function insertarPago($id_cliente, $total, $fecha, $id_cita){
+            $consulta = "INSERT INTO pagos (id_cliente, total_precio, fecha_pago, id_cita) VALUES ($id_cliente, $total, $fecha, $id_cita)";
+            $this->ejecutarConsulta($consulta);
+        }
+
         public function visualizarPagos(){
             $consulta = "SELECT * FROM pagos";
+            $resultado = $this->devolverConsultaArray($consulta);
+            return $resultado;
+        }
+
+        public function visualizarDatosFactura($id_cita){
+            $consulta = "SELECT C.fecha_cita, U.nombre_usuario, U.apellidos_usuario, U.dni_usuario, U.telefono_usuario, U.correo_usuario, U.direccion_usuario, M.nombre_mascota, M.tipo_mascota, M.raza_mascota, T.nombre_tipo_prueba, T.precio_tipo_prueba
+            FROM citas C
+            JOIN usuarios U ON C.id_cliente = U.id_usuario
+            JOIN mascotas M ON C.id_mascota = M.id_mascota
+            JOIN pruebas P ON C.id_cita = P.id_cita
+            JOIN tipos_pruebas T ON P.id_tipo_prueba = T.id_tipo_prueba
+            WHERE C.id_cita = $id_cita";
             $resultado = $this->devolverConsultaArray($consulta);
             return $resultado;
         }

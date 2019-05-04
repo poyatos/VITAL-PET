@@ -80,12 +80,15 @@
               </tr>");
               $total += $pagos['precio_tipo_prueba'];
             }
-            $conexion->desconectar(); 
+            $conexion->desconectar();
             ?>
     </tbody>
   </table>
   <p><?=$total?>€</p>
-  <input type="submit" value="PAGAR" name="pagar">
+  <form action="../../CONTROLADOR/controladorRecepcionista.php" method="POST">
+    <input type="hidden" name="id_cita" value="<?= $_POST['id_cita']?>">
+    <input type="submit" value="PAGAR" name="finalizarCita">
+  </form>
 </div>
 </div>
 </div>

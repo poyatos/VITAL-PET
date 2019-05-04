@@ -32,6 +32,7 @@
             $conexion->borrarCita($_POST['id_cita']);
             header("Location: ../VISTA/COMUN/vistaGestionCitas.php");
         } elseif(isset($_POST['finalizarCita'])){
+            $conexion->insertarPago($_POST['id_cliente'], $_POST['total_precio'], $_POST['fecha_pago'], $_POST['id_cita']);
             $conexion->finalizarCita($_POST['id_cita']);
             header("Location: ../VISTA/COMUN/vistaGestionCitas.php");
         }
