@@ -138,7 +138,8 @@
               <td>");
               
                 echo ("<form action='vistaEditarContrato.php' method='POST'>       
-                <input type='hidden' name='id_usuario' value='".$empleado["id_usuario"]."'/>");
+                <input type='hidden' name='id_usuario' value='".$empleado["id_usuario"]."'/>
+                <a href='vistaDetalleEmpleado.php'>FICHA EMPLEADO<a/>");
                 if ($contrato['estado_contrato'] == 'Finalizado') {
                     echo ("<input type='submit' class='btn' name='renovarContrato' value='Renovar'/>
                     </form>");
