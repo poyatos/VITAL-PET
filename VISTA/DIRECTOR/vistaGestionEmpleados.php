@@ -168,7 +168,7 @@
         <?php
           include '../../INCLUDE/piePaginacion.php';
         } else {
-          echo utf8_encode ("<p>No se han encontrado resultados.</p>");
+          echo ("<p>No se han encontrado resultados.</p>");
         } 
 
         $conexion->desconectar();

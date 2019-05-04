@@ -74,7 +74,7 @@
         $resultado = $conexion->visualizarPagos();
         $total = 0;
             foreach($resultado as $pagos){
-               echo utf8_encode ("<tr>
+               echo ("<tr>
               <td>".$pagos['nombre_tipo_prueba']."</td>
               <td>".$pagos['precio_tipo_prueba']."&euro</td>
               </tr>");

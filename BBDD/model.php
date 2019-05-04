@@ -119,14 +119,6 @@
             }
         }
 
-        //VISUALIZAR USUARIOS
-        public function visualizarUsuarios(){
-            $consulta = "SELECT id_usuario, nombre_usuario, apellidos_usuario, dni_usuario, telefono_usuario, correo_usuario, fecna_usuario, 
-            direccion_usuario, rol_usuario FROM usuarios";
-            $resultado = $this->devolverConsultaArray($consulta);
-            return $resultado;
-        }
-
         //VISUALIZAR USUARIO POR DNI
         public function visualizarUsuarioDni($dni){
             $consulta = "SELECT id_usuario, nombre_usuario, apellidos_usuario, dni_usuario, telefono_usuario, correo_usuario, fecna_usuario, 
@@ -175,9 +167,6 @@
             return $resultado;
         }
 
-
-
-
         //VISUALIZAR EMPLEADOS
         public function visualizarEmpleados(){
             $consulta = "SELECT id_usuario, nombre_usuario, apellidos_usuario, dni_usuario, telefono_usuario, correo_usuario, fecna_usuario, 
@@ -212,24 +201,6 @@
             return $resultado;
         }
 
-        //FILTRAR EMPLEADOS
-        public function filtarEmpleados($nombre, $apellidos, $dni){
-            $consulta = "SELECT id_usuario, nombre_usuario, apellidos_usuario, dni_usuario, telefono_usuario, correo_usuario, fecna_usuario, 
-            direccion_usuario, rol_usuario FROM usuarios WHERE rol_usuario IN ('Veterinario','Recepcionista') AND nombre_usuario LIKE '%$nombre%' 
-            AND apellidos_usuario LIKE '%$apellidos%' AND dni_usuario LIKE '%$dni%'";
-            $resultado = $this->devolverConsultaArray($consulta);
-            return $resultado;
-        }
-
-        //FILTRAR EMPLEADOS (PAGINACION)
-        public function filtarEmpleadosPaginacion($nombre, $apellidos, $dni){
-            $consulta = "SELECT id_usuario, nombre_usuario, apellidos_usuario, dni_usuario, telefono_usuario, correo_usuario, fecna_usuario, 
-            direccion_usuario, rol_usuario FROM usuarios WHERE rol_usuario IN ('Veterinario','Recepcionista') AND nombre_usuario LIKE '%$nombre%' 
-            AND apellidos_usuario LIKE '%$apellidos%' AND dni_usuario LIKE '%$dni%'  LIMIT ".$inicio."," . $tamano_pagina;
-            $resultado = $this->devolverConsultaArray($consulta);
-            return $resultado;
-        }
-
         //VISUALIZAR VETERINARIOS
         public function visualizarVeterinarios(){
             $consulta = "SELECT id_usuario, nombre_usuario, apellidos_usuario, dni_usuario FROM usuarios WHERE rol_usuario LIKE 'Veterinario'";
@@ -246,7 +217,7 @@
 
         //INICIAR SESION USUARIO
         public function iniciarSesionUsuario($dni,$pass){
-            $consulta = "SELECT dni_usuario, pass_usuario, rol_usuario FROM usuarios WHERE dni_usuario = '$dni' ";
+            $consulta = "SELECT id_usuario, nombre_usuario, apellidos_usuario, pass_usuario, rol_usuario FROM usuarios WHERE dni_usuario = '$dni' ";
 
             $resultadoConsulta = $this->ejecutarConsulta($consulta);
 
@@ -365,14 +336,12 @@
             return $resultado;
         }
 
-
         //VISUALIZAR MASCOTA ID
         public function visualizarMascotaId($id){
             $consulta = "SELECT * FROM mascotas WHERE id_mascota = $id ";
             $mascota = $this->devolverConsultaFila($consulta);
             return $mascota;
         }
-
 
         //MODIFICAR MASCOTA
         public function modificarMascota($id, $nombre, $tipo, $raza, $sexo, $fecna, $peso){
@@ -534,12 +503,6 @@
             $this->ejecutarConsulta($consulta);
         }
 
-        //MODIFICAR ESTADO CITA
-        public function modificarEstadoCita($id, $estado){
-            $consulta = "UPDATE citas SET estado = '$estado' WHERE id_cita = $id";
-            $this->ejecutarConsulta($consulta);
-        }
-
         //BORRAR CITA (OPCIONAL)
         public function borrarCita($id){
             $consulta = "DELETE FROM citas WHERE id_cita = $id";
@@ -578,13 +541,6 @@
             return $prueba;
         }
 
-        //VISUALIZAR PRUEBAS MASCOTA
-        public function visualizarPruebasMascota($id){
-            $consulta = "SELECT * FROM pruebas WHERE id_prueba = $id ";
-            $resultado = $this->devolverConsultaArray($consulta);
-            return $resultado;
-        }
-
         //MODIFICAR PRUEBA
         public function modificarPrueba($id, $resultado, $observaciones){
             $consulta = "UPDATE pruebas SET resultado_prueba = '$resultado', observaciones_prueba = '$observaciones' WHERE id_prueba = $id";
@@ -621,8 +577,6 @@
             return $resultado;
         }
 
-
-
         //BORRAR PRUEBA
         public function borrarPrueba($id){
             $consulta = "DELETE FROM pruebas WHERE id_prueba = $id";
@@ -655,7 +609,6 @@
             $resultado = $this->devolverConsultaArray($consulta);
             return $resultado;
         }
-
 
         //VISUALIZAR TIPOS DE PRUEBAS(paginacion)------------------------------------------
         public function visualizarTipoPruebaPaginacion($inicio, $tamano_pagina){
