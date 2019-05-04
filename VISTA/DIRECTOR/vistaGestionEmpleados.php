@@ -80,7 +80,6 @@
   <table class="table table-bordered table-striped">
     <thead>
       <tr>
-        <th>ID Empleado</th>
         <th>Nombre</th>
         <th>Apellidos</th>
         <th>DNI</th>
@@ -128,8 +127,7 @@
 
               $contrato = $conexion->visualizarContratoId($empleado['id_usuario']);
                echo ("<tr>
-               <td><a href='vistaDetalleEmpleado.php'>".$empleado['id_usuario']."<a/></td>
-              <td>".$empleado['nombre_usuario']."</td>
+              <td><a href='vistaDetalleEmpleado.php'>".$empleado['nombre_usuario']."<a/></td>
               <td>".$empleado['apellidos_usuario']."</td>
               <td>".$empleado['dni_usuario']."</td>
               <td>".$empleado['telefono_usuario']."</td>

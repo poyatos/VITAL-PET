@@ -1,13 +1,13 @@
 <?php
-  session_start();
+    session_start();
 
-  if(!isset($_SESSION['usuario']) && !isset($_SESSION['rol'])){
-    header("Location: ../../index.php");
+    if(!isset($_SESSION['usuario']) && !isset($_SESSION['rol'])){
+        header("Location: ../index.php");
     } else {
-        if($_SESSION['rol'] != 'Director'){
-            header("Location: ../".$_SESSION['rol']);
-        }
-  }
+      if($_SESSION['rol'] == 'Cliente'){
+        header("Location: ../CLIENTE");
+      }
+    }
 ?>
 <!DOCTYPE html>
 <html lang="es">
@@ -44,11 +44,17 @@
   </div>
 
 
-  <!-- MENU LATERAL -->
-  <div class="col-12 col-sm-5  col-md-4  col-lg-4">
-  <?php
-      include "../../INCLUDE/menuDir.inc"
-  ?>
+ <!-- MENU LATERAL -->
+ <div class="col-12 col-sm-5 col-md-4  col-lg-4">
+      <?php
+    if($_SESSION['rol'] == 'Director'){
+      include "../../INCLUDE/menuDir.inc";
+    } else if ($_SESSION['rol'] == 'Recepcionista'){
+      include "../../INCLUDE/menuRec.inc";
+    } else if ($_SESSION['rol'] == 'Veterinario'){
+      include "../../INCLUDE/menuVet.inc";
+    }
+      ?>
       </div>
 
 
@@ -59,47 +65,49 @@
     <div class="row">
         <div class="col-12 col-sm-12 col-md-12  col-lg-12">
         <ul class="list-group">
-            <li class="list-group-item list-group-item-action list-group-item-success"><img src="../../IMAGENES/veterinario.png" class="img-thumbnail" alt="Empleado"></li>
-            <li class="list-group-item list-group-item-action list-group-item-warning"><img src="../../IMAGENES/recepcionista.png" class="img-thumbnail" alt="Empleado"></li>
+            <li class="list-group-item list-group-item-action list-group-item-danger"><img src="../../IMAGENES/cliente.png" class="img-thumbnail" alt="Empleado"></li>
                 <div class="row">
                     <div class="col-12 col-sm-12 col-md-6  col-lg-6">
-                      <li class="list-group-item list-group-item-action list-group-item-success">Nombre</li>
+                      <li class="list-group-item list-group-item-action list-group-item-danger">Nombre</li>
                     </div>
                     <div class="col-12 col-sm-12 col-md-6  col-lg-6">
-                    <li class="list-group-item list-group-item-action list-group-item-success">Apellidos</li>
+                    <li class="list-group-item list-group-item-action list-group-item-danger">Apellidos</li>
                     </div>
                     <div class="col-12 col-sm-12 col-md-6  col-lg-6">
-                      <li class="list-group-item list-group-item-action list-group-item-success">Fecha de nacimiento</li>
+                      <li class="list-group-item list-group-item-action list-group-item-danger">Fecha de nacimiento</li>
                     </div>
                     <div class="col-12 col-sm-12 col-md-6  col-lg-6">
-                    <li class="list-group-item list-group-item-action list-group-item-success">DNI</li>
+                    <li class="list-group-item list-group-item-action list-group-item-danger">DNI</li>
                     </div> 
                     <div class="col-12 col-sm-12 col-md-6  col-lg-6">
-                    <li class="list-group-item list-group-item-action list-group-item-success">Correo Electrónico</li>
+                    <li class="list-group-item list-group-item-action list-group-item-danger">Correo Electrónico</li>
                     </div>
                     <div class="col-12 col-sm-12 col-md-6  col-lg-6">
-                    <li class="list-group-item list-group-item-action list-group-item-success">Teléfono</li>
+                    <li class="list-group-item list-group-item-action list-group-item-danger">Teléfono</li>
+                    </div>
+                    <div class="col-12 col-sm-12 col-md-6  col-lg-6">
+                    <li class="list-group-item list-group-item-action list-group-item-danger">Dirección</li>
                     </div>
                     <div class="col-12 col-sm-12 col-md-12  col-lg-12">
-                    <li class="list-group-item list-group-item-action list-group-item-success">Dirección</li>
+                    <li class="list-group-item list-group-item-action list-group-item-info">MASCOTAS</li>
                     </div>
                     <div class="col-12 col-sm-12 col-md-6  col-lg-6">
-                    <li class="list-group-item list-group-item-action list-group-item-info">Inicio del contrato</li>
+                    <li class="list-group-item list-group-item-action list-group-item-warning">Nombre de la Mascota</li>
                     </div>
                     <div class="col-12 col-sm-12 col-md-6  col-lg-6">
-                    <li class="list-group-item list-group-item-action list-group-item-info">Fin del contrato</li>
+                    <li class="list-group-item list-group-item-action list-group-item-warning">Tipo de mascota</li>
                     </div>
                     <div class="col-12 col-sm-12 col-md-6  col-lg-6">
-                    <li class="list-group-item list-group-item-action list-group-item-info">Horario</li>
+                    <li class="list-group-item list-group-item-action list-group-item-warning">Raza de mascota</li>
                     </div>
                     <div class="col-12 col-sm-12 col-md-6  col-lg-6">
-                    <li class="list-group-item list-group-item-action list-group-item-info">Sueldo</li>
+                    <li class="list-group-item list-group-item-action list-group-item-warning">Sexo de mascota</li>
                     </div>
                     <div class="col-12 col-sm-12 col-md-6  col-lg-6">
-                    <li class="list-group-item list-group-item-action list-group-item-info">Dias de vacaciones</li>
+                    <li class="list-group-item list-group-item-action list-group-item-warning">Fecha de naciemiento de mascota</li>
                     </div>
                     <div class="col-12 col-sm-12 col-md-6  col-lg-6">
-                    <li class="list-group-item list-group-item-action list-group-item-info">Estado del contrato</li>
+                    <li class="list-group-item list-group-item-action list-group-item-warning">Peso de Mascota</li>
                     </div>
                     </div>
                 </div>

@@ -141,7 +141,7 @@
              }
             foreach($resultadoPaginacion as $clientes){
                    echo (" <tr>
-                  <td>".$clientes['nombre_usuario']."</td>
+                  <td><a href='vistaDetalleCliente.php'>".$clientes['nombre_usuario']."</a></td>
                   <td>".$clientes['apellidos_usuario']."</td>
                   <td>".$clientes['dni_usuario']."</td>
                   <td>".$clientes['telefono_usuario']."</td>
