@@ -388,21 +388,25 @@
 
         //REGISTRAR CITAS
         public function anadirCita($fecha, $hora, $consulta, $id_mascota, $id_cliente, $id_veterinario){
-            $consulta = "SELECT * FROM citas WHERE fecha_cita = '$fecha' AND hora_cita = '$hora'";
+            //CODIGO ANTIGUO (NO FUNCIONA)
+            /*$consulta = "SELECT * FROM citas WHERE fecha_cita = $fecha AND hora_cita = $hora";
 
             if ($this->existeFila($consulta)) {
-                 echo "<br/><h2>La cita ya existe.</h2><br />";
+                 echo "<br/><h2>La cita ya existe.</h2><br/>";
             } else {
                 $sql = "INSERT INTO citas (fecha_cita, hora_cita, estado_cita, num_consulta, id_mascota, id_cliente, id_veterinario)
                 VALUES ('$fecha', '$hora', 'Pendiente', $consulta, $id_mascota, $id_cliente, $id_veterinario)";
-
                 if ($this->ejecutarConsulta($sql)) {
                      echo "<br/><h2>Cita registrada correctamente.</h2>";
                 } else {
                      echo "<h2>Error al crear la cita." . $sql . "</h2><br/>";
                      echo "<h5><a href='registroFormulario.php'>Intentelo de nuevo</a></h5>"; 
                 }
-            }
+            }*/
+
+            $sql = "INSERT INTO citas (fecha_cita, hora_cita, estado_cita, num_consulta, id_mascota, id_cliente, id_veterinario)
+                VALUES ('$fecha', '$hora', 'Pendiente', $consulta, $id_mascota, $id_cliente, $id_veterinario)";
+            $this->ejecutarConsulta($sql);
         }
 
         //VISUALIZAR CITAS
