@@ -176,6 +176,8 @@
         }
 
 
+
+
         //VISUALIZAR EMPLEADOS
         public function visualizarEmpleados(){
             $consulta = "SELECT id_usuario, nombre_usuario, apellidos_usuario, dni_usuario, telefono_usuario, correo_usuario, fecna_usuario, 
@@ -320,6 +322,19 @@
             return $resultado;
         }
 
+        //VISUALIZAR MASCOTAS CLIENTES-------------------------------------
+        public function visualizarMascotasClientes($id){
+            $consulta = "SELECT usuarios.id_usuario, usuarios.nombre_usuario, usuarios.apellidos_usuario, usuarios.dni_usuario, usuarios.telefono_usuario,
+            usuarios.correo_usuario,usuarios.fecna_usuario, usuarios.direccion_usuario, mascotas.nombre_mascota, mascotas.tipo_mascota,
+            mascotas.raza_mascota, mascotas.peso_mascota, mascotas.sexo_mascota, mascotas.fecna_mascota, mascotas.peso_mascota
+            FROM mascotas
+            INNER JOIN usuarios
+            ON mascotas.id_cliente = usuarios.id_usuario
+            WHERE usuarios.id_cliente = $id";
+            $resultado = $this->devolverConsultaArray($consulta);
+            return $resultado;
+        }
+
         //VISUALIZAR MASCOTAS (PAGINACION)
         public function visualizarMascotasPaginacion($inicio, $tamano_pagina){
             $consulta = "SELECT usuarios.dni_usuario, mascotas.id_mascota, mascotas.id_cliente, mascotas.nombre_mascota, mascotas.tipo_mascota, mascotas.raza_mascota, mascotas.peso_mascota, mascotas.sexo_mascota
@@ -358,12 +373,6 @@
             return $mascota;
         }
 
-        //VISUALIZAR MASCOTAS CLIENTE
-        public function visualizarMascotasCliente($id){
-            $consulta = "SELECT * FROM mascotas WHERE id_cliente = $id ";
-            $resultado = $this->devolverConsultaArray($consulta);
-            return $resultado;
-        }
 
         //MODIFICAR MASCOTA
         public function modificarMascota($id, $nombre, $tipo, $raza, $sexo, $fecna, $peso){
@@ -732,6 +741,18 @@
             $consulta = "UPDATE contratos SET fecfin_contrato = SYSDATE(), estado_contrato = 'Finalizado' WHERE id_contratado = $id_contratado";
             $this->ejecutarConsulta($consulta);
         }
+
+         //VISUALIZAR CONTRATOS TRABAJADORES
+         public function visualizarContratoClientes($id){
+            $consulta = "SELECT usuarios.nombre_usuario, usuarios.apellidos_usuario, usuarios.dni_usuario, usuarios.telefono_usuario, usuarios.correo_usuario, usuarios.fecna_usuario, usuarios.direccion_usuario,  usuarios.rol_usuario,
+             contratos.fecini_contrato, contratos.fecfin_contrato, contratos.sueldo_contrato, contratos.diasvac_contrato, contratos.horario_contrato, contratos.estado_contrato
+            FROM contratos
+            INNER JOIN usuarios
+            ON contratos.id_contratado = usuarios.id_usuario
+            WHERE contratos.id_contratado = $id";
+            $resultado = $this->devolverConsultaFila($consulta);
+            return $resultado;
+         }
 
         /* ------------------------------------------------------------- PAGOS --------------------------------------------------------------*/
 

@@ -55,69 +55,90 @@
 <!-- CONTENIDO-->
 
 <!-- SI EL EMPLEADO ES VETERINARIO SE IMPRIME ESTE -->
+<!-- CONTENIDO-->
+
+<!-- SI EL EMPLEADO ES VETERINARIO SE IMPRIME ESTE -->
 <div class="col-12 col-sm-7 col-md-7 col-lg-7 text-center">
     <div class="row">
-        <div class="col-12 col-sm-12 col-md-12  col-lg-12">
-        <ul class="list-group">
-            <li class="list-group-item list-group-item-action list-group-item-success"><img src="../../IMAGENES/veterinario.png" class="img-thumbnail" alt="Empleado"></li>
-            <li class="list-group-item list-group-item-action list-group-item-warning"><img src="../../IMAGENES/recepcionista.png" class="img-thumbnail" alt="Empleado"></li>
-                <div class="row">
-                    <div class="col-12 col-sm-12 col-md-6  col-lg-6">
-                      <li class="list-group-item list-group-item-action list-group-item-success">Nombre</li>
+
+    <?php
+        require_once '../../BBDD/model.php';
+        require_once '../../BBDD/config.php';
+      
+        $conexion = new Model(Config::$host, Config::$user, Config::$pass, Config::$nombreBase);
+        $resultado = $conexion->visualizarContratoClientes($_GET["id"]);
+    ?>
+      
+
+        
+        <div class='col-12 col-sm-12 col-md-12  col-lg-12'>
+        <ul class='list-group'>
+
+        <?php
+
+        if( $resultado['rol_usuario'] == 'Veterinario'){
+        echo'<li class="list-group-item list-group-item-action list-group-item-success"><img src="../../IMAGENES/veterinario.png" class="img-thumbnail" alt="Empleado"></li>';
+        }else if ($resultado['rol_usuario'] == 'Recepcionista'){
+        echo '<li class="list-group-item list-group-item-action list-group-item-success"><img src="../../IMAGENES/recepcionista.png" class="img-thumbnail" alt="Empleado"></li>';
+        }
+        ?>
+              <div class='row'>
+                    <div class='col-12 col-sm-12 col-md-6  col-lg-6'>
+                      <li class='list-group-item list-group-item-action list-group-item-info'><p class="d-flex flex-start">Nombre:</p><?= $resultado['nombre_usuario']?></li>
                     </div>
-                    <div class="col-12 col-sm-12 col-md-6  col-lg-6">
-                    <li class="list-group-item list-group-item-action list-group-item-success">Apellidos</li>
+                    <div class='col-12 col-sm-12 col-md-6  col-lg-6'>
+                    <li class='list-group-item list-group-item-action list-group-item-info'><p class="d-flex flex-start">Apellidos:</p><?= $resultado['apellidos_usuario']?></li>
                     </div>
-                    <div class="col-12 col-sm-12 col-md-6  col-lg-6">
-                      <li class="list-group-item list-group-item-action list-group-item-success">Fecha de nacimiento</li>
+                    <div class='col-12 col-sm-12 col-md-6  col-lg-6'>
+                      <li class='list-group-item list-group-item-action list-group-item-info'><p class="d-flex flex-start">Fecha de nacimiento:</p><?= $resultado['fecna_usuario']?></li>
                     </div>
-                    <div class="col-12 col-sm-12 col-md-6  col-lg-6">
-                    <li class="list-group-item list-group-item-action list-group-item-success">DNI</li>
+                    <div class='col-12 col-sm-12 col-md-6  col-lg-6'>
+                    <li class='list-group-item list-group-item-action list-group-item-info'><p class="d-flex flex-start">Dni:</p><?= $resultado['dni_usuario']?></li>
                     </div> 
-                    <div class="col-12 col-sm-12 col-md-6  col-lg-6">
-                    <li class="list-group-item list-group-item-action list-group-item-success">Correo Electrónico</li>
+                    <div class='col-12 col-sm-12 col-md-6  col-lg-6'>
+                    <li class='list-group-item list-group-item-action list-group-item-info'><p class="d-flex flex-start">Correo:</p><?= $resultado['correo_usuario']?></li>
                     </div>
-                    <div class="col-12 col-sm-12 col-md-6  col-lg-6">
-                    <li class="list-group-item list-group-item-action list-group-item-success">Teléfono</li>
+                    <div class='col-12 col-sm-12 col-md-6  col-lg-6'>
+                    <li class='list-group-item list-group-item-action list-group-item-info'><p class="d-flex flex-start">Telefono:</p><?= $resultado['telefono_usuario']?></li>
                     </div>
-                    <div class="col-12 col-sm-12 col-md-12  col-lg-12">
-                    <li class="list-group-item list-group-item-action list-group-item-success">Dirección</li>
+                    <div class='col-12 col-sm-12 col-md-6  col-lg-6'>
+                    <li class='list-group-item list-group-item-action list-group-item-info'><p class="d-flex flex-start">Dirección:</p><?= $resultado['direccion_usuario']?></li>
                     </div>
-                    <div class="col-12 col-sm-12 col-md-6  col-lg-6">
-                    <li class="list-group-item list-group-item-action list-group-item-info">Inicio del contrato</li>
+                    <div class='col-12 col-sm-12 col-md-6  col-lg-6'>
+                    <li class='list-group-item list-group-item-action list-group-item-info'><p class="d-flex flex-start">Empleo:</p><?= $resultado['rol_usuario']?></li>
                     </div>
-                    <div class="col-12 col-sm-12 col-md-6  col-lg-6">
-                    <li class="list-group-item list-group-item-action list-group-item-info">Fin del contrato</li>
+                    <div class='col-12 col-sm-12 col-md-12  col-lg-12'>
+                    <li class='list-group-item list-group-item-action list-group-item-success'>CONTRATO</li>
                     </div>
-                    <div class="col-12 col-sm-12 col-md-6  col-lg-6">
-                    <li class="list-group-item list-group-item-action list-group-item-info">Horario</li>
+                    <div class='col-12 col-sm-12 col-md-6  col-lg-6'>
+                    <li class='list-group-item list-group-item-action list-group-item-info'><p class="d-flex flex-start">Inicio del contrato:</p><?= $resultado['fecini_contrato']?></li>
                     </div>
-                    <div class="col-12 col-sm-12 col-md-6  col-lg-6">
-                    <li class="list-group-item list-group-item-action list-group-item-info">Sueldo</li>
+                    <div class='col-12 col-sm-12 col-md-6  col-lg-6'>
+                    <li class='list-group-item list-group-item-action list-group-item-info'><p class="d-flex flex-start">Fin del contrato:</p><?= $resultado['fecfin_contrato']?></li>
                     </div>
-                    <div class="col-12 col-sm-12 col-md-6  col-lg-6">
-                    <li class="list-group-item list-group-item-action list-group-item-info">Dias de vacaciones</li>
+                    <div class='col-12 col-sm-12 col-md-6  col-lg-6'>
+                    <li class='list-group-item list-group-item-action list-group-item-info'><p class="d-flex flex-start">Horario:</p><?= $resultado['horario_contrato']?></li>
                     </div>
-                    <div class="col-12 col-sm-12 col-md-6  col-lg-6">
-                    <li class="list-group-item list-group-item-action list-group-item-info">Estado del contrato</li>
+                    <div class='col-12 col-sm-12 col-md-6  col-lg-6'>
+                    <li class='list-group-item list-group-item-action list-group-item-info'><p class="d-flex flex-start">Sueldo:</p><?= $resultado['sueldo_contrato']?></li>
                     </div>
+                    <div class='col-12 col-sm-12 col-md-6  col-lg-6'>
+                    <li class='list-group-item list-group-item-action list-group-item-info'><p class="d-flex flex-start">Vacaciones:</p><?= $resultado['diasvac_contrato']?></li>
                     </div>
+                    <div class='col-12 col-sm-12 col-md-6  col-lg-6'>
+                    <li class='list-group-item list-group-item-action list-group-item-info'><p class="d-flex flex-start">Estado:</p><?= $resultado['estado_contrato']?></li>
+                    </div>
+                   
                 </div>
+            </div>
         </ul>
         </div>
 
-
-
-      
 
         <?php
         $conexion->desconectar();
         ?>
  
-
-</div>
-
-</div>
 </body>
 
 </html>

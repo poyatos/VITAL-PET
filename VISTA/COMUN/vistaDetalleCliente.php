@@ -13,7 +13,7 @@
 <html lang="es">
 
 <head>
-  <title>Vital-Pet / Gestión empleados</title>
+  <title>Vital-Pet / Detalle Cliente</title>
   <meta charset="utf-8">
   <meta name="viewport" content="width=device-width, initial-scale=1">
   <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.0/css/bootstrap.min.css">
@@ -63,60 +63,73 @@
 <!-- SI EL EMPLEADO ES VETERINARIO SE IMPRIME ESTE -->
 <div class="col-12 col-sm-7 col-md-7 col-lg-7 text-center">
     <div class="row">
-        <div class="col-12 col-sm-12 col-md-12  col-lg-12">
-        <ul class="list-group">
-            <li class="list-group-item list-group-item-action list-group-item-danger"><img src="../../IMAGENES/cliente.png" class="img-thumbnail" alt="Empleado"></li>
-                <div class="row">
-                    <div class="col-12 col-sm-12 col-md-6  col-lg-6">
-                      <li class="list-group-item list-group-item-action list-group-item-danger">Nombre</li>
+
+    <?php
+        require_once '../../BBDD/model.php';
+        require_once '../../BBDD/config.php';
+      
+        $conexion = new Model(Config::$host, Config::$user, Config::$pass, Config::$nombreBase);
+        $resultado = $conexion->visualizarMascotasClientes($_GET["id"]);
+    ?>
+      
+
+        
+        <div class='col-12 col-sm-12 col-md-12  col-lg-12'>
+        <ul class='list-group'>
+            <li class='list-group-item list-group-item-action list-group-item-danger'><img src='../../IMAGENES/cliente.png' class='img-thumbnail' alt='Empleado'></li>
+                <div class='row'>
+                    <div class='col-12 col-sm-12 col-md-6  col-lg-6'>
+                      <li class='list-group-item list-group-item-action list-group-item-danger'><?= $resultado[0]['nombre_usuario']?></li>
                     </div>
-                    <div class="col-12 col-sm-12 col-md-6  col-lg-6">
-                    <li class="list-group-item list-group-item-action list-group-item-danger">Apellidos</li>
+                    <div class='col-12 col-sm-12 col-md-6  col-lg-6'>
+                    <li class='list-group-item list-group-item-action list-group-item-danger'><?= $resultado[0]['apellidos_usuario']?></li>
                     </div>
-                    <div class="col-12 col-sm-12 col-md-6  col-lg-6">
-                      <li class="list-group-item list-group-item-action list-group-item-danger">Fecha de nacimiento</li>
+                    <div class='col-12 col-sm-12 col-md-6  col-lg-6'>
+                      <li class='list-group-item list-group-item-action list-group-item-danger'><?= $resultado[0]['fecna_usuario']?></li>
                     </div>
-                    <div class="col-12 col-sm-12 col-md-6  col-lg-6">
-                    <li class="list-group-item list-group-item-action list-group-item-danger">DNI</li>
+                    <div class='col-12 col-sm-12 col-md-6  col-lg-6'>
+                    <li class='list-group-item list-group-item-action list-group-item-danger'><?= $resultado[0]['dni_usuario']?></li>
                     </div> 
-                    <div class="col-12 col-sm-12 col-md-6  col-lg-6">
-                    <li class="list-group-item list-group-item-action list-group-item-danger">Correo Electrónico</li>
+                    <div class='col-12 col-sm-12 col-md-6  col-lg-6'>
+                    <li class='list-group-item list-group-item-action list-group-item-danger'><?= $resultado[0]['correo_usuario']?></li>
                     </div>
-                    <div class="col-12 col-sm-12 col-md-6  col-lg-6">
-                    <li class="list-group-item list-group-item-action list-group-item-danger">Teléfono</li>
+                    <div class='col-12 col-sm-12 col-md-6  col-lg-6'>
+                    <li class='list-group-item list-group-item-action list-group-item-danger'><?= $resultado[0]['telefono_usuario']?></li>
                     </div>
-                    <div class="col-12 col-sm-12 col-md-6  col-lg-6">
-                    <li class="list-group-item list-group-item-action list-group-item-danger">Dirección</li>
+                    <div class='col-12 col-sm-12 col-md-6  col-lg-6'>
+                    <li class='list-group-item list-group-item-action list-group-item-danger'><?= $resultado[0]['direccion_usuario']?></li>
                     </div>
-                    <div class="col-12 col-sm-12 col-md-12  col-lg-12">
-                    <li class="list-group-item list-group-item-action list-group-item-info">MASCOTAS</li>
+                    <div class='col-12 col-sm-12 col-md-12  col-lg-12'>
+                    <li class='list-group-item list-group-item-action list-group-item-info'>MASCOTAS</li>
                     </div>
-                    <div class="col-12 col-sm-12 col-md-6  col-lg-6">
-                    <li class="list-group-item list-group-item-action list-group-item-warning">Nombre de la Mascota</li>
-                    </div>
-                    <div class="col-12 col-sm-12 col-md-6  col-lg-6">
-                    <li class="list-group-item list-group-item-action list-group-item-warning">Tipo de mascota</li>
-                    </div>
-                    <div class="col-12 col-sm-12 col-md-6  col-lg-6">
-                    <li class="list-group-item list-group-item-action list-group-item-warning">Raza de mascota</li>
-                    </div>
-                    <div class="col-12 col-sm-12 col-md-6  col-lg-6">
-                    <li class="list-group-item list-group-item-action list-group-item-warning">Sexo de mascota</li>
-                    </div>
-                    <div class="col-12 col-sm-12 col-md-6  col-lg-6">
-                    <li class="list-group-item list-group-item-action list-group-item-warning">Fecha de naciemiento de mascota</li>
-                    </div>
-                    <div class="col-12 col-sm-12 col-md-6  col-lg-6">
-                    <li class="list-group-item list-group-item-action list-group-item-warning">Peso de Mascota</li>
-                    </div>
-                    </div>
+                    <?php
+                        foreach($resultado as $mascotas){
+
+                            echo" <div class='col-12 col-sm-12 col-md-6  col-lg-6'>
+                                <li class='list-group-item list-group-item-action list-group-item-warning'>".$mascotas["nombre_mascota"]."</li>
+                                </div>
+                                <div class='col-12 col-sm-12 col-md-6  col-lg-6'>
+                                <li class='list-group-item list-group-item-action list-group-item-warning'>".$mascotas["tipo_mascota"]."</li>
+                                </div>
+                                <div class='col-12 col-sm-12 col-md-6  col-lg-6'>
+                                <li class='list-group-item list-group-item-action list-group-item-warning'>".$mascotas["raza_mascota"]."</li>
+                                </div>
+                                <div class='col-12 col-sm-12 col-md-6  col-lg-6'>
+                                <li class='list-group-item list-group-item-action list-group-item-warning'>".$mascotas["sexo_mascota"]."</li>
+                                </div>
+                                <div class='col-12 col-sm-12 col-md-6  col-lg-6'>
+                                <li class='list-group-item list-group-item-action list-group-item-warning'>".$mascotas["fecna_mascota"]."</li>
+                                </div>
+                                <div class='col-12 col-sm-12 col-md-6  col-lg-6'>
+                                <li class='list-group-item list-group-item-action list-group-item-warning'>".$mascotas["peso_mascota"]."</li>
+                                </div>";
+                        }
+                    ?>
                 </div>
+            </div>
         </ul>
         </div>
 
-
-
-      
 
         <?php
         $conexion->desconectar();

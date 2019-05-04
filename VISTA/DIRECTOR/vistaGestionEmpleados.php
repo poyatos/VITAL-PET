@@ -127,7 +127,7 @@
 
               $contrato = $conexion->visualizarContratoId($empleado['id_usuario']);
                echo ("<tr>
-              <td><a href='vistaDetalleEmpleado.php'>".$empleado['nombre_usuario']."<a/></td>
+              <td><a href='vistaDetalleEmpleado.php?id=".$empleado['id_usuario']."'>".$empleado['nombre_usuario']."<a/></td>
               <td>".$empleado['apellidos_usuario']."</td>
               <td>".$empleado['dni_usuario']."</td>
               <td>".$empleado['telefono_usuario']."</td>
