@@ -105,7 +105,7 @@
                  echo "<br/><h2>El usuario ya existe.</h2><br />";
                  echo "<a href='registroFormulario.php'>Por favor elige otro nombre.</a>";
             } else {
-                $passHash = hash("sha512", $pass);
+                $passHash = password_hash($pass, PASSWORD_BCRYPT);
                 $sql = "INSERT INTO usuarios (nombre_usuario, apellidos_usuario, dni_usuario, telefono_usuario, correo_usuario, fecna_usuario, 
                 direccion_usuario, rol_usuario, pass_usuario) VALUES ('$nombre', '$apellidos', '$dni', $telefono, '$correo', '$fecna', 
                 '$direccion', '$rol', '$passHash')";
@@ -228,7 +228,7 @@
             $columnas = $resultado->fetch_array();
 
             if ($existeUsuario == 1) {
-                if ($columnas['pass_usuario'] == hash("sha512",$pass)) {
+                if (password_verify($pass, $columnas['pass_usuario'])) {
                     $_SESSION['id_usuario'] = $columnas['id_usuario'];
                     $_SESSION['usuario'] = $columnas['nombre_usuario'] + " " + $columnas['apellidos_usuario'];
                     $_SESSION['rol'] = $columnas['rol_usuario'];
