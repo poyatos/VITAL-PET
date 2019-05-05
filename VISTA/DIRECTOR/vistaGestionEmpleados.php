@@ -8,6 +8,14 @@
             header("Location: ../".$_SESSION['rol']);
         }
   }
+
+  if (isset($_GET["nombre"]) && isset($_GET["dni"])){
+    $nombre = $_GET["nombre"];
+    $dni = $_GET["dni"];
+  }else{
+    $nombre = "";
+    $dni = "";
+  }
 ?>
 <!DOCTYPE html>
 <html lang="es">
@@ -56,19 +64,19 @@
 <!-- filtro y busqueda-->
 <div class="col-12 col-sm-7 col-md-7 col-lg-7 text-left">
  <div class="form-group row">
-<form class="formulario" action='vistaGestionCliente.php' method='POST'>
+<form class="formulario" action='vistaGestionEmpleados.php' method='GET'>
       <div class="col-12 col-sm-12 col-md-3 col-lg-3">
             <label name="busquedaNombre_lb" id="id_busqueda_Nombre">Nombre:
-            <input class="form-control" name="nombre" id="myInput" type="text" placeholder="Busqueda..">
+            <input class="form-control" name="nombre" id="myInput" type="text" value="<?= $nombre ?>" placeholder="Busqueda...">
             </label>
       </div>
       <div class="col-12 col-sm-12 col-md-3 col-lg-3">
-            <label name="busquedaDni_lb" id="id_busqueda_nombre">Dni:
-            <input class="form-control" name="dni" id="myInput" type="text" placeholder="Busqueda..">
+            <label name="busquedaDni_lb" id="id_busqueda_nombre">DNI:
+            <input class="form-control" name="dni" id="myInput" type="text" value="<?= $dni ?>" placeholder="Busqueda...">
             </label>
       </div>
       <div class="col-12 col-sm-12 col-md-2 col-lg-2">
-            <input type="submit" class="btn btn-info botonsitobb" value="buscar" name="busqueda">
+            <input type="submit" class="btn btn-info botonsitobb" value="Buscar" name="busqueda">
       </div>
             
       </form>
@@ -96,11 +104,8 @@
       
         $conexion = new Model(Config::$host, Config::$user, Config::$pass, Config::$nombreBase);
       
-        if (isset($_POST["busqueda"])){
-          $resultado = $conexion->filtrarEmpleados($_POST["nombre"], $_POST["dni"]);
-        }else{
-        $resultado = $conexion->visualizarEmpleados();
-        }
+        $resultado = $conexion->filtrarEmpleados($nombre, $dni);
+
         if (!empty($resultado)) {
             $total_registros = count($resultado);
 
@@ -118,11 +123,7 @@
             }
             $total_paginas = ceil($total_registros / $tamano_pagina);
             
-            if (isset($_POST["busqueda"])){
-              $resultadoPaginacion = $conexion->filtrarEmpleadosPaginacion($_POST["nombre"], $_POST["dni"], $inicio, $tamano_pagina);
-             }else{
-            $resultadoPaginacion = $conexion->visualizarEmpleadosPaginacion($inicio, $tamano_pagina);
-             }
+            $resultadoPaginacion = $conexion->filtrarEmpleadosPaginacion($nombre, $dni, $inicio, $tamano_pagina);
             foreach($resultadoPaginacion as $empleado){
 
               $contrato = $conexion->visualizarContratoId($empleado['id_usuario']);
@@ -166,6 +167,7 @@
       <!-- PAGINACIÓN-->
       <div class="col-12 col-sm-12 col-md-12 col-lg-12">
         <?php
+          $busqueda = "&nombre=".$nombre."&dni=".$dni;
           include '../../INCLUDE/piePaginacion.php';
         } else {
           echo ("<p>No se han encontrado resultados.</p>");

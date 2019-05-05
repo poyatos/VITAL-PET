@@ -8,6 +8,12 @@
         header("Location: ../CLIENTE");
       }
     }
+
+    if (isset($_GET["nombre"])){
+      $nombre = $_GET["nombre"];
+    }else{
+      $nombre = "";
+    }
 ?>
 <!DOCTYPE html>
 <html lang="es">
@@ -63,14 +69,14 @@
       <div class="col-12 col-sm-12 col-md-12 col-lg-12">
         <h1>TIPO DE PRUEBA</h1>
           </div>
-          <form class="formulario" action='vistaGestionTipoPrueba.php' method='POST'>
+          <form class="formulario" action='vistaGestionTipoPrueba.php' method='GET'>
       <div class="col-12 col-sm-12 col-md-6 col-lg-6">
             <label name="busquedaNombrePrueba_lb" id="id_busqueda_NombrePrueba">Nombre:
-            <input class="form-control" name="nombre" id="myInput" type="text" placeholder="Busqueda..">
+            <input class="form-control" name="nombre" id="myInput" type="text" value="<?= $nombre ?>" placeholder="Busqueda...">
             </label>
             </div>
             <div class="col-12 col-sm-12 col-md-6 col-lg-6">
-            <input type="submit" class="btn btn-info botonsitobb" value="buscar" name="busqueda">
+            <input type="submit" class="btn btn-info botonsitobb" value="Buscar" name="busqueda">
         </div>
       </form>  
       
@@ -99,12 +105,9 @@
         require_once '../../BBDD/config.php';
       
         $conexion = new Model(Config::$host, Config::$user, Config::$pass, Config::$nombreBase);
+      
+        $resultado = $conexion->visualizarTipoPruebasFiltrado($nombre);
         
-        if (isset($_POST["busqueda"])){
-          $resultado = $conexion->visualizarTipoPruebasFiltrado($_POST["nombre"]);
-        }else{
-        $resultado = $conexion->visualizarTiposPruebas();
-        }
         if (!empty($resultado)) {
             $total_registros = count($resultado);
             $tamano_pagina = 5;
@@ -121,11 +124,9 @@
         }
              $total_paginas = ceil($total_registros / $tamano_pagina);
 
-             if (isset($_POST["busqueda"])){
-              $resultadoPaginacion = $conexion->visualizarTipoPruebasFiltradoPaginacion($_POST["nombre"], $inicio, $tamano_pagina);
-            }else{
-            $resultadoPaginacion = $conexion->visualizarTipoPruebaPaginacion($inicio, $tamano_pagina);
-            }
+             
+            $resultadoPaginacion = $conexion->visualizarTipoPruebasFiltradoPaginacion($nombre, $inicio, $tamano_pagina);
+            
             foreach($resultadoPaginacion as $tprueba){
                    echo (" <tr>
                   <td>".$tprueba['id_tipo_prueba']."</td>
@@ -155,7 +156,8 @@
 
 <div class="col-12 col-sm-12 col-md-12 col-lg-12">
 <?php
-     include '../../INCLUDE/piePaginacion.php';
+    $busqueda = "&nombre=".$nombre;
+    include '../../INCLUDE/piePaginacion.php';
   } else {
      echo ("<p>No se han encontrado resultados.</p>");
   } 

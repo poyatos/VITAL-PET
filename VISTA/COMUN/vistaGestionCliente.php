@@ -8,6 +8,14 @@
         header("Location: ../CLIENTE");
       }
     }
+
+    if (isset($_GET["nombre"]) && isset($_GET["dni"])){
+      $nombre = $_GET["nombre"];
+      $dni = $_GET["dni"];
+    }else{
+      $nombre = "";
+      $dni = "";
+    }
 ?>
 
 <!DOCTYPE html>
@@ -68,19 +76,19 @@
  <h1>LISTADO CLIENTES</h1>
 </div>
       
-      <form class="formulario" action='vistaGestionCliente.php' method='POST'>
+      <form class="formulario" action='vistaGestionCliente.php' method='GET'>
       <div class="col-12 col-sm-12 col-md-4 col-lg-4">
             <label name="busquedaNombre_lb" id="id_busqueda_Nombre">Nombre:
-            <input class="form-control" name="nombre" id="myInput" type="text" placeholder="Busqueda..">
+            <input class="form-control" name="nombre" id="myInput" type="text" value="<?= $nombre ?>" placeholder="Busqueda...">
             </label>
       </div>
       <div class="col-12 col-sm-12 col-md-4 col-lg-4">
-            <label name="busquedaDni_lb" id="id_busqueda_nombre">Dni:
-            <input class="form-control" name="dni" id="myInput" type="text" placeholder="Busqueda..">
+            <label name="busquedaDni_lb" id="id_busqueda_nombre">DNI:
+            <input class="form-control" name="dni" id="myInput" type="text" value="<?= $dni ?>" placeholder="Busqueda...">
             </label>
       </div>
       <div class="col-12 col-sm-12 col-md-4 col-lg-4">
-            <input type="submit" class="btn btn-info botonsitobb" value="buscar" name="busqueda">
+            <input type="submit" class="btn btn-info botonsitobb" value="Buscar" name="busqueda">
       </div>
             
       </form>
@@ -113,11 +121,7 @@
       
         $conexion = new Model(Config::$host, Config::$user, Config::$pass, Config::$nombreBase);
 
-      if (isset($_POST["busqueda"])){
-        $resultado = $conexion->filtrarClientes($_POST["nombre"], $_POST["dni"]);
-      }else{
-        $resultado = $conexion->visualizarClientes();
-      }
+        $resultado = $conexion->filtrarClientes($nombre, $dni);
 
         if (!empty($resultado)) {
             $total_registros = count($resultado);
@@ -133,12 +137,10 @@
         } else {
              $inicio = ($pagina - 1) * $tamano_pagina;
         }
-             $total_paginas = ceil($total_registros / $tamano_pagina);
-             if (isset($_POST["busqueda"])){
-              $resultadoPaginacion = $conexion->filtrarClientesPaginacion($_POST["nombre"], $_POST["dni"], $inicio, $tamano_pagina);
-             }else{
-              $resultadoPaginacion = $conexion->visualizarClientesPaginacion($inicio, $tamano_pagina);
-             }
+            $total_paginas = ceil($total_registros / $tamano_pagina);
+
+            $resultadoPaginacion = $conexion->filtrarClientesPaginacion($nombre, $dni, $inicio, $tamano_pagina);
+
             foreach($resultadoPaginacion as $clientes){
                    echo (" <tr>
                   <td><a href='vistaDetalleCliente.php?id=".$clientes['id_usuario']."'>".$clientes['nombre_usuario']."</a></td>
@@ -181,6 +183,7 @@
 <!-- PAGINACIÓN-->
 <div class="col-12 col-sm-12 col-md-12 col-lg-12">
 <?php
+    $busqueda = "&nombre=".$nombre."&dni=".$dni;
     include '../../INCLUDE/piePaginacion.php';
   } else {
      echo ("<p>No se han encontrado resultados.</p>");

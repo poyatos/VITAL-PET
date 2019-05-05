@@ -3,6 +3,14 @@
     if(!isset($_SESSION['usuario']) && !isset($_SESSION['rol'])){
         header("Location: ../index.php");
     }
+
+    if (isset($_GET["fecha"]) && isset($_GET["dni"])){
+      $fecha = $_GET["fecha"];
+      $dni = $_GET["dni"];
+    }else{
+      $fecha = "";
+      $dni = "";
+    }
 ?>
 <!DOCTYPE html>
 <html lang="es">
@@ -39,14 +47,14 @@
         </div>
       <!-- MENU LATERAL -->
       <?php
-          if($_SESSION['rol'] == 'Director'){
+          if($_SESSION['rol'] != 'Cliente'){
             echo"<div class='col-12 col-sm-5 col-md-4  col-lg-4'>";
+          }
+          if($_SESSION['rol'] == 'Director'){
             include "../../INCLUDE/menuDir.inc";
           } else if ($_SESSION['rol'] == 'Recepcionista'){
-            echo"<div class='col-12 col-sm-5 col-md-4  col-lg-4'>";
             include "../../INCLUDE/menuRec.inc";
           } else if ($_SESSION['rol'] == 'Veterinario'){
-            echo"<div class='col-12 col-sm-5 col-md-4  col-lg-4'>";
             include "../../INCLUDE/menuVet.inc";
           }
       ?>
@@ -66,28 +74,25 @@
         </div>
     <?php
         if($_SESSION['rol'] != 'Cliente'){
-          echo '<form class="formulario" action="vistaGestionCitas.php" method="POST">
+          echo '<form class="formulario" action="vistaGestionCitas.php" method="GET">
                 <div class="col-12 col-sm-12 col-md-4 col-lg-4">
-                      <label name="busquedaFecha_lb" id="id_busqueda_Nombre">fecha:
-                      <input class="form-control" name="fecha" id="myInput" type="date">
+                      <label name="busquedaFecha_lb" id="id_busqueda_Nombre">Fecha:
+                      <input class="form-control" name="fecha" id="myInput" type="date" value="'.$fecha.'">
                       </label>
                 </div>
                 <div class="col-12 col-sm-12 col-md-4 col-lg-4">
-                      <label name="busquedaDni_lb" id="id_busqueda_nombre">Dni:
-                      <input class="form-control" name="dni" id="myInput" type="text" placeholder="Busqueda..">
+                      <label name="busquedaDni_lb" id="id_busqueda_nombre">DNI:
+                      <input class="form-control" name="dni" id="myInput" type="text" value="'.$dni.'" placeholder="Busqueda...">
                       </label>
                 </div>
                 <div class="col-12 col-sm-12 col-md-4 col-lg-4">
-                      <input type="submit" class="btn btn-info botonsitobb" value="buscar" name="busqueda">
+                      <input type="submit" class="btn btn-info botonsitobb" value="Buscar" name="busqueda">
                 </div>
                       
                 </form>';
         }
     ?> 
     <!-- TABLA-->
-    <div class="col-12 col-sm-12 col-md-12 col-lg-12">
-        <input class="form-control" id="myInput" type="text" placeholder="Busqueda..">
-    </div>
     <div class="col-12 col-sm-12 col-md-12 col-lg-12">
       <table class="table table-bordered table-striped">
         <thead>
@@ -112,19 +117,11 @@
             require_once '../../BBDD/config.php';
             $conexion = new Model(Config::$host, Config::$user, Config::$pass, Config::$nombreBase);
             if($_SESSION['rol'] == 'Veterinario'){
-              if (isset($_POST["busqueda"])){
-                $resultado = $conexion->visualizarCitasVeterinarioFiltrado($_SESSION['id_usuario'], $_POST["fecha"], $_POST["dni"]);
-              }else{
-              $resultado = $conexion->visualizarCitasVeterinario($_SESSION['id_usuario']);
-              }
+              $resultado = $conexion->visualizarCitasVeterinarioFiltrado($_SESSION['id_usuario'], $fecha, $dni);
             } else if($_SESSION['rol'] == 'Cliente'){
               $resultado = $conexion->visualizarCitasCliente($_SESSION['id_usuario']);
             } else {
-              if (isset($_POST["busqueda"])){
-                $resultado = $conexion->visualizarCitasFiltrado($_POST["fecha"], $_POST["dni"]);
-              }else{
-              $resultado = $conexion->visualizarCitas();
-              }
+              $resultado = $conexion->visualizarCitasFiltrado($fecha, $dni);
             }
             if (!empty($resultado)) {
                 $total_registros = count($resultado);
@@ -144,19 +141,11 @@
                 $total_paginas = ceil($total_registros / $tamano_pagina);
                 
                 if($_SESSION['rol'] == 'Veterinario'){
-                  if (isset($_POST["busqueda"])){
-                    $resultadoPaginacion = $conexion->visualizarCitasVeterinarioFiltradoPaginacion($_SESSION['id_usuario'], $_POST["fecha"], $_POST["dni"], $inicio, $tamano_pagina);
-                  }else{
-                  $resultadoPaginacion = $conexion->visualizarCitasVeterinarioPaginacion($_SESSION['id_usuario'], $inicio, $tamano_pagina);
-                  }
+                    $resultadoPaginacion = $conexion->visualizarCitasVeterinarioFiltradoPaginacion($_SESSION['id_usuario'], $fecha, $dni, $inicio, $tamano_pagina);
                 } else if($_SESSION['rol'] == 'Cliente'){
-                  $resultadoPaginacion = $conexion->visualizarCitasClientePaginacion($_SESSION['id_usuario'], $inicio, $tamano_pagina);
+                    $resultadoPaginacion = $conexion->visualizarCitasClientePaginacion($_SESSION['id_usuario'], $inicio, $tamano_pagina);
                 } else {
-                  if (isset($_POST["busqueda"])){
-                    $resultadoPaginacion = $conexion->visualizarCitasFiltradoPaginacion($_POST["fecha"], $_POST["dni"], $inicio, $tamano_pagina);
-                  }else{
-                    $resultadoPaginacion = $conexion->visualizarCitasPaginacion($inicio, $tamano_pagina);
-                  }
+                    $resultadoPaginacion = $conexion->visualizarCitasFiltradoPaginacion($fecha, $dni, $inicio, $tamano_pagina);
                 }
                 foreach($resultadoPaginacion as $citas){
         echo (" <tr>
@@ -196,6 +185,7 @@
     <!--PAGINACIÓN-->
     <div class="col-12 col-sm-12 col-md-12 col-lg-12">
     <?php
+        $busqueda = "&fecha=".$fecha."&dni=".$dni;
         include '../../INCLUDE/piePaginacion.php';
       } else {
         echo ("<p>No se han encontrado resultados.</p>");

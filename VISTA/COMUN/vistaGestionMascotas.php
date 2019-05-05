@@ -4,6 +4,14 @@
   if(!isset($_SESSION['mascota']) && !isset($_SESSION['rol'])){
     header("Location: ../../index.php");
   }
+
+  if (isset($_GET["nombre"]) && isset($_GET["tipo"])){
+    $nombre = $_GET["nombre"];
+    $tipo = $_GET["tipo"];
+  }else{
+    $nombre = "";
+    $tipo = "";
+  }
 ?>
 <!DOCTYPE html>
 <html lang="es">
@@ -63,19 +71,19 @@
  <h1>LISTADO MASCOTAS</h1>
 </div>
            
-<form class="formulario" action='vistaGestionMascotas.php' method='POST'>
+<form class="formulario" action='vistaGestionMascotas.php' method='GET'>
       <div class="col-12 col-sm-12 col-md-4 col-lg-4">
             <label name="busquedaNombre_lb" id="id_busqueda_Nombre">Nombre de la mascota:
-            <input class="form-control" name="nombre" id="myInput" type="text" placeholder="Busqueda..">
+            <input class="form-control" name="nombre" id="myInput" type="text" value="<?= $nombre ?>" placeholder="Busqueda...">
             </label>
       </div>
       <div class="col-12 col-sm-12 col-md-4 col-lg-4">
             <label name="busquedaTipo_lb" id="id_busqueda_nombre">Tipo:
-            <input class="form-control" name="tipo" id="myInput" type="text" placeholder="Busqueda..">
+            <input class="form-control" name="tipo" id="myInput" type="text" value="<?= $tipo ?>" placeholder="Busqueda...">
             </label>
       </div>
       <div class="col-12 col-sm-12 col-md-4 col-lg-4">
-            <input type="submit" class="btn btn-info botonsitobb" value="buscar" name="busqueda">
+            <input type="submit" class="btn btn-info botonsitobb" value="Buscar" name="busqueda">
       </div>
             
       </form>
@@ -105,11 +113,9 @@
         require_once '../../BBDD/config.php';
       
         $conexion = new Model(Config::$host, Config::$user, Config::$pass, Config::$nombreBase);
-        if (isset($_POST["busqueda"])){
-          $resultado = $conexion->visualizarMascotasFiltrado($_POST["nombre"], $_POST["tipo"]);
-        }else{
-        $resultado = $conexion->visualizarMascotas();
-        }
+
+        $resultado = $conexion->visualizarMascotasFiltrado($nombre, $tipo);
+
         if (!empty($resultado)) {
             $total_registros = count($resultado);
 
@@ -127,11 +133,8 @@
             }
             $total_paginas = ceil($total_registros / $tamano_pagina);
             
-            if (isset($_POST["busqueda"])){
-              $resultadoPaginacion = $conexion->visualizarMascotasFiltradoPaginacion($_POST["nombre"], $_POST["tipo"], $inicio, $tamano_pagina);
-            }else{
-              $resultadoPaginacion = $conexion->visualizarMascotasPaginacion($inicio, $tamano_pagina);
-            }
+            $resultadoPaginacion = $conexion->visualizarMascotasFiltradoPaginacion($nombre, $tipo, $inicio, $tamano_pagina);
+
             foreach($resultadoPaginacion as $mascota){
                echo ("<tr>
               <td>".$mascota['id_mascota']."</td>
@@ -173,7 +176,8 @@
 
 <div class="col-12 col-sm-12 col-md-12 col-lg-12">
 <?php
-     include '../../INCLUDE/piePaginacion.php';
+    $busqueda = "&nombre=".$nombre."&tipo=".$tipo;
+    include '../../INCLUDE/piePaginacion.php';
   } else {
      echo ( "<p>No se han encontrado resultados.</p>");
   } 

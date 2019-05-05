@@ -4,6 +4,12 @@
   if (!isset($_SESSION['usuario']) && !isset($_SESSION['rol'])) {
       header("Location: ../../index.php");
   }
+
+  if (isset($_GET["nombre"])){
+    $nombre = $_GET["nombre"];
+  }else{
+    $nombre = "";
+  }
 ?>
 <!DOCTYPE html>
 <html lang="es">
@@ -80,14 +86,14 @@ if($_SESSION['rol'] != 'Cliente'){
  <h1>LISTADO PRUEBAS</h1>
 </div>
      
-      <form class="formulario" action='vistaGestionPrueba.php' method='POST'>
+      <form class="formulario" action='vistaGestionPrueba.php' method='GET'>
       <div class="col-12 col-sm-12 col-md-6 col-lg-6">
             <label name="busquedaNombrePrueba_lb" id="id_busqueda_NombrePrueba">Nombre de la prueba:
-            <input class="form-control" name="nombre" id="myInput" type="text" placeholder="Busqueda..">
+            <input class="form-control" name="nombre" id="myInput" type="text" value="<?= $nombre ?>" placeholder="Busqueda...">
             </label>
             </div>
             <div class="col-12 col-sm-12 col-md-6 col-lg-6">
-            <input type="submit" class="btn btn-info botonsitobb" value="buscar" name="busqueda">
+            <input type="submit" class="btn btn-info botonsitobb" value="Buscar" name="busqueda">
         </div>
       </form>  
       
@@ -119,12 +125,10 @@ if($_SESSION['rol'] != 'Cliente'){
         require_once '../../BBDD/config.php';
       
         $conexion = new Model(Config::$host, Config::$user, Config::$pass, Config::$nombreBase);
-        if (isset($_POST["busqueda"])){
-          $resultado = $conexion->visualizarPruebasFiltrado($_POST["nombre"]);
-        }else{
-        $resultado = $conexion-> visualizarPruebas();
-        }
-        if (!empty($resultado)) {
+        
+        $resultado = $conexion->visualizarPruebasFiltrado($nombre);
+        
+          if (!empty($resultado)) {
             $total_registros = count($resultado);
             $tamano_pagina = 5;
             $pagina = false;
@@ -140,11 +144,8 @@ if($_SESSION['rol'] != 'Cliente'){
             }
             $total_paginas = ceil($total_registros / $tamano_pagina);
 
-            if (isset($_POST["busqueda"])){
-              $resultadoPaginacion = $conexion->visualizarPruebasFiltradoPaginacion($_POST["nombre"], $inicio, $tamano_pagina);
-            }else{
-              $resultadoPaginacion = $conexion->visualizarPruebasPaginacion($inicio, $tamano_pagina);
-            }
+            $resultadoPaginacion = $conexion->visualizarPruebasFiltradoPaginacion($nombre, $inicio, $tamano_pagina);
+            
             foreach ($resultadoPaginacion as $prueba) {
 
                 echo (" <tr>
@@ -175,7 +176,8 @@ if($_SESSION['rol'] != 'Cliente'){
 <!-- PAGINACIÓN-->
 <div class="col-12 col-sm-12 col-md-12 col-lg-12">
 <?php
-     include '../../INCLUDE/piePaginacion.php';
+      $busqueda = "&nombre=".$nombre;
+      include '../../INCLUDE/piePaginacion.php';
         } else {
             echo ("<p>No se han encontrado resultados.</p>");
         }
