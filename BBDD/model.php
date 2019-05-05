@@ -497,6 +497,12 @@
             return $resultado;
         }
 
+        //FINALIZAR CITA
+        public function finalizarCita($id){
+            $consulta = "UPDATE citas SET estado_cita = 'Finalizado' WHERE id_cita = $id";
+            $this->ejecutarConsulta($consulta);
+        }
+
         //MODIFICAR CITA
         public function modificarCita($id, $fecha, $hora, $consulta){
             $consulta = "UPDATE citas SET fecha_cita = '$fecha', hora_cita = '$hora', num_consulta = $consulta WHERE id_cita = $id";
@@ -726,7 +732,7 @@
         /* ------------------------------------------------------------- PAGOS --------------------------------------------------------------*/
 
         public function insertarPago($id_cliente, $total, $fecha, $id_cita){
-            $consulta = "INSERT INTO pagos (id_cliente, total_precio, fecha_pago, id_cita) VALUES ($id_cliente, $total, $fecha, $id_cita)";
+            $consulta = "INSERT INTO pagos (id_cliente, total_precio, fecha_pago, id_cita) VALUES ($id_cliente, $total, '$fecha', $id_cita)";
             $this->ejecutarConsulta($consulta);
         }
 
@@ -737,7 +743,7 @@
         }
 
         public function visualizarDatosFactura($id_cita){
-            $consulta = "SELECT C.fecha_cita, U.nombre_usuario, U.apellidos_usuario, U.dni_usuario, U.telefono_usuario, U.correo_usuario, U.direccion_usuario, M.nombre_mascota, M.tipo_mascota, M.raza_mascota, T.nombre_tipo_prueba, T.precio_tipo_prueba
+            $consulta = "SELECT C.fecha_cita, U.id_usuario, U.nombre_usuario, U.apellidos_usuario, U.dni_usuario, U.telefono_usuario, U.correo_usuario, U.direccion_usuario, M.nombre_mascota, M.tipo_mascota, M.raza_mascota, T.nombre_tipo_prueba, T.precio_tipo_prueba
             FROM citas C
             JOIN usuarios U ON C.id_cliente = U.id_usuario
             JOIN mascotas M ON C.id_mascota = M.id_mascota

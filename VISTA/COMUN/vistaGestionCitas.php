@@ -66,7 +66,7 @@
         </div>
     <?php
         if($_SESSION['rol'] != 'Cliente'){
-          echo '<form class="formulario" action="vistaGestionCliente.php" method="POST">
+          echo '<form class="formulario" action="vistaGestionCitas.php" method="POST">
                 <div class="col-12 col-sm-12 col-md-4 col-lg-4">
                       <label name="busquedaFecha_lb" id="id_busqueda_Nombre">fecha:
                       <input class="form-control" name="fecha" id="myInput" type="date">
@@ -177,10 +177,6 @@
                 </td>');
               } else if( $_SESSION['rol'] == 'Recepcionista'){
                 echo ('<td>
-                <form action="../RECEPCIONISTA/vistaEditarCita.php" method="POST"> 
-                    <input type="hidden" value="'.$citas['id_cita'].'" name="id_cita">
-                    <input type="submit" value="Editar">
-                </form>
                 <form action="../../CONTROLADOR/controladorRecepcionista.php" method="POST"> 
                     <input type="hidden" value="'.$citas['id_cita'].'" name="id_cita">
                     <input type="submit" value="Borrar" name="borrarCita">

@@ -4,7 +4,7 @@
   if(!isset($_SESSION['usuario']) && !isset($_SESSION['rol'])){
     header("Location: ../../index.php");
   } else {
-    if($_SESSION['rol'] != 'Veterinario'){
+    if($_SESSION['rol'] != 'Recepcionista'){
       header("Location: ../".$_SESSION['rol']);
     }
   }
@@ -71,12 +71,12 @@
       
         $conexion = new Model(Config::$host, Config::$user, Config::$pass, Config::$nombreBase);
       
-        $resultado = $conexion->visualizarPagos();
+        $resultado = $conexion->visualizarDatosFactura($_POST['id_cita']);
         $total = 0;
             foreach($resultado as $pagos){
                echo ("<tr>
               <td>".$pagos['nombre_tipo_prueba']."</td>
-              <td>".$pagos['precio_tipo_prueba']."&euro</td>
+              <td>".$pagos['precio_tipo_prueba']." €</td>
               </tr>");
               $total += $pagos['precio_tipo_prueba'];
             }
@@ -84,11 +84,16 @@
             ?>
     </tbody>
   </table>
-  <p><?=$total?>€</p>
-  <form action="../../CONTROLADOR/controladorRecepcionista.php" method="POST">
-    <input type="hidden" name="id_cita" value="<?= $_POST['id_cita']?>">
-    <input type="submit" value="PAGAR" name="finalizarCita">
-  </form>
+  <div class="col-12 col-sm-12 col-md-12 col-lg-12">
+    <p><?= $total ?>€</p>
+    <form action="../../CONTROLADOR/controladorRecepcionista.php" method="POST">
+      <input type="hidden" name="id_cliente" value="<?= $resultado[0]['id_usuario']?>">
+      <input type="hidden" name="id_cita" value="<?= $_POST['id_cita']?>">
+      <input type="hidden" name="fecha" value="<?= date('Y-m-d')?>">
+      <input type="hidden" name="total" value="<?= $total ?>">
+      <input type="submit" value="PAGAR" name="finalizarCita">
+    </form>
+  </div>
 </div>
 </div>
 </div>
