@@ -96,11 +96,11 @@
                         </div>
                         <div class="form-row">
                             <div class="form-group col-12 col-sm-12 col-md-6 col-lg-6">
-                                <label for="inputDireccion">Direccion</label>
+                                <label for="inputDireccion">Dirección</label>
                                 <input type="text" name="direccion" class="form-control" id="calle" required>
                             </div>
                             <div class="form-group col-12 col-sm-12 col-md-6 col-lg-6">
-                                <label for="inputTelefono">Telefono</label>
+                                <label for="inputTelefono">Teléfono</label>
                                 <input type="text" name="telefono" class="form-control" id="telefono" required>
                             </div>
                         </div>

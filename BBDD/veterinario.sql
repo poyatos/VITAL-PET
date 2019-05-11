@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Servidor: 127.0.0.1
--- Tiempo de generación: 27-04-2019 a las 19:28:24
+-- Tiempo de generación: 11-05-2019 a las 17:11:22
 -- Versión del servidor: 10.1.32-MariaDB
 -- Versión de PHP: 7.1.17
 
@@ -46,7 +46,9 @@ CREATE TABLE `citas` (
 --
 
 INSERT INTO `citas` (`id_cita`, `fecha_cita`, `hora_cita`, `estado_cita`, `num_consulta`, `id_mascota`, `id_cliente`, `id_veterinario`) VALUES
-(1, '2019-04-30', '11.00', 'Pendiente', 1, 1, 1, 29);
+(2, '2019-05-06', '11:00', 'Finalizado', 3, 1, 1, 35),
+(3, '2019-05-06', '09:00', 'Pendiente', 3, 1, 1, 38),
+(4, '2019-05-06', '10:00', 'Pendiente', 2, 1, 1, 29);
 
 -- --------------------------------------------------------
 
@@ -114,7 +116,7 @@ CREATE TABLE `mascotas` (
 --
 
 INSERT INTO `mascotas` (`id_mascota`, `id_cliente`, `nombre_mascota`, `tipo_mascota`, `raza_mascota`, `sexo_mascota`, `fecna_mascota`, `peso_mascota`) VALUES
-(1, 1, 'Kira', 'Perro', 'Schnauzer Miniatura', 'Hembra', '2015-12-06', 6.9),
+(1, 1, 'Kira', 'Perro', 'Schnauzer Miniatura', 'Hembra', '2015-12-06', 6.8),
 (2, 1, 'Koch', 'Perro', 'Akita Japones', 'Macho', '2018-05-24', 8.1),
 (3, 2, 'Misaki', 'Gato', 'Selkirk Rex', 'Hembra', NULL, 8),
 (4, 3, 'Oblonga', 'Reptil', 'Iguana del desierto', 'Macho', '2016-06-14', 3.8),
@@ -160,8 +162,7 @@ INSERT INTO `mascotas` (`id_mascota`, `id_cliente`, `nombre_mascota`, `tipo_masc
 (44, 6, 'Ruffo', 'Loro', 'Loro Azul', 'Macho', '0000-00-00', 2),
 (45, 5, 'Arames', 'Roedor', 'Hamster Roborowski', 'Macho', '0000-00-00', 0.5),
 (46, 6, 'Trufita', 'Gato', 'Maine Coon', 'Hembra', '0000-00-00', 3.7),
-(47, 12, 'Nona', 'Perro', 'Sin raza', 'Hembra', '0000-00-00', 12),
-(48, 11, 'Osito', 'Reptil', 'Tortuga', 'Macho', '0000-00-00', 2.5);
+(47, 12, 'Nona', 'Perro', 'Sin raza', 'Hembra', '0000-00-00', 12);
 
 -- --------------------------------------------------------
 
@@ -173,9 +174,16 @@ CREATE TABLE `pagos` (
   `id_pago` int(11) NOT NULL,
   `id_cliente` int(11) NOT NULL,
   `total_precio` float NOT NULL,
-  `fecha_pago` varchar(10) COLLATE utf8_spanish_ci NOT NULL,
+  `fecha_pago` date NOT NULL,
   `id_cita` int(11) NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8 COLLATE=utf8_spanish_ci;
+
+--
+-- Volcado de datos para la tabla `pagos`
+--
+
+INSERT INTO `pagos` (`id_pago`, `id_cliente`, `total_precio`, `fecha_pago`, `id_cita`) VALUES
+(1, 1, 5, '2019-05-05', 2);
 
 -- --------------------------------------------------------
 
@@ -191,6 +199,13 @@ CREATE TABLE `pruebas` (
   `observaciones_prueba` varchar(2000) COLLATE utf8_spanish_ci DEFAULT NULL,
   `id_cita` int(11) NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8 COLLATE=utf8_spanish_ci;
+
+--
+-- Volcado de datos para la tabla `pruebas`
+--
+
+INSERT INTO `pruebas` (`id_prueba`, `id_tipo_prueba`, `id_mascota`, `resultado_prueba`, `observaciones_prueba`, `id_cita`) VALUES
+(1, 1, 1, 'Exito.', 'Sin observaciones.', 2);
 
 -- --------------------------------------------------------
 
@@ -287,55 +302,55 @@ CREATE TABLE `usuarios` (
 --
 
 INSERT INTO `usuarios` (`id_usuario`, `nombre_usuario`, `apellidos_usuario`, `dni_usuario`, `telefono_usuario`, `correo_usuario`, `fecna_usuario`, `direccion_usuario`, `rol_usuario`, `pass_usuario`) VALUES
-(1, 'Valentina', 'Perez Ferrer', '77517664M', 691819414, 'valen@gmail.com', '1988-10-05', 'Calle Pablo Luis, 5 28529 - Arganda del Rey', 'Cliente', 'f3b8909a8ac61cc92c52111dd08de30a5a079ba5d9136f1be0f0c6906c520290ed8df683607f9915213b0c6ba541db77261966798ca341a36f38cf88241f0745'),
-(2, 'Víctor', 'Serra Bravo', '80328807L', 658660474, 'victor@hotmail.com', '1965-05-10', 'Avenida Dos de Mayo, 69 28409 - Collado Villalba', 'Cliente', 'f3b8909a8ac61cc92c52111dd08de30a5a079ba5d9136f1be0f0c6906c520290ed8df683607f9915213b0c6ba541db77261966798ca341a36f38cf88241f0745'),
-(3, 'Carlos', 'Amador Sanchez', '47490404K', 677854785, 'car@gmail.com', '1972-11-06', 'Calle Simon Hernandez, 20 28109 - Alcobendas', 'Cliente', 'f3b8909a8ac61cc92c52111dd08de30a5a079ba5d9136f1be0f0c6906c520290ed8df683607f9915213b0c6ba541db77261966798ca341a36f38cf88241f0745'),
-(4, 'Lucas', 'Caballero Peña', '99684155Q', 677830541, 'luke@gmail.com', '1990-12-03', 'Calle Estimul, 50 28709 - San Sebastián de los Reyes', 'Cliente', 'f3b8909a8ac61cc92c52111dd08de30a5a079ba5d9136f1be0f0c6906c520290ed8df683607f9915213b0c6ba541db77261966798ca341a36f38cf88241f0745'),
-(5, 'Miguel', 'Hormigos Guio', '04152658K', 688705430, 'mikel@gmail.com', '1992-04-10', 'Avenida del Llano, 52 28780 - Colmenar Viejo', 'Cliente', 'f3b8909a8ac61cc92c52111dd08de30a5a079ba5d9136f1be0f0c6906c520290ed8df683607f9915213b0c6ba541db77261966798ca341a36f38cf88241f0745'),
-(6, 'Oriol', 'Sala Nuñez', '35641701G', 614853363, 'ori@hotmail.com', '1955-12-01', 'Calle San Romualdo, 13 28224 - Pozuelo de Alarcón', 'Cliente', 'f3b8909a8ac61cc92c52111dd08de30a5a079ba5d9136f1be0f0c6906c520290ed8df683607f9915213b0c6ba541db77261966798ca341a36f38cf88241f0745'),
-(7, 'Pablo', 'Mohedano Diaz', '41909009L', 608664000, 'pablete@gmail.com', '1968-04-10', 'Avenida Navarra, 5 28290 - Las Rozas de Madrid', 'Cliente', 'f3b8909a8ac61cc92c52111dd08de30a5a079ba5d9136f1be0f0c6906c520290ed8df683607f9915213b0c6ba541db77261966798ca341a36f38cf88241f0745'),
-(8, 'Ariadna', 'Muñoz Gutierrez', '57776644T', 684034961, 'ariadna2918@gmail.com', '1988-01-20', 'Calle Illa de Buda, 55 28300 - Aranjuez', 'Cliente', 'f3b8909a8ac61cc92c52111dd08de30a5a079ba5d9136f1be0f0c6906c520290ed8df683607f9915213b0c6ba541db77261966798ca341a36f38cf88241f0745'),
-(9, 'Marcos', 'Fuentes Vega', '65331468Z', 676963852, 'marcos@gmail.com', '1977-06-06', 'Barrio de Galindo s/n 28320 - Pinto, Madrid', 'Cliente', 'f3b8909a8ac61cc92c52111dd08de30a5a079ba5d9136f1be0f0c6906c520290ed8df683607f9915213b0c6ba541db77261966798ca341a36f38cf88241f0745'),
-(10, 'Lorena', 'Pujol Ramos', 'Y1530936R', 648735758, 'lorenax@gmail.com', '1964-07-12', 'Camiño do Caramuxo, 70 28340 - Valdemoro', 'Cliente', 'f3b8909a8ac61cc92c52111dd08de30a5a079ba5d9136f1be0f0c6906c520290ed8df683607f9915213b0c6ba541db77261966798ca341a36f38cf88241f0745'),
-(11, 'Ismael', 'Rodriguez Vazquez', '79014632H', 625408365, 'ismayuso@hotmail.com', '1989-05-05', 'Avenida Manuel Rodriguez Ayuso, 170 28400, 28409 - Collado Villalba', 'Cliente', 'f3b8909a8ac61cc92c52111dd08de30a5a079ba5d9136f1be0f0c6906c520290ed8df683607f9915213b0c6ba541db77261966798ca341a36f38cf88241f0745'),
-(12, 'Vega', 'Durán Hidalgo', 'Z9632384N', 649806317, 'vega@gmail.com', '1992-11-06', 'Calle Plata, 14 28608 - Navalcarnero', 'Cliente', 'f3b8909a8ac61cc92c52111dd08de30a5a079ba5d9136f1be0f0c6906c520290ed8df683607f9915213b0c6ba541db77261966798ca341a36f38cf88241f0745'),
-(13, 'Yaiza', 'Riera Velasco', '67012985R', 695010995, 'yaiempresa@yahoo.com', '1993-09-12', 'Calle Macarena, 19 28669 - Boadilla del Monte', 'Cliente', 'f3b8909a8ac61cc92c52111dd08de30a5a079ba5d9136f1be0f0c6906c520290ed8df683607f9915213b0c6ba541db77261966798ca341a36f38cf88241f0745'),
-(14, 'Laia', 'Leon Blanco', '80858584Z', 674364906, 'laia@gmail.com', '1900-05-05', 'Calle Walia, 21 28934 - Mostoles', 'Cliente', 'f3b8909a8ac61cc92c52111dd08de30a5a079ba5d9136f1be0f0c6906c520290ed8df683607f9915213b0c6ba541db77261966798ca341a36f38cf88241f0745'),
-(15, 'Marti', 'Mendez Ramirez', '46997747F', 614605547, 'marti@gmail.com', '1992-08-10', 'Calle España, 62 28679 - Villaviciosa de Odón ', 'Cliente', 'f3b8909a8ac61cc92c52111dd08de30a5a079ba5d9136f1be0f0c6906c520290ed8df683607f9915213b0c6ba541db77261966798ca341a36f38cf88241f0745'),
-(16, 'Aleix', 'Diaz Fuentes', '91695318E', 677756674, 'aleix@gmail.com', '1961-12-24', 'Calle Prolongación Salud, 25 28692 - Villanueva de la Cañada', 'Cliente', 'f3b8909a8ac61cc92c52111dd08de30a5a079ba5d9136f1be0f0c6906c520290ed8df683607f9915213b0c6ba541db77261966798ca341a36f38cf88241f0745'),
-(17, 'Saray', 'Muñoz Gallardo', '29734113N', 695302843, 'sarayga@gmail.com', '2000-01-01', 'Calle Alfonso Pesquera, 6  28692 - Villanueva de la Cañada', 'Cliente', 'f3b8909a8ac61cc92c52111dd08de30a5a079ba5d9136f1be0f0c6906c520290ed8df683607f9915213b0c6ba541db77261966798ca341a36f38cf88241f0745'),
-(18, 'José Antonio', 'Hernandez Esteban', '15910193N', 692898174, 'josan@gmail.com', '1999-02-15', 'Calle Alfonso Pesquera, 6 28790 - Tres Cantos', 'Cliente', 'f3b8909a8ac61cc92c52111dd08de30a5a079ba5d9136f1be0f0c6906c520290ed8df683607f9915213b0c6ba541db77261966798ca341a36f38cf88241f0745'),
-(19, 'Aitana', 'Campos Carmona', 'Y8523941V', 681741296, 'aita@gmail.com', '1998-03-02', ' Calle Montalban, 1 28809 - Alcalá de Henares', 'Cliente', 'f3b8909a8ac61cc92c52111dd08de30a5a079ba5d9136f1be0f0c6906c520290ed8df683607f9915213b0c6ba541db77261966798ca341a36f38cf88241f0745'),
-(20, 'Alejandro', 'Bosch Santiago', '57297818B', 695302843, 'alex@gmail.com', '2000-10-26', 'Calle Rios de Sangre, 69 28820 - Coslada', 'Cliente', 'f3b8909a8ac61cc92c52111dd08de30a5a079ba5d9136f1be0f0c6906c520290ed8df683607f9915213b0c6ba541db77261966798ca341a36f38cf88241f0745'),
-(21, 'Valentina', 'Gil Gallardo', '53121661X', 651157186, 'valenatope@gmail.com', '1995-05-22', 'Paseo Julio Romero, 53 28850 - Torrejón de Ardoz', 'Cliente', 'f3b8909a8ac61cc92c52111dd08de30a5a079ba5d9136f1be0f0c6906c520290ed8df683607f9915213b0c6ba541db77261966798ca341a36f38cf88241f0745'),
-(22, 'Guillermo', 'Caballero Delgado', '73510864N', 661608940, 'guilleconu@hotmail.com', '1993-04-09', 'Calle Mostoles, 10 - Mostoles', 'Cliente', 'f3b8909a8ac61cc92c52111dd08de30a5a079ba5d9136f1be0f0c6906c520290ed8df683607f9915213b0c6ba541db77261966798ca341a36f38cf88241f0745'),
-(23, 'Luna', 'Tomas Velasco', '30093802G', 664159747, 'lunaluneramor@gmail.com', '1978-01-06', 'Calle Hacienda de Pavones, 146 28909 - Getafe', 'Cliente', 'f3b8909a8ac61cc92c52111dd08de30a5a079ba5d9136f1be0f0c6906c520290ed8df683607f9915213b0c6ba541db77261966798ca341a36f38cf88241f0745'),
-(24, 'Ana María', 'Ramos Vicente', '16152523Z', 674960396, 'yomisma@gmail.com', '1976-05-10', 'Avenida del examen, 10 28919 - Leganés', 'Cliente', 'f3b8909a8ac61cc92c52111dd08de30a5a079ba5d9136f1be0f0c6906c520290ed8df683607f9915213b0c6ba541db77261966798ca341a36f38cf88241f0745'),
-(25, 'Pablo', 'Rovira Suarez', '54862977L', 657410224, 'paibol@gmail.com', '1980-10-02', 'Calle Berenisa, 29 28929 - Alcorcón', 'Cliente', 'f3b8909a8ac61cc92c52111dd08de30a5a079ba5d9136f1be0f0c6906c520290ed8df683607f9915213b0c6ba541db77261966798ca341a36f38cf88241f0745'),
-(26, 'Francisco Javier', 'Marín Blanco', '82353546E', 617463323, 'francis@outlook.com', '1979-10-05', 'Calle Poeta Poyatos, 1 28929 - Alcorcón', 'Cliente', 'f3b8909a8ac61cc92c52111dd08de30a5a079ba5d9136f1be0f0c6906c520290ed8df683607f9915213b0c6ba541db77261966798ca341a36f38cf88241f0745'),
-(27, 'Ángela', 'Martinez Guerrero', '80729531Z', 689845983, 'angel1979@gmail.com', '1977-02-22', 'Paseo de la nara, 12 28939 - Móstoles', 'Cliente', 'f3b8909a8ac61cc92c52111dd08de30a5a079ba5d9136f1be0f0c6906c520290ed8df683607f9915213b0c6ba541db77261966798ca341a36f38cf88241f0745'),
-(28, 'Aitor', 'Rubio Herrera', '77511664M', 600819414, 'aitordw@gmail.com', '1988-10-05', 'Avenida de Pablo Gargallo, 36 28949 - Fuenlabrada', 'Cliente', 'f3b8909a8ac61cc92c52111dd08de30a5a079ba5d9136f1be0f0c6906c520290ed8df683607f9915213b0c6ba541db77261966798ca341a36f38cf88241f0745'),
-(29, 'Rayan', 'Torres Delgado', 'X0888493A', 691832144, 'rayegypt@gmail.com', '2000-03-03', 'Camino de Monzalbarba, 3 28980 - Parla', 'Veterinario', 'f3b8909a8ac61cc92c52111dd08de30a5a079ba5d9136f1be0f0c6906c520290ed8df683607f9915213b0c6ba541db77261966798ca341a36f38cf88241f0745'),
-(30, 'Rafael', 'García Marín', '59922043M', 601239414, 'rafi@gmail.com', '1950-07-17', 'Paseo de la Independencia, 2 28981 - Parla', 'Veterinario', 'f3b8909a8ac61cc92c52111dd08de30a5a079ba5d9136f1be0f0c6906c520290ed8df683607f9915213b0c6ba541db77261966798ca341a36f38cf88241f0745'),
-(31, 'Óscar', 'Font Santos', '15536803G', 601819000, 'srfont@gmail.com', '1955-06-16', 'Paseo de la Constitución, 15 28984 - Parla', 'Veterinario', 'f3b8909a8ac61cc92c52111dd08de30a5a079ba5d9136f1be0f0c6906c520290ed8df683607f9915213b0c6ba541db77261966798ca341a36f38cf88241f0745'),
-(32, 'Manuela', 'Casas Hernandez', '98464987D', 692594140, 'casasmanuela@gmail.com', '1958-10-05', 'Paseo de Echegaray y Caballero, 5 28970 - Humanes de Madrid', 'Veterinario', 'f3b8909a8ac61cc92c52111dd08de30a5a079ba5d9136f1be0f0c6906c520290ed8df683607f9915213b0c6ba541db77261966798ca341a36f38cf88241f0745'),
-(33, 'Sofía', 'Nuñez Leon', '96269013Y', 691817824, 'sofigh@gmail.com', '1989-07-08', 'Calle Calle del Coso, 22 28970 - Humanes de Madrid', 'Veterinario', 'f3b8909a8ac61cc92c52111dd08de30a5a079ba5d9136f1be0f0c6906c520290ed8df683607f9915213b0c6ba541db77261966798ca341a36f38cf88241f0745'),
-(34, 'Beatriz', 'Molina Fuentes', '74774857V', 611119414, 'beimoli@gmail.com', '1988-06-12', 'Calle de Alfonso I, 11 28949 - Fuenlabrada', 'Veterinario', 'f3b8909a8ac61cc92c52111dd08de30a5a079ba5d9136f1be0f0c6906c520290ed8df683607f9915213b0c6ba541db77261966798ca341a36f38cf88241f0745'),
-(35, 'Alicia', 'Navarro Diaz', '08325333T', 691888814, 'aliciafan@outlook.com', '1976-01-18', 'Avenida de Anaga, 33 28949 - Fuenlabrada', 'Veterinario', 'f3b8909a8ac61cc92c52111dd08de30a5a079ba5d9136f1be0f0c6906c520290ed8df683607f9915213b0c6ba541db77261966798ca341a36f38cf88241f0745'),
-(36, 'Érik', 'Calvo Hidalgo', '73297357Z', 691819999, 'calvohida@gmail.com', '1995-12-12', 'Avenida de Bilbao, 20 28939 - Móstoles', 'Veterinario', 'f3b8909a8ac61cc92c52111dd08de30a5a079ba5d9136f1be0f0c6906c520290ed8df683607f9915213b0c6ba541db77261966798ca341a36f38cf88241f0745'),
-(37, 'Gerard', 'Peña Ramos', '59333156X', 629919494, 'gerrkkpe@gmail.com', '1990-10-11', 'Calle de Téllez, 21 28949 - Fuenlabrada', 'Veterinario', 'f3b8909a8ac61cc92c52111dd08de30a5a079ba5d9136f1be0f0c6906c520290ed8df683607f9915213b0c6ba541db77261966798ca341a36f38cf88241f0745'),
-(38, 'Alex', 'Grau Mora', '32707885E', 601814584, 'alexgr@gmail.com', '1995-05-01', 'Calle de Alfonso XII, 31 28949 - Fuenlabrada', 'Veterinario', 'f3b8909a8ac61cc92c52111dd08de30a5a079ba5d9136f1be0f0c6906c520290ed8df683607f9915213b0c6ba541db77261966798ca341a36f38cf88241f0745'),
-(39, 'Juan José ', 'Font Pastor', '42355945L', 691811511, 'juanriemas@gmail.com', '1972-05-12', 'Calle de López de Hoyos, 2 28939 - Móstoles', 'Veterinario', 'f3b8909a8ac61cc92c52111dd08de30a5a079ba5d9136f1be0f0c6906c520290ed8df683607f9915213b0c6ba541db77261966798ca341a36f38cf88241f0745'),
-(40, 'Martín', 'Riera Moreno', '59905764X', 608819417, 'marti@hotmail.com', '1978-07-03', 'Carrera de San Jerónimo, 13 28949 - Fuenlabrada', 'Veterinario', 'f3b8909a8ac61cc92c52111dd08de30a5a079ba5d9136f1be0f0c6906c520290ed8df683607f9915213b0c6ba541db77261966798ca341a36f38cf88241f0745'),
-(41, 'Pau', 'Gallego Guerrero', '10046572B', 694509414, 'paubcn@gmail.com', '1954-02-22', 'Calle del Correo, 52 28929 - Alcorcón', 'Veterinario', 'f3b8909a8ac61cc92c52111dd08de30a5a079ba5d9136f1be0f0c6906c520290ed8df683607f9915213b0c6ba541db77261966798ca341a36f38cf88241f0745'),
-(42, 'Isabel', 'Santos Herrero', '77224569E', 691811514, 'isantos@gmail.com', '2000-01-22', 'Calle de la Sal, 11 28909 - Getafe', 'Veterinario', 'f3b8909a8ac61cc92c52111dd08de30a5a079ba5d9136f1be0f0c6906c520290ed8df683607f9915213b0c6ba541db77261966798ca341a36f38cf88241f0745'),
-(43, 'Carlota', 'Nuñez Martin', '94456870X', 685919414, 'krlota@gmail.com', '1985-11-08', 'Calle de la Ternera, 21 28850 - San Fernando de Henares', 'Veterinario', 'f3b8909a8ac61cc92c52111dd08de30a5a079ba5d9136f1be0f0c6906c520290ed8df683607f9915213b0c6ba541db77261966798ca341a36f38cf88241f0745'),
-(44, 'Malak', 'Molina Rojas', 'Z1396130N', 147483647, 'malakmorok@yahoo.com', '1980-05-02', 'Calle de las Navas de Tolosa, 52 28820 - Coslada', 'Veterinario', 'f3b8909a8ac61cc92c52111dd08de30a5a079ba5d9136f1be0f0c6906c520290ed8df683607f9915213b0c6ba541db77261966798ca341a36f38cf88241f0745'),
-(45, 'Nerea', 'Delgado Benitez', '46952785X', 611819112, 'delgaben@gmail.com', '1975-08-15', 'Calle de Carretas, 2 28790 - Tres Cantos', 'Veterinario', 'f3b8909a8ac61cc92c52111dd08de30a5a079ba5d9136f1be0f0c6906c520290ed8df683607f9915213b0c6ba541db77261966798ca341a36f38cf88241f0745'),
-(46, 'Ángel', 'Gimenez Delgado', '61280315N', 691819570, 'angelyo@gmail.com', '1966-10-10', 'Calle de Arlabán, 7 28669 - Boadilla del Monte', 'Veterinario', 'f3b8909a8ac61cc92c52111dd08de30a5a079ba5d9136f1be0f0c6906c520290ed8df683607f9915213b0c6ba541db77261966798ca341a36f38cf88241f0745'),
-(47, 'José Manuel', 'Vila Soler', '86057428F', 677181414, 'jmanuele@gmail.com', '1980-10-21', 'Avenida del Planetario, 6 28340 - Valdemoro', 'Recepcionista', 'f3b8909a8ac61cc92c52111dd08de30a5a079ba5d9136f1be0f0c6906c520290ed8df683607f9915213b0c6ba541db77261966798ca341a36f38cf88241f0745'),
-(48, 'Celia', 'Carrasco Velasco', '98686179X', 691819140, 'celiamore@gmail.com', '1992-05-13', 'Calle de Alcalá, 5 28529 - Rivas-Vaciamadrid', 'Recepcionista', 'f3b8909a8ac61cc92c52111dd08de30a5a079ba5d9136f1be0f0c6906c520290ed8df683607f9915213b0c6ba541db77261966798ca341a36f38cf88241f0745'),
-(49, 'Ignacio', 'Casas Lopez', '68316493F', 691459414, 'eljefe@gmail.com', '1975-04-09', 'Avenida de la Ciudad de Barcelona, 8 28109 - Alcobendas', 'Director', 'f3b8909a8ac61cc92c52111dd08de30a5a079ba5d9136f1be0f0c6906c520290ed8df683607f9915213b0c6ba541db77261966798ca341a36f38cf88241f0745');
+(1, 'Valentina', 'Perez Ferrer', '77517664M', 691819415, 'valen@gmail.com', '1988-10-05', 'Calle Pablo Luis, 5 28529 - Arganda del Rey', 'Cliente', '$2y$10$8VQB7EgQ5K20WmzOOAaIN.jM9zlWod1fXAZ30W75pRWz7WkE.etpO'),
+(2, 'Víctor', 'Serra Bravo', '80328807L', 658660474, 'victor@hotmail.com', '1965-05-10', 'Avenida Dos de Mayo, 69 28409 - Collado Villalba', 'Cliente', '$2y$10$8VQB7EgQ5K20WmzOOAaIN.jM9zlWod1fXAZ30W75pRWz7WkE.etpO'),
+(3, 'Carlos', 'Amador Sanchez', '47490404K', 677854785, 'car@gmail.com', '1972-11-06', 'Calle Simon Hernandez, 20 28109 - Alcobendas', 'Cliente', '$2y$10$8VQB7EgQ5K20WmzOOAaIN.jM9zlWod1fXAZ30W75pRWz7WkE.etpO'),
+(4, 'Lucas', 'Caballero Peña', '99684155Q', 677830541, 'luke@gmail.com', '1990-12-03', 'Calle Estimul, 50 28709 - San Sebastián de los Reyes', 'Cliente', '$2y$10$8VQB7EgQ5K20WmzOOAaIN.jM9zlWod1fXAZ30W75pRWz7WkE.etpO'),
+(5, 'Miguel', 'Hormigos Guio', '04152658K', 688705430, 'mikel@gmail.com', '1992-04-10', 'Avenida del Llano, 52 28780 - Colmenar Viejo', 'Cliente', '$2y$10$8VQB7EgQ5K20WmzOOAaIN.jM9zlWod1fXAZ30W75pRWz7WkE.etpO'),
+(6, 'Oriol', 'Sala Nuñez', '35641701G', 614853363, 'ori@hotmail.com', '1955-12-01', 'Calle San Romualdo, 13 28224 - Pozuelo de Alarcón', 'Cliente', '$2y$10$8VQB7EgQ5K20WmzOOAaIN.jM9zlWod1fXAZ30W75pRWz7WkE.etpO'),
+(7, 'Pablo', 'Mohedano Diaz', '41909009L', 608664000, 'pablete@gmail.com', '1968-04-10', 'Avenida Navarra, 5 28290 - Las Rozas de Madrid', 'Cliente', '$2y$10$8VQB7EgQ5K20WmzOOAaIN.jM9zlWod1fXAZ30W75pRWz7WkE.etpO'),
+(8, 'Ariadna', 'Muñoz Gutierrez', '57776644T', 684034961, 'ariadna2918@gmail.com', '1988-01-20', 'Calle Illa de Buda, 55 28300 - Aranjuez', 'Cliente', '$2y$10$8VQB7EgQ5K20WmzOOAaIN.jM9zlWod1fXAZ30W75pRWz7WkE.etpO'),
+(9, 'Marcos', 'Fuentes Vega', '65331468Z', 676963852, 'marcos@gmail.com', '1977-06-06', 'Barrio de Galindo s/n 28320 - Pinto, Madrid', 'Cliente', '$2y$10$8VQB7EgQ5K20WmzOOAaIN.jM9zlWod1fXAZ30W75pRWz7WkE.etpO'),
+(10, 'Lorena', 'Pujol Ramos', 'Y1530936R', 648735758, 'lorenax@gmail.com', '1964-07-12', 'Camiño do Caramuxo, 70 28340 - Valdemoro', 'Cliente', '$2y$10$8VQB7EgQ5K20WmzOOAaIN.jM9zlWod1fXAZ30W75pRWz7WkE.etpO'),
+(11, 'Ismael', 'Rodriguez Vazquez', '79014632H', 625408365, 'ismayuso@hotmail.com', '1989-05-05', 'Avenida Manuel Rodriguez Ayuso, 170 28400, 28409 - Collado Villalba', 'Cliente', '$2y$10$8VQB7EgQ5K20WmzOOAaIN.jM9zlWod1fXAZ30W75pRWz7WkE.etpO'),
+(12, 'Vega', 'Durán Hidalgo', 'Z9632384N', 649806317, 'vega@gmail.com', '1992-11-06', 'Calle Plata, 14 28608 - Navalcarnero', 'Cliente', '$2y$10$8VQB7EgQ5K20WmzOOAaIN.jM9zlWod1fXAZ30W75pRWz7WkE.etpO'),
+(13, 'Yaiza', 'Riera Velasco', '67012985R', 695010995, 'yaiempresa@yahoo.com', '1993-09-12', 'Calle Macarena, 19 28669 - Boadilla del Monte', 'Cliente', '$2y$10$8VQB7EgQ5K20WmzOOAaIN.jM9zlWod1fXAZ30W75pRWz7WkE.etpO'),
+(14, 'Laia', 'Leon Blanco', '80858584Z', 674364906, 'laia@gmail.com', '1900-05-05', 'Calle Walia, 21 28934 - Mostoles', 'Cliente', '$2y$10$8VQB7EgQ5K20WmzOOAaIN.jM9zlWod1fXAZ30W75pRWz7WkE.etpO'),
+(15, 'Marti', 'Mendez Ramirez', '46997747F', 614605547, 'marti@gmail.com', '1992-08-10', 'Calle España, 62 28679 - Villaviciosa de Odón ', 'Cliente', '$2y$10$8VQB7EgQ5K20WmzOOAaIN.jM9zlWod1fXAZ30W75pRWz7WkE.etpO'),
+(16, 'Aleix', 'Diaz Fuentes', '91695318E', 677756674, 'aleix@gmail.com', '1961-12-24', 'Calle Prolongación Salud, 25 28692 - Villanueva de la Cañada', 'Cliente', '$2y$10$8VQB7EgQ5K20WmzOOAaIN.jM9zlWod1fXAZ30W75pRWz7WkE.etpO'),
+(17, 'Saray', 'Muñoz Gallardo', '29734113N', 695302843, 'sarayga@gmail.com', '2000-01-01', 'Calle Alfonso Pesquera, 6  28692 - Villanueva de la Cañada', 'Cliente', '$2y$10$8VQB7EgQ5K20WmzOOAaIN.jM9zlWod1fXAZ30W75pRWz7WkE.etpO'),
+(18, 'José Antonio', 'Hernandez Esteban', '15910193N', 692898174, 'josan@gmail.com', '1999-02-15', 'Calle Alfonso Pesquera, 6 28790 - Tres Cantos', 'Cliente', '$2y$10$8VQB7EgQ5K20WmzOOAaIN.jM9zlWod1fXAZ30W75pRWz7WkE.etpO'),
+(19, 'Aitana', 'Campos Carmona', 'Y8523941V', 681741296, 'aita@gmail.com', '1998-03-02', ' Calle Montalban, 1 28809 - Alcalá de Henares', 'Cliente', '$2y$10$8VQB7EgQ5K20WmzOOAaIN.jM9zlWod1fXAZ30W75pRWz7WkE.etpO'),
+(20, 'Alejandro', 'Bosch Santiago', '57297818B', 695302843, 'alex@gmail.com', '2000-10-26', 'Calle Rios de Sangre, 69 28820 - Coslada', 'Cliente', '$2y$10$8VQB7EgQ5K20WmzOOAaIN.jM9zlWod1fXAZ30W75pRWz7WkE.etpO'),
+(21, 'Valentina', 'Gil Gallardo', '53121661X', 651157186, 'valenatope@gmail.com', '1995-05-22', 'Paseo Julio Romero, 53 28850 - Torrejón de Ardoz', 'Cliente', '$2y$10$8VQB7EgQ5K20WmzOOAaIN.jM9zlWod1fXAZ30W75pRWz7WkE.etpO'),
+(22, 'Guillermo', 'Caballero Delgado', '73510864N', 661608940, 'guilleconu@hotmail.com', '1993-04-09', 'Calle Mostoles, 10 - Mostoles', 'Cliente', '$2y$10$8VQB7EgQ5K20WmzOOAaIN.jM9zlWod1fXAZ30W75pRWz7WkE.etpO'),
+(23, 'Luna', 'Tomas Velasco', '30093802G', 664159747, 'lunaluneramor@gmail.com', '1978-01-06', 'Calle Hacienda de Pavones, 146 28909 - Getafe', 'Cliente', '$2y$10$8VQB7EgQ5K20WmzOOAaIN.jM9zlWod1fXAZ30W75pRWz7WkE.etpO'),
+(24, 'Ana María', 'Ramos Vicente', '16152523Z', 674960396, 'yomisma@gmail.com', '1976-05-10', 'Avenida del examen, 10 28919 - Leganés', 'Cliente', '$2y$10$8VQB7EgQ5K20WmzOOAaIN.jM9zlWod1fXAZ30W75pRWz7WkE.etpO'),
+(25, 'Pablo', 'Rovira Suarez', '54862977L', 657410224, 'paibol@gmail.com', '1980-10-02', 'Calle Berenisa, 29 28929 - Alcorcón', 'Cliente', '$2y$10$8VQB7EgQ5K20WmzOOAaIN.jM9zlWod1fXAZ30W75pRWz7WkE.etpO'),
+(26, 'Francisco Javier', 'Marín Blanco', '82353546E', 617463323, 'francis@outlook.com', '1979-10-05', 'Calle Poeta Poyatos, 1 28929 - Alcorcón', 'Cliente', '$2y$10$8VQB7EgQ5K20WmzOOAaIN.jM9zlWod1fXAZ30W75pRWz7WkE.etpO'),
+(27, 'Ángela', 'Martinez Guerrero', '80729531Z', 689845983, 'angel1979@gmail.com', '1977-02-22', 'Paseo de la nara, 12 28939 - Móstoles', 'Cliente', '$2y$10$8VQB7EgQ5K20WmzOOAaIN.jM9zlWod1fXAZ30W75pRWz7WkE.etpO'),
+(28, 'Aitor', 'Rubio Herrera', '77511664M', 600819414, 'aitordw@gmail.com', '1988-10-05', 'Avenida de Pablo Gargallo, 36 28949 - Fuenlabrada', 'Cliente', '$2y$10$8VQB7EgQ5K20WmzOOAaIN.jM9zlWod1fXAZ30W75pRWz7WkE.etpO'),
+(29, 'Rayan', 'Torres Delgado', 'X0888493A', 691832144, 'rayegypt@gmail.com', '2000-03-03', 'Camino de Monzalbarba, 3 28980 - Parla', 'Veterinario', '$2y$10$8VQB7EgQ5K20WmzOOAaIN.jM9zlWod1fXAZ30W75pRWz7WkE.etpO'),
+(30, 'Rafael', 'García Marín', '59922043M', 601239414, 'rafi@gmail.com', '1950-07-17', 'Paseo de la Independencia, 2 28981 - Parla', 'Veterinario', '$2y$10$8VQB7EgQ5K20WmzOOAaIN.jM9zlWod1fXAZ30W75pRWz7WkE.etpO'),
+(31, 'Óscar', 'Font Santos', '15536803G', 601819000, 'srfont@gmail.com', '1955-06-16', 'Paseo de la Constitución, 15 28984 - Parla', 'Veterinario', '$2y$10$8VQB7EgQ5K20WmzOOAaIN.jM9zlWod1fXAZ30W75pRWz7WkE.etpO'),
+(32, 'Manuela', 'Casas Hernandez', '98464987D', 692594140, 'casasmanuela@gmail.com', '1958-10-05', 'Paseo de Echegaray y Caballero, 5 28970 - Humanes de Madrid', 'Veterinario', '$2y$10$8VQB7EgQ5K20WmzOOAaIN.jM9zlWod1fXAZ30W75pRWz7WkE.etpO'),
+(33, 'Sofía', 'Nuñez Leon', '96269013Y', 691817824, 'sofigh@gmail.com', '1989-07-08', 'Calle Calle del Coso, 22 28970 - Humanes de Madrid', 'Veterinario', '$2y$10$8VQB7EgQ5K20WmzOOAaIN.jM9zlWod1fXAZ30W75pRWz7WkE.etpO'),
+(34, 'Beatriz', 'Molina Fuentes', '74774857V', 611119414, 'beimoli@gmail.com', '1988-06-12', 'Calle de Alfonso I, 11 28949 - Fuenlabrada', 'Veterinario', '$2y$10$8VQB7EgQ5K20WmzOOAaIN.jM9zlWod1fXAZ30W75pRWz7WkE.etpO'),
+(35, 'Alicia', 'Navarro Diaz', '08325333T', 691888814, 'aliciafan@outlook.com', '1976-01-18', 'Avenida de Anaga, 33 28949 - Fuenlabrada', 'Veterinario', '$2y$10$8VQB7EgQ5K20WmzOOAaIN.jM9zlWod1fXAZ30W75pRWz7WkE.etpO'),
+(36, 'Érik', 'Calvo Hidalgo', '73297357Z', 691819999, 'calvohida@gmail.com', '1995-12-12', 'Avenida de Bilbao, 20 28939 - Móstoles', 'Veterinario', '$2y$10$8VQB7EgQ5K20WmzOOAaIN.jM9zlWod1fXAZ30W75pRWz7WkE.etpO'),
+(37, 'Gerard', 'Peña Ramos', '59333156X', 629919494, 'gerrkkpe@gmail.com', '1990-10-11', 'Calle de Téllez, 21 28949 - Fuenlabrada', 'Veterinario', '$2y$10$8VQB7EgQ5K20WmzOOAaIN.jM9zlWod1fXAZ30W75pRWz7WkE.etpO'),
+(38, 'Alex', 'Grau Mora', '32707885E', 601814584, 'alexgr@gmail.com', '1995-05-01', 'Calle de Alfonso XII, 31 28949 - Fuenlabrada', 'Veterinario', '$2y$10$8VQB7EgQ5K20WmzOOAaIN.jM9zlWod1fXAZ30W75pRWz7WkE.etpO'),
+(39, 'Juan José ', 'Font Pastor', '42355945L', 691811511, 'juanriemas@gmail.com', '1972-05-12', 'Calle de López de Hoyos, 2 28939 - Móstoles', 'Veterinario', '$2y$10$8VQB7EgQ5K20WmzOOAaIN.jM9zlWod1fXAZ30W75pRWz7WkE.etpO'),
+(40, 'Martín', 'Riera Moreno', '59905764X', 608819417, 'marti@hotmail.com', '1978-07-03', 'Carrera de San Jerónimo, 13 28949 - Fuenlabrada', 'Veterinario', '$2y$10$8VQB7EgQ5K20WmzOOAaIN.jM9zlWod1fXAZ30W75pRWz7WkE.etpO'),
+(41, 'Pau', 'Gallego Guerrero', '10046572B', 694509414, 'paubcn@gmail.com', '1954-02-22', 'Calle del Correo, 52 28929 - Alcorcón', 'Veterinario', '$2y$10$8VQB7EgQ5K20WmzOOAaIN.jM9zlWod1fXAZ30W75pRWz7WkE.etpO'),
+(42, 'Isabel', 'Santos Herrero', '77224569E', 691811514, 'isantos@gmail.com', '2000-01-22', 'Calle de la Sal, 11 28909 - Getafe', 'Veterinario', '$2y$10$8VQB7EgQ5K20WmzOOAaIN.jM9zlWod1fXAZ30W75pRWz7WkE.etpO'),
+(43, 'Carlota', 'Nuñez Martin', '94456870X', 685919414, 'krlota@gmail.com', '1985-11-08', 'Calle de la Ternera, 21 28850 - San Fernando de Henares', 'Veterinario', '$2y$10$8VQB7EgQ5K20WmzOOAaIN.jM9zlWod1fXAZ30W75pRWz7WkE.etpO'),
+(44, 'Malak', 'Molina Rojas', 'Z1396130N', 147483647, 'malakmorok@yahoo.com', '1980-05-02', 'Calle de las Navas de Tolosa, 52 28820 - Coslada', 'Veterinario', '$2y$10$8VQB7EgQ5K20WmzOOAaIN.jM9zlWod1fXAZ30W75pRWz7WkE.etpO'),
+(45, 'Nerea', 'Delgado Benitez', '46952785X', 611819112, 'delgaben@gmail.com', '1975-08-15', 'Calle de Carretas, 2 28790 - Tres Cantos', 'Veterinario', '$2y$10$8VQB7EgQ5K20WmzOOAaIN.jM9zlWod1fXAZ30W75pRWz7WkE.etpO'),
+(46, 'Ángel', 'Gimenez Delgado', '61280315N', 691819570, 'angelyo@gmail.com', '1966-10-10', 'Calle de Arlabán, 7 28669 - Boadilla del Monte', 'Veterinario', '$2y$10$8VQB7EgQ5K20WmzOOAaIN.jM9zlWod1fXAZ30W75pRWz7WkE.etpO'),
+(47, 'José Manuel', 'Vila Soler', '86057428F', 677181414, 'jmanuele@gmail.com', '1980-10-21', 'Avenida del Planetario, 6 28340 - Valdemoro', 'Recepcionista', '$2y$10$8VQB7EgQ5K20WmzOOAaIN.jM9zlWod1fXAZ30W75pRWz7WkE.etpO'),
+(48, 'Celia', 'Carrasco Velasco', '98686179X', 691819140, 'celiamore@gmail.com', '1992-05-13', 'Calle de Alcalá, 5 28529 - Rivas-Vaciamadrid', 'Recepcionista', '$2y$10$8VQB7EgQ5K20WmzOOAaIN.jM9zlWod1fXAZ30W75pRWz7WkE.etpO'),
+(49, 'Ignacio', 'Casas Lopez', '68316493F', 691459414, 'eljefe@gmail.com', '1975-04-09', 'Avenida de la Ciudad de Barcelona, 8 28109 - Alcobendas', 'Director', '$2y$10$8VQB7EgQ5K20WmzOOAaIN.jM9zlWod1fXAZ30W75pRWz7WkE.etpO');
 
 --
 -- Índices para tablas volcadas
@@ -393,7 +408,7 @@ ALTER TABLE `usuarios`
 -- AUTO_INCREMENT de la tabla `citas`
 --
 ALTER TABLE `citas`
-  MODIFY `id_cita` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=2;
+  MODIFY `id_cita` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=5;
 
 --
 -- AUTO_INCREMENT de la tabla `contratos`
@@ -405,19 +420,19 @@ ALTER TABLE `contratos`
 -- AUTO_INCREMENT de la tabla `mascotas`
 --
 ALTER TABLE `mascotas`
-  MODIFY `id_mascota` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=49;
+  MODIFY `id_mascota` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=48;
 
 --
 -- AUTO_INCREMENT de la tabla `pagos`
 --
 ALTER TABLE `pagos`
-  MODIFY `id_pago` int(11) NOT NULL AUTO_INCREMENT;
+  MODIFY `id_pago` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=2;
 
 --
 -- AUTO_INCREMENT de la tabla `pruebas`
 --
 ALTER TABLE `pruebas`
-  MODIFY `id_prueba` int(11) NOT NULL AUTO_INCREMENT;
+  MODIFY `id_prueba` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=2;
 
 --
 -- AUTO_INCREMENT de la tabla `tipos_pruebas`

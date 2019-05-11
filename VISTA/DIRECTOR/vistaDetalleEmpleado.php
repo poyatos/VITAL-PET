@@ -99,7 +99,7 @@
                     <li class='list-group-item list-group-item-action list-group-item-info'><p class="d-flex flex-start">Correo:</p><?= $resultado['correo_usuario']?></li>
                     </div>
                     <div class='col-12 col-sm-12 col-md-6  col-lg-6'>
-                    <li class='list-group-item list-group-item-action list-group-item-info'><p class="d-flex flex-start">Telefono:</p><?= $resultado['telefono_usuario']?></li>
+                    <li class='list-group-item list-group-item-action list-group-item-info'><p class="d-flex flex-start">Teléfono:</p><?= $resultado['telefono_usuario']?></li>
                     </div>
                     <div class='col-12 col-sm-12 col-md-6  col-lg-6'>
                     <li class='list-group-item list-group-item-action list-group-item-info'><p class="d-flex flex-start">Dirección:</p><?= $resultado['direccion_usuario']?></li>

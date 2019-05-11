@@ -1,0 +1,17 @@
+/*Acceso rapido a diferentes roles*/
+
+-DIRECTOR:
+Dni: 68316493F
+Contraseña: clinica
+
+-RECEPCIONISTA:
+Dni: 98686179X
+Contraseña: clinica
+
+-VETERINARIO:
+Dni: 74774857V
+Contraseña: clinica
+
+-CLIENTE:
+Dni: 82353546E
+Contraseña: clinica
