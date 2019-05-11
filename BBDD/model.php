@@ -472,6 +472,25 @@
             return $resultado;
         }
         /***************************
+        ****<V CITAS PRUEBAS>***
+        ****************************/
+        public function visualizarCitasPruebas($id){
+            $consulta = "SELECT pruebas.resultado_prueba, pruebas.observaciones_prueba, fecha_cita, hora_cita, num_consulta, id_mascota, id_cliente, id_veterinario 
+            FROM citas
+            INNER JOIN pruebas
+            ON citas.id_cita = pruebas.id_cita WHERE id_cita = $id";
+            $resultado = $this->devolverConsultaArray($consulta);
+            return $resultado;
+        }
+        /***************************
+        ****<V CITAS FECHAYHORA>*****
+        ****************************/
+        public function visualizarCitasFechaHora($fecha, $hora){
+            $consulta = "SELECT * FROM citas WHERE fecha_cita = '$fecha' AND hora_cita = '$hora' AND estado_cita = 'Pendiente'";
+            $resultado = $this->devolverConsultaArray($consulta);
+            return $resultado;
+        }
+        /***************************
         ****<VP CITAS VETERINARIO>*******
         ****************************/
         public function visualizarCitasVeterinarioPaginacion($id, $inicio, $tamano_pagina){
@@ -502,14 +521,6 @@
             INNER JOIN usuarios
             ON citas.id_cliente = usuarios.id_usuario citas WHERE id_veterinario = $id AND fecha_cita = '$fecha' 
             AND dni_usuario LIKE '%$dni%'LIMIT ".$inicio."," . $tamano_pagina;
-            $resultado = $this->devolverConsultaArray($consulta);
-            return $resultado;
-        }
-        /***************************
-        ****<V CITAS FECHAYHORA>*****
-        ****************************/
-        public function visualizarCitasFechaHora($fecha, $hora){
-            $consulta = "SELECT * FROM citas WHERE fecha_cita = '$fecha' AND hora_cita = '$hora' AND estado_cita = 'Pendiente'";
             $resultado = $this->devolverConsultaArray($consulta);
             return $resultado;
         }
