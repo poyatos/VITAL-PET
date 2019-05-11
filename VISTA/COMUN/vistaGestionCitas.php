@@ -149,7 +149,7 @@
                 }
                 foreach($resultadoPaginacion as $citas){
         echo (" <tr>
-            <td>".$citas['id_cita']."</td>
+            <td> <a href='vistaDetalleCitas.php?id=".$clientes['id_usuario']."'>".$citas['id_cita']."</a></td>
             <td>".$citas['dni_usuario']."</td>
             <td>".$citas['fecha_cita']."</td>
             <td>".$citas['hora_cita']."</td>
