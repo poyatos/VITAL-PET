@@ -82,6 +82,7 @@
                     <input type="submit" class="btn btn-lg" name="editarTipoPrueba" value="Editar"/>
                 </form>
               </div>
+              <button class='btn btn-lg'><a href="<?= $_SERVER['HTTP_REFERER'] ?>"><span class="glyphicon glyphicon-arrow-left"></span> Volver</a></button>
               </div>
             </div>
       </div>

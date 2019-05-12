@@ -72,11 +72,11 @@
 
                  echo" <h2>EDITAR CONTRATO</h2>";
 
-                }else{
+              } else {
 
-                  echo"<h2>RENOVAR CONTRATO</h2>";
-                  
-                }
+                echo"<h2>RENOVAR CONTRATO</h2>";
+            
+              }
                 ?>
             </div>
             <form class="formulario" action='../../CONTROLADOR/controladorDirector.php' method='post' onsubmit="return validarContrato()">
@@ -98,7 +98,7 @@
 
           <div class="form-group col-md-6">
             <label for="inputJob">Elige el horario</label>
-            <select  name="horario"  id="inputJob" class="form-control" required>
+            <select name="horario" id="inputJob" class="form-control" required>
             <?php
             if($contrato['horario_contrato'] == "Vespertino"){
              echo " <option value='Vespertino' selected>Vespertino</option>
@@ -135,6 +135,7 @@
           </div>
           </form>
         </div>
+        <button class='btn btn-lg'><a href="<?= $_SERVER['HTTP_REFERER'] ?>"><span class="glyphicon glyphicon-arrow-left"></span> Volver</a></button>
       </div>
     </div>
 
