@@ -91,8 +91,8 @@
         public function registrarUsuario($nombre, $apellidos, $dni, $telefono, $correo, $fecna, $direccion, $rol, $pass){
             $consulta = "SELECT * FROM usuarios WHERE dni_usuario = '$dni' ";
             if ($this->existeFila($consulta)) {
-                 echo "<br/><h2>El usuario ya existe.</h2><br />";
-                 echo "<a href='registroFormulario.php'>Por favor elige otro nombre.</a>";
+                 echo "<br/><h2>El DNI introducido ya existe.</h2><br />";
+                 echo "<a href='registroFormulario.php'>Por favor introduce un DNI valido.</a>";
             } else {
                 $passHash = password_hash($pass, PASSWORD_BCRYPT);
                 $sql = "INSERT INTO usuarios (nombre_usuario, apellidos_usuario, dni_usuario, telefono_usuario, correo_usuario, fecna_usuario, 
@@ -225,16 +225,31 @@
             }
             $existeUsuario = mysqli_num_rows($resultado);
             $columnas = $resultado->fetch_array();
+            $accesoPermitido = false;
             if ($existeUsuario == 1) {
-                if (password_verify($pass, $columnas['pass_usuario'])) {
-                    $_SESSION['id_usuario'] = $columnas['id_usuario'];
-                    $_SESSION['usuario'] = $columnas['nombre_usuario'] + " " + $columnas['apellidos_usuario'];
-                    $_SESSION['rol'] = $columnas['rol_usuario'];
-                    $rol = strtoupper($columnas['rol_usuario']);
-                    header("Location: ../VISTA/$rol");
+                if($columnas['rol_usuario'] == 'Veterinario' || $columnas['rol_usuario'] == 'Veterinario'){
+                    $contrato = $this->visualizarContratoId($columnas['id_usuario']);
+                    if($contrato['estado_contrato'] == 'Activo'){
+                        $accesoPermitido = true;
+                    }
                 } else {
-                     echo "<br/><h2>La contraseña es incorrecta, por favor introduzca una contraseña válida.</h2>";
-                     echo "<h4>Volver al <a href='../index.php'>formulario</a></h4>";
+                    $accesoPermitido = true;
+                }
+
+                if ($accesoPermitido){
+                    if (password_verify($pass, $columnas['pass_usuario'])) {
+                        $_SESSION['id_usuario'] = $columnas['id_usuario'];
+                        $_SESSION['usuario'] = $columnas['nombre_usuario'] + " " + $columnas['apellidos_usuario'];
+                        $_SESSION['rol'] = $columnas['rol_usuario'];
+                        $rol = strtoupper($columnas['rol_usuario']);
+                        header("Location: ../VISTA/$rol");
+                    } else {
+                         echo "<br/><h2>La contraseña es incorrecta, por favor introduzca una contraseña válida.</h2>";
+                         echo "<h4>Volver al <a href='../index.php'>formulario</a></h4>";
+                    }
+                } else {
+                    echo "<br/><h2>Permiso denegado. No tienes acceso a la aplicación.</h2>
+                    <h4>Volver al <a href='../index.php'>formulario</a></h4>";
                 }
             } else {
                  echo "<br/><h2>El usuario no existe, por favor introduzca un usuario válido.</h2>";
@@ -245,9 +260,15 @@
         ****<M USUARIO>*****
         ****************************/
         public function modificarUsuario($id, $nombre, $apellidos, $dni, $telefono, $correo, $fecna, $direccion){
-            $consulta = "UPDATE usuarios SET nombre_usuario = '$nombre', apellidos_usuario = '$apellidos', dni_usuario = '$dni', telefono_usuario = $telefono, correo_usuario = '$correo', fecna_usuario = '$fecna', 
-            direccion_usuario = '$direccion' WHERE id_usuario = $id";
-            $this->ejecutarConsulta($consulta);
+            $consulta = "SELECT * FROM usuarios WHERE dni_usuario = '$dni' AND id_usuario <> $id";
+            if ($this->existeFila($consulta)) {
+                 echo "<br/><h2>El DNI introducido ya existe.</h2><br />";
+                 echo "<a href='registroFormulario.php'>Por favor introduce un DNI valido.</a>";
+            } else {
+                $consulta = "UPDATE usuarios SET nombre_usuario = '$nombre', apellidos_usuario = '$apellidos', dni_usuario = '$dni', telefono_usuario = $telefono, correo_usuario = '$correo', fecna_usuario = '$fecna', 
+                direccion_usuario = '$direccion' WHERE id_usuario = $id";
+                $this->ejecutarConsulta($consulta);
+            }   
         }
         /***************************
         ****<B USUARIO>*****
@@ -741,7 +762,7 @@
         ****<V CONTRATOS ID>*******
         ****************************/
         public function visualizarContratoId($id){
-            $consulta = "SELECT * FROM contratos WHERE id_contratado = $id ";
+            $consulta = "SELECT * FROM contratos WHERE id_contratado = $id";
             $contrato = $this->devolverConsultaFila($consulta);
             return $contrato;
         }
