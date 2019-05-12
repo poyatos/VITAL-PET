@@ -57,24 +57,44 @@
  <div class='col-12 col-sm-12 col-md-7 col-lg-7'>
     <ul class='list-group'>
       <div class='row'>
-                    <div class='col-12 col-sm-12 col-md-6  col-lg-6'>
-                        <li class='list-group-item list-group-item-action list-group-item-info'><p class="d-flex flex-start">Fecha:</p><?= $resultado['fecha_cita']?></li>
+                    <div class='col-12 col-sm-12 col-md-12  col-lg-12'>
+                      <h1>DATOS DE LA CITA</h1> 
                     </div>
                     <div class='col-12 col-sm-12 col-md-6  col-lg-6'>
-                        <li class='list-group-item list-group-item-action list-group-item-info'><p class="d-flex flex-start">Hora:</p><?= $resultado['hora_cita']?></li>
+                        <li class='list-group-item list-group-item-action list-group-item-info'><p class="d-flex flex-start">Fecha:</p><?= $resultado[0]['fecha_cita']?></li>
                     </div>
                     <div class='col-12 col-sm-12 col-md-6  col-lg-6'>
-                        <li class='list-group-item list-group-item-action list-group-item-info'><p class="d-flex flex-start">Consulta número:</p><?= $resultado['num_consulta']?></li>
+                        <li class='list-group-item list-group-item-action list-group-item-info'><p class="d-flex flex-start">Hora:</p><?= $resultado[0]['hora_cita']?></li>
                     </div>
-                    <div class='col-12 col-sm-12 col-md-6  col-lg-6'>
-                        <li class='list-group-item list-group-item-action list-group-item-info'><p class="d-flex flex-start">Resultado:</p><?= $resultado['resultado_prueba']?></li>
-                    </div> 
-                    <div class='col-12 col-sm-12 col-md-6  col-lg-6'>
-                        <li class='list-group-item list-group-item-action list-group-item-info'><p class="d-flex flex-start">Observaciones:</p><?= $resultado['observaciones_prueba']?></li>
-                    </div>                  
+                    <div class='col-12 col-sm-12 col-md-12  col-lg-12'>
+                        <li class='list-group-item list-group-item-action list-group-item-info'><p class="d-flex flex-start">Consulta número:</p><?= $resultado[0]['num_consulta']?></li>
+                    </div>
+                    </ul>
+                    <?php
+                    echo"<div class='col-12 col-sm-12 col-md-12  col-lg-12'>
+                    <h1>PRUEBAS DE LA CITA</h1>
+                    <table class = 'table table-bordered table-dark'>
+                    <thead>
+                      <tr class='danger'>
+                        <th>Nombre</th>
+                        <th>Resultado</th>
+                        <th>Observaciones</th>
+                        <th>Precio</th>
+                      </tr>";
+                    foreach($resultado as $resul){
+                    echo "
+                      <tr class='warning'>
+                      <td>".$resul["nombre_tipo_prueba"]."</td>
+                      <td>".$resul["resultado_prueba"]."</td>
+                      <td>".$resul["observaciones_prueba"]."</td>
+                      <td>".$resul["precio_tipo_prueba"]."</td>
+                      </tr>
+                      ";
+                    }
+                    ?>                  
                 </div>
             </div>
-        </ul>
+        
         </div>
         <?php
         $conexion->desconectar();

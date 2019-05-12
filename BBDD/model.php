@@ -475,13 +475,13 @@
         ****<V CITAS PRUEBAS>***
         ****************************/
         public function visualizarCitasPruebas($id){
-            $consulta = "SELECT pruebas.resultado_prueba, pruebas.observaciones_prueba, citas.fecha_cita, citas.hora_cita, citas.num_consulta, 
-            citas.id_mascota, citas.id_cliente, citas.id_veterinario 
-            FROM citas
-            INNER JOIN pruebas
-            ON citas.id_cita = pruebas.id_cita
-            WHERE citas.id_cita = $id";
-            $resultado = $this->devolverConsultaFila($consulta);
+            $consulta = "SELECT P.resultado_prueba, P.observaciones_prueba, C.fecha_cita, C.hora_cita, C.num_consulta, 
+            C.id_mascota, C.id_cliente, C.id_veterinario, T.nombre_tipo_prueba, T.precio_tipo_prueba
+            FROM citas C
+            JOIN pruebas P ON C.id_cita = P.id_cita
+            JOIN tipos_pruebas T ON P.id_tipo_prueba = T.id_tipo_prueba
+            WHERE C.id_cita = $id";
+            $resultado = $this->devolverConsultaArray($consulta);
             return $resultado;
          }
         /***************************
