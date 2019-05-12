@@ -56,10 +56,7 @@
           <label for="pwd">Contraseña:</label>
           <input type="password" class="form-control" id="pwd" placeholder="Contraseña" name="pwd">
         </div>
-        <div class="checkbox">
-          <label><input type="checkbox" name="remember"> Recuerdame</label>
-        </div>
-          <button id = "logueo" type="submit" class="btn btn-default">Iniciar Sesión</button>
+          <button id="logueo" type="submit" class="btn btn-default">Iniciar Sesión</button>
       </form>
       </div>
     </div>
