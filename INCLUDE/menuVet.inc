@@ -12,14 +12,14 @@
                              <a href="#"><i class="glyphicon glyphicon-plus"></i> PRUEBA <span class="arrow"></span></a>
                         </li>
                         <ul class="sub-menu collapse" id="products">
-                            <li class="active"><a href="../VETERINARIO/vistaAnadirTipoPrueba.php"><i class="glyphicon glyphicon-plus-sign"></i>Añadir Tipo de prueba</a></li>
+                            <li><a href="../VETERINARIO/vistaAnadirTipoPrueba.php"><i class="glyphicon glyphicon-plus-sign"></i>Añadir Tipo de prueba</a></li>
                         </ul>
 
                         <li data-toggle="collapse" data-target="#service" class="collapsed">
                           <a href="#"><i class="glyphicon glyphicon-tint"></i> GESTIÓN <span class="arrow"></span></a>
                         </li>  
                         <ul class="sub-menu collapse" id="service">
-                            <li class="active"><a href="../COMUN/vistaGestionCitas.php"><i class="glyphicon glyphicon-eye-open"></i>Consultar citas / Añadir pruebas </a></li>
+                            <li><a href="../COMUN/vistaGestionCitas.php"><i class="glyphicon glyphicon-eye-open"></i>Consultar citas / Añadir pruebas </a></li>
                             <li><a href="../COMUN/vistaGestionCliente.php"><i class="glyphicon glyphicon-cog"></i>Consultar clientes</a></li>
                             <li><a href="../COMUN/vistaGestionMascotas.php"><i class="glyphicon glyphicon-cog"></i>Gestionar mascotas</a></li>
                             <li><a href="../COMUN/vistaGestionPrueba.php"><i class="glyphicon glyphicon-cog"></i>Gestionar pruebas</a></li>
