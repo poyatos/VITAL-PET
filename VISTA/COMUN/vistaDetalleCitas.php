@@ -1,11 +1,11 @@
 <?php
     session_start();
-    if(!isset($_SESSION['usuario']) && !isset($_SESSION['rol'])){
+    if (!isset($_SESSION['usuario']) && !isset($_SESSION['rol'])) {
         header("Location: ../index.php");
     } else {
-      if($_SESSION['rol'] == 'Cliente'){
-        header("Location: ../CLIENTE");
-      }
+        if ($_SESSION['rol'] == 'Cliente') {
+            header("Location: ../CLIENTE");
+        }
     }
 ?>
 <!DOCTYPE html>
@@ -37,12 +37,12 @@
  <!-- MENU LATERAL -->
  <div class="col-12 col-sm-5 col-md-4  col-lg-4">
       <?php
-    if($_SESSION['rol'] == 'Director'){
-      include "../../INCLUDE/menuDir.inc";
-    } else if ($_SESSION['rol'] == 'Recepcionista'){
-      include "../../INCLUDE/menuRec.inc";
-    } else if ($_SESSION['rol'] == 'Veterinario'){
-      include "../../INCLUDE/menuVet.inc";
+    if ($_SESSION['rol'] == 'Director') {
+        include "../../INCLUDE/menuDir.inc";
+    } elseif ($_SESSION['rol'] == 'Recepcionista') {
+        include "../../INCLUDE/menuRec.inc";
+    } elseif ($_SESSION['rol'] == 'Veterinario') {
+        include "../../INCLUDE/menuVet.inc";
     }
       ?>
       </div>
@@ -52,6 +52,15 @@
         require_once '../../BBDD/config.php';
         $conexion = new Model(Config::$host, Config::$user, Config::$pass, Config::$nombreBase);
         $resultado = $conexion->visualizarCitasPruebas($_GET["id"]);
+
+        $existePruebas = false;
+        if ($resultado) {
+            $existePruebas = true;
+            $cita = $resultado[0];
+        } else {
+            $resultado = $conexion->visualizarCitaId($_GET["id"]);
+            $cita = $resultado;
+        }
     ?>
 
  <div class='col-12 col-sm-12 col-md-7 col-lg-7'>
@@ -61,17 +70,19 @@
                       <h1>DATOS DE LA CITA</h1> 
                     </div>
                     <div class='col-12 col-sm-12 col-md-6  col-lg-6'>
-                        <li class='list-group-item list-group-item-action list-group-item-info'><p class="d-flex flex-start">Fecha:</p><?= $resultado[0]['fecha_cita']?></li>
+                        <li class='list-group-item list-group-item-action list-group-item-info'><p class="d-flex flex-start">Fecha:</p><?= $cita['fecha_cita']?></li>
                     </div>
                     <div class='col-12 col-sm-12 col-md-6  col-lg-6'>
-                        <li class='list-group-item list-group-item-action list-group-item-info'><p class="d-flex flex-start">Hora:</p><?= $resultado[0]['hora_cita']?></li>
+                        <li class='list-group-item list-group-item-action list-group-item-info'><p class="d-flex flex-start">Hora:</p><?= $cita['hora_cita']?></li>
                     </div>
                     <div class='col-12 col-sm-12 col-md-12  col-lg-12'>
-                        <li class='list-group-item list-group-item-action list-group-item-info'><p class="d-flex flex-start">Consulta número:</p><?= $resultado[0]['num_consulta']?></li>
+                        <li class='list-group-item list-group-item-action list-group-item-info'><p class="d-flex flex-start">Consulta número:</p><?= $cita['num_consulta']?></li>
                     </div>
                     </ul>
+                    <div class='col-12 col-sm-12 col-md-12  col-lg-12'>
                     <?php
-                    echo"<div class='col-12 col-sm-12 col-md-12  col-lg-12'>
+                    if ($existePruebas) {
+                        echo"
                     <h1>PRUEBAS DE LA CITA</h1>
                     <table class = 'table table-bordered table-dark'>
                     <thead>
@@ -81,18 +92,17 @@
                         <th>Observaciones</th>
                         <th>Precio</th>
                       </tr>";
-                    foreach($resultado as $resul){
-                    echo "
-                      <tr class='info'>
+                        foreach ($resultado as $resul) {
+                            echo "<tr class='info'>
                       <td>".$resul["nombre_tipo_prueba"]."</td>
                       <td>".$resul["resultado_prueba"]."</td>
                       <td>".$resul["observaciones_prueba"]."</td>
                       <td>".$resul["precio_tipo_prueba"]." €</td>
                       </tr>
-                      ";
+                      </table>";
+                        }
                     }
                     ?> 
-                    </table>
                                      
                 </div>
                 <button class="btn btn-info"><a class="h4" href="<?= $_SERVER['HTTP_REFERER'] ?>"><span class="glyphicon glyphicon-arrow-left"></span> Volver</a></button>

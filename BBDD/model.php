@@ -425,6 +425,14 @@
             return $resultado;
         }
         /***************************
+        ****<V CITAS ID>***************
+        ****************************/
+        public function visualizarCitaId($id){
+            $consulta = "SELECT * FROM citas WHERE id_cita = $id";
+            $resultado = $this->devolverConsultaFila($consulta);
+            return $resultado;
+        }
+        /***************************
         ****<VP CITAS>**************
         ****************************/
         public function visualizarCitasPaginacion($inicio, $tamano_pagina){
@@ -461,7 +469,10 @@
         ****<V CITAS CLIENTE>*******
         ****************************/
         public function visualizarCitasCliente($id){
-            $consulta = "SELECT * FROM citas WHERE id_cliente = $id ";
+            $consulta = "SELECT usuarios.dni_usuario, id_cita, fecha_cita, hora_cita, estado_cita, num_consulta, id_mascota, id_cliente, id_veterinario 
+            FROM citas
+            INNER JOIN usuarios
+            ON citas.id_cliente = usuarios.id_usuario WHERE id_cliente = $id ";
             $resultado = $this->devolverConsultaArray($consulta);
             return $resultado;
         }
@@ -469,7 +480,10 @@
         ****<VP CITAS CLIENTE>*******
         ****************************/
         public function visualizarCitasClientePaginacion($id, $inicio, $tamano_pagina){
-            $consulta = "SELECT * FROM citas WHERE id_cliente = $id LIMIT ".$inicio."," . $tamano_pagina;
+            $consulta = "SELECT usuarios.dni_usuario, id_cita, fecha_cita, hora_cita, estado_cita, num_consulta, id_mascota, id_cliente, id_veterinario 
+            FROM citas
+            INNER JOIN usuarios
+            ON citas.id_cliente = usuarios.id_usuario WHERE id_cliente = $id LIMIT ".$inicio."," . $tamano_pagina;
             $resultado = $this->devolverConsultaArray($consulta);
             return $resultado;
         }
@@ -531,7 +545,7 @@
             $consulta = "SELECT usuarios.dni_usuario, id_cita, fecha_cita, hora_cita, estado_cita, num_consulta, id_mascota, id_cliente, id_veterinario 
             FROM citas
             INNER JOIN usuarios
-            ON citas.id_cliente = usuarios.id_usuario WHERE id_veterinario = $id AND fecha_cita = '$fecha' AND dni_usuario LIKE '%$dni%'";
+            ON citas.id_cliente = usuarios.id_usuario WHERE id_veterinario = $id AND fecha_cita LIKE '%$fecha%' AND dni_usuario LIKE '%$dni%'";
             $resultado = $this->devolverConsultaArray($consulta);
             return $resultado;
         }
@@ -542,8 +556,8 @@
             $consulta = "SELECT usuarios.dni_usuario, id_cita, fecha_cita, hora_cita, estado_cita, num_consulta, id_mascota, id_cliente, id_veterinario 
             FROM citas
             INNER JOIN usuarios
-            ON citas.id_cliente = usuarios.id_usuario citas WHERE id_veterinario = $id AND fecha_cita = '$fecha' 
-            AND dni_usuario LIKE '%$dni%'LIMIT ".$inicio."," . $tamano_pagina;
+            ON citas.id_cliente = usuarios.id_usuario WHERE id_veterinario = $id AND fecha_cita LIKE '%$fecha%' 
+            AND dni_usuario LIKE '%$dni%' LIMIT ".$inicio."," . $tamano_pagina;
             $resultado = $this->devolverConsultaArray($consulta);
             return $resultado;
         }
