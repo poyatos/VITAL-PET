@@ -475,7 +475,7 @@
         ****<V CITAS PRUEBAS>***
         ****************************/
         public function visualizarCitasPruebas($id){
-            $consulta = "SELECT pruebas.resultado_prueba, pruebas.observaciones_prueba, fecha_cita, hora_cita, num_consulta, id_mascota, id_cliente, id_veterinario 
+            $consulta = "SELECT pruebas.resultado_prueba, pruebas.observaciones_prueba, citas.fecha_cita, citas.hora_cita, citas.num_consulta, citas.id_mascota, citas.id_cliente, citas.id_veterinario 
             FROM citas
             INNER JOIN pruebas
             ON citas.id_cita = pruebas.id_cita WHERE id_cita = $id";
