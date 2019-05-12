@@ -298,12 +298,12 @@
         ****************************/
         public function visualizarMascotasClientes($id){
             $consulta = "SELECT usuarios.id_usuario, usuarios.nombre_usuario, usuarios.apellidos_usuario, usuarios.dni_usuario, usuarios.telefono_usuario,
-            usuarios.correo_usuario,usuarios.fecna_usuario, usuarios.direccion_usuario, mascotas.nombre_mascota, mascotas.tipo_mascota,
+            usuarios.correo_usuario, usuarios.fecna_usuario, usuarios.direccion_usuario, mascotas.nombre_mascota, mascotas.tipo_mascota,
             mascotas.raza_mascota, mascotas.peso_mascota, mascotas.sexo_mascota, mascotas.fecna_mascota, mascotas.peso_mascota
             FROM mascotas
             INNER JOIN usuarios
             ON mascotas.id_cliente = usuarios.id_usuario
-            WHERE usuarios.id_cliente = $id";
+            WHERE usuarios.id_usuario = $id";
             $resultado = $this->devolverConsultaArray($consulta);
             return $resultado;
         }
