@@ -117,9 +117,9 @@
                               <td>".$mascotas["nombre_mascota"]."</td>
                               <td>".$mascotas["tipo_mascota"]."</td>
                               <td>".$mascotas["raza_mascota"]."</td>
-                              <td>".$mascotas["sexo_mascota"]." €</td>
-                              <td>".$mascotas["fecna_mascota"]." €</td>
-                              <td>".$mascotas["peso_mascota"]." €</td>
+                              <td>".$mascotas["sexo_mascota"]."</td>
+                              <td>".date("d/m/Y", strtotime($mascotas["fecna_mascota"]))."</td>
+                              <td>".$mascotas["peso_mascota"]."</td>
                               </tr>
                               ";
                             }

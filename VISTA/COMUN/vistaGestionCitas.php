@@ -116,6 +116,8 @@
             require_once '../../BBDD/model.php';
             require_once '../../BBDD/config.php';
             $conexion = new Model(Config::$host, Config::$user, Config::$pass, Config::$nombreBase);
+            $fechaActual = date("Y-m-d");
+
             if($_SESSION['rol'] == 'Veterinario'){
               $resultado = $conexion->visualizarCitasVeterinarioFiltrado($_SESSION['id_usuario'], $fecha, $dni);
             } else if($_SESSION['rol'] == 'Cliente'){
@@ -123,6 +125,7 @@
             } else {
               $resultado = $conexion->visualizarCitasFiltrado($fecha, $dni);
             }
+
             if (!empty($resultado)) {
                 $total_registros = count($resultado);
 
@@ -157,24 +160,28 @@
             <td>".$citas['id_mascota']."</td>
             <td>".$citas['num_consulta']."</td>");
               if($_SESSION['rol'] == 'Veterinario'){
-                echo ('<td>
+                if ($citas['fecha_cita'] ==  $fechaActual) {
+                    echo('<td>
                 <form action="../VETERINARIO/vistaAnadirPrueba.php" method="POST"> 
                     <input type="hidden" value="'.$citas['id_mascota'].'" name="id_mascota">
                     <input type="hidden" value="'.$citas['id_cita'].'" name="id_cita">
                     <input type="submit" value="Añadir prueba">
                 </form>
                 </td>');
+                }
               } else if( $_SESSION['rol'] == 'Recepcionista'){
                 echo ('<td>
                 <form action="../../CONTROLADOR/controladorRecepcionista.php" method="POST"> 
-                    <input type="hidden" value="'.$citas['id_cita'].'" name="id_cita">
-                    <input type="submit" value="Borrar" name="borrarCita">
-                </form>
-                <form action="../RECEPCIONISTA/vistaRealizarPago.php" method="POST">
+                  <input type="hidden" value="'.$citas['id_cita'].'" name="id_cita">
+                  <input type="submit" value="Borrar" name="borrarCita">
+                </form>');
+                if ($citas['fecha_cita'] ==  $fechaActual) {
+                    echo('<form action="../RECEPCIONISTA/vistaRealizarPago.php" method="POST">
                   <input type="hidden" value="'.$citas['id_cita'].'" name="id_cita">
                   <input type="submit" value="Finalizar cita">
-                </form>
-                </td>');
+                </form>');
+                }
+                echo ('</td>');
               }
               echo ("</tr>");
             }
