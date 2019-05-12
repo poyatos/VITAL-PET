@@ -12,7 +12,7 @@
                           <a href="#"><i class="glyphicon glyphicon-user"></i>CLIENTES<span class="arrow"></span></a>
                         </li>
                         <ul class="sub-menu collapse" id="products">
-                            <li class="active"><a href="../RECEPCIONISTA/vistaRegistroCliente.php"><i class="glyphicon glyphicon-plus-sign"></i>Añadir cliente</a></li>
+                            <li><a href="../RECEPCIONISTA/vistaRegistroCliente.php"><i class="glyphicon glyphicon-plus-sign"></i>Añadir cliente</a></li>
                         </ul>
 
                         <li data-toggle="collapse" data-target="#service" class="collapsed">
@@ -21,8 +21,8 @@
                         <ul class="sub-menu collapse" id="service">
                         <li><a href="../COMUN/vistaGestionCliente.php"><i class="glyphicon glyphicon-cog"></i>Gestión Clientes</a></li>
                            <li><a href="../COMUN/vistaGestionMascotas.php"><i class="glyphicon glyphicon-cog"></i>Gestión Mascotas</a></li>
-                           <li class="active"><a href="../COMUN/vistaGestionCitas.php"><i class="glyphicon glyphicon-cog"></i>Gestionar citas</a></li>
-                           <li class="active"><a href="../COMUN/vistaGestionTipoPrueba.php"><i class="glyphicon glyphicon-eye-open"></i>Consultar tipos de prueba</a></li>
+                           <li><a href="../COMUN/vistaGestionCitas.php"><i class="glyphicon glyphicon-cog"></i>Gestionar citas / Pagos</a></li>
+                           <li><a href="../COMUN/vistaGestionTipoPrueba.php"><i class="glyphicon glyphicon-eye-open"></i>Consultar tipos de prueba</a></li>
                         </ul>
 
                     </ul>
