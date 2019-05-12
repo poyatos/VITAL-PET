@@ -56,33 +56,33 @@ include "../../INCLUDE/menuCli.inc";
 <div id="contact" class="container">
   <h3 class="text-center">Contacto</h3>
   <p class="text-center"><em>Contacta con la clínica</em></p>
+      <p class="text-center"><span class="glyphicon glyphicon-map-marker"></span>Fuenlabrada, Madrid</p>
+      <p class="text-center"><span class="glyphicon glyphicon-envelope"></span>Email: veterinariovitalpet@gmail.com</p>
+    </div>
 
+
+    <div class="container text-center">    
+  <h3>Nuestros patrocinadores</h3>
+  <br>
   <div class="row">
-    <div class="col-md-4">
-      <p>¿Es una urgencia?</p>
-      <p><span class="glyphicon glyphicon-map-marker"></span>Fuenlabrada, Madrid</p>
-      <p><span class="glyphicon glyphicon-phone"></span>Phone: +34 918822645</p>
-      <p><span class="glyphicon glyphicon-envelope"></span>Email: veterinariovitalpet@gmail.com</p>
+    <div class="col-sm-3">
+    <a href ="https://poyatosilustracion.wordpress.com"><img src="../../IMAGENES/logo1.1.png" class="img-responsive" style="width:100%" alt="Image">
+      Pablofpoyatos</a>
     </div>
-    <div class="col-md-8">
-      <div class="row">
-        <div class="col-sm-6 form-group">
-          <input class="form-control" id="name" name="name" placeholder="Name" type="text" required>
-        </div>
-        <div class="col-sm-6 form-group">
-          <input class="form-control" id="email" name="email" placeholder="Email" type="email" required>
-        </div>
-      </div>
-      <textarea class="form-control" id="comments" name="comments" placeholder="Comment" rows="5"></textarea>
-      <br>
-      <div class="row">
-        <div class="col-md-12 form-group">
-          <button class="btn pull-right" type="submit">Enviar</button>
-        </div>
-      </div>
+    <div class="col-sm-3"> 
+    <a href ="https://bluedeersmadrid.bandcamp.com/releases"><img src="../../IMAGENES/logo2.png" class="img-responsive" style="width:100%" alt="Image">
+      Blue Deers</a>   
     </div>
- </div>
+    <div class="col-sm-3"> 
+    <a href ="https://taniamartin92.wordpress.com"><img src="../../IMAGENES/logo3.png" class="img-responsive" style="width:100%" alt="Image">
+      Tania Martín</a>   
     </div>
+    <div class="col-sm-3"> 
+    <a href ="https://www.instagram.com/viniloko1/"><img src="../../IMAGENES/logo4.png" class="img-responsive" style="width:100%" alt="Image">
+      Viniloko</a>   
+    </div> 
+  </div>
+</div><br>   
 
 
 <!-- contenido -->
