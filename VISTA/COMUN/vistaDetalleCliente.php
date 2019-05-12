@@ -71,64 +71,67 @@
         $conexion = new Model(Config::$host, Config::$user, Config::$pass, Config::$nombreBase);
         $resultado = $conexion->visualizarMascotasClientes($_GET["id"]);
     ?>
-      
-
-        
+ 
         <div class='col-12 col-sm-12 col-md-12  col-lg-12'>
         <ul class='list-group'>
             <li class='list-group-item list-group-item-action list-group-item-danger'><img src='../../IMAGENES/cliente.png' class='img-thumbnail' alt='Empleado'></li>
                 <div class='row'>
                     <div class='col-12 col-sm-12 col-md-6  col-lg-6'>
-                      <li class='list-group-item list-group-item-action list-group-item-danger'><?= $resultado[0]['nombre_usuario']?></li>
+                      <li class='list-group-item list-group-item-action list-group-item-danger'>Nombre: <?= $resultado[0]['nombre_usuario']?></li>
                     </div>
                     <div class='col-12 col-sm-12 col-md-6  col-lg-6'>
-                    <li class='list-group-item list-group-item-action list-group-item-danger'><?= $resultado[0]['apellidos_usuario']?></li>
+                    <li class='list-group-item list-group-item-action list-group-item-danger'>Apellidos: <?= $resultado[0]['apellidos_usuario']?></li>
                     </div>
                     <div class='col-12 col-sm-12 col-md-6  col-lg-6'>
-                      <li class='list-group-item list-group-item-action list-group-item-danger'><?= $resultado[0]['fecna_usuario']?></li>
+                      <li class='list-group-item list-group-item-action list-group-item-danger'>Fecha de nacimiento: <?= $resultado[0]['fecna_usuario']?></li>
                     </div>
                     <div class='col-12 col-sm-12 col-md-6  col-lg-6'>
-                    <li class='list-group-item list-group-item-action list-group-item-danger'><?= $resultado[0]['dni_usuario']?></li>
+                    <li class='list-group-item list-group-item-action list-group-item-danger'>DNI: <?= $resultado[0]['dni_usuario']?></li>
                     </div> 
                     <div class='col-12 col-sm-12 col-md-6  col-lg-6'>
-                    <li class='list-group-item list-group-item-action list-group-item-danger'><?= $resultado[0]['correo_usuario']?></li>
+                    <li class='list-group-item list-group-item-action list-group-item-danger'>Correo electrónico: <?= $resultado[0]['correo_usuario']?></li>
                     </div>
                     <div class='col-12 col-sm-12 col-md-6  col-lg-6'>
-                    <li class='list-group-item list-group-item-action list-group-item-danger'><?= $resultado[0]['telefono_usuario']?></li>
-                    </div>
-                    <div class='col-12 col-sm-12 col-md-6  col-lg-6'>
-                    <li class='list-group-item list-group-item-action list-group-item-danger'><?= $resultado[0]['direccion_usuario']?></li>
+                    <li class='list-group-item list-group-item-action list-group-item-danger'>Teléfono: <?= $resultado[0]['telefono_usuario']?></li>
                     </div>
                     <div class='col-12 col-sm-12 col-md-12  col-lg-12'>
-                    <li class='list-group-item list-group-item-action list-group-item-info'>MASCOTAS</li>
+                    <li class='list-group-item list-group-item-action list-group-item-danger'>Dirección: <?= $resultado[0]['direccion_usuario']?></li>
                     </div>
+                    </ul>
                     <?php
-                        foreach($resultado as $mascotas){
-
-                            echo" <div class='col-12 col-sm-12 col-md-6  col-lg-6'>
-                                <li class='list-group-item list-group-item-action list-group-item-warning'>".$mascotas["nombre_mascota"]."</li>
-                                </div>
-                                <div class='col-12 col-sm-12 col-md-6  col-lg-6'>
-                                <li class='list-group-item list-group-item-action list-group-item-warning'>".$mascotas["tipo_mascota"]."</li>
-                                </div>
-                                <div class='col-12 col-sm-12 col-md-6  col-lg-6'>
-                                <li class='list-group-item list-group-item-action list-group-item-warning'>".$mascotas["raza_mascota"]."</li>
-                                </div>
-                                <div class='col-12 col-sm-12 col-md-6  col-lg-6'>
-                                <li class='list-group-item list-group-item-action list-group-item-warning'>".$mascotas["sexo_mascota"]."</li>
-                                </div>
-                                <div class='col-12 col-sm-12 col-md-6  col-lg-6'>
-                                <li class='list-group-item list-group-item-action list-group-item-warning'>".$mascotas["fecna_mascota"]."</li>
-                                </div>
-                                <div class='col-12 col-sm-12 col-md-6  col-lg-6'>
-                                <li class='list-group-item list-group-item-action list-group-item-warning'>".$mascotas["peso_mascota"]."</li>
-                                </div>";
-                        }
-                    ?>
+                            echo"<div class='col-12 col-sm-12 col-md-12  col-lg-12'>
+                            <h1>MASCOTAS</h1>
+                            <table class = 'table table-bordered table-dark'>
+                            <thead>
+                              <tr class='warning'>
+                                <th>Nombre</th>
+                                <th>Tipo</th>
+                                <th>Raza</th>
+                                <th>Sexo</th>
+                                <th>Fecha de nacimiento</th>
+                                <th>Peso</th>
+                              </tr>";
+                            foreach($resultado as $mascotas){
+                            echo "
+                              <tr class='info'>
+                              <td>".$mascotas["nombre_mascota"]."</td>
+                              <td>".$mascotas["tipo_mascota"]."</td>
+                              <td>".$mascotas["raza_mascota"]."</td>
+                              <td>".$mascotas["sexo_mascota"]." €</td>
+                              <td>".$mascotas["fecna_mascota"]." €</td>
+                              <td>".$mascotas["peso_mascota"]." €</td>
+                              </tr>
+                              ";
+                            }
+                            ?> 
+                            </table>
+                              
                 </div>
             </div>
-        </ul>
+       
+
         </div>
+        <button class="btn btn-info"><a class="h4" href="<?= $_SERVER['HTTP_REFERER'] ?>"><span class="glyphicon glyphicon-arrow-left"></span> Volver</a></button>
 
 
         <?php

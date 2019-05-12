@@ -75,7 +75,7 @@
                     <h1>PRUEBAS DE LA CITA</h1>
                     <table class = 'table table-bordered table-dark'>
                     <thead>
-                      <tr class='danger'>
+                      <tr class='warning'>
                         <th>Nombre</th>
                         <th>Resultado</th>
                         <th>Observaciones</th>
@@ -83,19 +83,23 @@
                       </tr>";
                     foreach($resultado as $resul){
                     echo "
-                      <tr class='warning'>
+                      <tr class='info'>
                       <td>".$resul["nombre_tipo_prueba"]."</td>
                       <td>".$resul["resultado_prueba"]."</td>
                       <td>".$resul["observaciones_prueba"]."</td>
-                      <td>".$resul["precio_tipo_prueba"]."</td>
+                      <td>".$resul["precio_tipo_prueba"]." €</td>
                       </tr>
                       ";
                     }
-                    ?>                  
+                    ?> 
+                    </table>
+                                     
                 </div>
+                <button class="btn btn-info"><a class="h4" href="<?= $_SERVER['HTTP_REFERER'] ?>"><span class="glyphicon glyphicon-arrow-left"></span> Volver</a></button>
             </div>
         
         </div>
+        
         <?php
         $conexion->desconectar();
         ?>
