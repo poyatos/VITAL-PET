@@ -28,24 +28,24 @@
       <div class="item active">
         <img src="../../IMAGENES/baner.png" alt="New York" width="1200" height="700">
         <div class="carousel-caption">
-          <h3>New York</h3>
-          <p>The atmosphere in New York is lorem ipsum.</p>
+          <h3>Clínica número 1 en operaciones</h3>
+          <p>Un ejemplo de empleo y desarrollo profesional</p>
         </div>      
       </div>
 
       <div class="item">
         <img src="../../IMAGENES/baner1.png" alt="Chicago" width="1200" height="700">
         <div class="carousel-caption">
-          <h3>Chicago</h3>
-          <p>Thank you, Chicago - A night we won't forget.</p>
+          <h3>Cuida a tu amigo</h3>
+          <p>El te dara lo mejor que tiene</p>
         </div>      
       </div>
     
       <div class="item">
         <img src="../../IMAGENES/baner.png" alt="Los Angeles" width="1200" height="700">
         <div class="carousel-caption">
-          <h3>LA</h3>
-          <p>Even though the traffic was a mess, we had the best time playing at Venice Beach!</p>
+          <h3>Expertos en maternidad</h3>
+          <p>Cuidamos de tu cachorro</p>
         </div>      
       </div>
     </div>
