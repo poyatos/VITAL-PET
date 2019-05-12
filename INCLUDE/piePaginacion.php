@@ -10,7 +10,7 @@
       }
       for ($i=1;$i<=$total_paginas;$i++) {
           if ($pagina == $i){
-               echo ("<li class='page-item'><a id='actual'>$pagina</a></li>");
+               echo ("<li class='page-item active'><a>$pagina</a></li>");
           } else {
                echo ("<li class='page-item'><a href='".$_SERVER['PHP_SELF']."?pagina=".$i.$busqueda."'>".$i."</a></li>");
           }
