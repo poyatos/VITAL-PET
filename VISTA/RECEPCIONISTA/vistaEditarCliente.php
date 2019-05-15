@@ -107,14 +107,14 @@
                         </div>
                         <div class="form-group col-12 col-sm-12 col-md-12 col-lg-12">
                             <label for="inputFecha">Fecha de nacimiento</label>
-                            <input type="date" name="fecna" class="form-control" id="fecha" value ="<?= $cliente['fecna_usuario']?>" required>
+                            <input type="date" name="fecna" class="form-control" id="fecha" value ="<?= date("d/m/Y", strtotime($cliente['fecna_usuario']))?>" required>
                         </div>
                         <br />
                         <input type='hidden' name='id_cliente' value="<?= $cliente['id_usuario']?>"/>
                         <input type="submit"  class="btn btn-lg" name="editarCliente" value="Editar">
                     </form>
                 </div>
-                <button class='btn btn-lg'><a href="<?= $_SERVER['HTTP_REFERER'] ?>"><span class="glyphicon glyphicon-arrow-left"></span> Volver</a></button>
+                <button class="btn btn-info"><a class="h4" href="<?= $_SERVER['HTTP_REFERER'] ?>"><span class="glyphicon glyphicon-arrow-left"></span> Volver</a></button>
             </div>
             </div>
         </div>

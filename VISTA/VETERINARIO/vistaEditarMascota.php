@@ -101,7 +101,7 @@
                             </div>
                             <div class="form-group col-md-12">
                                 <label for="inputfecna">Fecha de nacimiento</label>
-                                <input type="date" name="fecna" class="form-control" id="inputfecna" value = "<?= $mascota['fecna_mascota'] ?>"  required>
+                                <input type="date" name="fecna" class="form-control" id="inputfecna" value = "<?= date("d/m/Y", strtotime($mascota['fecna_mascota'])) ?>"  required>
                             </div>
                         </div>
                         <div class="form-group col-md-12">
@@ -114,7 +114,7 @@
                         <input type="submit" name ="editarMascota" class="btn btn-lg" value="Editar">
                     </form>
                 </div>
-                <button class='btn btn-lg'><a href="<?= $_SERVER['HTTP_REFERER'] ?>"><span class="glyphicon glyphicon-arrow-left"></span> Volver</a></button>
+                <button class="btn btn-info"><a class="h4" href="<?= $_SERVER['HTTP_REFERER'] ?>"><span class="glyphicon glyphicon-arrow-left"></span> Volver</a></button>
             </div>
             </div>
         </div>
