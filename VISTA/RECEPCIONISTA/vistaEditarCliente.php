@@ -114,7 +114,7 @@
                         <input type="submit"  class="btn btn-lg" name="editarCliente" value="Editar">
                     </form>
                 </div>
-                <button class='btn btn-lg'><a href="<?= $_SERVER['HTTP_REFERER'] ?>"><span class="glyphicon glyphicon-arrow-left"></span> Volver</a></button>
+                <button class="btn btn-info"><a class="h4" href="<?= $_SERVER['HTTP_REFERER'] ?>"><span class="glyphicon glyphicon-arrow-left"></span> Volver</a></button>
             </div>
             </div>
         </div>
