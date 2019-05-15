@@ -105,8 +105,8 @@
                               </div>
                             </div>
                             <div class="form-group col-12 col-sm-12 col-md-6 col-lg-6">
-                              <label for="inputFecha">Fecha</label>
-                              <input type="date"  name="fecna"  class="form-control" id="fecha" value="<?= date("d/m/Y", strtotime($empleado['fecna_usuario']))?>" required>
+                              <label for="inputFecha">Fecha de nacimiento</label>
+                              <input type="date"  name="fecna"  class="form-control" id="fecha" value="<?= $empleado['fecna_usuario'] ?>" required>
                             </div>
                             <!--INPUT HIDDEN DEL ID-->
                             <input type='hidden' name='id_usuario' value="<?= $empleado['id_usuario']?>"/>

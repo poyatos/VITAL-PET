@@ -154,7 +154,7 @@
         echo (" <tr>
             <td> <a href='vistaDetalleCitas.php?id=".$citas['id_cita']."'>".$citas['id_cita']."</a></td>
             <td>".$citas['dni_usuario']."</td>
-            <td>".$citas['fecha_cita']."</td>
+            <td>".date("d/m/Y", strtotime($citas['fecha_cita']))."</td>
             <td>".$citas['hora_cita']."</td>
             <td>".$citas['estado_cita']."</td>
             <td>".$citas['id_mascota']."</td>
