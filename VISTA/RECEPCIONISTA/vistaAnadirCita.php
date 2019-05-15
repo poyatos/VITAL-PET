@@ -97,7 +97,6 @@
                             </div>
                         <div class="form-row">   
                         <br/>
-                        <!--EN LOS INPUT HIDDEN DEBEN RELLENARSE LOS VALUES CON LOS VALORES DEL CLIENTE Y LA MASCOTA -->
                         <input type="hidden" name="id_cliente" value="<?= $_POST['id_cliente'] ?>" id="dni_id">
                         <input type="hidden" name="id_mascota" value="<?= $_POST['id_mascota'] ?>" id="id_mascota_id">
                         <input type="submit"  class="btn btn-lg" name="anadirCita" value="Añadir cita">
