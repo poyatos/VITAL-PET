@@ -103,16 +103,17 @@
       <h2>SOBRE NOSOTROS</h2>
       <h4>VITAL PET</h4>      
       <p>TU VETERINARIO DE CONFIANZA</p>
-      <p>VITAL PET es una empresa nacida en 1930 en la lucha opresora por liberar a los animales de sus jaulas
-        corporeas y precupandose por el medioambiente, inaugurado por viniloko en 1950 de manera oficial
-        esta empresa lleva en auge mas de 50 años dandolo todo en las pistas de baile, el resto del texto es inventado
-        como prueba para ver que tal queda maquetado es una empresa nacida en 1930 en la lucha opresora por liberar a los animales de sus jaulas
-        corporeas y precupandose por el medioambiente, inaugurado por viniloko en 1950 de manera oficial
-        esta empresa lleva en auge mas de 50 años dandolo todo en las pistas de baile, el resto del texto es inventado
-        como prueba para ver que tal queda maquetado es una empresa nacida en 1930 en la lucha opresora por liberar a los animales de sus jaulas
-        corporeas y precupandose por el medioambiente, inaugurado por viniloko en 1950 de manera oficial
-        esta empresa lleva en auge mas de 50 años dandolo todo en las pistas de baile, el resto del texto es inventado
-        como prueba para ver que tal queda maquetado
+      <p>En VITAL-PET trabajamos duro en una profesión que amamos y por unos objetivos en los que creemos, con excelentes profesionales que garantizan la
+       mejor atención posible para tus animales. Pero, además de lo que hacemos, creemos que es importante contarte porque lo hacemos.
+       En nuestro veterinario atendemos y curamos todo tipo de animales y mascotas, para lo cual contamos con una superficie aprox. de 300 metros cuadrados y un 
+       equipamiento moderno y vanguardista, donde trabaja un amplio equipo de veterinarios de todas las especialidades de la veterinaria (traumatología,
+       medicina general, dermatología, obstetricia y neonatología, nutrición, genética, cirugía, cardiología, endocrinología, etc...), con tecnología de
+       diagnóstico de última generación (ecografía, analíticas, endoscopia, radiología digital directa, etc...).
+       Somos veterinarios especializados en la atención de animales de todo tipo (perros, gatos, loros y otras aves exóticas, hurones, conejos, cobayas, 
+       hamsters, reptiles, pájaros, rapaces, felinos, etc...).
+       Nuestro objetivo es alcanzar todas las expectativas generadas por cada uno de nuestros clientes. El trabajo de nuestro equipo va encaminado a 
+       conseguir la máxima satisfacción de nuestros clientes.<br>
+       <b>Vital-Pet es tu veterinario de confianza!</b>
       </p>
     </div>
     <div class="col-sm-4">
@@ -127,8 +128,13 @@
     <img class="logotipo" src="IMAGENES/valors.png" width="90%" height="auto" >
     </div>
     <div class="col-8 col-sm-8 col-md-8  col-lg-8">
-      <h2>NUESTROS VALORES</h2>
-      <h4><strong>MISIÓN DE LA EMPRESA</strong> Una mascota no es solo un animal es un compañero y amigo que te acompaña durante tu vida, por eso desde PET VITAL ofrecemos el servicio numero 1 para que tu mascota viva sana y en las mejores condiciones posibles</h4>      
+      <h2>NUESTRO SERVICIO</h2>
+      <h4>Nuestra Clínica veterinaria VITAL-PET ha estado a lo largo de estos años dando servicio a nuestros clientes para que proporcionen a sus animales de compañía los 
+      mejores cuidados, lo que prolongará su esperanza de vida y nuestra satisfacción. Para ello, hemos ido dotando a nuestro centro de los equipos más modernos, 
+      revisamos y ponemos al día los procedimientos terapéuticos, para asegurarnos de que les damos los tratamientos más seguros, efectivos y actualizados. El 80% 
+      de los nuevos clientes vienen recomendados por familiares o amigos, lo que nos produce una gran satisfacción.
+      A pesar del paso del tiempo y de la incorporación de nuevos clientes y profesionales a la clínica, lo que siempre ha permanecido es nuestro afán de servicio 
+      y cariño hacia nuestros pequeños amigos y sus propietarios.</h4>      
     </div>
   </div>
 </div>
@@ -142,17 +148,18 @@
     <div class="col-4 col-sm-4 col-md-4  col-lg-4">
       <span class="glyphicon glyphicon-eye-open logo-small"></span>
       <h4>REVISIONES</h4>
-      <p>Revisiones periodicas para revisar el estado de tu mascota</p>
+      <p>Revisiones periódicas para revisar el estado de tu mascota. La salud es uno de los pilares fundamentales para que cualquiera, sea un ser humano o un animal, 
+      disfrute de una calidad de vida adecuada.</p>
     </div>
     <div class="col-4 col-sm-4 col-md-4  col-lg-4">
       <span class="glyphicon glyphicon-gift logo-small"></span>
       <h4>SERVICIOS DE BELLEZA</h4>
-      <p>Tu mejor amigo se merece los mejores servicios de belleza</p>
+      <p>En Vital-Pet no solo cuidamos de la salud de vuestras mascotas, sino que además queremos que se sientan cómodos y cuidados para que presumas de su belleza.</p>
     </div>
     <div class="col-4 col-sm-4 col-md-4  col-lg-4">
       <span class="glyphicon glyphicon-certificate logo-small"></span>
       <h4>ACCIDENTES</h4>
-      <p>Cualquier tipo de accidente u operación</p>
+      <p>Cuidamos y atendemos de cualquier tipo de accidente u operación que haya sufrido su mascota.</p>
     </div>
   </div>
   <br><br>
@@ -160,17 +167,17 @@
   <div class="col-4 col-sm-4 col-md-4  col-lg-4">
       <span class="glyphicon glyphicon-warning-sign logo-small"></span>
       <h4>SERVICIO DE URGENCIA</h4>
-      <p>Servicios 24 horas para tu compañero</p>
+      <p>Disponemos de servicios 24 horas para tu compañero.</p>
     </div>
     <div class="col-4 col-sm-4 col-md-4  col-lg-4">
       <span class="glyphicon glyphicon-scissors logo-small"></span>
-      <h4>CASTRACIÓN</h4>
-      <p>Los mejores metodos de castración para tu animal</p>
+      <h4>CASTRACIÓN / ESTERELIZACIÓN</h4>
+      <p>La castración o esterilización es, sin duda alguna, la técnica quirúrgica más frecuentemente realizada en la Vital-Pet</p>
     </div>
     <div class="col-4 col-sm-4 col-md-4  col-lg-4">
       <span class="glyphicon glyphicon-tint logo-small"></span>
       <h4 style="color:#303030;">VACUNAS</h4>
-      <p>Vacunas periódicas para tu mascota</p>
+      <p>La vacunación es un acto clínico de gran importancia para la salud de las mascotas.</p>
     </div>
   </div>
 </div>
@@ -197,7 +204,7 @@
   </div>
 <br/>
 <footer class="container-fluid text-center">
-  <p>© Carlos J Angulo, Miguel Gallego, Pablo Fernández</p>
+  <p>© Carlos J. Angulo, Miguel Gallego, Pablo Fernández</p>
 </footer>
 
 </body>
