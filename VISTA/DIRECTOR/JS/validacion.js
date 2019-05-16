@@ -7,7 +7,7 @@ function validarContrato() {
       alert("La contraseña tiene que ser igual");
       return false;
     } 
-    if (dni != expresionRegularDni) {
+    if (preg_match(expresionRegularDni, dni)) {
       alert("El dni no es válido");
       return false;
     }
