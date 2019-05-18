@@ -59,7 +59,7 @@
         $arraySalasDisponibles = array();
         $salasHora = $conexion->visualizarCitasFechaHora($_POST['fecha'], $_POST['hora']);
 
-        if (!(empty($salasHora)) || count($salasHora) > 0) {
+        if (!(empty($salasHora)) && count($salasHora) > 0) {
             foreach ($salasHora as $sala) {
                 $j = 1;
                 $salaDisponible = true;
