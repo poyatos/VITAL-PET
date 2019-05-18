@@ -2,11 +2,6 @@
     require_once "BBDD/config.php";
     require_once "BBDD/model.php";
     require_once "FACTURAS/FPDF/fpdf.php";
-            
-            session_start();
-            if (!isset($_SESSION['logeado'])) {
-                header("Location: USUARIO/sesionFormulario.php");
-            }
 
             $conexion = new Model (Config::$host, Config::$user, Config::$pass, Config::$nombreBase);
 
@@ -104,18 +99,5 @@
                 $fichero = "FACTURAS/factura".$numeroFactura.".pdf";
 
                 $pdf->Output($fichero, 'F');
-
-                $conexion->insertarPedido($fichero);
-
-                foreach ($_SESSION['cesta']->getArticulos() as $codigo => $cantidad) {
-                    $conexion->actualizarExistencias($codigo, $cantidad);
-                }
-                
-                if ($_SESSION['cesta']->vaciarCesta()) {                    
-                    header("Location: envioFactura.php?fichero=$fichero&correo=".$_SESSION['logeado']."&id=$numeroFactura");                    
-                } else {
-                    echo "Error";
-                }
-            $conexion->desconectar()
 ?>
  

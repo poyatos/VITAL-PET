@@ -32,8 +32,13 @@
             $conexion->borrarCita($_POST['id_cita']);
             header("Location: ../VISTA/COMUN/vistaGestionCitas.php");
         } elseif(isset($_POST['finalizarCita'])){
-            $conexion->insertarPago($_POST['id_cliente'], $_POST['total'], $_POST['fecha'], $_POST['id_cita']);
-            $conexion->finalizarCita($_POST['id_cita']);
+            // EN PROCESO, HAY QUE PROBAR QUE LOS PDFS SE GENEREN BIEN Y QUE EL ENVIO DE CORREO SEA CORRECTO, CUANDO FUNCIONE DESCOMENTAR TODO
+            require_once '../FACTURAS/FPDF/fpdf.php';
+            require_once '../FACTURAS/PHPMailer/PHPMailer.php';
+            include '../FACTURAS/controladorPDF.php';
+            include '../FACTURAS/envioFactura.php';
+            //$conexion->insertarPago($_POST['id_cliente'], $_POST['total'], $_POST['fecha'], $_POST['id_cita']);
+            //$conexion->finalizarCita($_POST['id_cita']);
             header("Location: ../VISTA/COMUN/vistaGestionCitas.php");
         }
 

@@ -27,10 +27,7 @@
     <!-- prueba -->
 
     <link href="//maxcdn.bootstrapcdn.com/font-awesome/4.2.0/css/font-awesome.min.css" rel="stylesheet">
-
-
-
-
+    <script src="JS/validacion.js"></script>
     <link rel="stylesheet" type="text/css" href="../../CSS/estilo.css">
 
 </head>
@@ -41,7 +38,7 @@
     <div class="col-12 col-sm-12 col-md-12  col-lg-12">
 
     <?php
-      include "../../INCLUDE/menuPrincipal.inc"
+      include "../../INCLUDE/menuPrincipal.inc";
       ?>
     </div>
   
@@ -49,7 +46,7 @@
         <!-- MENU LATERAL -->
         <div class="col-12 col-sm-5 col-md-4  col-lg-4">
             <?php
-      include "../../INCLUDE/menuRec.inc"
+      include "../../INCLUDE/menuRec.inc";
        ?>
         </div>
         <!-- CONTENIDO-->
@@ -83,7 +80,7 @@
                             </div>
                             <div class="form-group col-12 col-sm-12 col-md-12  col-lg-12">
                                 <label for="inputPassword2">Repite Contraseña</label>
-                                <input type="password" name="contrasena2" class="form-control" id="inputPassword2" placeholder="Repite contraseña" required>
+                                <input type="password" name="contrasena2" class="form-control" id="inputRePassword" placeholder="Repite contraseña" required>
                             </div>
                             <div class="form-group col-12 col-sm-12 col-md-6 col-lg-6">
                                 <label for="inputDni">DNI</label>
