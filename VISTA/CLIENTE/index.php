@@ -1,5 +1,5 @@
 <!DOCTYPE html>
-<html lang="en">
+<html lang="es">
 <head>
   <!-- Theme Made By www.w3schools.com - No Copyright -->
   <title>index cliente</title>
@@ -29,8 +29,8 @@ include "../../INCLUDE/menuCli.inc";
 
       <div class="col-md-4">
       <div class="panel panel-default">
-        <div class="panel-heading">EXPEDIENTE VETERINARIO</div>
-        <div class="panel-body"><a href="#"><img src="../../IMAGENES/expediente.png" class="img-responsive" style="width:100%" alt="Image"></a></div>
+        <div class="panel-heading">PERFIL DEL CLIENTE</div>
+        <div class="panel-body"><a href="../CLIENTE/vistaPerfilDelCliente.php"><img src="../../IMAGENES/expediente.png" class="img-responsive" style="width:100%" alt="Image"></a></div>
       </div>
       </div>
       <div class="col-md-4">
@@ -49,17 +49,6 @@ include "../../INCLUDE/menuCli.inc";
     </div>
   </div>
   </div>
-
-
-
-<!-- Container (Contact Section) -->
-<div id="contact" class="container">
-  <h3 class="text-center">Contacto</h3>
-  <p class="text-center"><em>Contacta con la clínica</em></p>
-      <p class="text-center"><span class="glyphicon glyphicon-map-marker"></span>Fuenlabrada, Madrid</p>
-      <p class="text-center"><span class="glyphicon glyphicon-envelope"></span>Email: veterinariovitalpet@gmail.com</p>
-    </div>
-
 
     <div class="container text-center">    
   <h3>Nuestros patrocinadores</h3>
