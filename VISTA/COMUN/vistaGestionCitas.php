@@ -160,15 +160,15 @@
             <td>".$citas['id_mascota']."</td>
             <td>".$citas['num_consulta']."</td>");
               if($_SESSION['rol'] == 'Veterinario'){
+                echo('<td>');
                 if ($citas['fecha_cita'] ==  $fechaActual) {
-                    echo('<td>
-                <form action="../VETERINARIO/vistaAnadirPrueba.php" method="POST"> 
+                    echo('<form action="../VETERINARIO/vistaAnadirPrueba.php" method="POST"> 
                     <input type="hidden" value="'.$citas['id_mascota'].'" name="id_mascota">
                     <input type="hidden" value="'.$citas['id_cita'].'" name="id_cita">
                     <input type="submit" value="Añadir prueba">
-                </form>
-                </td>');
+                </form>');
                 }
+                echo('</td>');
               } else if( $_SESSION['rol'] == 'Recepcionista'){
                 echo ('<td>
                 <form action="../../CONTROLADOR/controladorRecepcionista.php" method="POST"> 
