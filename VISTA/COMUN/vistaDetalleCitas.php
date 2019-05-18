@@ -98,9 +98,9 @@
                       <td>".$resul["resultado_prueba"]."</td>
                       <td>".$resul["observaciones_prueba"]."</td>
                       <td>".$resul["precio_tipo_prueba"]." €</td>
-                      </tr>
-                      </table>";
+                      </tr>";
                         }
+                        echo "</table>";
                     }
                     ?> 
                                      

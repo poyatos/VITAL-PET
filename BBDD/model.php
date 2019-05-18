@@ -838,6 +838,21 @@
             return $resultado;
         }
         /***************************
+        ****<V PAGO DATOS>***************
+        ****************************/
+        public function visualizarDatosPago($id_cita){
+            $consulta = "SELECT PA.id_pago, PA.fecha_pago, PA.total_precio, C.fecha_cita, U.id_usuario, U.nombre_usuario, U.apellidos_usuario, U.dni_usuario, U.telefono_usuario, U.correo_usuario, U.direccion_usuario, M.nombre_mascota, M.tipo_mascota, M.raza_mascota, T.nombre_tipo_prueba, T.precio_tipo_prueba
+            FROM pagos PA
+            JOIN citas C ON PA.id_cita = C.id_cita
+            JOIN usuarios U ON C.id_cliente = U.id_usuario
+            JOIN mascotas M ON C.id_mascota = M.id_mascota
+            JOIN pruebas PR ON C.id_cita = PR.id_cita
+            JOIN tipos_pruebas T ON PR.id_tipo_prueba = T.id_tipo_prueba
+            WHERE PA.id_cita = $id_cita";
+            $resultado = $this->devolverConsultaArray($consulta);
+            return $resultado;
+        }
+        /***************************
         ****<V FACTURA>*************
         ****************************/
         public function visualizarDatosFactura($id_cita){

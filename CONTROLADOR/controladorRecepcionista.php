@@ -1,6 +1,8 @@
 <?php
     require_once "../BBDD/model.php";
     require_once "../BBDD/config.php";
+    require_once '../FACTURAS/FPDF/fpdf.php';
+    require_once '../FACTURAS/PHPMailer/PHPMailer.php';
 
     session_start();
 
@@ -32,13 +34,11 @@
             $conexion->borrarCita($_POST['id_cita']);
             header("Location: ../VISTA/COMUN/vistaGestionCitas.php");
         } elseif(isset($_POST['finalizarCita'])){
-            // EN PROCESO, HAY QUE PROBAR QUE LOS PDFS SE GENEREN BIEN Y QUE EL ENVIO DE CORREO SEA CORRECTO, CUANDO FUNCIONE DESCOMENTAR TODO
-            require_once '../FACTURAS/FPDF/fpdf.php';
-            require_once '../FACTURAS/PHPMailer/PHPMailer.php';
+            $conexion->insertarPago($_POST['id_cliente'], $_POST['total'], $_POST['fecha'], $_POST['id_cita']);
+            $conexion->finalizarCita($_POST['id_cita']);
+            $datos = $conexion->visualizarDatosPago($_POST['id_cita']);
             include '../FACTURAS/controladorPDF.php';
             include '../FACTURAS/envioFactura.php';
-            //$conexion->insertarPago($_POST['id_cliente'], $_POST['total'], $_POST['fecha'], $_POST['id_cita']);
-            //$conexion->finalizarCita($_POST['id_cita']);
             header("Location: ../VISTA/COMUN/vistaGestionCitas.php");
         }
 
@@ -66,4 +66,6 @@
             header("Location: ../VISTA/COMUN/vistaGestionCliente.php");
         }
     }
+
+    $conexion->desconectar();
 ?>
