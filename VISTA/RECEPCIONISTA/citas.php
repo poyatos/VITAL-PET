@@ -84,3 +84,6 @@
         $arrayVeterinariosDisponiblesJSON = json_encode($arrayVeterinariosDisponibles);
         echo($arrayVeterinariosDisponiblesJSON);
     }
+
+    $conexion->desconectar();
+?>

@@ -101,8 +101,9 @@
                         <input type ="hidden" name="id_cliente" value = "<?= $_POST['id_cliente'] ?>">
                         <input type="submit" name ="anadirMascota" class="btn btn-lg" value="Dar de alta">
                     </form>
-                </div>
+                </div>         
             </div>
+            <button class="btn btn-info"><a class="h4" href="<?= $_SERVER['HTTP_REFERER'] ?>"><span class="glyphicon glyphicon-arrow-left"></span> Volver</a></button>
             </div>
         </div>
 
