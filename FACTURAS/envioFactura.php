@@ -1,10 +1,5 @@
 <?php
-    require_once 'FACTURAS/PHPMailer/PHPMailer.php';
-    
-    session_start();
-    if(!isset($_SESSION['logeado'])){
-        header("Location: index.php");
-    }
+    require_once 'PHPMailer/PHPMailer.php';
     
     $mail = new PHPMailer();
     $correo = $_REQUEST['correo'];
@@ -24,7 +19,7 @@
     $mail->IsHTML(true); // El correo se envía como HTML
     $mail->CharSet = 'UTF-8'; // Activo condificacción utf-8
     $mail->Subject = "Envío de factura ID: $id"; // Este es el titulo del email. 
-    $body = "Gracias por su compra $correo. Le remitimos su factura de compra con el identificador $id";
+    $body = "Gracias por su visita $correo. Le remitimos su factura de la cita con el identificador $id";
         
     $mail->Body = $body; // Mensaje a enviar. $exito = $mail->Send(); // Envía el correo.
     $mail ->addAttachment($fichero);
