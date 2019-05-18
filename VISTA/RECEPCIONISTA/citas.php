@@ -75,7 +75,7 @@
                 }
             }
         } else {
-            $arraySalasDisponibles = [1,2,3,4,5];
+            $arraySalasDisponibles = array(1,2,3,4,5);
         }
         $arraySalasDisponiblesJSON = json_encode($arraySalasDisponibles);
         echo($arraySalasDisponiblesJSON);
