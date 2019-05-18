@@ -161,7 +161,7 @@
             <td>".$citas['num_consulta']."</td>");
               if($_SESSION['rol'] == 'Veterinario'){
                 echo('<td>');
-                if ($citas['fecha_cita'] ==  $fechaActual) {
+                if ($citas['fecha_cita'] <=  $fechaActual) {
                     echo('<form action="../VETERINARIO/vistaAnadirPrueba.php" method="POST"> 
                     <input type="hidden" value="'.$citas['id_mascota'].'" name="id_mascota">
                     <input type="hidden" value="'.$citas['id_cita'].'" name="id_cita">
@@ -175,7 +175,7 @@
                   <input type="hidden" value="'.$citas['id_cita'].'" name="id_cita">
                   <input type="submit" value="Borrar" name="borrarCita">
                 </form>');
-                if ($citas['fecha_cita'] ==  $fechaActual) {
+                if ($citas['fecha_cita'] <=  $fechaActual) {
                     echo('<form action="../RECEPCIONISTA/vistaRealizarPago.php" method="POST">
                   <input type="hidden" value="'.$citas['id_cita'].'" name="id_cita">
                   <input type="submit" value="Finalizar cita">
