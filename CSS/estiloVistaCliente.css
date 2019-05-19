@@ -1,0 +1,44 @@
+.papaMascota{
+    margin-top:10px !important;
+    display:flex;
+    align-items:center;
+  }
+
+  .clienteMascota{
+    padding:25px !important;
+  }
+
+  .clienteMascotas{
+    padding:25px !important;
+  }
+
+  .imgMascota{
+      margin: 1px;
+      padding: 3px;
+  }
+
+  .botonmobile{
+      display:none
+  }
+
+  @media (max-width: 900px) {
+        .papaMascota{
+            margin-top:100px !important;
+            display: block;
+        }
+      .imgMascota{
+          width:100%;
+      }
+      #myCarousel{
+          display:none;
+      }
+      .botondesktop{
+        display:none;
+      }
+      .botonmobile{
+          display:block;
+      }
+    
+  }
+
+  
