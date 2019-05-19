@@ -1,4 +1,4 @@
-/*Acceso rapido a diferentes roles*/
+/*Acceso rápido a diferentes roles*/
 
 -DIRECTOR:
 Dni: 68316493F
