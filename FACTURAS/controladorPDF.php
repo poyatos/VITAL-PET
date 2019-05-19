@@ -56,7 +56,7 @@
                 false
             );
 
-            $pdf->Ln(40);
+            $pdf->Ln(30);
             
             //Tabla para describir factura
             $pdf->SetTextColor(0, 0, 0);
@@ -68,7 +68,7 @@
                 foreach ($datos as $prueba) {
                     $pdf->SetFont('Arial', '', 10);
                     $pdf->Cell(160, 6, utf8_decode($prueba["nombre_tipo_prueba"]), 1, 0, 'C');
-                    $pdf->Cell(20, 6, utf8_decode($prueba["precio__tipo_prueba"]) . chr(128), 1, 0, 'C');
+                    $pdf->Cell(20, 6, utf8_decode($prueba["precio_tipo_prueba"]) . chr(128), 1, 0, 'C');
                     $pdf->Ln(8);
                 }
 
@@ -76,7 +76,7 @@
                 $pdf->Ln(12);
                 $pdf->SetFont('Arial', 'B', 16);
                 $pdf->Cell(90, 6, 'Total: ', 0, 0, 'C');
-                $pdf->Cell(90, 6, $datos[0]['total_pago'] . chr(128), 0, 0, 'C');
+                $pdf->Cell(90, 6, $datos[0]['total_precio'] . chr(128), 0, 0, 'C');
 
                 $fichero = "../FACTURAS/PAGOS/factura".$datos[0]['id_pago'].".pdf";
 
