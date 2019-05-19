@@ -18,7 +18,7 @@
             // Datos del veterinario
             $pdf->SetFont('Arial', 'B', 12);
             $top_datos=45;
-            $pdf->SetXY(40, $top_datos);
+            $pdf->SetXY(30, $top_datos);
             $pdf->Cell(190, 10, "Datos del veterinario:", 0, 2, "J");
             $pdf->SetFont('Arial', '', 9);
             $pdf->MultiCell(
@@ -38,7 +38,7 @@
 
             // Datos del cliente/mascota
             $pdf->SetFont('Arial', 'B', 12);
-            $pdf->SetXY(125, $top_datos);
+            $pdf->SetXY(110, $top_datos);
             $pdf->Cell(190, 10, "Datos del cliente:", 0, 2, "J");
             $pdf->SetFont('Arial', '', 9);
             $pdf->MultiCell(
@@ -61,13 +61,13 @@
             //Tabla para describir factura
             $pdf->SetTextColor(0, 0, 0);
             $pdf->SetFont('Arial', '', 10);
-            $pdf->Cell(100, 6, "PRUEBA", 1, 0, 'C');
+            $pdf->Cell(160, 6, "PRUEBA", 1, 0, 'C');
             $pdf->Cell(20, 6, "PRECIO", 1, 0, 'C');
             $pdf->Ln(10);
 
                 foreach ($datos as $prueba) {
                     $pdf->SetFont('Arial', '', 10);
-                    $pdf->Cell(100, 6, utf8_decode($prueba["nombre_tipo_prueba"]), 1, 0, 'C');
+                    $pdf->Cell(160, 6, utf8_decode($prueba["nombre_tipo_prueba"]), 1, 0, 'C');
                     $pdf->Cell(20, 6, utf8_decode($prueba["precio__tipo_prueba"]) . chr(128), 1, 0, 'C');
                     $pdf->Ln(8);
                 }
