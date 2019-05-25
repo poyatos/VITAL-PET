@@ -18,11 +18,12 @@
       <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.0/js/bootstrap.min.js"></script>
       <script src="//netdna.bootstrapcdn.com/bootstrap/3.2.0/js/bootstrap.min.js"></script>
       <script src="//code.jquery.com/jquery-1.11.1.min.js"></script>
-        <?php
-          if ($_SESSION['rol'] == 'Cliente') {
-              echo"<link rel='stylesheet' type='text/css' href='../../CSS/estiloClienteIndex.css'>";
-          }
-        ?> 
+      <script src="JS/validacionPass.js"></script>
+      <?php
+        if($_SESSION['rol'] == 'Cliente'){
+            echo '<link rel="stylesheet" type="text/css" href="../../CSS/estiloClienteIndex.css">';
+        }
+      ?>
   </head>
   <body>
       <!-- MENU PRINCIPAL -->
@@ -50,8 +51,8 @@
               include "../../INCLUDE/menuVet.inc";
           }
       ?>
-          </div>
-
+      </div>
+          
           <?php
           if ($_SESSION['rol'] != 'Cliente') {
               echo "<div class='logotipo col-12 col-sm-7 col-md-7 col-lg-7'>";
@@ -63,14 +64,14 @@
         <div class="col-12 col-sm-12 col-md-12 col-lg-12">
             
             <h1>¿Deseas cambiar la contraseña?</h1>
-            <form class="formulario" action="controladorComun.php" method="POST">
-                      <label name="contrasena" id="id_contrasena">Nueva Contraseña:
-                      <input class="form-control" name="contrasena" id="id_contrasena" type="password">
+            <form class="formulario" action="../../CONTROLADOR/cambiarPass.php" method="POST" onsubmit="return validarPass()">
+                      <label name="pass" for="id_pass">Nueva Contraseña:
+                      <input class="form-control" name="pass" id="id_pass" type="password">
                       </label><br/>
-                      <label name="contrasena2" id="id_contrasena2">Repite la contraseña:
-                      <input class="form-control" name="contrasena2" id="id_contrasena2" type="password">
+                      <label name="pass2" for="id_pass2">Repite la contraseña:
+                      <input class="form-control" name="pass2" id="id_pass2" type="password">
                       </label><br/>
-                <input type="submit" name="btnContrasena" >
+                <input type="submit" name="btnPass" value="Enviar">
             </form>
         </div>
     </div>

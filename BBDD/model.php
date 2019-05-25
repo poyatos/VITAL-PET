@@ -273,6 +273,16 @@
                 $this->ejecutarConsulta($consulta);
             }   
         }
+
+        /***************************
+        ****<M PASS USUARIO>*****
+        ****************************/
+        public function modificarPass($id, $pass){
+            $passHash = password_hash($pass, PASSWORD_BCRYPT);
+            $consulta = "UPDATE usuarios SET pass_usuario = '$passHash' WHERE id_usuario = $id";
+            return $this->ejecutarConsulta($consulta);
+        }
+
         /***************************
         ****<B USUARIO>*****
         ****************************/
