@@ -50,11 +50,11 @@
         <form  action="CONTROLADOR/login.php" method="POST" enctype="multipart/form-data">
           <div class="form-group">
             <label for="email">Dni:</label>
-            <input type="text" class="form-control" id="dni" placeholder="Dni" name="dni">
+            <input type="text" class="form-control" id="dni" placeholder="Dni" name="dni" required>
           </div>
         <div class="form-group">
           <label for="pwd">Contraseña:</label>
-          <input type="password" class="form-control" id="pwd" placeholder="Contraseña" name="pwd">
+          <input type="password" class="form-control" id="pwd" placeholder="Contraseña" name="pwd" required>
         </div>
           <button id="logueo" type="submit" class="btn btn-default">Iniciar Sesión</button>
       </form>

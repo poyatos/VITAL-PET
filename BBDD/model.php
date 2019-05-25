@@ -247,16 +247,22 @@
                         $rol = strtoupper($columnas['rol_usuario']);
                         header("Location: ../VISTA/$rol");
                     } else {
-                        echo "<br/><h2>Usuario/contraseña incorrecta.</h2>";
-                        echo "<h4>Volver al <a href='../index.php'>formulario</a></h4>";
+                        $_SESSION['exito'] = false;
+                        $_SESSION['mensaje'] = '<h2>Usuario/contraseña incorrecta.</h2>';
+                        $_SESSION['url'] = '../../index.php';
+                        header('Location: ../VISTA/COMUN/vistaAviso.php');
                     }
                 } else {
-                    echo "<br/><h2>Permiso denegado. No tienes acceso a la aplicación.</h2>
-                    <h4>Volver al <a href='../index.php'>formulario</a></h4>";
+                        $_SESSION['exito'] = false;
+                        $_SESSION['mensaje'] = '<h2>Permiso denegado. No tienes acceso a la aplicación.</h2>';
+                        $_SESSION['url'] = '../../index.php';
+                        header('Location: ../VISTA/COMUN/vistaAviso.php');
                 }
             } else {
-                 echo "<br/><h2>Usuario/contraseña incorrecta.</h2>";
-                 echo "<h4>Volver al <a href='../index.php'>formulario</a></h4>";
+                $_SESSION['exito'] = false;
+                $_SESSION['mensaje'] = '<h2>Usuario/contraseña incorrecta.</h2>';
+                $_SESSION['url'] = '../../index.php';
+                header('Location: ../VISTA/COMUN/vistaAviso.php');
             }
         }
         /***************************

@@ -1,5 +1,11 @@
 <?php
     session_start();
+
+    if(isset($_SESSION['rol'])){
+        $rol = $_SESSION['rol'];
+    } else {
+        $rol = '';
+    }
 ?>
 <!DOCTYPE html>
 <html lang="es">
@@ -16,7 +22,7 @@
       <script src="//netdna.bootstrapcdn.com/bootstrap/3.2.0/js/bootstrap.min.js"></script>
       <script src="//code.jquery.com/jquery-1.11.1.min.js"></script>
       <?php
-        if($_SESSION['rol'] == 'Cliente'){
+        if($rol == 'Cliente'){
             echo '<link rel="stylesheet" type="text/css" href="../../CSS/estiloClienteIndex.css">';
         }
       ?>
@@ -27,7 +33,7 @@
         <div class="col-12 col-sm-12 col-md-12  col-lg-12">
             <?php
             if (isset($_SESSION['rol'])) {
-                if ($_SESSION['rol'] == 'Cliente') {
+                if ($rol == 'Cliente') {
                     include "../../INCLUDE/menuCli.inc";
                     echo"<button type='button' class='btn btn-primary btn-block'><a href='../CLIENTE/index.php'><h1>INICIO</h1></a></button>";
                 } else {
@@ -38,21 +44,23 @@
         </div>
       <!-- MENU LATERAL -->
       <?php
-          if ($_SESSION['rol'] != 'Cliente') {
-              echo"<div class='col-12 col-sm-5 col-md-4  col-lg-4'>";
-          }
-          if ($_SESSION['rol'] == 'Director') {
-              include "../../INCLUDE/menuDir.inc";
-          } elseif ($_SESSION['rol'] == 'Recepcionista') {
-              include "../../INCLUDE/menuRec.inc";
-          } elseif ($_SESSION['rol'] == 'Veterinario') {
-              include "../../INCLUDE/menuVet.inc";
-          }
+            if ($rol != '') {
+                if ($rol != 'Cliente') {
+                    echo "<div class='col-12 col-sm-5 col-md-4  col-lg-4'>";
+                }
+                if ($rol == 'Director') {
+                    include "../../INCLUDE/menuDir.inc";
+                } elseif ($rol == 'Recepcionista') {
+                    include "../../INCLUDE/menuRec.inc";
+                } elseif ($rol == 'Veterinario') {
+                    include "../../INCLUDE/menuVet.inc";
+                }
+            }
       ?>
       </div>
           
           <?php
-          if ($_SESSION['rol'] != 'Cliente') {
+          if ($rol != 'Cliente') {
               echo "<div class='logotipo col-12 col-sm-7 col-md-7 col-lg-7'>";
           } else {
               echo "<div class='logotipo col-12 col-sm-12 col-md-12 col-lg-12'>";
@@ -60,25 +68,29 @@
       ?>
       <div class="form-group row">
         <div class="col-12 col-sm-12 col-md-12 col-lg-12">  
-            <p>
-                <?php 
-                    if($_SESSION['exito']){
-                        echo 'Operación realizada correctamente.';
-                    } else {
-                        echo ($_SESSION['mensaje']);
-                    }
-                ?>
-            </p>
-            <form class="formulario" action="<?= $_SESSION['url'] ?>" method="POST">
-                <?php
+            <?php 
+                if($_SESSION['exito']){
+                    echo '<h1><span class="glyphicon glyphicon-ok text-success"></span></h1>';
+                    echo '<h2>Operación realizada correctamente.</h2>';
+                } else {
+                    echo '<h1><span class="glyphicon glyphicon-alert text-danger"></span></h1>';
+                    echo ($_SESSION['mensaje']);
+                }
                 if(isset($_SESSION['parametros'])){
+                    echo "<form class='formulario' action='".$_SESSION['url']."' method='POST'>";
                     foreach($_SESSION['parametros'] as $nombre => $valor){
                         echo "<input type='hidden' name='$nombre' value='$valor'>";
                     }
+                    echo '<input type="submit" name="btnVolver" value="Volver">
+                    </form>';
+                } else {
+                    echo "<a href=".$_SESSION['url'].">Volver</a>";
                 }
-                ?>
-                <input type="submit" name="btnVolver" value="Volver">
-            </form>
+                unset($_SESSION['exito']);
+                unset($_SESSION['mensaje']);
+                unset($_SESSION['parametros']);
+                unset($_SESSION['url']);
+            ?>    
         </div>
     </div>
 </div>
