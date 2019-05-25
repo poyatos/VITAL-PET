@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Servidor: 127.0.0.1
--- Tiempo de generación: 11-05-2019 a las 17:11:22
+-- Tiempo de generación: 25-05-2019 a las 18:14:41
 -- Versión del servidor: 10.1.32-MariaDB
 -- Versión de PHP: 7.1.17
 
@@ -46,9 +46,9 @@ CREATE TABLE `citas` (
 --
 
 INSERT INTO `citas` (`id_cita`, `fecha_cita`, `hora_cita`, `estado_cita`, `num_consulta`, `id_mascota`, `id_cliente`, `id_veterinario`) VALUES
-(2, '2019-05-06', '11:00', 'Finalizado', 3, 1, 1, 35),
-(3, '2019-05-06', '09:00', 'Pendiente', 3, 1, 1, 38),
-(4, '2019-05-06', '10:00', 'Pendiente', 2, 1, 1, 29);
+(1, '2019-05-20', '10:00', 'Pendiente', 3, 1, 1, 29),
+(2, '2019-05-18', '16:00', 'Pendiente', 3, 1, 1, 29),
+(3, '2019-05-18', '20:00', 'Finalizado', 2, 1, 1, 30);
 
 -- --------------------------------------------------------
 
@@ -77,7 +77,6 @@ INSERT INTO `contratos` (`id_contrato`, `fecini_contrato`, `fecfin_contrato`, `s
 (3, '2018-02-01', '2019-07-04', 900, 29, 'Vespertino', 'Activo', 31),
 (4, '2016-12-01', '2019-02-28', 1050, 29, 'Vespertino', 'Finalizado', 32),
 (5, '2012-11-02', '2020-01-10', 1200, 31, 'Vespertino', 'Activo', 33),
-(6, '2013-05-11', '2020-02-11', 1100, 31, 'Vespertino', 'Activo', 33),
 (7, '2013-06-12', '2020-02-13', 1100, 31, 'Vespertino', 'Activo', 34),
 (8, '2018-02-13', '2019-06-30', 950, 29, 'Vespertino', 'Activo', 35),
 (9, '2016-02-02', '2019-09-18', 1000, 31, 'Vespertino', 'Activo', 36),
@@ -178,13 +177,6 @@ CREATE TABLE `pagos` (
   `id_cita` int(11) NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8 COLLATE=utf8_spanish_ci;
 
---
--- Volcado de datos para la tabla `pagos`
---
-
-INSERT INTO `pagos` (`id_pago`, `id_cliente`, `total_precio`, `fecha_pago`, `id_cita`) VALUES
-(1, 1, 5, '2019-05-05', 2);
-
 -- --------------------------------------------------------
 
 --
@@ -205,7 +197,10 @@ CREATE TABLE `pruebas` (
 --
 
 INSERT INTO `pruebas` (`id_prueba`, `id_tipo_prueba`, `id_mascota`, `resultado_prueba`, `observaciones_prueba`, `id_cita`) VALUES
-(1, 1, 1, 'Exito.', 'Sin observaciones.', 2);
+(1, 1, 1, 'Exito.', 'Sin observaciones.', 2),
+(2, 1, 1, 'Exito.', '', 2),
+(3, 3, 1, 'Ok.', '', 3),
+(4, 2, 1, 'Ok.', '', 3);
 
 -- --------------------------------------------------------
 
@@ -302,7 +297,7 @@ CREATE TABLE `usuarios` (
 --
 
 INSERT INTO `usuarios` (`id_usuario`, `nombre_usuario`, `apellidos_usuario`, `dni_usuario`, `telefono_usuario`, `correo_usuario`, `fecna_usuario`, `direccion_usuario`, `rol_usuario`, `pass_usuario`) VALUES
-(1, 'Valentina', 'Perez Ferrer', '77517664M', 691819415, 'valen@gmail.com', '1988-10-05', 'Calle Pablo Luis, 5 28529 - Arganda del Rey', 'Cliente', '$2y$10$8VQB7EgQ5K20WmzOOAaIN.jM9zlWod1fXAZ30W75pRWz7WkE.etpO'),
+(1, 'Valentina', 'Perez Ferrer', '77517664M', 691819415, 'miguelnara22@gmail.com', '1988-10-05', 'Calle Pablo Luis, 5 28529 - Arganda del Rey', 'Cliente', '$2y$10$8VQB7EgQ5K20WmzOOAaIN.jM9zlWod1fXAZ30W75pRWz7WkE.etpO'),
 (2, 'Víctor', 'Serra Bravo', '80328807L', 658660474, 'victor@hotmail.com', '1965-05-10', 'Avenida Dos de Mayo, 69 28409 - Collado Villalba', 'Cliente', '$2y$10$8VQB7EgQ5K20WmzOOAaIN.jM9zlWod1fXAZ30W75pRWz7WkE.etpO'),
 (3, 'Carlos', 'Amador Sanchez', '47490404K', 677854785, 'car@gmail.com', '1972-11-06', 'Calle Simon Hernandez, 20 28109 - Alcobendas', 'Cliente', '$2y$10$8VQB7EgQ5K20WmzOOAaIN.jM9zlWod1fXAZ30W75pRWz7WkE.etpO'),
 (4, 'Lucas', 'Caballero Peña', '99684155Q', 677830541, 'luke@gmail.com', '1990-12-03', 'Calle Estimul, 50 28709 - San Sebastián de los Reyes', 'Cliente', '$2y$10$8VQB7EgQ5K20WmzOOAaIN.jM9zlWod1fXAZ30W75pRWz7WkE.etpO'),
@@ -408,7 +403,7 @@ ALTER TABLE `usuarios`
 -- AUTO_INCREMENT de la tabla `citas`
 --
 ALTER TABLE `citas`
-  MODIFY `id_cita` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=5;
+  MODIFY `id_cita` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=4;
 
 --
 -- AUTO_INCREMENT de la tabla `contratos`
@@ -426,13 +421,13 @@ ALTER TABLE `mascotas`
 -- AUTO_INCREMENT de la tabla `pagos`
 --
 ALTER TABLE `pagos`
-  MODIFY `id_pago` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=2;
+  MODIFY `id_pago` int(11) NOT NULL AUTO_INCREMENT;
 
 --
 -- AUTO_INCREMENT de la tabla `pruebas`
 --
 ALTER TABLE `pruebas`
-  MODIFY `id_prueba` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=2;
+  MODIFY `id_prueba` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=5;
 
 --
 -- AUTO_INCREMENT de la tabla `tipos_pruebas`
