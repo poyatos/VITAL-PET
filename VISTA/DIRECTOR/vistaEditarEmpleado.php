@@ -68,7 +68,7 @@
                     <div class="panel-heading">
                         <h2>EDITAR EMPLEADO</h2>
                     </div>
-                    <form class="formulario" action='../../CONTROLADOR/controladorDirector.php' method='post'>
+                    <form class="formulario" action='../../CONTROLADOR/controladorDirector.php' method='post' onsubmit="return validarContrato()">
                         <div class="form-row">
 
                               <div class="form-group col-12 col-sm-12 col-md-6 col-lg-6">
