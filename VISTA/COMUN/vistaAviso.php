@@ -1,8 +1,5 @@
 <?php
     session_start();
-    if (!isset($_SESSION['usuario']) && !isset($_SESSION['rol'])) {
-        header("Location: ../index.php");
-    }
 ?>
 <!DOCTYPE html>
 <html lang="es">
@@ -18,7 +15,6 @@
       <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.0/js/bootstrap.min.js"></script>
       <script src="//netdna.bootstrapcdn.com/bootstrap/3.2.0/js/bootstrap.min.js"></script>
       <script src="//code.jquery.com/jquery-1.11.1.min.js"></script>
-      <script src="JS/validacionPass.js"></script>
       <?php
         if($_SESSION['rol'] == 'Cliente'){
             echo '<link rel="stylesheet" type="text/css" href="../../CSS/estiloClienteIndex.css">';
@@ -30,12 +26,14 @@
     <div class="row">
         <div class="col-12 col-sm-12 col-md-12  col-lg-12">
             <?php
-              if ($_SESSION['rol'] == 'Cliente') {
-                  include "../../INCLUDE/menuCli.inc";
-                  echo"<button type='button' class='btn btn-primary btn-block'><a href='../CLIENTE/index.php'><h1>INICIO</h1></a></button>";
-              } else {
-                  include "../../INCLUDE/menuPrincipal.inc";
-              }
+            if (isset($_SESSION['rol'])) {
+                if ($_SESSION['rol'] == 'Cliente') {
+                    include "../../INCLUDE/menuCli.inc";
+                    echo"<button type='button' class='btn btn-primary btn-block'><a href='../CLIENTE/index.php'><h1>INICIO</h1></a></button>";
+                } else {
+                    include "../../INCLUDE/menuPrincipal.inc";
+                }
+            }
             ?>
         </div>
       <!-- MENU LATERAL -->
@@ -61,17 +59,25 @@
           }
       ?>
       <div class="form-group row">
-        <div class="col-12 col-sm-12 col-md-12 col-lg-12">
-            
-            <h1>¿Deseas cambiar la contraseña?</h1>
-            <form class="formulario" action="../../CONTROLADOR/cambiarPass.php" method="POST" onsubmit="return validarPass()">
-                      <label name="pass" for="id_pass">Nueva Contraseña:</label>
-                      <input class="form-control" name="pass" id="id_pass" type="password">
-                      <br/>
-                      <label name="pass2" for="id_pass2">Repite la contraseña:</label>
-                      <input class="form-control" name="pass2" id="id_pass2" type="password">
-                      <br/>
-                <input type="submit" name="btnPass" value="Enviar">
+        <div class="col-12 col-sm-12 col-md-12 col-lg-12">  
+            <p>
+                <?php 
+                    if($_SESSION['exito']){
+                        echo 'Operación realizada correctamente.';
+                    } else {
+                        echo ($_SESSION['mensaje']);
+                    }
+                ?>
+            </p>
+            <form class="formulario" action="<?= $_SESSION['url'] ?>" method="POST">
+                <?php
+                if(isset($_SESSION['parametros'])){
+                    foreach($_SESSION['parametros'] as $nombre => $valor){
+                        echo "<input type='hidden' name='$nombre' value='$valor'>";
+                    }
+                }
+                ?>
+                <input type="submit" name="btnVolver" value="Volver">
             </form>
         </div>
     </div>

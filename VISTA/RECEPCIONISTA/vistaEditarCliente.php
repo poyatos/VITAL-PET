@@ -90,7 +90,7 @@
                         </div>
                         <div class="form-group col-12 col-sm-12 col-md-6 col-lg-6">
                             <label for="inputCorreo">Correo</label>
-                            <input type="text" name="correo" class="form-control" id="inputCorreo" value ="<?= $cliente['correo_usuario']?>" required>
+                            <input type="email" name="correo" class="form-control" id="inputCorreo" value ="<?= $cliente['correo_usuario']?>" required>
                         </div>
                         <div class="form-row">
                             <div class="form-group col-12 col-sm-12 col-md-6 col-lg-6">
@@ -99,7 +99,7 @@
                             </div>
                             <div class="form-group col-12 col-sm-12 col-md-6 col-lg-6">
                                 <label for="inputTelefono">Telefono</label>
-                                <input type="text" name="telefono" class="form-control" id="telefono" value ="<?= $cliente['telefono_usuario']?>" required>
+                                <input type="number" name="telefono" class="form-control" id="telefono" pattern="[0-9]{9}" value ="<?= $cliente['telefono_usuario']?>" required>
                             </div>
                         </div>
                         <div class="form-group col-12 col-sm-12 col-md-12 col-lg-12">

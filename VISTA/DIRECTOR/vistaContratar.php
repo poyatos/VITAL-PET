@@ -85,7 +85,7 @@
                           </div>
                           <div class="form-group col-12 col-sm-12 col-md-6 col-lg-6">
                             <label for="inputTelefono">Telefono</label>
-                            <input type="number" name="telefono" class="form-control" id="telefono_id" required>
+                            <input type="number" name="telefono" class="form-control" id="telefono_id" pattern="[0-9]{9}" required>
                           </div>
                         </div>
                         <div class="form-group col-12 col-sm-12 col-md-6 col-lg-6">

@@ -66,16 +66,16 @@
               <?php
               if(isset($_POST['editarContrato'])){
 
-                 echo" <h2>EDITAR CONTRATO</h2>";
+                 echo "<h2>EDITAR CONTRATO</h2>";
 
               } else {
 
-                echo"<h2>RENOVAR CONTRATO</h2>";
+                echo "<h2>RENOVAR CONTRATO</h2>";
             
               }
                 ?>
             </div>
-            <form class="formulario" action='../../CONTROLADOR/controladorDirector.php' method='post>
+            <form class="formulario" action='../../CONTROLADOR/controladorDirector.php' method='post'>
               <div class="form-row">
 
 
@@ -97,7 +97,7 @@
             <select name="horario" id="inputJob" class="form-control" required>
             <?php
             if($contrato['horario_contrato'] == "Vespertino"){
-             echo " <option value='Vespertino' selected>Vespertino</option>
+             echo "<option value='Vespertino' selected>Vespertino</option>
               <option value='matutino'>Matutino</option>";
             }else{
               echo"<option value='Vespertino'>Vespertino</option>
