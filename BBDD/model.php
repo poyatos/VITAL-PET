@@ -210,7 +210,10 @@
         ****<V VETERINARIOS DISPONIBLES>*****
         ****************************/
         public function visualizarVeterinariosDisponibles($fecha, $hora){
-            $consulta = "SELECT id_usuario, nombre_usuario, apellidos_usuario, dni_usuario FROM usuarios WHERE rol_usuario LIKE 'Veterinario' AND id_usuario NOT IN (SELECT id_veterinario FROM citas WHERE fecha_cita = '$fecha' AND hora_cita = '$hora' AND estado_cita = 'Pendiente')";
+            $consulta = "SELECT id_usuario, nombre_usuario, apellidos_usuario, dni_usuario FROM usuarios U
+            JOIN contratos C
+            ON U.id_usuario = C.id_contratado
+            WHERE estado_contrato LIKE 'Activo' AND rol_usuario LIKE 'Veterinario' AND id_usuario NOT IN (SELECT id_veterinario FROM citas WHERE fecha_cita = '$fecha' AND hora_cita = '$hora' AND estado_cita = 'Pendiente')";
             $resultado = $this->devolverConsultaArray($consulta);
             return $resultado;
         }
