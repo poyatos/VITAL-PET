@@ -4,12 +4,14 @@
         header("Location: ../index.php");
     }
 
-    if (isset($_GET["fecha"]) && isset($_GET["dni"])) {
+    if (isset($_GET["fecha"]) && isset($_GET["dni"]) && isset($_GET["estado"])) {
         $fecha = $_GET["fecha"];
         $dni = $_GET["dni"];
+        $estado = $_GET["estado"];
     } else {
         $fecha = "";
         $dni = "";
+        $estado = "";
     }
 ?>
 <!DOCTYPE html>
@@ -87,9 +89,22 @@
                 </div>
                 <div class="col-12 col-sm-12 col-md-3 col-lg-3">
                       <label name="busquedaCita_lb" id="id_busqueda_Nombre">Estado de cita:
-                        <select>
-                            <option value="'.$pendiente.'">Pendiente</option>
-                            <option value="'.$finalizado.'">Finalizado</option>
+                        <select name="estado">
+                            <option value=""';
+                            if($estado == 'Todas'){
+                                echo 'selected';
+                            } 
+                            echo '>Todas</option>
+                            <option value="Pendiente"';
+                            if($estado == 'Pendiente'){
+                                echo 'selected';
+                            } 
+                            echo '>Pendiente</option>
+                            <option value="Finalizado"';
+                            if($estado == 'Finalizado'){
+                                echo 'selected';
+                            } 
+                            echo '>Finalizado</option>
                         </select>
                       </label>
                 </div>
@@ -127,11 +142,11 @@
             $fechaActual = date("Y-m-d");
 
             if ($_SESSION['rol'] == 'Veterinario') {
-                $resultado = $conexion->visualizarCitasVeterinarioFiltrado($_SESSION['id_usuario'], $fecha, $dni);
+                $resultado = $conexion->visualizarCitasVeterinarioFiltrado($_SESSION['id_usuario'], $fecha, $dni, $estado);
             } elseif ($_SESSION['rol'] == 'Cliente') {
                 $resultado = $conexion->visualizarCitasCliente($_SESSION['id_usuario']);
             } else {
-                $resultado = $conexion->visualizarCitasFiltrado($fecha, $dni);
+                $resultado = $conexion->visualizarCitasFiltrado($fecha, $dni, $estado);
             }
 
             if (!empty($resultado)) {
@@ -152,11 +167,11 @@
                 $total_paginas = ceil($total_registros / $tamano_pagina);
                 
                 if ($_SESSION['rol'] == 'Veterinario') {
-                    $resultadoPaginacion = $conexion->visualizarCitasVeterinarioFiltradoPaginacion($_SESSION['id_usuario'], $fecha, $dni, $inicio, $tamano_pagina);
+                    $resultadoPaginacion = $conexion->visualizarCitasVeterinarioFiltradoPaginacion($_SESSION['id_usuario'], $fecha, $dni, $estado, $inicio, $tamano_pagina);
                 } elseif ($_SESSION['rol'] == 'Cliente') {
                     $resultadoPaginacion = $conexion->visualizarCitasClientePaginacion($_SESSION['id_usuario'], $inicio, $tamano_pagina);
                 } else {
-                    $resultadoPaginacion = $conexion->visualizarCitasFiltradoPaginacion($fecha, $dni, $inicio, $tamano_pagina);
+                    $resultadoPaginacion = $conexion->visualizarCitasFiltradoPaginacion($fecha, $dni, $estado, $inicio, $tamano_pagina);
                 }
                 foreach ($resultadoPaginacion as $citas) {
                     echo(" <tr>
@@ -201,7 +216,7 @@
     <!--PAGINACIÓN-->
     <div class="col-12 col-sm-12 col-md-12 col-lg-12">
     <?php
-        $busqueda = "&fecha=".$fecha."&dni=".$dni;
+        $busqueda = "&fecha=".$fecha."&dni=".$dni."&estado=".$estado;
                 include '../../INCLUDE/piePaginacion.php';
             } else {
                 echo("<p>No se han encontrado resultados.</p>");

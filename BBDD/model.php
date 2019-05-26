@@ -413,24 +413,14 @@
         ****<R CITAS>*******
         ****************************/
         public function anadirCita($fecha, $hora, $consulta, $id_mascota, $id_cliente, $id_veterinario){
-            //CODIGO ANTIGUO (NO FUNCIONA)
-            /*$consulta = "SELECT * FROM citas WHERE fecha_cita = $fecha AND hora_cita = $hora";
-
-            if ($this->existeFila($consulta)) {
-                 echo "<br/><h2>La cita ya existe.</h2><br/>";
-            } else {
-                $sql = "INSERT INTO citas (fecha_cita, hora_cita, estado_cita, num_consulta, id_mascota, id_cliente, id_veterinario)
-                VALUES ('$fecha', '$hora', 'Pendiente', $consulta, $id_mascota, $id_cliente, $id_veterinario)";
-                if ($this->ejecutarConsulta($sql)) {
-                     echo "<br/><h2>Cita registrada correctamente.</h2>";
-                } else {
-                     echo "<h2>Error al crear la cita." . $sql . "</h2><br/>";
-                     echo "<h5><a href='registroFormulario.php'>Intentelo de nuevo</a></h5>"; 
-                }
-            }*/
             $sql = "INSERT INTO citas (fecha_cita, hora_cita, estado_cita, num_consulta, id_mascota, id_cliente, id_veterinario)
                 VALUES ('$fecha', '$hora', 'Pendiente', $consulta, $id_mascota, $id_cliente, $id_veterinario)";
-            $this->ejecutarConsulta($sql);
+            if ($this->ejecutarConsulta($sql)) {
+                echo "<br/><h2>Cita registrada correctamente.</h2>";
+           } else {
+                echo "<h2>Error al crear la cita." . $sql . "</h2><br/>";
+                echo "<h5><a href='registroFormulario.php'>Intentelo de nuevo</a></h5>"; 
+           }
         }
         /***************************
         ****<V CITAS>***************
@@ -465,22 +455,22 @@
         /***************************
         ****<F CITAS>*******
         ****************************/
-        public function visualizarCitasFiltrado($fecha, $dni){
+        public function visualizarCitasFiltrado($fecha, $dni, $estado){
             $consulta = "SELECT usuarios.dni_usuario, id_cita, fecha_cita, hora_cita, estado_cita, num_consulta, id_mascota, id_cliente, id_veterinario 
             FROM citas
             INNER JOIN usuarios
-            ON citas.id_cliente = usuarios.id_usuario WHERE  fecha_cita LIKE '%$fecha%' AND dni_usuario LIKE '%$dni%'";
+            ON citas.id_cliente = usuarios.id_usuario WHERE  fecha_cita LIKE '%$fecha%' AND dni_usuario LIKE '%$dni%' AND estado_cita LIKE '%$estado%'";
             $resultado = $this->devolverConsultaArray($consulta);
             return $resultado;
         }
         /***************************
         ****<FP CITAS>*******
         ****************************/ 
-        public function visualizarCitasFiltradoPaginacion($fecha, $dni, $inicio, $tamano_pagina){
+        public function visualizarCitasFiltradoPaginacion($fecha, $dni, $estado, $inicio, $tamano_pagina){
             $consulta = "SELECT usuarios.dni_usuario, id_cita, fecha_cita, hora_cita, estado_cita, num_consulta, id_mascota, id_cliente, id_veterinario 
             FROM citas
             INNER JOIN usuarios
-            ON citas.id_cliente = usuarios.id_usuario WHERE  fecha_cita LIKE '%$fecha%' AND dni_usuario LIKE '%$dni%' LIMIT ".$inicio."," . $tamano_pagina;
+            ON citas.id_cliente = usuarios.id_usuario WHERE  fecha_cita LIKE '%$fecha%' AND dni_usuario LIKE '%$dni%' AND estado_cita LIKE '%$estado%' LIMIT ".$inicio."," . $tamano_pagina;
             $resultado = $this->devolverConsultaArray($consulta);
             return $resultado;
         }
@@ -560,23 +550,23 @@
         /***************************
         ****<F CITAS VETERINARIO>***
         ****************************/
-         public function visualizarCitasVeterinarioFiltrado($id, $fecha, $dni){
+         public function visualizarCitasVeterinarioFiltrado($id, $fecha, $dni, $estado){
             $consulta = "SELECT usuarios.dni_usuario, id_cita, fecha_cita, hora_cita, estado_cita, num_consulta, id_mascota, id_cliente, id_veterinario 
             FROM citas
             INNER JOIN usuarios
-            ON citas.id_cliente = usuarios.id_usuario WHERE id_veterinario = $id AND fecha_cita LIKE '%$fecha%' AND dni_usuario LIKE '%$dni%'";
+            ON citas.id_cliente = usuarios.id_usuario WHERE id_veterinario = $id AND fecha_cita LIKE '%$fecha%' AND dni_usuario LIKE '%$dni%' AND estado_cita LIKE '%$estado%'";
             $resultado = $this->devolverConsultaArray($consulta);
             return $resultado;
         }
         /***************************
         ****<VP CITAS VETERINARIO>***
         ****************************/
-        public function visualizarCitasVeterinarioFiltradoPaginacion($id, $fecha, $dni, $inicio, $tamano_pagina){
+        public function visualizarCitasVeterinarioFiltradoPaginacion($id, $fecha, $dni, $estado, $inicio, $tamano_pagina){
             $consulta = "SELECT usuarios.dni_usuario, id_cita, fecha_cita, hora_cita, estado_cita, num_consulta, id_mascota, id_cliente, id_veterinario 
             FROM citas
             INNER JOIN usuarios
             ON citas.id_cliente = usuarios.id_usuario WHERE id_veterinario = $id AND fecha_cita LIKE '%$fecha%' 
-            AND dni_usuario LIKE '%$dni%' LIMIT ".$inicio."," . $tamano_pagina;
+            AND dni_usuario LIKE '%$dni%' AND estado_cita LIKE '%$estado%' LIMIT ".$inicio."," . $tamano_pagina;
             $resultado = $this->devolverConsultaArray($consulta);
             return $resultado;
         }
