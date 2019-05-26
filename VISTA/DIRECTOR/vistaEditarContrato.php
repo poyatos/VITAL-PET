@@ -66,11 +66,13 @@
               <?php
               if(isset($_POST['editarContrato'])){
 
-                 echo "<h2>EDITAR CONTRATO</h2>";
+                 echo "<h2>EDITAR CONTRATO</h2>
+                 <p class='camposObligatorios'> (*) Campos obligatorios </p>";
 
               } else {
 
-                echo "<h2>RENOVAR CONTRATO</h2>";
+                echo "<h2>RENOVAR CONTRATO</h2>
+                <p class='camposObligatorios'> (*) Campos obligatorios </p>";
             
               }
                 ?>
@@ -80,20 +82,20 @@
 
 
                 <div class="form-group col-12 col-sm-12 col-md-6 col-lg-6">
-            <label for="inputFInicio">Fecha Inicio</label>
+            <label for="inputFInicio">Fecha Inicio (*)</label>
             <input type="date"  name="fecini"  class="form-control" id="fecha" value="<?= $contrato['fecini_contrato']?>" required>
           </div>
           <div class="form-group col-md-6">
-            <label for="inputFFin">Fecha Fin</label>
+            <label for="inputFFin">Fecha Fin (*)</label>
             <input type="date"  name="fecfin"  class="form-control" id="fecha" value="<?= $contrato['fecfin_contrato']?>" required>
           </div>
           <div class="form-group col-md-6">
-            <label for="inputSueldo">Sueldo</label>
+            <label for="inputSueldo">Sueldo (*)</label>
             <input type="number"  name="sueldo"  class="form-control" id="1000" value="<?= $contrato['sueldo_contrato']?>" required>
           </div>
 
           <div class="form-group col-md-6">
-            <label for="inputJob">Elige el horario</label>
+            <label for="inputJob">Elige el horario (*)</label>
             <select name="horario" id="inputJob" class="form-control" required>
             <?php
             if($contrato['horario_contrato'] == "Vespertino"){
@@ -108,7 +110,7 @@
           </div>
 
           <div class="form-group col-md-12">
-            <label for="inputfevac">Dias de vacaciones</label>
+            <label for="inputfevac">Dias de vacaciones (*)</label>
             <input type="number"  name="diasvac"  class="form-control" id="fechavac" value="<?= $contrato['diasvac_contrato']?>" required>
           </div>
 

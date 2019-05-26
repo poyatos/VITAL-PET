@@ -75,17 +75,25 @@
     <?php
         if ($_SESSION['rol'] != 'Cliente') {
             echo '<form class="formulario" action="vistaGestionCitas.php" method="GET">
-                <div class="col-12 col-sm-12 col-md-4 col-lg-4">
+                <div class="col-12 col-sm-12 col-md-3 col-lg-3">
                       <label name="busquedaFecha_lb" id="id_busqueda_Nombre">Fecha:
                       <input class="form-control" name="fecha" id="myInput" type="date" value="'.$fecha.'">
                       </label>
                 </div>
-                <div class="col-12 col-sm-12 col-md-4 col-lg-4">
+                <div class="col-12 col-sm-12 col-md-3 col-lg-3">
                       <label name="busquedaDni_lb" id="id_busqueda_nombre">DNI:
                       <input class="form-control" name="dni" id="myInput" type="text" value="'.$dni.'" placeholder="Busqueda...">
                       </label>
                 </div>
-                <div class="col-12 col-sm-12 col-md-4 col-lg-4">
+                <div class="col-12 col-sm-12 col-md-3 col-lg-3">
+                      <label name="busquedaCita_lb" id="id_busqueda_Nombre">Estado de cita:
+                        <select>
+                            <option value="'.$pendiente.'">Pendiente</option>
+                            <option value="'.$finalizado.'">Finalizado</option>
+                        </select>
+                      </label>
+                </div>
+                <div class="col-12 col-sm-12 col-md-3 col-lg-3">
                       <input type="submit" class="btn btn-info botonsitobb" value="Buscar" name="busqueda">
                 </div>
                       
@@ -165,7 +173,7 @@
                             echo('<form action="../VETERINARIO/vistaAnadirPrueba.php" method="POST"> 
                             <input type="hidden" value="'.$citas['id_mascota'].'" name="id_mascota">
                             <input type="hidden" value="'.$citas['id_cita'].'" name="id_cita">
-                            <input type="submit" value="Añadir prueba">
+                            <input class="btn btn-primary" type="submit" value="Añadir prueba">
                             </form>');
                         }
                         echo('</td>');
@@ -174,12 +182,12 @@
                         if ($citas['estado_cita'] != 'Finalizado') {
                             echo('<form action="../../CONTROLADOR/controladorRecepcionista.php" method="POST"> 
                             <input type="hidden" value="'.$citas['id_cita'].'" name="id_cita">
-                            <input type="submit" value="Borrar" name="borrarCita">
+                            <input class="btn btn-primary" type="submit" value="Borrar" name="borrarCita">
                             </form>');
                             if ($citas['fecha_cita'] <=  $fechaActual) {
                                 echo('<form action="../RECEPCIONISTA/vistaRealizarPago.php" method="POST">
                                 <input type="hidden" value="'.$citas['id_cita'].'" name="id_cita">
-                                <input type="submit" value="Finalizar cita">
+                                <input class="btn btn-primary" type="submit" value="Finalizar cita">
                                 </form>');
                             }
                         }

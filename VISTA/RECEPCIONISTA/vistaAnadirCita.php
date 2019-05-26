@@ -67,6 +67,7 @@
                 <div class="panel panel-default">
                     <div class="panel-heading">
                         <h2>AÑADIR CITA</h2>
+                        <p class='camposObligatorios'> (*) Campos obligatorios </p>
                     </div>
                     <form class="formulario" action='../../CONTROLADOR/controladorRecepcionista.php' method='POST'>
                         <div class="form-group col-12 col-sm-12 col-md-12 col-lg-12">
@@ -74,23 +75,23 @@
                         </div>
                         <div class="form-row">
                             <div class="form-group col-12 col-sm-12 col-md-6 col-lg-6">
-                                <label for="inputFecha">Fecha</label>
+                                <label for="inputFecha">Fecha (*)</label>
                                 <input type="date" name="fecha" class="form-control" id="inputFecha" required>
                             </div>
                             <div class="form-group col-12 col-sm-12 col-md-6 col-lg-6">
-                            <label for="inputHora">Hora</label>
+                            <label for="inputHora">Hora (*)</label>
                                 <select name="hora" id="inputHora" class="form-control" required> 
                                      
                                 </select>
                             </div>
                             <div class="form-group col-12 col-sm-12 col-md-12 col-lg-12">
-                            <label for="inputSala">Sala</label>
+                            <label for="inputSala">Sala (*)</label>
                             <select name="consulta" id="inputSala" class="form-control" required>
                                     
                             </select>
                             </div>
                             <div class="form-group col-12 col-sm-12 col-md-12 col-lg-12">
-                            <label for="inputVeterinario">Veterinario</label>
+                            <label for="inputVeterinario">Veterinario (*)</label>
                             <select name="id_veterinario" id="inputVeterinario" class="form-control" required>
 
                             </select>

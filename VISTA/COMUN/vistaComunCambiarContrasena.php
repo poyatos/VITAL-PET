@@ -71,7 +71,7 @@
                       <label name="pass2" for="id_pass2">Repite la contraseña:</label>
                       <input class="form-control" name="pass2" id="id_pass2" type="password">
                       <br/>
-                <input type="submit" name="btnPass" value="Enviar">
+                <input class="btn btn-primary" type="submit" name="btnPass" value="Enviar">
             </form>
         </div>
     </div>

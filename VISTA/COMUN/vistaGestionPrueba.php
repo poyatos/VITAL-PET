@@ -159,11 +159,11 @@ if($_SESSION['rol'] != 'Cliente'){
                     echo ('<td>
                         <form action="../VETERINARIO/vistaEditarPrueba.php" method="POST">
                             <input type="hidden" value="'.$prueba['id_prueba'].'" name="id_prueba">
-                            <input type="submit" value="Editar">
+                            <input class="btn btn-primary" type="submit" value="Editar">
                         </form>
                         <form action="../../CONTROLADOR/controladorVeterinario.php" method="POST"> 
                             <input type="hidden" value="'.$prueba['id_prueba'].'" name="id_prueba">
-                            <input type="submit" value="Borrar" name="borrarPrueba">
+                            <input class="btn btn-primary" type="submit" value="Borrar" name="borrarPrueba">
                         </form>
                         </td>');
                 }

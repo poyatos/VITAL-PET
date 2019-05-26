@@ -149,18 +149,18 @@
                       <form action="../RECEPCIONISTA/vistaAnadirCita.php" method="POST">
                         <input type="hidden" value="'.$mascota['id_cliente'].'" name="id_cliente">
                         <input type="hidden" value="'.$mascota['id_mascota'].'" name="id_mascota"> 
-                        <input type="submit" value="Añadir citas">
+                        <input class="btn btn-primary" type="submit" value="Añadir citas">
                       </form>
                       </td>');
               } else if ($_SESSION['rol'] == 'Veterinario'){
                  echo ( '<td>
                       <form action="../VETERINARIO/vistaEditarMascota.php" method="POST">
                         <input type="hidden" value="'.$mascota['id_mascota'].'" name="id_mascota">
-                        <input type="submit" value="Editar">
+                        <input class="btn btn-primary" type="submit" value="Editar">
                       </form>
                       <form action="../../CONTROLADOR/controladorVeterinario.php" method="POST"> 
                         <input type="hidden" value="'.$mascota['id_mascota'].'" name="id_mascota">
-                        <input type="submit" value="Borrar" name="borrarMascota">
+                        <input class="btn btn-primary" type="submit" value="Borrar" name="borrarMascota">
                       </form>
                       </td>');
               }

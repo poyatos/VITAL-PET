@@ -1,5 +1,5 @@
  <div class="container-fluid text-center">
-    <div class="row content">
+    <div class="row content late">
         <div class="nav-side-menu">
             <div class="brand">DIRECTOR</div>
             <i class="fa fa-bars fa-2x toggle-btn" data-toggle="collapse" data-target="#menu-content"></i>

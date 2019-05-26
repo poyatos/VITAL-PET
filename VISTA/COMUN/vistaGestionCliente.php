@@ -151,26 +151,28 @@
                   <td>".$clientes['direccion_usuario']."</td>");
 
                     if($_SESSION['rol'] == 'Recepcionista'){
-                       echo ('<td>
+                       echo ('<td class="botonesAccion">
+                       <div class="btn-group-vertical">
                       <form action="../RECEPCIONISTA/vistaRegistroMascota.php" method="POST">
                         <input type="hidden" value="'.$clientes['id_usuario'].'" name="id_cliente">
-                        <input type="submit" value="Añadir mascota" name="anadirMascota"> 
+                        <input class="btn btn-primary" type="submit" value="Añadir mascota" name="anadirMascota"> 
                       </form>
                       <form action="../RECEPCIONISTA/vistaEditarCliente.php" method="POST">
                         <input type="hidden" value="'.$clientes['id_usuario'].'" name="id_cliente">
-                        <input type="submit" value="Editar" name="editarCliente">
+                        <input class="btn btn-primary" type="submit" value="Editar" name="editarCliente">
                       </form>
                       <form action="../../CONTROLADOR/controladorRecepcionista.php" method="POST">
                         <input type="hidden" value="'.$clientes['id_usuario'].'" name="id_cliente">
-                        <input type="submit" value="Borrar" name="borrarCliente">
+                        <input class="btn btn-primary" type="submit" value="Borrar" name="borrarCliente">
                       </form>
+                      </div>
                       </td>');
 
                     }else if($_SESSION['rol'] == 'Veterinario'){
                       /* PENDIENTE DE VER COMO HACERLO */
-                       echo ('<td>
+                       echo ('<td class="botonesAccion">
                       <form action="" method="POST"> 
-                        <input type="submit" value="Ver mascotas" name="verMascotas">
+                        <input class="btn btn-primary" type="submit" value="Ver mascotas" name="verMascotas">
                       </form>
                       </td>');
                     }

@@ -67,6 +67,7 @@
               <div class="panel panel-default">
               <div class="panel-heading">
                   <h2>AÑADIR PRUEBA</h2>
+                  <p class='camposObligatorios'> (*) Campos obligatorios </p>
               </div>
                   <form class="formulario" action ="../../CONTROLADOR/controladorVeterinario.php" method="POST">
                           <div class="form-group col-12 col-sm-12 col-md-6 col-lg-6">
@@ -74,7 +75,7 @@
                           </div>
 
                           <div class="form-group col-12 col-sm-12 col-md-6  col-lg-6">
-                            <label for="inputPrueba">Escoja la prueba</label>
+                            <label for="inputPrueba">Escoja la prueba (*)</label>
                             <select name="id_tipo_prueba" id="inputPrueba_id" class="form-control" required>
                             <?php
                                 foreach($resultado as $tipos){

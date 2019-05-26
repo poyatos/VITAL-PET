@@ -140,19 +140,19 @@
                 <input type='hidden' name='id_usuario' value='".$empleado["id_usuario"]."'/>
                 ");
                 if ($contrato['estado_contrato'] == 'Finalizado') {
-                    echo ("<input type='submit' class='btn' name='renovarContrato' value='Renovar'/>
+                    echo ("<input type='submit' class='btn btn-primary' name='renovarContrato' value='Renovar'/>
                     </form>");
                 } else {
-                  echo ("<input type='submit' class='btn' name='editarContrato' value='Editar contrato'/>
+                  echo ("<input type='submit' class='btn btn-primary' name='editarContrato' value='Editar contrato'/>
                   </form>
                   <form action='../../CONTROLADOR/controladorDirector.php' method='POST'>
                     <input type='hidden' name='id_usuario' value='".$empleado["id_usuario"]."'/>
-                    <input type='submit' class='btn' name='despedirContrato' value='Despedir'/>
+                    <input type='submit' class='btn btn-primary' name='despedirContrato' value='Despedir'/>
                     </form>");
                 }
               echo ("<form action='vistaEditarEmpleado.php' method='POST'>
                 <input type='hidden' name='id_usuario' value='".$empleado["id_usuario"]."'/>
-                <input type='submit' class='btn' value='Editar'/>
+                <input type='submit' class='btn btn-primary' value='Editar'/>
               </form>
               </td>
             </tr>");

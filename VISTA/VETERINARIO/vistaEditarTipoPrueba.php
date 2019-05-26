@@ -63,6 +63,7 @@
               <div class="panel panel-default">
               <div class="panel-heading">
                   <h2>AÑADIR TIPO PRUEBA</h2>
+                  <p class='camposObligatorios'> (*) Campos obligatorios </p>
               </div>
                   <form class="formulario" action="../../CONTROLADOR/controladorVeterinario.php" method="POST">
                           <div class="form-group col-12 col-sm-12 col-md-6 col-lg-6">
@@ -70,12 +71,12 @@
                           </div>
 
                           <div class="form-group col-12 col-sm-12 col-md-6  col-lg-6">
-                            <label for="inputPrueba">Nombre de la prueba:</label>
+                            <label for="inputPrueba">(*) Nombre de la prueba:</label>
                             <input type="text" name="nombre" id="nombre_id" placeholder="Nombre" value ="<?= $tipoPrueba['nombre_tipo_prueba']?>" required  />
                           </div>
 
                           <div class="form-group col-12 col-sm-12 col-md-6  col-lg-6">
-                            <label for="inputPrueba">Precio de la prueba:</label>
+                            <label for="inputPrueba">(*) Precio de la prueba:</label>
                             <input type="number" name="precio" id="precio_id" step="0.01" placeholder="Precio en euros" value ="<?= $tipoPrueba['precio_tipo_prueba']?>" required />
                           </div>
                     <input type = "hidden" name="id_tipo_prueba" value ="<?= $tipoPrueba['id_tipo_prueba']?>">

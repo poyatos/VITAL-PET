@@ -61,6 +61,7 @@
                 <div class="panel panel-default">
                     <div class="panel-heading">
                         <h2>REGISTRO DE MASCOTA</h2>
+                        <p class='camposObligatorios'> (*) Campos obligatorios </p>
                     </div>
 
                     <div class="form-group col-12 col-sm-12 col-md-12 col-lg-12">
@@ -69,31 +70,31 @@
                         </div>
                         <div class="form-row">
                             <div class="form-group col-md-6">
-                                <label for="inputNombre">Nombre</label>
+                                <label for="inputNombre">Nombre (*)</label>
                                 <input type="text" name="nombre" class="form-control" id="inputNombre" placeholder="Nombre" required>
                             </div>
                             <div class="form-group col-md-6">
-                                <label for="inputTip">Tipo</label>
+                                <label for="inputTip">Tipo (*)</label>
                                 <input type="text" name="tipo" class="form-control" id="inputTip" placeholder="perro" required>
                             </div>
                             <div class="form-group col-md-12">
-                                <label for="inputRaz">Raza</label>
+                                <label for="inputRaz">Raza (*)</label>
                                 <input type="text" name="raza" class="form-control" id="inputRaz" placeholder="labrador.." required>
                             </div>
                             <div class="form-group col-md-12">
-                                <label for="inputSex">Elije el sexo</label>
+                                <label for="inputSex">Elije el sexo (*)</label>
                                 <select name="sexo" id="inputSex" class="form-control" required>          
                                     <option value="Macho" selected>Macho</option>
                                     <option value="Hembra">Hembra</option>     
                                 </select>
                             </div>
                             <div class="form-group col-md-12">
-                                <label for="inputfecna">Fecha nacimiento</label>
+                                <label for="inputfecna">Fecha nacimiento (*)</label>
                                 <input type="date" name="fecna" class="form-control" id="inputfecna" required>
                             </div>
                         </div>
                         <div class="form-group col-md-12">
-                            <label for="inputPeso">Peso</label>
+                            <label for="inputPeso">Peso (*)</label>
                             <input type="number" name="peso" class="form-control" id="inputPeso" placeholder="30kilos" required>
                         </div>
                         <div class="form-row">

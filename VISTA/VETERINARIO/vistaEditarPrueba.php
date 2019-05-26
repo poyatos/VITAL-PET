@@ -65,6 +65,7 @@
                       <div class="panel panel-default">
                           <div class="panel-heading">
                               <h2>EDITAR PRUEBA</h2>
+                              <p class='camposObligatorios'> (*) Campos obligatorios </p>
                           </div>
                         <form class="formulario" action="../../CONTROLADOR/controladorVeterinario.php" method="POST">
                             <!-- Aqui se elige el resultado de la prueba-->

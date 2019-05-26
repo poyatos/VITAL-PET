@@ -66,6 +66,7 @@
                 <div class="panel panel-default">
                     <div class="panel-heading">
                         <h2>REGISTRO DE CLIENTE</h2>
+                        <p class='camposObligatorios'> (*) Campos obligatorios </p>
                     </div>
 
                     
@@ -76,34 +77,34 @@
                         </div>
                         <div class="form-row">
                             <div class="form-group col-12 col-sm-12 col-md-6 col-lg-6">
-                                <label for="inputNombre">Nombre</label>
+                                <label for="inputNombre">Nombre (*)</label>
                                 <input type="text" name="nombre" class="form-control" id="inputNombre" value ="<?= $cliente['nombre_usuario']?>" required>
                             </div>
                             <div class="form-group col-12 col-sm-12 col-md-6  col-lg-6">
-                                <label for="inputApellidos">Apellidos</label>
+                                <label for="inputApellidos">Apellidos (*)</label>
                                 <input type="text" name="apellidos" class="form-control" id="inputApellidos" value ="<?= $cliente['apellidos_usuario']?>" required>
                             </div>
                             <div class="form-group col-12 col-sm-12 col-md-6 col-lg-6">
-                                <label for="inputDni">DNI</label>
+                                <label for="inputDni">DNI (*)</label>
                                 <input type="text" name="dni" class="form-control" id="inputDni" value ="<?= $cliente['dni_usuario']?>" required>
                             </div>
                         </div>
                         <div class="form-group col-12 col-sm-12 col-md-6 col-lg-6">
-                            <label for="inputCorreo">Correo</label>
+                            <label for="inputCorreo">Correo (*)</label>
                             <input type="email" name="correo" class="form-control" id="inputCorreo" value ="<?= $cliente['correo_usuario']?>" required>
                         </div>
                         <div class="form-row">
                             <div class="form-group col-12 col-sm-12 col-md-6 col-lg-6">
-                                <label for="inputDireccion">Direccion</label>
+                                <label for="inputDireccion">Direccion (*)</label>
                                 <input type="text" name="direccion" class="form-control" id="calle" value ="<?= $cliente['direccion_usuario']?>" required>
                             </div>
                             <div class="form-group col-12 col-sm-12 col-md-6 col-lg-6">
-                                <label for="inputTelefono">Telefono</label>
+                                <label for="inputTelefono">Telefono (*)</label>
                                 <input type="number" name="telefono" class="form-control" id="telefono" pattern="[0-9]{9}" value ="<?= $cliente['telefono_usuario']?>" required>
                             </div>
                         </div>
                         <div class="form-group col-12 col-sm-12 col-md-12 col-lg-12">
-                            <label for="inputFecha">Fecha de nacimiento</label>
+                            <label for="inputFecha">Fecha de nacimiento (*)</label>
                             <input type="date" name="fecna" class="form-control" id="fecha" value ="<?= $cliente['fecna_usuario'] ?>" required>
                         </div>
                         <br />

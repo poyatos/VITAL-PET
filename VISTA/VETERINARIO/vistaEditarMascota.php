@@ -66,6 +66,7 @@
                 <div class="panel panel-default">
                     <div class="panel-heading">
                         <h2>EDITAR MASCOTA</h2>
+                        <p class='camposObligatorios'> (*) Campos obligatorios </p>
                     </div>
 
                     <div class="form-group col-12 col-sm-12 col-md-12 col-lg-12">
@@ -74,19 +75,19 @@
                         </div>
                         <div class="form-row">
                             <div class="form-group col-md-6">
-                                <label for="inputNombre">Nombre</label>
+                                <label for="inputNombre">Nombre (*)</label>
                                 <input type="text" name="nombre" class="form-control" id="inputNombre" value = "<?= $mascota['nombre_mascota'] ?>" required>
                             </div>
                             <div class="form-group col-md-6">
-                                <label for="inputTip">Tipo</label>
+                                <label for="inputTip">Tipo (*)</label>
                                 <input type="text" name="tipo" class="form-control" id="inputTip" value = "<?= $mascota['tipo_mascota'] ?>" required>
                             </div>
                             <div class="form-group col-md-12">
-                                <label for="inputRaz">Raza</label>
+                                <label for="inputRaz">Raza (*)</label>
                                 <input type="text" name="raza" class="form-control" id="inputRaz" value = "<?= $mascota['raza_mascota'] ?>"  required>
                             </div>
                             <div class="form-group col-md-12">
-                                <label for="inputSex">Elige el sexo</label>
+                                <label for="inputSex">Elige el sexo (*)</label>
                                 <select name="sexo" id="inputSex" class="form-control" required>
                                 <?php
                                  if($mascota['sexo_mascota'] == "Macho"){
@@ -100,12 +101,12 @@
                                 </select>
                             </div>
                             <div class="form-group col-md-12">
-                                <label for="inputfecna">Fecha de nacimiento</label>
+                                <label for="inputfecna">Fecha de nacimiento (*)</label>
                                 <input type="date" name="fecna" class="form-control" id="inputfecna" value = "<?= $mascota['fecna_mascota'] ?>"  required>
                             </div>
                         </div>
                         <div class="form-group col-md-12">
-                            <label for="inputPeso">peso</label>
+                            <label for="inputPeso">peso (*)</label>
                             <input type="number" name="peso" class="form-control" id="inputPeso" step="0.01" value = "<?= $mascota['peso_mascota'] ?>" required>
                         </div>
                         <div class="form-row">

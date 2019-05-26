@@ -30,7 +30,7 @@
   <body>
       <!-- MENU PRINCIPAL -->
     <div class="row">
-        <div class="col-12 col-sm-12 col-md-12  col-lg-12">
+        <div class="col-12">
             <?php
             if (isset($_SESSION['rol'])) {
                 if ($rol == 'Cliente') {
@@ -61,13 +61,13 @@
           
           <?php
           if ($rol != 'Cliente') {
-              echo "<div class='logotipo col-12 col-sm-7 col-md-7 col-lg-7'>";
+              echo "<div class='logotipo col-12'>";
           } else {
-              echo "<div class='logotipo col-12 col-sm-12 col-md-12 col-lg-12'>";
+              echo "<div class='logotipo col-12'>";
           }
       ?>
       <div class="form-group row">
-        <div class="col-12 col-sm-12 col-md-12 col-lg-12">  
+        <div class="col-12">  
             <?php 
                 if($_SESSION['exito']){
                     echo '<h1><span class="glyphicon glyphicon-ok text-success"></span></h1>';
@@ -81,10 +81,10 @@
                     foreach($_SESSION['parametros'] as $nombre => $valor){
                         echo "<input type='hidden' name='$nombre' value='$valor'>";
                     }
-                    echo '<input type="submit" name="btnVolver" value="Volver">
+                    echo '<input type="submit" name="btnVolver" value="Volver" class="btn btn-primary">
                     </form>';
                 } else {
-                    echo "<a href=".$_SESSION['url'].">Volver</a>";
+                    echo "<a href=".$_SESSION['url']." class='btn btn-primary'>Volver</a>";
                 }
                 unset($_SESSION['exito']);
                 unset($_SESSION['mensaje']);

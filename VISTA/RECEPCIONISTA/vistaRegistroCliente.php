@@ -57,6 +57,7 @@
                 <div class="panel panel-default">
                     <div class="panel-heading">
                         <h2>REGISTRO DE CLIENTE</h2>
+                        <p class='camposObligatorios'> (*) Campos obligatorios </p>
                     </div>
 
                     
@@ -67,37 +68,37 @@
                         </div>
                         <div class="form-row">
                             <div class="form-group col-12 col-sm-12 col-md-6 col-lg-6">
-                                <label for="inputNombre">Nombre</label>
+                                <label for="inputNombre">Nombre (*)</label>
                                 <input type="text" name="nombre" class="form-control" id="inputNombre" placeholder="Nombre" required>
                             </div>
                             <div class="form-group col-12 col-sm-12 col-md-6  col-lg-6">
-                                <label for="inputApellidos">Apellidos</label>
+                                <label for="inputApellidos">Apellidos (*)</label>
                                 <input type="text" name="apellidos" class="form-control" id="inputApellidos" placeholder="Apellidos" required>
                             </div>
                             <div class="form-group col-12 col-sm-12 col-md-12  col-lg-12">
-                                <label for="inputPassword">Contraseña</label>
+                                <label for="inputPassword">Contraseña (*)</label>
                                 <input type="password" name="contrasena" class="form-control" id="inputPassword" placeholder="Contraseña" required>
                             </div>
                             <div class="form-group col-12 col-sm-12 col-md-12  col-lg-12">
-                                <label for="inputPassword2">Repite Contraseña</label>
+                                <label for="inputPassword2">Repite Contraseña (*)</label>
                                 <input type="password" name="contrasena2" class="form-control" id="inputRePassword" placeholder="Repite contraseña" required>
                             </div>
                             <div class="form-group col-12 col-sm-12 col-md-6 col-lg-6">
-                                <label for="inputDni">NIF / NIE</label>
+                                <label for="inputDni">NIF / NIE (*)</label>
                                 <input type="text" name="dni" class="form-control" id="inputDni" placeholder="492039494E" required>
                             </div>
                         </div>
                         <div class="form-group col-12 col-sm-12 col-md-6 col-lg-6">
-                            <label for="inputCorreo">Correo</label>
+                            <label for="inputCorreo">Correo (*)</label>
                             <input type="email" name="correo" class="form-control" id="inputCorreo" placeholder="ejemplo@ejemplo.ejemplo" required>
                         </div>
                         <div class="form-row">
                             <div class="form-group col-12 col-sm-12 col-md-6 col-lg-6">
-                                <label for="inputDireccion">Dirección</label>
+                                <label for="inputDireccion">Dirección (*)</label>
                                 <input type="text" name="direccion" class="form-control" id="calle" required>
                             </div>
                             <div class="form-group col-12 col-sm-12 col-md-6 col-lg-6">
-                                <label for="inputTelefono">Teléfono</label>
+                                <label for="inputTelefono">Teléfono (*)</label>
                                 <input type="number" name="telefono" class="form-control" id="telefono" pattern="[0-9]{9}" required>
                             </div>
                         </div>
