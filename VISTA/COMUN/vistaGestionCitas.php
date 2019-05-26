@@ -83,7 +83,7 @@
                       </label>
                 </div>
                 <div class="col-12 col-sm-12 col-md-3 col-lg-3">
-                      <label name="busquedaDni_lb" id="id_busqueda_nombre">DNI:
+                      <label name="busquedaDni_lb" id="id_busqueda_nombre">NIE / NIF:
                       <input class="form-control" name="dni" id="myInput" type="text" value="'.$dni.'" placeholder="Busqueda...">
                       </label>
                 </div>
@@ -121,7 +121,7 @@
         <thead>
           <tr>
             <th>ID cita</th>
-            <th>DNI</th>
+            <th>NIE / NIF</th>
             <th>Fecha</th>
             <th>Hora</th>
             <th>Estado de la cita</th>
