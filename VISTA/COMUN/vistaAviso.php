@@ -76,7 +76,7 @@
                     echo '<h1><span class="glyphicon glyphicon-alert text-danger"></span></h1>';
                     echo ($_SESSION['mensaje']);
                 }
-                if(isset($_SESSION['parametros'])){
+                /*if(isset($_SESSION['parametros'])){
                     echo "<form class='formulario' action='".$_SESSION['url']."' method='POST'>";
                     foreach($_SESSION['parametros'] as $nombre => $valor){
                         echo "<input type='hidden' name='$nombre' value='$valor'>";
@@ -85,10 +85,13 @@
                     </form>';
                 } else {
                     echo "<a href=".$_SESSION['url']." class='btn btn-primary'>Volver</a>";
-                }
+                }*/
+
+                echo "<a href=".$_SESSION['url']." class='btn btn-primary'>Volver</a>";
+
                 unset($_SESSION['exito']);
                 unset($_SESSION['mensaje']);
-                unset($_SESSION['parametros']);
+                /*unset($_SESSION['parametros']);*/
                 unset($_SESSION['url']);
             ?>    
         </div>

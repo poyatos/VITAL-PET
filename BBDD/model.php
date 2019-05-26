@@ -91,19 +91,16 @@
         public function registrarUsuario($nombre, $apellidos, $dni, $telefono, $correo, $fecna, $direccion, $rol, $pass){
             $consulta = "SELECT * FROM usuarios WHERE dni_usuario = '$dni' ";
             if ($this->existeFila($consulta)) {
-                 echo "<br/><h2>El DNI introducido ya existe.</h2><br />";
-                 echo "<a href='registroFormulario.php'>Por favor introduce un DNI valido.</a>";
+                $_SESSION['exito'] = false;
+                $_SESSION['mensaje'] = '<h2>El DNI introducido ya existe. Por favor introduce un DNI valido.</h2>';
+                $_SESSION['url'] = '../DIRECTOR/vistaContratar.php';
+                header('Location: ../VISTA/COMUN/vistaAviso.php');
             } else {
                 $passHash = password_hash($pass, PASSWORD_BCRYPT);
                 $sql = "INSERT INTO usuarios (nombre_usuario, apellidos_usuario, dni_usuario, telefono_usuario, correo_usuario, fecna_usuario, 
                 direccion_usuario, rol_usuario, pass_usuario) VALUES ('$nombre', '$apellidos', '$dni', $telefono, '$correo', '$fecna', 
                 '$direccion', '$rol', '$passHash')";
-                if ($this->ejecutarConsulta($sql)) {
-                     echo "<br/><h2>Usuario registrado correctamente.</h2>";
-                } else {
-                     echo "<h2>Error al crear el usuario." . $sql . "</h2><br/>";
-                     echo "<h5><a href='registroFormulario.php'>Intentelo de nuevo</a></h5>"; 
-                }
+                return $this->ejecutarConsulta($sql);
             }
         }
         /***************************
@@ -271,12 +268,14 @@
         public function modificarUsuario($id, $nombre, $apellidos, $dni, $telefono, $correo, $fecna, $direccion){
             $consulta = "SELECT * FROM usuarios WHERE dni_usuario = '$dni' AND id_usuario <> $id";
             if ($this->existeFila($consulta)) {
-                 echo "<br/><h2>El DNI introducido ya existe.</h2><br />";
-                 echo "<a href='registroFormulario.php'>Por favor introduce un DNI valido.</a>";
+                $_SESSION['exito'] = false;
+                $_SESSION['mensaje'] = '<h2>El DNI introducido ya existe. Por favor introduce un DNI valido.</h2>';
+                $_SESSION['url'] = '../DIRECTOR/vistaContratar.php';
+                header('Location: ../VISTA/COMUN/vistaAviso.php');
             } else {
                 $consulta = "UPDATE usuarios SET nombre_usuario = '$nombre', apellidos_usuario = '$apellidos', dni_usuario = '$dni', telefono_usuario = $telefono, correo_usuario = '$correo', fecna_usuario = '$fecna', 
                 direccion_usuario = '$direccion' WHERE id_usuario = $id";
-                $this->ejecutarConsulta($consulta);
+                return $this->ejecutarConsulta($consulta);
             }   
         }
 
@@ -481,7 +480,7 @@
             $consulta = "SELECT usuarios.dni_usuario, id_cita, fecha_cita, hora_cita, estado_cita, num_consulta, id_mascota, id_cliente, id_veterinario 
             FROM citas
             INNER JOIN usuarios
-            ON citas.id_cliente = usuarios.id_usuario WHERE id_cliente = $id ";
+            ON citas.id_cliente = usuarios.id_usuario WHERE estado_cita LIKE 'Pendiente' AND id_cliente = $id ";
             $resultado = $this->devolverConsultaArray($consulta);
             return $resultado;
         }
@@ -492,7 +491,7 @@
             $consulta = "SELECT usuarios.dni_usuario, id_cita, fecha_cita, hora_cita, estado_cita, num_consulta, id_mascota, id_cliente, id_veterinario 
             FROM citas
             INNER JOIN usuarios
-            ON citas.id_cliente = usuarios.id_usuario WHERE id_cliente = $id LIMIT ".$inicio."," . $tamano_pagina;
+            ON citas.id_cliente = usuarios.id_usuario WHERE estado_cita LIKE 'Pendiente' AND id_cliente = $id LIMIT ".$inicio."," . $tamano_pagina;
             $resultado = $this->devolverConsultaArray($consulta);
             return $resultado;
         }
@@ -760,26 +759,9 @@
         ****<R CONTRATOS>*******
         ****************************/
         public function contratarUsuario($fecini, $fecfin, $sueldo, $diasvac, $horario, $estado, $id_contratado){
-            $consulta = "SELECT * FROM contratos WHERE id_contratado = '$id_contratado' ";
-            $resultadoConsulta = $this->ejecutarConsulta($consulta);
-            if($resultadoConsulta){
-                $resultado = $resultadoConsulta->get_result();
-            }
-            $existeContrato = mysqli_num_rows($resultado);
-            if ($existeContrato == 1) {
-                 echo "<br/><h2>Este usuario ya tiene contrato.</h2><br />";
-                 echo "<a href='registroFormulario.php'>Por favor elige otra opción.</a>";
-            } else {
                 $sql = "INSERT INTO contratos (fecini_contrato, fecfin_contrato, sueldo_contrato, diasvac_contrato, horario_contrato, estado_contrato, 
                 id_contratado) VALUES ('$fecini', '$fecfin', $sueldo, $diasvac, '$horario', '$estado', $id_contratado)";
-    
-                if ($this->ejecutarConsulta($sql)) {
-                     echo "<br/><h2>Contrato registrado correctamente.</h2>";
-                } else {
-                     echo "<h2>Error al crear el contrato." . $sql . "</h2><br/>";
-                     echo "<h5><a href='registroFormulario.php'>Intentelo de nuevo</a></h5>"; 
-                }
-            }
+                return $this->ejecutarConsulta($sql);
         }
         /***************************
         ****<V CONTRATOS ID>*******
@@ -795,7 +777,7 @@
         public function modificarContrato($id_contratado, $fecini, $fecfin, $sueldo, $diasvac, $horario){
             $consulta = "UPDATE contratos SET fecini_contrato = '$fecini', fecfin_contrato = '$fecfin', sueldo_contrato = $sueldo, 
             diasvac_contrato = $diasvac, horario_contrato = '$horario' WHERE id_contratado = $id_contratado";
-            $this->ejecutarConsulta($consulta);
+            return $this->ejecutarConsulta($consulta);
         }
         /***************************
         ****<REN CONTRATOS>*******
@@ -803,14 +785,14 @@
         public function renovarContrato($id_contratado, $fecini, $fecfin, $sueldo, $diasvac, $horario){
             $consulta = "UPDATE contratos SET fecini_contrato = '$fecini', fecfin_contrato = '$fecfin', sueldo_contrato = $sueldo, 
             diasvac_contrato = $diasvac, horario_contrato = '$horario', estado_contrato = 'Activo' WHERE id_contratado = $id_contratado";
-            $this->ejecutarConsulta($consulta);
+            return $this->ejecutarConsulta($consulta);
         }
         /***************************
         ****<FIN CONTRATOS>*******
         ****************************/
         public function finalizarContrato($id_contratado){
             $consulta = "UPDATE contratos SET fecfin_contrato = SYSDATE(), estado_contrato = 'Finalizado' WHERE id_contratado = $id_contratado";
-            $this->ejecutarConsulta($consulta);
+            return $this->ejecutarConsulta($consulta);
         }
          /***************************
         ****<V CONTRATOS TRABAJADORES>*******

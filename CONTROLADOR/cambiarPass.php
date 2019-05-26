@@ -6,13 +6,16 @@
 
     $conexion = new Model(Config::$host, Config::$user, Config::$pass, Config::$nombreBase);
 
-    if(isset($_POST['btnPass'])){
-        if($conexion->modificarPass($_SESSION['id_usuario'], $_POST['pass'])){
-            header('Location: ../VISTA/'.$_SESSION['rol']);
+    if (isset($_POST['btnPass'])) {
+        if ($conexion->modificarPass($_SESSION['id_usuario'], $_POST['pass'])) {
+            $_SESSION['exito'] = true;
+            $_SESSION['url'] = 'vistaComunCambiarContrasena.php';
         } else {
-            echo 'Error al cambiar contraseña.';
+            $_SESSION['exito'] = false;
+            $_SESSION['mensaje'] = '<h2>Error al cambiar contraseña.</h2>';
+            $_SESSION['url'] = 'vistaComunCambiarContrasena.php';
         }
+        header('Location: ../VISTA/COMUN/vistaAviso.php');
     }
 
     $conexion->desconectar();
-?>
