@@ -139,10 +139,6 @@
                             <input type="hidden" value="'.$tprueba['id_tipo_prueba'].'" name="id_tipo_prueba">
                             <input class="btn btn-primary" type="submit" value="Editar">
                           </form>
-                          <form action="../../CONTROLADOR/controladorVeterinario.php" method="POST"> 
-                            <input type="hidden" value="'.$tprueba['id_tipo_prueba'].'" name="id_tipo_prueba">
-                            <input class="btn btn-primary" type="submit" value="Borrar" name="borrarTipoPrueba">
-                          </form>
                           </td>');
                     }
                echo ("</tr>");

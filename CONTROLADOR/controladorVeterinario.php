@@ -18,38 +18,65 @@ $conexion = new Model(Config::$host, Config::$user, Config::$pass, Config::$nomb
 if (isset($_POST)) {
     /*---------CONTROLADOR VISTA GESTION PRUEBA-------*/
     if (isset($_POST['anadirPrueba'])) {
-        $conexion->registrarPrueba($_POST['id_tipo_prueba'], $_POST['id_mascota'], $_POST['resultado'], $_POST['observaciones'], $_POST['id_cita']);
-        header("Location: ../VISTA/COMUN/vistaGestionPrueba.php");
+        if($conexion->registrarPrueba($_POST['id_tipo_prueba'], $_POST['id_mascota'], $_POST['resultado'], $_POST['observaciones'], $_POST['id_cita'])){
+            $_SESSION['exito'] = true;
+            $_SESSION['url'] = 'vistaGestionPrueba.php';
+        } else {
+            $_SESSION['exito'] = false;
+            $_SESSION['mensaje'] = '<h2>Error al registrar la prueba. Intentelo de nuevo.</h2>';
+            $_SESSION['url'] = 'vistaGestionCitas.php';
+        } 
     } elseif (isset($_POST['editarPrueba'])) {
-        $conexion->modificarPrueba($_POST['id_prueba'], $_POST['resultado'], $_POST['observaciones']);
-        header("Location: ../VISTA/COMUN/vistaGestionPrueba.php");
+        if($conexion->modificarPrueba($_POST['id_prueba'], $_POST['resultado'], $_POST['observaciones'])){
+            $_SESSION['exito'] = true;
+        } else {
+            $_SESSION['exito'] = false;
+            $_SESSION['mensaje'] = '<h2>Error al modificar la prueba. Intentelo de nuevo.</h2>';
+        }
+        $_SESSION['url'] = 'vistaGestionPrueba.php';
     } elseif (isset($_POST['borrarPrueba'])) {
-        $conexion->borrarPrueba($_POST['id_prueba']);
-        header("Location: ../VISTA/COMUN/vistaGestionPrueba.php");
+        if($conexion->borrarPrueba($_POST['id_prueba'])){
+            $_SESSION['exito'] = true;
+        } else {
+            $_SESSION['exito'] = false;
+            $_SESSION['mensaje'] = '<h2>Error al borrar la prueba. Intentelo de nuevo.</h2>';
+        }
+        $_SESSION['url'] = 'vistaGestionPrueba.php';
     }
 
     /*---------CONTROLADOR VISTA GESTION TIPO PRUEBA-------*/
     elseif (isset($_POST['anadirTipoPrueba'])) {
-        $conexion->registrarTipoPrueba($_POST['nombre'], $_POST['precio']);
-        header("Location: ../VISTA/COMUN/vistaGestionTipoPrueba.php");
+        if($conexion->registrarTipoPrueba($_POST['nombre'], $_POST['precio'])){
+            $_SESSION['exito'] = true;
+            $_SESSION['url'] = 'vistaGestionTipoPrueba.php';
+        } else {
+            $_SESSION['exito'] = false;
+            $_SESSION['mensaje'] = '<h2>Error al crear el tipo de prueba. Intentelo de nuevo.</h2>';
+            $_SESSION['url'] = '../VETERINARIO/vistaAnadirTipoPrueba.php';
+        }
     } elseif (isset($_POST['editarTipoPrueba'])){
-        $conexion->modificarTipoPrueba($_POST['id_tipo_prueba'], $_POST['nombre'], $_POST['precio']);
-        header("Location: ../VISTA/COMUN/vistaGestionTipoPrueba.php");
-    } elseif (isset($_POST['borrarTipoPrueba'])){
-        $conexion->borrarTipoPrueba($_POST['id_tipo_prueba']);
-        header("Location: ../VISTA/COMUN/vistaGestionTipoPrueba.php");
+        if($conexion->modificarTipoPrueba($_POST['id_tipo_prueba'], $_POST['nombre'], $_POST['precio'])){
+            $_SESSION['exito'] = true;
+        } else {
+            $_SESSION['exito'] = false;
+            $_SESSION['mensaje'] = '<h2>Error al modificar el tipo de prueba. Intentelo de nuevo.</h2>';
+        }
+        $_SESSION['url'] = 'vistaGestionTipoPrueba.php';
     }
 
     /*---------CONTROLADOR VISTA GESTION MASCOTAS-------*/
     elseif (isset($_POST['editarMascota'])){
-        $conexion->modificarMascota($_POST['id_mascota'], $_POST['nombre'], $_POST['tipo'], $_POST['raza'], $_POST['sexo'], $_POST['fecna'], $_POST['peso']);
-        header("Location: ../VISTA/COMUN/vistaGestionMascotas.php");
-    } elseif (isset($_POST['borrarMascota'])){
-        $conexion->borrarMascota($_POST['id_mascota']);
-        header("Location: ../VISTA/COMUN/vistaGestionMascotas.php");
+        if($conexion->modificarMascota($_POST['id_mascota'], $_POST['nombre'], $_POST['tipo'], $_POST['raza'], $_POST['sexo'], $_POST['fecna'], $_POST['peso'])){
+            $_SESSION['exito'] = true;
+        } else {
+            $_SESSION['exito'] = false;
+            $_SESSION['mensaje'] = '<h2>Error al modificar la mascota. Intentelo de nuevo.</h2>';
+        }
+        $_SESSION['url'] = 'vistaGestionMascotas.php';
     } else {
         header("Location: ../VISTA/VETERINARIO");
     }
+    header('Location: ../VISTA/COMUN/vistaAviso.php');
 } else {
     header("Location: ../VISTA/VETERINARIO");
 }
