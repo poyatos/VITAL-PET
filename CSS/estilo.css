@@ -8,6 +8,7 @@ background-color: #464646;
 width: 300px;
 height: 300%;
 color: #e1ffff;
+
 }
 .nav-side-menu .brand {
 background-color: #2a2a2a;
@@ -172,6 +173,7 @@ line-height: 50px !important;
 @media (min-width: 767px) {
 .nav-side-menu .menu-list .menu-content {
 display: block;
+
 }
 
 }
@@ -187,17 +189,21 @@ padding: 0px;
 margin-bottom: 0;
 border-top-right-radius: 123px;
 border-bottom-right-radius: 122px;
+width:100%;
 }
+
+
+
 
 .row{
   max-width:100%;
 }
 
 
-/*-------------------------------- el sidenav se ajusta-----------------------------------------*/
+
 .row.content {height: 450px}
 
-/*------------------------------------ajustamos el alto y el color de fondo----------------------------------------*/
+
 .sidenav {
 padding-top: 20px;
 background-color: #1b1b1b;
@@ -206,8 +212,12 @@ height: 100%;
 
 
 @media screen and (max-width: 767px) {
+.navbar {
+ border-radius:0px;
+width:750px;
+ }
 .nav-side-menu{
-  width:100% !important;
+  width:750px !important;
 }
 .sidenav {
 height: auto;
@@ -215,11 +225,12 @@ padding: 15px;
 }
 .row.content {
   height:auto;
-  background-color:#2a2a2a;
 }
-.row.content.late{
-  background-color:#2a2a2a;
+.logotipo{
+  width:750px;
+
 }
+
 }
 
 
