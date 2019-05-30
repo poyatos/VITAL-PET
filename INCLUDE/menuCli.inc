@@ -28,7 +28,7 @@
     <!-- Wrapper for slides -->
     <div class="carousel-inner" role="listbox">
       <div class="item active">
-        <img src="../../IMAGENES/banerg3.jpg" width="1200" height="700">
+        <img src="../../IMAGENES/banerg33.jpg" width="1200" height="700">
         <div class="carousel-caption">
           <h3>Clínica número 1 en operaciones</h3>
           <p>Un ejemplo de empleo y desarrollo profesional</p>
@@ -36,7 +36,7 @@
       </div>
 
       <div class="item">
-        <img src="../../IMAGENES/banerg2.jpg" alt="Chicago" width="1200" height="700">
+        <img src="../../IMAGENES/banerg22.jpg" alt="Chicago" width="1200" height="700">
         <div class="carousel-caption">
           <h3>Cuida a tu amigo</h3>
           <p>El te dara lo mejor que tiene</p>
@@ -44,7 +44,7 @@
       </div>
     
       <div class="item">
-        <img src="../../IMAGENES/banerg1.jpg" alt="Los Angeles" width="1200" height="700">
+        <img src="../../IMAGENES/banerg11.jpg" alt="Los Angeles" width="1200" height="700">
         <div class="carousel-caption">
           <h3>Expertos en maternidad</h3>
           <p>Cuidamos de tu cachorro</p>
