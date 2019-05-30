@@ -6,8 +6,8 @@ font-size: 12px;
 font-weight: 200;
 background-color: #464646;
 width: 300px;
-height: 300%;
-color: #e1ffff;
+height: 250%;
+color: rgb(233, 156, 156);
 
 }
 .nav-side-menu .brand {
@@ -149,8 +149,8 @@ right: 10px;
 top: 10px;
 z-index: 10 !important;
 padding: 3px;
-background-color: #ffffff;
-color: #000;
+background-color:rgb(226, 189, 189);
+color: rgb(0, 0, 0);
 width: 40px;
 text-align: center;
 }
@@ -164,11 +164,7 @@ line-height: 50px !important;
 .table{
   font-size:8px;
 }
-
-
-
 }
-
 
 @media (min-width: 767px) {
 .nav-side-menu .menu-list .menu-content {
@@ -218,6 +214,7 @@ width:750px;
  }
 .nav-side-menu{
   width:750px !important;
+  border-radius: 0px;
 }
 .sidenav {
 height: auto;
