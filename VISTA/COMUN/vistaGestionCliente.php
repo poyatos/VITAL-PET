@@ -108,7 +108,7 @@
         <th>Correo</th>
         <th>Dirección</th>
         <?php
-          if($_SESSION['rol'] == 'Veterinario' || $_SESSION['rol'] == 'Recepcionista'){
+          if($_SESSION['rol'] == 'Recepcionista'){
              echo '<th>Editar</th>';
           }
         ?>
@@ -161,19 +161,7 @@
                         <input type="hidden" value="'.$clientes['id_usuario'].'" name="id_cliente">
                         <input class="btn btn-primary" type="submit" value="Editar" name="editarCliente">
                       </form>
-                      <form action="../../CONTROLADOR/controladorRecepcionista.php" method="POST">
-                        <input type="hidden" value="'.$clientes['id_usuario'].'" name="id_cliente">
-                        <input class="btn btn-primary" type="submit" value="Borrar" name="borrarCliente">
-                      </form>
                       </div>
-                      </td>');
-
-                    }else if($_SESSION['rol'] == 'Veterinario'){
-                      /* PENDIENTE DE VER COMO HACERLO */
-                       echo ('<td class="botonesAccion">
-                      <form action="" method="POST"> 
-                        <input class="btn btn-primary" type="submit" value="Ver mascotas" name="verMascotas">
-                      </form>
                       </td>');
                     }
                echo ("</tr>");

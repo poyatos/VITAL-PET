@@ -288,15 +288,6 @@
             return $this->ejecutarConsulta($consulta);
         }
 
-        /***************************
-        ****<B USUARIO>*****
-        ****************************/
-        public function borrarUsuario($id){
-            $consulta = "DELETE FROM usuarios WHERE id_usuario = $id";
-            $this->ejecutarConsulta($consulta);
-        }
-
-
         /***************************************
         ****************<-MASCOTAS->************
         ****************************************/
@@ -305,21 +296,9 @@
         ****<R MASCOTAS>*****
         ****************************/
         public function registrarMascota($id, $nombre, $tipo, $raza, $sexo, $fecna, $peso){
-            $consulta = "SELECT * FROM mascotas WHERE id_cliente = $id AND nombre_mascota = '$nombre' AND tipo_mascota = '$tipo' ";
-
-            if ($this->existeFila($consulta)) {
-                 echo "<br/><h2>La mascota ya existe.</h2><br />";
-            } else {
-                $sql = "INSERT INTO mascotas (id_cliente, nombre_mascota, tipo_mascota, raza_mascota, sexo_mascota, fecna_mascota, peso_mascota)
-                VALUES ($id, '$nombre', '$tipo', '$raza', '$sexo', '$fecna', $peso)";
-
-                if ($this->ejecutarConsulta($sql)) {
-                     echo "<br/><h2>Mascota registrada correctamente.</h2>";
-                } else {
-                     echo "<h2>Error al crear la mascota." . $sql . "</h2><br/>";
-                     echo "<h5><a href='registroFormulario.php'>Intentelo de nuevo</a></h5>"; 
-                }
-            }            
+            $sql = "INSERT INTO mascotas (id_cliente, nombre_mascota, tipo_mascota, raza_mascota, sexo_mascota, fecna_mascota, peso_mascota)
+            VALUES ($id, '$nombre', '$tipo', '$raza', '$sexo', '$fecna', $peso)";
+            return $this->ejecutarConsulta($sql);      
         }
         /***************************
         ****<V MASCOTAS>*******
@@ -414,12 +393,7 @@
         public function anadirCita($fecha, $hora, $consulta, $id_mascota, $id_cliente, $id_veterinario){
             $sql = "INSERT INTO citas (fecha_cita, hora_cita, estado_cita, num_consulta, id_mascota, id_cliente, id_veterinario)
                 VALUES ('$fecha', '$hora', 'Pendiente', $consulta, $id_mascota, $id_cliente, $id_veterinario)";
-            if ($this->ejecutarConsulta($sql)) {
-                echo "<br/><h2>Cita registrada correctamente.</h2>";
-           } else {
-                echo "<h2>Error al crear la cita." . $sql . "</h2><br/>";
-                echo "<h5><a href='registroFormulario.php'>Intentelo de nuevo</a></h5>"; 
-           }
+            return $this->ejecutarConsulta($sql);
         }
         /***************************
         ****<V CITAS>***************
@@ -574,21 +548,21 @@
         ****************************/
         public function finalizarCita($id){
             $consulta = "UPDATE citas SET estado_cita = 'Finalizado' WHERE id_cita = $id";
-            $this->ejecutarConsulta($consulta);
+            return $this->ejecutarConsulta($consulta);
         }
         /***************************
         ****<M CITAS>***************
         ****************************/
         public function modificarCita($id, $fecha, $hora, $consulta){
             $consulta = "UPDATE citas SET fecha_cita = '$fecha', hora_cita = '$hora', num_consulta = $consulta WHERE id_cita = $id";
-            $this->ejecutarConsulta($consulta);
+            return $this->ejecutarConsulta($consulta);
         }
         /***************************
         ****<B CITAS>***************
         ****************************/
         public function borrarCita($id){
             $consulta = "DELETE FROM citas WHERE id_cita = $id";
-            $this->ejecutarConsulta($consulta);
+            return $this->ejecutarConsulta($consulta);
         }
 
 
@@ -818,7 +792,7 @@
         ****************************/
         public function insertarPago($id_cliente, $total, $fecha, $id_cita){
             $consulta = "INSERT INTO pagos (id_cliente, total_precio, fecha_pago, id_cita) VALUES ($id_cliente, $total, '$fecha', $id_cita)";
-            $this->ejecutarConsulta($consulta);
+            return $this->ejecutarConsulta($consulta);
         }
         /***************************
         ****<V PAGOS>***************
