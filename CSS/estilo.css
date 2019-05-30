@@ -185,8 +185,14 @@ padding: 0px;
 /*-----------------------------Borramos el Navbar----------------------------------*/
 .navbar {
 margin-bottom: 0;
-border-radius: 0;
+border-top-right-radius: 123px;
+border-bottom-right-radius: 122px;
 }
+
+.row{
+  max-width:100%;
+}
+
 
 /*-------------------------------- el sidenav se ajusta-----------------------------------------*/
 .row.content {height: 450px}
