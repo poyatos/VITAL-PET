@@ -227,7 +227,7 @@
             $columnas = $resultado->fetch_array();
             $accesoPermitido = false;
             if ($existeUsuario == 1) {
-                if($columnas['rol_usuario'] == 'Veterinario' || $columnas['rol_usuario'] == 'Veterinario'){
+                if($columnas['rol_usuario'] == 'Veterinario' || $columnas['rol_usuario'] == 'Recepcionista'){
                     $contrato = $this->visualizarContratoId($columnas['id_usuario']);
                     if($contrato['estado_contrato'] == 'Activo'){
                         $accesoPermitido = true;
@@ -239,7 +239,7 @@
                 if ($accesoPermitido){
                     if (password_verify($pass, $columnas['pass_usuario'])) {
                         $_SESSION['id_usuario'] = $columnas['id_usuario'];
-                        $_SESSION['usuario'] = $columnas['nombre_usuario'] + " " + $columnas['apellidos_usuario'];
+                        $_SESSION['usuario'] = $columnas['nombre_usuario']." ".$columnas['apellidos_usuario'];
                         $_SESSION['rol'] = $columnas['rol_usuario'];
                         $rol = strtoupper($columnas['rol_usuario']);
                         header("Location: ../VISTA/$rol");

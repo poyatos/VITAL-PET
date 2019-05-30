@@ -1,7 +1,8 @@
 <?php
     session_start();
+    
     if (!isset($_SESSION['usuario']) && !isset($_SESSION['rol'])) {
-        header("Location: ../index.php");
+        header("Location: ../../index.php");
     }
 ?>
 <!DOCTYPE html>
@@ -66,10 +67,10 @@
             <h1>¿Deseas cambiar la contraseña?</h1>
             <form class="formulario" action="../../CONTROLADOR/cambiarPass.php" method="POST" onsubmit="return validarPass()">
                       <label name="pass" for="id_pass">Nueva Contraseña:</label>
-                      <input class="form-control" name="pass" id="id_pass" type="password">
+                      <input class="form-control" name="pass" id="id_pass" type="password" required>
                       <br/>
                       <label name="pass2" for="id_pass2">Repite la contraseña:</label>
-                      <input class="form-control" name="pass2" id="id_pass2" type="password">
+                      <input class="form-control" name="pass2" id="id_pass2" type="password" required>
                       <br/>
                 <input class="btn btn-primary" type="submit" name="btnPass" value="Enviar">
             </form>
