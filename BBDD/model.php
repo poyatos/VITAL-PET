@@ -372,7 +372,7 @@
         public function modificarMascota($id, $nombre, $tipo, $raza, $sexo, $fecna, $peso){
             $consulta = "UPDATE mascotas SET nombre_mascota = '$nombre', tipo_mascota = '$tipo', raza_mascota = '$raza', 
             sexo_mascota = '$sexo', fecna_mascota = '$fecna', peso_mascota = $peso WHERE id_mascota = $id";
-            $this->ejecutarConsulta($consulta);
+            return $this->ejecutarConsulta($consulta);
         }
         /***************************
         ****<B MASCOTAS>*******
@@ -608,7 +608,7 @@
         ****************************/
         public function modificarPrueba($id, $resultado, $observaciones){
             $consulta = "UPDATE pruebas SET resultado_prueba = '$resultado', observaciones_prueba = '$observaciones' WHERE id_prueba = $id";
-            $this->ejecutarConsulta($consulta);
+            return $this->ejecutarConsulta($consulta);
         }
         /***************************
         ****<VP PRUEBAS>************
@@ -648,7 +648,7 @@
         ****************************/
         public function borrarPrueba($id){
             $consulta = "DELETE FROM pruebas WHERE id_prueba = $id";
-            $this->ejecutarConsulta($consulta);
+            return $this->ejecutarConsulta($consulta);
         }
 
 
@@ -661,13 +661,7 @@
         ****************************/
         public function registrarTipoPrueba($nombre, $precio){
             $sql = "INSERT INTO tipos_pruebas (nombre_tipo_prueba, precio_tipo_prueba) VALUES ('$nombre', $precio)";
-
-            if ($this->ejecutarConsulta($sql)) {
-                 echo "<br/><h2>Tipo de prueba registrada correctamente.</h2>";
-            } else {
-                 echo "<h2>Error al crear el tipo de prueba ." . $sql . "</h2><br/>";
-                 echo "<h5><a href='registroFormulario.php'>Intentelo de nuevo</a></h5>"; 
-            }
+            return $this->ejecutarConsulta($sql);
         }
         /***************************
         ****<V TIPOSPRUEBAS>*******
@@ -714,14 +708,7 @@
         ****************************/
         public function modificarTipoPrueba($id, $nombre, $precio){
             $consulta = "UPDATE tipos_pruebas SET nombre_tipo_prueba = '$nombre', precio_tipo_prueba = $precio WHERE id_tipo_prueba = $id";
-            $this->ejecutarConsulta($consulta);
-        }
-        /***************************
-        ****<B TIPOSPRUEBAS>*******
-        ****************************/
-        public function borrarTipoPrueba($id){
-            $consulta = "DELETE FROM tipos_pruebas WHERE id_tipo_prueba = $id";
-            $this->ejecutarConsulta($consulta);
+            return $this->ejecutarConsulta($consulta);
         }
 
 

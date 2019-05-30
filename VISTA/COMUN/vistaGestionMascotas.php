@@ -158,10 +158,6 @@
                         <input type="hidden" value="'.$mascota['id_mascota'].'" name="id_mascota">
                         <input class="btn btn-primary" type="submit" value="Editar">
                       </form>
-                      <form action="../../CONTROLADOR/controladorVeterinario.php" method="POST"> 
-                        <input type="hidden" value="'.$mascota['id_mascota'].'" name="id_mascota">
-                        <input class="btn btn-primary" type="submit" value="Borrar" name="borrarMascota">
-                      </form>
                       </td>');
               }
                echo ( "</tr>");
