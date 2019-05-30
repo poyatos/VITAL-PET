@@ -1,6 +1,5 @@
 <?php
   session_start();
-
   if(!isset($_SESSION['usuario']) && !isset($_SESSION['rol'])){
     header("Location: ../../index.php");
   } else {
@@ -11,7 +10,6 @@
 ?>
 <!DOCTYPE html>
 <html lang="es">
-
 <head>
   <title>Vital-Pet / Veterinario</title>
   <meta charset="utf-8">
@@ -26,40 +24,25 @@
 <!-- prueba -->
   <link href="//maxcdn.bootstrapcdn.com/font-awesome/4.2.0/css/font-awesome.min.css" rel="stylesheet">
   <link rel="stylesheet" type="text/css" href="../../CSS/estilo.css">
-
 </head>
-
 <body>
-
-
   <!-- MENU PRINCIPAL -->
-
   <div class="row">
     <div class="col-12 col-sm-12 col-md-12  col-lg-12">
-
       <?php
       include "../../INCLUDE/menuPrincipal.inc"
       ?>
 </div>
-
   <!-- MENU LATERAL -->
       <div class="col-12 col-sm-5 col-md-4  col-lg-4">
       <?php
       include "../../INCLUDE/menuVet.inc"
       ?>
       </div>
-
-
       <!-- CONTENIDO-->
       <div class="logotipo col-12 col-sm-7 col-md-7 col-lg-7 text-left">
             <img class="logotipo" src="../../IMAGENES/logog.png" width="80%" height="auto" > 
-
-
       </div>
 </div>
-
-
-
 </body>
-
 </html>

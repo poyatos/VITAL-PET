@@ -62,37 +62,37 @@
   <ul class='list-group'>
   <div class='row'>
   <div class='col-12 col-sm-12 col-md-12  col-lg-12'>
-  <li class='list-group-item list-group-item-action list-group-item-info'>Fecha de la cita: ".$resultado[0]['fecha_cita']."</li>
+    <li class='list-group-item list-group-item-action list-group-item-info'>Fecha de la cita: ".$resultado[0]['fecha_cita']."</li>
   </div>
   <div class='col-12 col-sm-12 col-md-12  col-lg-12'>
-  <li class='list-group-item list-group-item-action list-group-item-info'>Id: ".$resultado[0]['id_usuario']."</li>
+    <li class='list-group-item list-group-item-action list-group-item-info'>Id: ".$resultado[0]['id_usuario']."</li>
   </div>
   <div class='col-12 col-sm-12 col-md-12  col-lg-12'>
-  <li class='list-group-item list-group-item-action list-group-item-info'>Nombre: ".$resultado[0]['nombre_usuario']."</li>
+   <li class='list-group-item list-group-item-action list-group-item-info'>Nombre: ".$resultado[0]['nombre_usuario']."</li>
   </div>
   <div class='col-12 col-sm-12 col-md-12  col-lg-12'>
-  <li class='list-group-item list-group-item-action list-group-item-info'>Apellidos: ".$resultado[0]['apellidos_usuario']."</li>
+    <li class='list-group-item list-group-item-action list-group-item-info'>Apellidos: ".$resultado[0]['apellidos_usuario']."</li>
   </div>
   <div class='col-12 col-sm-12 col-md-12  col-lg-12'>
-  <li class='list-group-item list-group-item-action list-group-item-info'>Dni: ".$resultado[0]['dni_usuario']."</li>
+    <li class='list-group-item list-group-item-action list-group-item-info'>Dni: ".$resultado[0]['dni_usuario']."</li>
   </div>
   <div class='col-12 col-sm-12 col-md-12  col-lg-12'>
-  <li class='list-group-item list-group-item-action list-group-item-info'>Teléfono: ".$resultado[0]['telefono_usuario']."</li>
+    <li class='list-group-item list-group-item-action list-group-item-info'>Teléfono: ".$resultado[0]['telefono_usuario']."</li>
   </div>
   <div class='col-12 col-sm-12 col-md-12  col-lg-12'>
-  <li class='list-group-item list-group-item-action list-group-item-info'>Correo: ".$resultado[0]['correo_usuario']."</li>
+    <li class='list-group-item list-group-item-action list-group-item-info'>Correo: ".$resultado[0]['correo_usuario']."</li>
   </div>
   <div class='col-12 col-sm-12 col-md-12  col-lg-12'>
-  <li class='list-group-item list-group-item-action list-group-item-info'>Dirección: ".$resultado[0]['direccion_usuario']."</li>
+    <li class='list-group-item list-group-item-action list-group-item-info'>Dirección: ".$resultado[0]['direccion_usuario']."</li>
   </div>
   <div class='col-12 col-sm-12 col-md-12  col-lg-12'>
-  <li class='list-group-item list-group-item-action list-group-item-info'>Mascota: ".$resultado[0]['nombre_mascota']."</li>
+   <li class='list-group-item list-group-item-action list-group-item-info'>Mascota: ".$resultado[0]['nombre_mascota']."</li>
   </div>
   <div class='col-12 col-sm-12 col-md-12  col-lg-12'>
-  <li class='list-group-item list-group-item-action list-group-item-info'>Tipo: ".$resultado[0]['tipo_mascota']."</li>
+    <li class='list-group-item list-group-item-action list-group-item-info'>Tipo: ".$resultado[0]['tipo_mascota']."</li>
   </div>
   <div class='col-12 col-sm-12 col-md-12  col-lg-12'>
-  <li class='list-group-item list-group-item-action list-group-item-info'>Raza: ".$resultado[0]['raza_mascota']."</li></ul>
+    <li class='list-group-item list-group-item-action list-group-item-info'>Raza: ".$resultado[0]['raza_mascota']."</li></ul>
   ";
   ?>
 
@@ -132,7 +132,7 @@
       </form>
     </div>
     <center>
-    <button class="btn btn-info"><a class="h4" href="<?= $_SERVER['HTTP_REFERER'] ?>"><span class="glyphicon glyphicon-arrow-left"></span> Volver</a></button>
+      <button class="btn btn-info"><a class="h4" href="<?= $_SERVER['HTTP_REFERER'] ?>"><span class="glyphicon glyphicon-arrow-left"></span> Volver</a></button>
     </center>
   </div>
 

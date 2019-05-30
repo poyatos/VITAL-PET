@@ -77,9 +77,9 @@
         <?php
 
         if( $resultado['rol_usuario'] == 'Veterinario'){
-        echo'<li class="list-group-item list-group-item-action list-group-item-success"><img src="../../IMAGENES/veterinario.png" class="img-thumbnail" alt="Empleado"></li>';
+          echo'<li class="list-group-item list-group-item-action list-group-item-success"><img src="../../IMAGENES/veterinario.png" class="img-thumbnail" alt="Empleado"></li>';
         }else if ($resultado['rol_usuario'] == 'Recepcionista'){
-        echo '<li class="list-group-item list-group-item-action list-group-item-success"><img src="../../IMAGENES/recepcionista.png" class="img-thumbnail" alt="Empleado"></li>';
+          echo '<li class="list-group-item list-group-item-action list-group-item-success"><img src="../../IMAGENES/recepcionista.png" class="img-thumbnail" alt="Empleado"></li>';
         }
         ?>
               <div class='row'>

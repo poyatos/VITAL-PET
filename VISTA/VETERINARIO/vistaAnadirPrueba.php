@@ -10,16 +10,12 @@
       header("Location: ../".$_SESSION['rol']);
     }
   }
-
   $conexion = new Model(Config::$host, Config::$user, Config::$pass, Config::$nombreBase);
-  
   $resultado = $conexion->visualizarTiposPruebas();
-
   $conexion->desconectar();
 ?>
 <!DOCTYPE html>
 <html lang="es">
-
 <head>
   <title>Vital-Pet / Añadir prueba</title>
   <meta charset="utf-8">
@@ -34,31 +30,21 @@
 <!-- prueba -->
   <link href="//maxcdn.bootstrapcdn.com/font-awesome/4.2.0/css/font-awesome.min.css" rel="stylesheet">
   <link rel="stylesheet" type="text/css" href="../../CSS/estilo.css">
-
 </head>
-
 <body>
-
-
   <!-- MENU PRINCIPAL -->
   <div class="row">
     <div class="col-12 col-sm-12 col-md-12  col-lg-12">
-
       <?php
       include "../../INCLUDE/menuPrincipal.inc"
       ?>
-</div>
-
-
-
+  </div>
   <!-- MENU LATERAL -->
       <div class="col-12 col-sm-5 col-md-4  col-lg-4">
       <?php
       include "../../INCLUDE/menuVet.inc"
       ?>
       </div>
-
-
       <!-- CONTENIDO-->
       <div class="col-12 col-sm-7 col-md-7  col-lg-7 text-left">
         <div class="row">
@@ -73,7 +59,6 @@
                           <div class="form-group col-12 col-sm-12 col-md-6 col-lg-6">
                              <h3>Datos de la prueba</h3>
                           </div>
-
                           <div class="form-group col-12 col-sm-12 col-md-6  col-lg-6">
                             <label for="inputPrueba">Escoja la prueba (*)</label>
                             <select name="id_tipo_prueba" id="inputPrueba_id" class="form-control" required>
@@ -84,12 +69,10 @@
                           ?>
                           </select>
                           </div>
-
                           <div class="form-group col-12 col-sm-12 col-md-12  col-lg-12">
                             <label for="inputObservacion">Resultado:</label>
                             <textarea name="resultado" class="form-control" rows="4" cols="100"></textarea>
                           </div>
-
                           <div class="form-group col-12 col-sm-12 col-md-12  col-lg-12">
                             <label for="inputObservacion">Observaciones:</label>
                             <textarea name="observaciones" class="form-control" rows="4" cols="100"></textarea>
@@ -104,9 +87,5 @@
             </div>
       </div>
 </div>
-
-
-
 </body>
-
 </html>

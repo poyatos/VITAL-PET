@@ -11,7 +11,6 @@
 ?>
 <!DOCTYPE html>
 <html lang="en">
-
 <head>
     <title>Vital-Pet / Registro Cliente</title>
     <meta charset="utf-8">
@@ -19,19 +18,15 @@
     <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.0/css/bootstrap.min.css">
     <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
     <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.0/js/bootstrap.min.js"></script>
-
     <!-- prueba -->
     <link href="//netdna.bootstrapcdn.com/bootstrap/3.2.0/css/bootstrap.min.css" rel="stylesheet" id="bootstrap-css">
     <script src="//netdna.bootstrapcdn.com/bootstrap/3.2.0/js/bootstrap.min.js"></script>
     <script src="//code.jquery.com/jquery-1.11.1.min.js"></script>
     <!-- prueba -->
-
     <link href="//maxcdn.bootstrapcdn.com/font-awesome/4.2.0/css/font-awesome.min.css" rel="stylesheet">
     <script src="JS/validacion.js"></script>
     <link rel="stylesheet" type="text/css" href="../../CSS/estilo.css">
-
 </head>
-
 <body>
     <!-- MENU PRINCIPAL -->
     <div class="row">
@@ -41,8 +36,6 @@
       include "../../INCLUDE/menuPrincipal.inc";
       ?>
     </div>
-  
-
         <!-- MENU LATERAL -->
         <div class="col-12 col-sm-5 col-md-4  col-lg-4">
             <?php
@@ -59,8 +52,6 @@
                         <h2>REGISTRO DE CLIENTE</h2>
                         <p class='camposObligatorios'> (*) Campos obligatorios </p>
                     </div>
-
-                    
                     <form class="formulario" action='../../CONTROLADOR/controladorRecepcionista.php' method='post' onsubmit="return validarContrato()">
                         
                         <div class="form-group col-12 col-sm-12 col-md-12  col-lg-12">
@@ -113,13 +104,5 @@
             </div>
             </div>
         </div>
-
-
-  
-
-
-
-
 </body>
-
 </html>

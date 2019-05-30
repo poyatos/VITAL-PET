@@ -45,8 +45,7 @@
         include "../../INCLUDE/menuVet.inc";
     }
       ?>
-      </div>
-
+  </div>
 <?php
         require_once '../../BBDD/model.php';
         require_once '../../BBDD/config.php';
@@ -61,7 +60,7 @@
             $resultado = $conexion->visualizarCitaId($_GET["id"]);
             $cita = $resultado;
         }
-    ?>
+?>
 
  <div class='col-12 col-sm-12 col-md-7 col-lg-7'>
     <ul class='list-group'>

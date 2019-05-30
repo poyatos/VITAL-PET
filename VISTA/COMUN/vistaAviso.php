@@ -1,6 +1,5 @@
 <?php
     session_start();
-
     if(isset($_SESSION['rol'])){
         $rol = $_SESSION['rol'];
     } else {
@@ -16,7 +15,6 @@
       <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.0/css/bootstrap.min.css">
       <link href="//netdna.bootstrapcdn.com/bootstrap/3.2.0/css/bootstrap.min.css" rel="stylesheet" id="bootstrap-css">
       <link href="//maxcdn.bootstrapcdn.com/font-awesome/4.2.0/css/font-awesome.min.css" rel="stylesheet">
-      <link rel="stylesheet" type="text/css" href="../../CSS/estilo.css">
       <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
       <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.0/js/bootstrap.min.js"></script>
       <script src="//netdna.bootstrapcdn.com/bootstrap/3.2.0/js/bootstrap.min.js"></script>
@@ -24,6 +22,8 @@
       <?php
         if($rol == 'Cliente'){
             echo '<link rel="stylesheet" type="text/css" href="../../CSS/estiloClienteIndex.css">';
+        }else{
+            echo' <link rel="stylesheet" type="text/css" href="../../CSS/estilo.css">';
         }
       ?>
   </head>
