@@ -83,7 +83,7 @@
             </label>
       </div>
       <div class="col-12 col-sm-12 col-md-4 col-lg-4">
-            <label name="busquedaDni_lb" id="id_busqueda_nombre">NIE/NIF:
+            <label name="busquedaDni_lb" id="id_busqueda_nombre">DNI:
             <input class="form-control" name="dni" id="myInput" type="text" value="<?= $dni ?>" placeholder="Busqueda...">
             </label>
       </div>
@@ -103,8 +103,8 @@
       <tr>
         <th>Nombre</th>
         <th>Apellidos</th>
-        <th>NIE/NIF</th>
-        <th>Teléfono</th>
+        <th>DNI</th>
+        <th>Telefono</th>
         <th>Correo</th>
         <th>Dirección</th>
         <?php
