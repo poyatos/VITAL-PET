@@ -43,7 +43,7 @@
 
 
       <!-- CONTENIDO-->
-      <div class="logotipo col-12 col-sm-7 col-md-7 col-lg-7 text-left">
+      <div class="logotipo col-sm-7 col-md-7 col-lg-7 text-left">
             <img class="logotipo" src="../../IMAGENES/logog.png" width="80%" height="auto" > 
 
 
