@@ -65,7 +65,7 @@ include "../../INCLUDE/menuCli.inc";
   <br>
   <div class="row">
     <div class="col-sm-12">
-    <h3>Patrners</h3>
+    <h3>Partners</h3>
     </div>
     <div class="col-sm-3">
     <a href ="https://poyatosilustracion.wordpress.com"><img src="../../IMAGENES/logo1.1.png" class="img-responsive" style="width:100%" alt="Image">
