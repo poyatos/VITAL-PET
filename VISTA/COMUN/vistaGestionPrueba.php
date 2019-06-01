@@ -43,13 +43,14 @@
 
 <body>
   <!-- MENU PRINCIPAL -->
-  <div class="row">
-  <div class="col-12 col-sm-12 col-md-12  col-lg-12">
+ 
   <?php
       if($_SESSION['rol'] == 'Cliente'){
       include "../../INCLUDE/menuCli.inc";
       echo"<button type='button' class='btn btn-primary btn-block'><a href='../CLIENTE/index.php'><h1>INICIO</h1></a></button>";
       }else {
+        echo('<div class="row">
+        <div class="col-12 col-sm-12 col-md-12  col-lg-12">');
       include "../../INCLUDE/menuPrincipal.inc"; 
       }
       ?>
@@ -78,12 +79,12 @@
 <!-- filtro y busqueda-->
 <?php
 if($_SESSION['rol'] != 'Cliente'){
-  echo "<div class='logotipo col-12 col-sm-7 col-md-7 col-lg-7'>";
+  echo "<div class='logotipo col-12 col-sm-7 col-md-7 col-lg-7'>  <div class='form-group row'>";
 }else{
-  echo "<div class='logotipo col-12 col-sm-12 col-md-12 col-lg-12'>";
+  echo "<div class='logotipo col-12 col-sm-12 col-md-12 col-lg-12'> <div class='form-group row margen'>";
 }
 ?>
- <div class="form-group row">
+
       <div class="col-12 col-sm-12 col-md-12 col-lg-12">
  <h1>LISTADO PRUEBAS</h1>
 </div>
@@ -96,11 +97,7 @@ if($_SESSION['rol'] != 'Cliente'){
             <input type="submit" class="btn btn-info botonsitobb" value="Buscar" name="busqueda">
             </div>
       </form>  
-      
-
-
 </div>
-
   <!-- tabla de busqueda-->
 
   <div class="col-12 col-sm-12 col-md-12 col-lg-12">

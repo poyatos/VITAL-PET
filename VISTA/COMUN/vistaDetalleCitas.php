@@ -67,11 +67,13 @@
               $resultado = $conexion->visualizarCitaId($_GET["id"]);
               $cita = $resultado;
           }
+          if($_SESSION['rol'] != 'Cliente') {
+            echo ("<div class='col-12 col-sm-12 col-md-7 col-lg-7'> <ul class='list-group'> <div class='row'> <div class='col-12 col-sm-12 col-md-12  col-lg-12'>");
+          }else{
+            echo ("<div class='col-11'> <ul class='list-group'> <div class='row margen'> <div class='col-12 col-sm-12 col-md-12  col-lg-12'>");
+          }
+
       ?>
-    <div class='col-12 col-sm-12 col-md-7 col-lg-7'>
-        <ul class='list-group'>
-          <div class='row'>
-                        <div class='col-12 col-sm-12 col-md-12  col-lg-12'>
                           <h1>DATOS DE LA CITA</h1> 
                         </div>
                         <div class='col-12 col-sm-12 col-md-6  col-lg-6'>
