@@ -71,7 +71,7 @@
                               placeholder="Repite la contraseña" required>
                           </div>
                           <div class="form-group col-12 col-sm-12 col-md-6 col-lg-6">
-                            <label for="inputDni">DNI (*)</label>
+                            <label for="inputDni">NIE / NIF (*)</label>
                             <input type="text" name="dni" class="form-control" id="inputDni" placeholder="492039494E" required>
                           </div>         
                         <div class="form-group col-12 col-sm-12 col-md-6 col-lg-6">

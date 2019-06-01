@@ -43,6 +43,71 @@
         ?>
     </div>
 
+    <?php
+        require_once '../../BBDD/model.php';
+        require_once '../../BBDD/config.php';
+      
+        $conexion = new Model(Config::$host, Config::$user, Config::$pass, Config::$nombreBase);
+        $resultado = $conexion->visualizarMascotasClientes($_GET["id"]);
+    ?>
+ 
+        <div class='col-12 col-sm-12 col-md-12  col-lg-12'>
+        <ul class='list-group'>
+            <li class='list-group-item list-group-item-action list-group-item-danger'><img src='../../IMAGENES/cliente.png' class='img-thumbnail' alt='Empleado'></li>
+                <div class='row'>
+                    <div class='col-12 col-sm-12 col-md-6  col-lg-6'>
+                      <li class='list-group-item list-group-item-action list-group-item-danger'>Nombre: <?= $resultado[0]['nombre_usuario']?></li>
+                    </div>
+                    <div class='col-12 col-sm-12 col-md-6  col-lg-6'>
+                    <li class='list-group-item list-group-item-action list-group-item-danger'>Apellidos: <?= $resultado[0]['apellidos_usuario']?></li>
+                    </div>
+                    <div class='col-12 col-sm-12 col-md-6  col-lg-6'>
+                      <li class='list-group-item list-group-item-action list-group-item-danger'>Fecha de nacimiento: <?= date("d/m/Y", strtotime($resultado[0]['fecna_usuario']))?></li>
+                    </div>
+                    <div class='col-12 col-sm-12 col-md-6  col-lg-6'>
+                    <li class='list-group-item list-group-item-action list-group-item-danger'>NIE / NIF: <?= $resultado[0]['dni_usuario']?></li>
+                    </div> 
+                    <div class='col-12 col-sm-12 col-md-6  col-lg-6'>
+                    <li class='list-group-item list-group-item-action list-group-item-danger'>Correo electrónico: <?= $resultado[0]['correo_usuario']?></li>
+                    </div>
+                    <div class='col-12 col-sm-12 col-md-6  col-lg-6'>
+                    <li class='list-group-item list-group-item-action list-group-item-danger'>Teléfono: <?= $resultado[0]['telefono_usuario']?></li>
+                    </div>
+                    <div class='col-12 col-sm-12 col-md-12  col-lg-12'>
+                    <li class='list-group-item list-group-item-action list-group-item-danger'>Dirección: <?= $resultado[0]['direccion_usuario']?></li>
+                    </div>
+                    </ul>
+                    <?php
+                            echo"<div class='col-12 col-sm-12 col-md-12  col-lg-12'>
+                            <h1>MASCOTAS</h1>
+                            <table class = 'table table-bordered table-dark'>
+                            <thead>
+                              <tr class='warning'>
+                                <th>Nombre</th>
+                                <th>Tipo</th>
+                                <th>Raza</th>
+                                <th>Sexo</th>
+                                <th>Fecha de nacimiento</th>
+                                <th>Peso</th>
+                              </tr>";
+                            foreach($resultado as $mascotas){
+                            echo "
+                              <tr class='info'>
+                              <td>".$mascotas["nombre_mascota"]."</td>
+                              <td>".$mascotas["tipo_mascota"]."</td>
+                              <td>".$mascotas["raza_mascota"]."</td>
+                              <td>".$mascotas["sexo_mascota"]."</td>
+                              <td>".date("d/m/Y", strtotime($mascotas["fecna_mascota"]))."</td>
+                              <td>".$mascotas["peso_mascota"]."</td>
+                              </tr>
+                              ";
+                            }
+                            ?> 
+                            </table>
+                              
+                </div>
+            </div>
+       
 
   <!-- MENU LATERAL -->
   <div class="col-12 col-sm-5 col-md-4  col-lg-4">
