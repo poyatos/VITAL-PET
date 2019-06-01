@@ -3,9 +3,9 @@ table.table.table-bordered.table-dark{
 }
 
 .papaMascota{
-    margin-top:10px !important;
     display:flex;
     align-items:center;
+    margin:0px !important;
   }
 
   .clienteMascota{

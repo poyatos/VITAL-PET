@@ -36,10 +36,12 @@
           
         $conexion = new Model(Config::$host, Config::$user, Config::$pass, Config::$nombreBase);
         $cliente = $conexion->visualizarMascotasClientes($_SESSION["id_usuario"]);
+
+        
     ?>
         <div class='col-12 col-xs-12 col-md-4 clienteMascota'>
           <ul class='list-group'>
-            <div class='row'>
+            <div class='row margen'>
                 <div class='col-12 col-sm-12 col-md-12  col-lg-12'>
                         <li class='list-group-item list-group-item-action list-group-item-info'>Nombre: <?= $cliente[0]['nombre_usuario']?></li>
                 </div>
