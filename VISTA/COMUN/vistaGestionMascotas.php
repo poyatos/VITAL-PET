@@ -95,7 +95,7 @@
       <tr>
         <th>ID Mascota</th>
         <th>Nombre de Mascota</th>
-        <th>DNI dueño</th>
+        <th>NIE/NIF dueño</th>
         <th>Tipo</th>
         <th>Raza</th>
         <th>Peso (Kg)</th>
