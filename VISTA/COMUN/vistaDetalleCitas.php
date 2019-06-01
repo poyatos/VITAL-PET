@@ -26,91 +26,87 @@
   <link rel="stylesheet" type="text/css" href="../../CSS/estilo.css">
   <link rel="stylesheet" type="text/css" href="../../CSS/vistaDetalle.css">
 </head>
-<body>
-  <!-- MENU PRINCIPAL -->
-  <div class="row">
-  <div class="col-12 col-sm-12 col-md-12  col-lg-12">
-      <?php
-      include "../../INCLUDE/menuPrincipal.inc"
-      ?>
-  </div>
- <!-- MENU LATERAL -->
- <div class="col-12 col-sm-5 col-md-4  col-lg-4">
-      <?php
-    if ($_SESSION['rol'] == 'Director') {
-        include "../../INCLUDE/menuDir.inc";
-    } elseif ($_SESSION['rol'] == 'Recepcionista') {
-        include "../../INCLUDE/menuRec.inc";
-    } elseif ($_SESSION['rol'] == 'Veterinario') {
-        include "../../INCLUDE/menuVet.inc";
-    }
-      ?>
-  </div>
-<?php
-        require_once '../../BBDD/model.php';
-        require_once '../../BBDD/config.php';
-        $conexion = new Model(Config::$host, Config::$user, Config::$pass, Config::$nombreBase);
-        $resultado = $conexion->visualizarCitasPruebas($_GET["id"]);
-
-        $existePruebas = false;
-        if ($resultado) {
-            $existePruebas = true;
-            $cita = $resultado[0];
-        } else {
-            $resultado = $conexion->visualizarCitaId($_GET["id"]);
-            $cita = $resultado;
-        }
-?>
-
- <div class='col-12 col-sm-12 col-md-7 col-lg-7'>
-    <ul class='list-group'>
-      <div class='row'>
-                    <div class='col-12 col-sm-12 col-md-12  col-lg-12'>
-                      <h1>DATOS DE LA CITA</h1> 
-                    </div>
-                    <div class='col-12 col-sm-12 col-md-6  col-lg-6'>
-                        <li class='list-group-item list-group-item-action list-group-item-info'><p class="d-flex flex-start">Fecha:</p><?= date("d/m/Y", strtotime($cita['fecha_cita']))?></li>
-                    </div>
-                    <div class='col-12 col-sm-12 col-md-6  col-lg-6'>
-                        <li class='list-group-item list-group-item-action list-group-item-info'><p class="d-flex flex-start">Hora:</p><?= $cita['hora_cita']?></li>
-                    </div>
-                    <div class='col-12 col-sm-12 col-md-12  col-lg-12'>
-                        <li class='list-group-item list-group-item-action list-group-item-info'><p class="d-flex flex-start">Consulta número:</p><?= $cita['num_consulta']?></li>
-                    </div>
-                    </ul>
-                    <div class='col-12 col-sm-12 col-md-12  col-lg-12'>
-                    <?php
-                    if ($existePruebas) {
-                        echo"
-                    <h1>PRUEBAS DE LA CITA</h1>
-                    <table class = 'table table-bordered table-dark'>
-                    <thead>
-                      <tr class='warning'>
-                        <th>Nombre</th>
-                        <th>Resultado</th>
-                        <th>Observaciones</th>
-                        <th>Precio</th>
-                      </tr>";
-                        foreach ($resultado as $resul) {
-                            echo "<tr class='info'>
-                      <td>".$resul["nombre_tipo_prueba"]."</td>
-                      <td>".$resul["resultado_prueba"]."</td>
-                      <td>".$resul["observaciones_prueba"]."</td>
-                      <td>".$resul["precio_tipo_prueba"]." €</td>
-                      </tr>";
-                        }
-                        echo "</table>";
-                    }
-                    ?> 
-                                     
-                </div>
-                <button class="btn btn-info"><a class="h4" href="<?= $_SERVER['HTTP_REFERER'] ?>"><span class="glyphicon glyphicon-arrow-left"></span> Volver</a></button>
-            </div>
-        
-        </div>
-        
+  <body>
+    <!-- MENU PRINCIPAL -->
+    <div class="row">
+    <div class="col-12 col-sm-12 col-md-12  col-lg-12">
         <?php
-        $conexion->desconectar();
+        include "../../INCLUDE/menuPrincipal.inc"
         ?>
-</body>
+    </div>
+    <!-- MENU LATERAL -->
+    <div class="col-12 col-sm-5 col-md-4  col-lg-4">
+          <?php
+        if ($_SESSION['rol'] == 'Director') {
+            include "../../INCLUDE/menuDir.inc";
+        } elseif ($_SESSION['rol'] == 'Recepcionista') {
+            include "../../INCLUDE/menuRec.inc";
+        } elseif ($_SESSION['rol'] == 'Veterinario') {
+            include "../../INCLUDE/menuVet.inc";
+        }
+          ?>
+      </div>
+      <?php
+          require_once '../../BBDD/model.php';
+          require_once '../../BBDD/config.php';
+          $conexion = new Model(Config::$host, Config::$user, Config::$pass, Config::$nombreBase);
+          $resultado = $conexion->visualizarCitasPruebas($_GET["id"]);
+
+          $existePruebas = false;
+          if ($resultado) {
+              $existePruebas = true;
+              $cita = $resultado[0];
+          } else {
+              $resultado = $conexion->visualizarCitaId($_GET["id"]);
+              $cita = $resultado;
+          }
+      ?>
+    <div class='col-12 col-sm-12 col-md-7 col-lg-7'>
+        <ul class='list-group'>
+          <div class='row'>
+                        <div class='col-12 col-sm-12 col-md-12  col-lg-12'>
+                          <h1>DATOS DE LA CITA</h1> 
+                        </div>
+                        <div class='col-12 col-sm-12 col-md-6  col-lg-6'>
+                            <li class='list-group-item list-group-item-action list-group-item-info'><p class="d-flex flex-start">Fecha:</p><?= date("d/m/Y", strtotime($cita['fecha_cita']))?></li>
+                        </div>
+                        <div class='col-12 col-sm-12 col-md-6  col-lg-6'>
+                            <li class='list-group-item list-group-item-action list-group-item-info'><p class="d-flex flex-start">Hora:</p><?= $cita['hora_cita']?></li>
+                        </div>
+                        <div class='col-12 col-sm-12 col-md-12  col-lg-12'>
+                            <li class='list-group-item list-group-item-action list-group-item-info'><p class="d-flex flex-start">Consulta número:</p><?= $cita['num_consulta']?></li>
+                        </div>
+                        </ul>
+                        <div class='col-12 col-sm-12 col-md-12  col-lg-12'>
+                        <?php
+                        if ($existePruebas) {
+                            echo"
+                        <h1>PRUEBAS DE LA CITA</h1>
+                        <table class = 'table table-bordered table-dark'>
+                        <thead>
+                          <tr class='warning'>
+                            <th>Nombre</th>
+                            <th>Resultado</th>
+                            <th>Observaciones</th>
+                            <th>Precio</th>
+                          </tr>";
+                            foreach ($resultado as $resul) {
+                                echo "<tr class='info'>
+                          <td>".$resul["nombre_tipo_prueba"]."</td>
+                          <td>".$resul["resultado_prueba"]."</td>
+                          <td>".$resul["observaciones_prueba"]."</td>
+                          <td>".$resul["precio_tipo_prueba"]." €</td>
+                          </tr>";
+                            }
+                            echo "</table>";
+                        }
+                        ?>                
+                    </div>
+                    <button class="btn btn-info"><a class="h4" href="<?= $_SERVER['HTTP_REFERER'] ?>"><span class="glyphicon glyphicon-arrow-left"></span> Volver</a></button>
+                </div>
+            </div>
+          <?php
+          $conexion->desconectar();
+          ?>
+  </body>
 </html>

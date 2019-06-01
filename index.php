@@ -128,15 +128,13 @@
       <div class="col-8 col-sm-8 col-md-8  col-lg-8">
         <h2>NUESTRO SERVICIO</h2>
         <h4>Nuestra Clínica veterinaria VITAL-PET ha estado a lo largo de estos años dando servicio a nuestros clientes
-          para que proporcionen a sus animales de compañía los
-          mejores cuidados, lo que prolongará su esperanza de vida y nuestra satisfacción. Para ello, hemos ido dotando
-          a nuestro centro de los equipos más modernos,
-          revisamos y ponemos al día los procedimientos terapéuticos, para asegurarnos de que les damos los tratamientos
-          más seguros, efectivos y actualizados. El 80%
-          de los nuevos clientes vienen recomendados por familiares o amigos, lo que nos produce una gran satisfacción.
-          A pesar del paso del tiempo y de la incorporación de nuevos clientes y profesionales a la clínica, lo que
-          siempre ha permanecido es nuestro afán de servicio
-          y cariño hacia nuestros pequeños amigos y sus propietarios.</h4>
+          para que proporcionen a sus animales de compañía los mejores cuidados, lo que prolongará su esperanza de vida 
+          y nuestra satisfacción. Para ello, hemos ido dotando a nuestro centro de los equipos más modernos, revisamos y 
+          ponemos al día los procedimientos terapéuticos, para asegurarnos de que les damos los tratamientos más seguros, 
+          efectivos y actualizados. El 80% de los nuevos clientes vienen recomendados por familiares o amigos, lo que nos 
+          produce una gran satisfacción. A pesar del paso del tiempo y de la incorporación de nuevos clientes y profesionales 
+          a la clínica, lo que siempre ha permanecido es nuestro afán de servicio y cariño hacia nuestros pequeños amigos y sus 
+          propietarios.</h4>
       </div>
     </div>
   </div>
@@ -149,15 +147,12 @@
       <div class="col-4 col-sm-4 col-md-4  col-lg-4">
         <span class="glyphicon glyphicon-eye-open logo-small"></span>
         <h4>REVISIONES</h4>
-        <p>Revisiones periódicas para revisar el estado de tu mascota. La salud es uno de los pilares fundamentales para
-          que cualquiera, sea un ser humano o un animal,
-          disfrute de una calidad de vida adecuada.</p>
+        <p>Revisiones periódicas para revisar el estado de tu mascota. La salud es uno de los pilares fundamentales para que cualquiera, sea un ser humano o un animal, disfrute de una calidad de vida adecuada.</p>
       </div>
       <div class="col-4 col-sm-4 col-md-4  col-lg-4">
         <span class="glyphicon glyphicon-gift logo-small"></span>
         <h4>SERVICIOS DE BELLEZA</h4>
-        <p>En Vital-Pet no solo cuidamos de la salud de vuestras mascotas, sino que además queremos que se sientan
-          cómodos y cuidados para que presumas de su belleza.</p>
+        <p>En Vital-Pet no solo cuidamos de la salud de vuestras mascotas, sino que además queremos que se sientan cómodos y cuidados para que presumas de su belleza.</p>
       </div>
       <div class="col-4 col-sm-4 col-md-4  col-lg-4">
         <span class="glyphicon glyphicon-certificate logo-small"></span>
@@ -174,9 +169,8 @@
       </div>
       <div class="col-4 col-sm-4 col-md-4  col-lg-4">
         <span class="glyphicon glyphicon-scissors logo-small"></span>
-        <h4>CASTRACIÓN / ESTERELIZACIÓN</h4>
-        <p>La castración o esterilización es, sin duda alguna, la técnica quirúrgica más frecuentemente realizada en la
-          Vital-Pet</p>
+        <h4>CASTRACIÓN / ESTERILIZACIÓN</h4>
+        <p>La castración o esterilización es, sin duda alguna, la técnica quirúrgica más frecuentemente realizada en la clínica Vital-Pet</p>
       </div>
       <div class="col-4 col-sm-4 col-md-4  col-lg-4">
         <span class="glyphicon glyphicon-tint logo-small"></span>
