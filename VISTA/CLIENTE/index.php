@@ -62,9 +62,11 @@ include "../../INCLUDE/menuCli.inc";
   </div>
 
     <div class="container text-center">    
-  <h3>Nuestros patrocinadores</h3>
   <br>
   <div class="row">
+    <div class="col-sm-12">
+    <h3>Partners</h3>
+    </div>
     <div class="col-sm-3">
     <a href ="https://poyatosilustracion.wordpress.com"><img src="../../IMAGENES/logo1.1.png" class="img-responsive" style="width:100%" alt="Image">
       Pablofpoyatos</a>

@@ -89,14 +89,12 @@ if($_SESSION['rol'] != 'Cliente'){
 </div>
      
       <form class="formulario" action='vistaGestionPrueba.php' method='GET'>
-      <div class="col-12 col-sm-12 col-md-6 col-lg-6">
+      <div class="col-12 col-sm-12 col-md-12 col-lg-12">
             <label name="busquedaNombrePrueba_lb" id="id_busqueda_NombrePrueba">Nombre de la prueba:
             <input class="form-control" name="nombre" id="myInput" type="text" value="<?= $nombre ?>" placeholder="Busqueda...">
             </label>
-            </div>
-            <div class="col-12 col-sm-12 col-md-6 col-lg-6">
             <input type="submit" class="btn btn-info botonsitobb" value="Buscar" name="busqueda">
-        </div>
+            </div>
       </form>  
       
 
