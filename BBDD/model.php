@@ -122,15 +122,6 @@
             return $usuario;
         }
         /***************************
-        ****<V CLIENTES>*****
-        ****************************/
-        public function visualizarClientes(){
-            $consulta = "SELECT id_usuario, nombre_usuario, apellidos_usuario, dni_usuario, telefono_usuario, correo_usuario, fecna_usuario, 
-            direccion_usuario, rol_usuario FROM usuarios WHERE rol_usuario LIKE 'Cliente'";
-            $resultado = $this->devolverConsultaArray($consulta);
-            return $resultado;
-        }
-        /***************************
         ****<F CLIENTES>*****
         ****************************/
         public function filtrarClientes($nombre, $dni){
@@ -145,33 +136,6 @@
         public function filtrarClientesPaginacion($nombre, $dni, $inicio, $tamano_pagina){
             $consulta = "SELECT id_usuario, nombre_usuario, apellidos_usuario, dni_usuario, telefono_usuario, correo_usuario, direccion_usuario 
             FROM usuarios WHERE rol_usuario LIKE 'Cliente' AND nombre_usuario LIKE '%$nombre%' AND dni_usuario LIKE '%$dni%'LIMIT ".$inicio."," . $tamano_pagina;
-            $resultado = $this->devolverConsultaArray($consulta);
-            return $resultado;
-        }
-        /***************************
-        ****<VP CLIENTES>*****
-        ****************************/
-        public function visualizarClientesPaginacion($inicio, $tamano_pagina){
-            $consulta = "SELECT id_usuario, nombre_usuario, apellidos_usuario, dni_usuario, telefono_usuario, correo_usuario, fecna_usuario, 
-            direccion_usuario, rol_usuario FROM usuarios WHERE rol_usuario LIKE 'Cliente' LIMIT ".$inicio."," . $tamano_pagina;
-            $resultado = $this->devolverConsultaArray($consulta);
-            return $resultado;
-        }
-        /***************************
-        ****<V EMPLEADOS>*****
-        ****************************/
-        public function visualizarEmpleados(){
-            $consulta = "SELECT id_usuario, nombre_usuario, apellidos_usuario, dni_usuario, telefono_usuario, correo_usuario, fecna_usuario, 
-            direccion_usuario, rol_usuario FROM usuarios WHERE rol_usuario IN ('Veterinario','Recepcionista')";
-            $resultado = $this->devolverConsultaArray($consulta);
-            return $resultado;
-        }
-        /***************************
-        ****<VP EMPLEADOS>*****
-        ****************************/
-        public function visualizarEmpleadosPaginacion($inicio, $tamano_pagina){
-            $consulta = "SELECT id_usuario, nombre_usuario, apellidos_usuario, dni_usuario, telefono_usuario, correo_usuario, fecna_usuario, 
-            direccion_usuario, rol_usuario FROM usuarios WHERE rol_usuario IN ('Veterinario','Recepcionista') LIMIT ".$inicio."," . $tamano_pagina;
             $resultado = $this->devolverConsultaArray($consulta);
             return $resultado;
         }
@@ -301,17 +265,6 @@
             return $this->ejecutarConsulta($sql);      
         }
         /***************************
-        ****<V MASCOTAS>*******
-        ****************************/
-        public function visualizarMascotas(){
-            $consulta = "SELECT usuarios.dni_usuario, mascotas.id_mascota, mascotas.id_cliente, mascotas.nombre_mascota, mascotas.tipo_mascota, mascotas.raza_mascota, mascotas.peso_mascota, mascotas.sexo_mascota
-            FROM mascotas
-            INNER JOIN usuarios
-            ON mascotas.id_cliente = usuarios.id_usuario";
-            $resultado = $this->devolverConsultaArray($consulta);
-            return $resultado;
-        }
-        /***************************
         ****<V MASCOTAS CLIENTES>*******
         ****************************/
         public function visualizarMascotasClientes($id){
@@ -322,17 +275,6 @@
             INNER JOIN usuarios
             ON mascotas.id_cliente = usuarios.id_usuario
             WHERE usuarios.id_usuario = $id";
-            $resultado = $this->devolverConsultaArray($consulta);
-            return $resultado;
-        }
-        /***************************
-        ****<VP MASCOTAS>*******
-        ****************************/
-        public function visualizarMascotasPaginacion($inicio, $tamano_pagina){
-            $consulta = "SELECT usuarios.dni_usuario, mascotas.id_mascota, mascotas.id_cliente, mascotas.nombre_mascota, mascotas.tipo_mascota, mascotas.raza_mascota, mascotas.peso_mascota, mascotas.sexo_mascota
-            FROM mascotas
-            INNER JOIN usuarios
-            ON mascotas.id_cliente = usuarios.id_usuario LIMIT ".$inicio."," . $tamano_pagina;
             $resultado = $this->devolverConsultaArray($consulta);
             return $resultado;
         }
@@ -374,14 +316,6 @@
             sexo_mascota = '$sexo', fecna_mascota = '$fecna', peso_mascota = $peso WHERE id_mascota = $id";
             return $this->ejecutarConsulta($consulta);
         }
-        /***************************
-        ****<B MASCOTAS>*******
-        ****************************/
-        public function borrarMascota($id){
-            $consulta = "DELETE FROM mascotas WHERE id_mascota = $id";
-            $this->ejecutarConsulta($consulta);
-        }
-
 
         /******************************
         ***************<-CITAS->*******
@@ -396,33 +330,11 @@
             return $this->ejecutarConsulta($sql);
         }
         /***************************
-        ****<V CITAS>***************
-        ****************************/
-        public function visualizarCitas(){
-            $consulta = "SELECT usuarios.dni_usuario, id_cita, fecha_cita, hora_cita, estado_cita, num_consulta, id_mascota, id_cliente, id_veterinario 
-            FROM citas
-            INNER JOIN usuarios
-            ON citas.id_cliente = usuarios.id_usuario";
-            $resultado = $this->devolverConsultaArray($consulta);
-            return $resultado;
-        }
-        /***************************
         ****<V CITAS ID>***************
         ****************************/
         public function visualizarCitaId($id){
             $consulta = "SELECT * FROM citas WHERE id_cita = $id";
             $resultado = $this->devolverConsultaFila($consulta);
-            return $resultado;
-        }
-        /***************************
-        ****<VP CITAS>**************
-        ****************************/
-        public function visualizarCitasPaginacion($inicio, $tamano_pagina){
-            $consulta = "SELECT usuarios.dni_usuario, id_cita, fecha_cita, hora_cita, estado_cita, num_consulta, id_mascota, id_cliente, id_veterinario 
-            FROM citas
-            INNER JOIN usuarios
-            ON citas.id_cliente = usuarios.id_usuario LIMIT ".$inicio."," . $tamano_pagina;
-            $resultado = $this->devolverConsultaArray($consulta);
             return $resultado;
         }
         /***************************
@@ -474,25 +386,6 @@
             return $resultado;
         }
         /***************************
-        ****<V CITAS MASCOTA>*******
-        ****************************/
-        public function visualizarCitasMascota($id){
-            $consulta = "SELECT * FROM citas WHERE id_mascota = $id ";
-            $resultado = $this->devolverConsultaArray($consulta);
-            return $resultado;
-        }
-        /***************************
-        ****<V CITAS VETERINARIO>***
-        ****************************/
-        public function visualizarCitasVeterinario($id){
-            $consulta = "SELECT usuarios.dni_usuario, id_cita, fecha_cita, hora_cita, estado_cita, num_consulta, id_mascota, id_cliente, id_veterinario 
-            FROM citas
-            INNER JOIN usuarios
-            ON citas.id_cliente = usuarios.id_usuario WHERE id_veterinario = $id";
-            $resultado = $this->devolverConsultaArray($consulta);
-            return $resultado;
-        }
-        /***************************
         ****<V CITAS PRUEBAS>***
         ****************************/
         public function visualizarCitasPruebas($id){
@@ -510,17 +403,6 @@
         ****************************/
         public function visualizarCitasFechaHora($fecha, $hora){
             $consulta = "SELECT * FROM citas WHERE fecha_cita = '$fecha' AND hora_cita = '$hora' AND estado_cita = 'Pendiente'";
-            $resultado = $this->devolverConsultaArray($consulta);
-            return $resultado;
-        }
-        /***************************
-        ****<VP CITAS VETERINARIO>*******
-        ****************************/
-        public function visualizarCitasVeterinarioPaginacion($id, $inicio, $tamano_pagina){
-            $consulta = "SELECT usuarios.dni_usuario, id_cita, fecha_cita, hora_cita, estado_cita, num_consulta, id_mascota, id_cliente, id_veterinario 
-            FROM citas
-            INNER JOIN usuarios
-            ON citas.id_cliente = usuarios.id_usuario WHERE id_veterinario = $id LIMIT ".$inicio."," . $tamano_pagina;
             $resultado = $this->devolverConsultaArray($consulta);
             return $resultado;
         }
@@ -586,17 +468,6 @@
                 return $this->ejecutarConsulta($sql);
         }
         /***************************
-        ****<V PRUEBAS>*************
-        ****************************/
-        public function visualizarPruebas(){
-            $consulta = "SELECT tipos_pruebas.nombre_tipo_prueba, tipos_pruebas.precio_tipo_prueba, pruebas.id_prueba, pruebas.resultado_prueba, pruebas.observaciones_prueba
-            FROM pruebas
-            INNER JOIN tipos_pruebas
-            ON pruebas.id_tipo_prueba = tipos_pruebas.id_tipo_prueba";
-            $resultado = $this->devolverConsultaArray($consulta);
-            return $resultado;
-        }
-        /***************************
         ****<R PRUEBAS ID>**********
         ****************************/
         public function visualizarPruebaId($id){
@@ -610,17 +481,6 @@
         public function modificarPrueba($id, $resultado, $observaciones){
             $consulta = "UPDATE pruebas SET resultado_prueba = '$resultado', observaciones_prueba = '$observaciones' WHERE id_prueba = $id";
             return $this->ejecutarConsulta($consulta);
-        }
-        /***************************
-        ****<VP PRUEBAS>************
-        ****************************/
-        public function visualizarPruebasPaginacion($inicio, $tamano_pagina){
-            $consulta = "SELECT tipos_pruebas.nombre_tipo_prueba, tipos_pruebas.precio_tipo_prueba, pruebas.id_prueba, pruebas.resultado_prueba, pruebas.observaciones_prueba
-            FROM pruebas
-            INNER JOIN tipos_pruebas
-            ON pruebas.id_tipo_prueba = tipos_pruebas.id_tipo_prueba LIMIT ".$inicio."," . $tamano_pagina;
-            $resultado = $this->devolverConsultaArray($consulta);
-            return $resultado;
         }
         /***************************
         ****<F PRUEBAS>*************
@@ -704,14 +564,6 @@
         ****************************/
         public function visualizarTiposPruebas(){
             $consulta = "SELECT * FROM tipos_pruebas";
-            $resultado = $this->devolverConsultaArray($consulta);
-            return $resultado;
-        }
-        /***************************
-        ****<VP TIPOSPRUEBAS>*******
-        ****************************/
-        public function visualizarTipoPruebaPaginacion($inicio, $tamano_pagina){
-            $consulta = "SELECT * FROM tipos_pruebas LIMIT ".$inicio."," . $tamano_pagina;
             $resultado = $this->devolverConsultaArray($consulta);
             return $resultado;
         }
@@ -816,14 +668,6 @@
         public function insertarPago($id_cliente, $total, $fecha, $id_cita){
             $consulta = "INSERT INTO pagos (id_cliente, total_precio, fecha_pago, id_cita) VALUES ($id_cliente, $total, '$fecha', $id_cita)";
             return $this->ejecutarConsulta($consulta);
-        }
-        /***************************
-        ****<V PAGOS>***************
-        ****************************/
-        public function visualizarPagos(){
-            $consulta = "SELECT * FROM pagos";
-            $resultado = $this->devolverConsultaArray($consulta);
-            return $resultado;
         }
         /***************************
         ****<V PAGO DATOS>***************

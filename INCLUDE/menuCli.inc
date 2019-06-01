@@ -11,7 +11,7 @@
     <div class="collapse navbar-collapse" id="myNavbar">
       <ul class="nav navbar-nav navbar-right">
         <li><a><span class="glyphicon glyphicon-user"></span> <?= $_SESSION['usuario'] ?></a></li>
-        <li><a href="../COMUN/vistaComunCambiarContrasena.php"><span class="glyphicon glyphicon-user"></span> Contraseña</a></li>
+        <li><a href="../COMUN/vistaComunCambiarContrasena.php"><span class="glyphicon glyphicon-lock"></span> Contraseña</a></li>
         <li><a href="../../CONTROLADOR/logout.php"><span class="glyphicon glyphicon-log-out"></span> Cerrar sesión</a></li>
       </ul>
     </div>
