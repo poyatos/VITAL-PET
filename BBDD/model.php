@@ -577,12 +577,7 @@
                 $sql = "INSERT INTO pruebas (id_tipo_prueba, id_mascota, resultado_prueba, observaciones_prueba, id_cita)
                 VALUES ($id_tipo, $id_mascota, '$resultado', '$observaciones', $id_cita)";
 
-                if ($this->ejecutarConsulta($sql)) {
-                     echo "<br/><h2>Prueba registrada correctamente.</h2>";
-                } else {
-                     echo "<h2>Error al crear la prueba." . $sql . "</h2><br/>";
-                     echo "<h5><a href='registroFormulario.php'>Intentelo de nuevo</a></h5>"; 
-                }
+                return $this->ejecutarConsulta($sql);
         }
         /***************************
         ****<V PRUEBAS>*************
