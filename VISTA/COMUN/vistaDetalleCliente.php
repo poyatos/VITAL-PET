@@ -86,7 +86,7 @@
                       <li class='list-group-item list-group-item-action list-group-item-danger'>Fecha de nacimiento: <?= date("d/m/Y", strtotime($resultado[0]['fecna_usuario']))?></li>
                     </div>
                     <div class='col-12 col-sm-12 col-md-6  col-lg-6'>
-                    <li class='list-group-item list-group-item-action list-group-item-danger'>DNI: <?= $resultado[0]['dni_usuario']?></li>
+                    <li class='list-group-item list-group-item-action list-group-item-danger'>NIE / NIF: <?= $resultado[0]['dni_usuario']?></li>
                     </div> 
                     <div class='col-12 col-sm-12 col-md-6  col-lg-6'>
                     <li class='list-group-item list-group-item-action list-group-item-danger'>Correo electrónico: <?= $resultado[0]['correo_usuario']?></li>
