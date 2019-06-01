@@ -429,10 +429,11 @@
         ****<F CITAS>*******
         ****************************/
         public function visualizarCitasFiltrado($fecha, $dni, $estado){
-            $consulta = "SELECT usuarios.dni_usuario, id_cita, fecha_cita, hora_cita, estado_cita, num_consulta, id_mascota, id_cliente, id_veterinario 
-            FROM citas
-            INNER JOIN usuarios
-            ON citas.id_cliente = usuarios.id_usuario WHERE  fecha_cita LIKE '%$fecha%' AND dni_usuario LIKE '%$dni%' AND estado_cita LIKE '%$estado%'";
+            $consulta = "SELECT U.dni_usuario, C.id_cita, C.fecha_cita, C.hora_cita, C.estado_cita, C.num_consulta, M.id_mascota, M.nombre_mascota, C.id_cliente, C.id_veterinario 
+            FROM citas C
+            JOIN usuarios U ON C.id_cliente = U.id_usuario
+            JOIN mascotas M ON C.id_mascota = M.id_mascota 
+            WHERE  fecha_cita LIKE '%$fecha%' AND dni_usuario LIKE '%$dni%' AND estado_cita LIKE '%$estado%'";
             $resultado = $this->devolverConsultaArray($consulta);
             return $resultado;
         }
@@ -440,10 +441,11 @@
         ****<FP CITAS>*******
         ****************************/ 
         public function visualizarCitasFiltradoPaginacion($fecha, $dni, $estado, $inicio, $tamano_pagina){
-            $consulta = "SELECT usuarios.dni_usuario, id_cita, fecha_cita, hora_cita, estado_cita, num_consulta, id_mascota, id_cliente, id_veterinario 
-            FROM citas
-            INNER JOIN usuarios
-            ON citas.id_cliente = usuarios.id_usuario WHERE  fecha_cita LIKE '%$fecha%' AND dni_usuario LIKE '%$dni%' AND estado_cita LIKE '%$estado%' LIMIT ".$inicio."," . $tamano_pagina;
+            $consulta = "SELECT U.dni_usuario, C.id_cita, C.fecha_cita, C.hora_cita, C.estado_cita, C.num_consulta, M.id_mascota, M.nombre_mascota, C.id_cliente, C.id_veterinario 
+            FROM citas C
+            JOIN usuarios U ON C.id_cliente = U.id_usuario
+            JOIN mascotas M ON C.id_mascota = M.id_mascota 
+            WHERE  fecha_cita LIKE '%$fecha%' AND dni_usuario LIKE '%$dni%' AND estado_cita LIKE '%$estado%' LIMIT ".$inicio."," . $tamano_pagina;
             $resultado = $this->devolverConsultaArray($consulta);
             return $resultado;
         }
@@ -451,10 +453,11 @@
         ****<V CITAS CLIENTE>*******
         ****************************/
         public function visualizarCitasCliente($id){
-            $consulta = "SELECT usuarios.dni_usuario, id_cita, fecha_cita, hora_cita, estado_cita, num_consulta, id_mascota, id_cliente, id_veterinario 
-            FROM citas
-            INNER JOIN usuarios
-            ON citas.id_cliente = usuarios.id_usuario WHERE estado_cita LIKE 'Pendiente' AND id_cliente = $id ";
+            $consulta = "SELECT U.dni_usuario, C.id_cita, C.fecha_cita, C.hora_cita, C.estado_cita, C.num_consulta, M.id_mascota, M.nombre_mascota, C.id_cliente, C.id_veterinario 
+            FROM citas C
+            JOIN usuarios U ON C.id_cliente = U.id_usuario
+            JOIN mascotas M ON C.id_mascota = M.id_mascota 
+            WHERE estado_cita LIKE 'Pendiente' AND C.id_cliente = $id ";
             $resultado = $this->devolverConsultaArray($consulta);
             return $resultado;
         }
@@ -462,10 +465,11 @@
         ****<VP CITAS CLIENTE>*******
         ****************************/
         public function visualizarCitasClientePaginacion($id, $inicio, $tamano_pagina){
-            $consulta = "SELECT usuarios.dni_usuario, id_cita, fecha_cita, hora_cita, estado_cita, num_consulta, id_mascota, id_cliente, id_veterinario 
-            FROM citas
-            INNER JOIN usuarios
-            ON citas.id_cliente = usuarios.id_usuario WHERE estado_cita LIKE 'Pendiente' AND id_cliente = $id LIMIT ".$inicio."," . $tamano_pagina;
+            $consulta = "SELECT U.dni_usuario, C.id_cita, C.fecha_cita, C.hora_cita, C.estado_cita, C.num_consulta, M.id_mascota, M.nombre_mascota, C.id_cliente, C.id_veterinario 
+            FROM citas C
+            JOIN usuarios U ON C.id_cliente = U.id_usuario
+            JOIN mascotas M ON C.id_mascota = M.id_mascota 
+            WHERE estado_cita LIKE 'Pendiente' AND C.id_cliente = $id LIMIT ".$inicio."," . $tamano_pagina;
             $resultado = $this->devolverConsultaArray($consulta);
             return $resultado;
         }
@@ -524,10 +528,11 @@
         ****<F CITAS VETERINARIO>***
         ****************************/
          public function visualizarCitasVeterinarioFiltrado($id, $fecha, $dni, $estado){
-            $consulta = "SELECT usuarios.dni_usuario, id_cita, fecha_cita, hora_cita, estado_cita, num_consulta, id_mascota, id_cliente, id_veterinario 
-            FROM citas
-            INNER JOIN usuarios
-            ON citas.id_cliente = usuarios.id_usuario WHERE id_veterinario = $id AND fecha_cita LIKE '%$fecha%' AND dni_usuario LIKE '%$dni%' AND estado_cita LIKE '%$estado%'";
+            $consulta = "SELECT U.dni_usuario, C.id_cita, C.fecha_cita, C.hora_cita, C.estado_cita, C.num_consulta, M.id_mascota, M.nombre_mascota, C.id_cliente, C.id_veterinario 
+            FROM citas C
+            JOIN usuarios U ON C.id_cliente = U.id_usuario
+            JOIN mascotas M ON C.id_mascota = M.id_mascota 
+            WHERE id_veterinario = $id AND fecha_cita LIKE '%$fecha%' AND dni_usuario LIKE '%$dni%' AND estado_cita LIKE '%$estado%'";
             $resultado = $this->devolverConsultaArray($consulta);
             return $resultado;
         }
@@ -535,10 +540,11 @@
         ****<VP CITAS VETERINARIO>***
         ****************************/
         public function visualizarCitasVeterinarioFiltradoPaginacion($id, $fecha, $dni, $estado, $inicio, $tamano_pagina){
-            $consulta = "SELECT usuarios.dni_usuario, id_cita, fecha_cita, hora_cita, estado_cita, num_consulta, id_mascota, id_cliente, id_veterinario 
-            FROM citas
-            INNER JOIN usuarios
-            ON citas.id_cliente = usuarios.id_usuario WHERE id_veterinario = $id AND fecha_cita LIKE '%$fecha%' 
+            $consulta = "SELECT U.dni_usuario, C.id_cita, C.fecha_cita, C.hora_cita, C.estado_cita, C.num_consulta, M.id_mascota, M.nombre_mascota, C.id_cliente, C.id_veterinario 
+            FROM citas C
+            JOIN usuarios U ON C.id_cliente = U.id_usuario
+            JOIN mascotas M ON C.id_mascota = M.id_mascota 
+            WHERE id_veterinario = $id AND fecha_cita LIKE '%$fecha%' 
             AND dni_usuario LIKE '%$dni%' AND estado_cita LIKE '%$estado%' LIMIT ".$inicio."," . $tamano_pagina;
             $resultado = $this->devolverConsultaArray($consulta);
             return $resultado;
@@ -620,10 +626,13 @@
         ****<F PRUEBAS>*************
         ****************************/ 
          public function visualizarPruebasFiltrado($nombre){
-            $consulta = "SELECT tipos_pruebas.nombre_tipo_prueba, tipos_pruebas.precio_tipo_prueba, pruebas.id_prueba, pruebas.resultado_prueba, pruebas.observaciones_prueba
-            FROM pruebas
-            INNER JOIN tipos_pruebas
-            ON pruebas.id_tipo_prueba = tipos_pruebas.id_tipo_prueba WHERE nombre_tipo_prueba LIKE '%$nombre%'";
+            $consulta = "SELECT T.nombre_tipo_prueba, T.precio_tipo_prueba, P.id_prueba, P.resultado_prueba, P.observaciones_prueba, C.fecha_cita, M.nombre_mascota, U.dni_usuario
+            FROM pruebas P
+            JOIN tipos_pruebas T ON P.id_tipo_prueba = T.id_tipo_prueba
+            JOIN citas C ON P.id_cita = C.id_cita
+            JOIN mascotas M ON P.id_mascota = M.id_mascota
+            JOIN usuarios U ON M.id_cliente = U.id_usuario
+            WHERE nombre_tipo_prueba LIKE '%$nombre%'";
             $resultado = $this->devolverConsultaArray($consulta);
             return $resultado;
         }
@@ -631,13 +640,45 @@
         ****<FP PRUEBAS>************
         ****************************/
         public function visualizarPruebasFiltradoPaginacion($nombre, $inicio, $tamano_pagina){
-            $consulta = "SELECT tipos_pruebas.nombre_tipo_prueba, tipos_pruebas.precio_tipo_prueba, pruebas.id_prueba, pruebas.resultado_prueba, pruebas.observaciones_prueba
-            FROM pruebas
-            INNER JOIN tipos_pruebas
-            ON pruebas.id_tipo_prueba = tipos_pruebas.id_tipo_prueba WHERE nombre_tipo_prueba LIKE '%$nombre%' LIMIT ".$inicio."," . $tamano_pagina;
+            $consulta = "SELECT T.nombre_tipo_prueba, T.precio_tipo_prueba, P.id_prueba, P.resultado_prueba, P.observaciones_prueba, C.fecha_cita, M.nombre_mascota, U.dni_usuario
+            FROM pruebas P
+            JOIN tipos_pruebas T ON P.id_tipo_prueba = T.id_tipo_prueba
+            JOIN citas C ON P.id_cita = C.id_cita
+            JOIN mascotas M ON P.id_mascota = M.id_mascota
+            JOIN usuarios U ON M.id_cliente = U.id_usuario
+            WHERE nombre_tipo_prueba LIKE '%$nombre%' LIMIT ".$inicio."," . $tamano_pagina;
             $resultado = $this->devolverConsultaArray($consulta);
             return $resultado;
         }
+        /***************************
+        ****<F PRUEBAS CLIENTE>*************
+        ****************************/ 
+        public function visualizarPruebasFiltradoCliente($id, $nombre){
+            $consulta = "SELECT T.nombre_tipo_prueba, T.precio_tipo_prueba, P.id_prueba, P.resultado_prueba, P.observaciones_prueba, C.fecha_cita, M.nombre_mascota, U.dni_usuario
+            FROM pruebas P
+            JOIN tipos_pruebas T ON P.id_tipo_prueba = T.id_tipo_prueba
+            JOIN citas C ON P.id_cita = C.id_cita
+            JOIN mascotas M ON P.id_mascota = M.id_mascota
+            JOIN usuarios U ON M.id_cliente = U.id_usuario
+            WHERE T.nombre_tipo_prueba LIKE '%$nombre%' AND U.id_usuario = $id";
+            $resultado = $this->devolverConsultaArray($consulta);
+            return $resultado;
+        }
+        /***************************
+        ****<FP PRUEBAS CLIENTE>************
+        ****************************/
+        public function visualizarPruebasFiltradoPaginacionCliente($id, $nombre, $inicio, $tamano_pagina){
+            $consulta = "SELECT T.nombre_tipo_prueba, T.precio_tipo_prueba, P.id_prueba, P.resultado_prueba, P.observaciones_prueba, C.fecha_cita, M.nombre_mascota, U.dni_usuario
+            FROM pruebas P
+            JOIN tipos_pruebas T ON P.id_tipo_prueba = T.id_tipo_prueba
+            JOIN citas C ON P.id_cita = C.id_cita
+            JOIN mascotas M ON P.id_mascota = M.id_mascota
+            JOIN usuarios U ON M.id_cliente = U.id_usuario
+            WHERE nombre_tipo_prueba LIKE '%$nombre%' AND U.id_usuario = $id LIMIT ".$inicio."," . $tamano_pagina;
+            $resultado = $this->devolverConsultaArray($consulta);
+            return $resultado;
+        }
+        
         /***************************
         ****<B PRUEBAS>*************
         ****************************/

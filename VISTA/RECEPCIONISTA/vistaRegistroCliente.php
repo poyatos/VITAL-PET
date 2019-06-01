@@ -94,7 +94,7 @@
                             </div>
                         </div>
                         <div class="form-group col-12 col-sm-12 col-md-12 col-lg-12">
-                            <label for="inputFecha">Fecha de nacimiento</label>
+                            <label for="inputFecha">Fecha de nacimiento (*)</label>
                             <input type="date" name="fecna" class="form-control" id="fecha" required>
                         </div>
                         <br />

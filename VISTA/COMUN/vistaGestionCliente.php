@@ -79,6 +79,7 @@
   <table class="table table-bordered table-striped">
     <thead>
       <tr>
+        <th>ID cliente</th>
         <th>Nombre</th>
         <th>Apellidos</th>
         <th>NIE / NIF</th>
@@ -115,7 +116,8 @@
             $resultadoPaginacion = $conexion->filtrarClientesPaginacion($nombre, $dni, $inicio, $tamano_pagina);
             foreach($resultadoPaginacion as $clientes){
                    echo (" <tr>
-                  <td><a href='vistaDetalleCliente.php?id=".$clientes['id_usuario']."'>".$clientes['nombre_usuario']."</a></td>
+                  <td><a href='vistaDetalleCliente.php?id=".$clientes['id_usuario']."'>".$clientes['id_usuario']."</a></td>
+                  <td>".$clientes['nombre_usuario']."</td>
                   <td>".$clientes['apellidos_usuario']."</td>
                   <td>".$clientes['dni_usuario']."</td>
                   <td>".$clientes['telefono_usuario']."</td>

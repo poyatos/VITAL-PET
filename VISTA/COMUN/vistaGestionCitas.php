@@ -122,11 +122,11 @@
         <thead>
           <tr>
             <th>ID cita</th>
-            <th>NIE / NIF</th>
+            <th>NIE / NIF dueño</th>
+            <th>Nombre mascota</th>
             <th>Fecha</th>
             <th>Hora</th>
             <th>Estado de la cita</th>
-            <th>ID mascota</th>
             <th>Consulta nº</th>
             <?php
               if ($_SESSION['rol'] == 'Veterinario' || $_SESSION['rol'] == 'Recepcionista') {
@@ -177,10 +177,10 @@
                     echo(" <tr>
                     <td><a href='vistaDetalleCitas.php?id=".$citas['id_cita']."'>".$citas['id_cita']."</a></td>
                     <td>".$citas['dni_usuario']."</td>
+                    <td>".$citas['nombre_mascota']."</td>
                     <td>".date("d/m/Y", strtotime($citas['fecha_cita']))."</td>
                     <td>".$citas['hora_cita']."</td>
                     <td>".$citas['estado_cita']."</td>
-                    <td>".$citas['id_mascota']."</td>
                     <td>".$citas['num_consulta']."</td>");
                     if ($_SESSION['rol'] == 'Veterinario') {
                         echo('<td>');

@@ -107,11 +107,14 @@ if($_SESSION['rol'] != 'Cliente'){
   <table class="table table-bordered table-striped">
     <thead>
       <tr>
-        <th>ID</th>
-        <th>Nombre de la prueba</th>
+        <th>ID prueba</th>
+        <th>Nombre</th>
+        <th>DNI dueño</th>
+        <th>Mascota</th>
         <th>Resultado</th>
         <th>Observaciones</th>
-        <th >Precio</th>
+        <th>Fecha</th>
+        <th>Precio</th>
         <?php
         if ($_SESSION['rol'] == 'Veterinario') {
             echo'<th style="width:200px;" >Editar</th>';
@@ -126,7 +129,11 @@ if($_SESSION['rol'] != 'Cliente'){
       
         $conexion = new Model(Config::$host, Config::$user, Config::$pass, Config::$nombreBase);
         
-        $resultado = $conexion->visualizarPruebasFiltrado($nombre);
+        if($_SESSION['rol'] == 'Cliente'){
+          $resultado = $conexion->visualizarPruebasFiltradoCliente($_SESSION['id_usuario'], $nombre);
+        } else {
+          $resultado = $conexion->visualizarPruebasFiltrado($nombre);
+        }
         
           if (!empty($resultado)) {
             $total_registros = count($resultado);
@@ -144,15 +151,22 @@ if($_SESSION['rol'] != 'Cliente'){
             }
             $total_paginas = ceil($total_registros / $tamano_pagina);
 
-            $resultadoPaginacion = $conexion->visualizarPruebasFiltradoPaginacion($nombre, $inicio, $tamano_pagina);
+            if ($_SESSION['rol'] == 'Cliente') {
+              $resultadoPaginacion = $conexion->visualizarPruebasFiltradoPaginacionCliente($_SESSION['id_usuario'], $nombre, $inicio, $tamano_pagina);
+            } else {
+              $resultadoPaginacion = $conexion->visualizarPruebasFiltradoPaginacion($nombre, $inicio, $tamano_pagina);
+            }
             
             foreach ($resultadoPaginacion as $prueba) {
 
                 echo (" <tr>
                   <td>".$prueba['id_prueba']."</td>
                   <td>".$prueba['nombre_tipo_prueba']."</td>
+                  <td>".$prueba['dni_usuario']."</td>
+                  <td>".$prueba['nombre_mascota']."</td>
                   <td>".$prueba['resultado_prueba']."</td>
                   <td>".$prueba['observaciones_prueba']."</td>
+                  <td>".date("d/m/Y", strtotime($prueba['fecha_cita']))."</td>
                   <td>".$prueba['precio_tipo_prueba']." &euro;</td>");
 
                 if ($_SESSION['rol'] == 'Veterinario') {
