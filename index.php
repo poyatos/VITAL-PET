@@ -43,7 +43,7 @@
                     <br />
                     <form action="CONTROLADOR/login.php" method="POST" enctype="multipart/form-data">
                       <div class="form-group">
-                        <label for="email">Dni:</label>
+                        <label for="email">NIE / NIF:</label>
                         <input type="text" class="form-control" id="dni" placeholder="Dni" name="dni" required>
                       </div>
                       <div class="form-group">
