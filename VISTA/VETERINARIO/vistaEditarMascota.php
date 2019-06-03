@@ -98,13 +98,15 @@
                             <label for="inputPeso">peso (*)</label>
                             <input type="number" name="peso" class="form-control" id="inputPeso" step="0.01" value = "<?= $mascota['peso_mascota'] ?>" required>
                         </div>
-                        <div class="form-row">
-                        <br />
+                        <div class=" col-md-12">
                         <input type ="hidden" name="id_mascota" value = "<?= $mascota['id_mascota'] ?>">
                         <input type="submit" name ="editarMascota" class="btn btn-lg" value="Editar">
+                        <br/><br/>
+                        <button class="btn btn-info"><a class="h4" href="<?= $_SERVER['HTTP_REFERER'] ?>"><span class="glyphicon glyphicon-arrow-left"></span> Volver</a></button>
+                        </div>
                     </form>
-                </div>
-                <button class="btn btn-info"><a class="h4" href="<?= $_SERVER['HTTP_REFERER'] ?>"><span class="glyphicon glyphicon-arrow-left"></span> Volver</a></button>
+               
+               
             </div>
             </div>
         </div>

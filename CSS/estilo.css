@@ -249,3 +249,12 @@ padding: 15px;
   font-size:9px;
 }
 
+.margen{
+  margin:0px;
+}
+
+@media screen and (max-width: 767px) {
+.padin{
+  padding:37px !important;
+}
+}

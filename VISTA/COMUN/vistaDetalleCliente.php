@@ -60,6 +60,7 @@
   <!-- CONTENIDO-->
 
   <!-- SI EL EMPLEADO ES VETERINARIO SE IMPRIME ESTE -->
+ 
   <div class="col-12 col-sm-7 col-md-7 col-lg-7 text-center">
       <div class="row">
 
@@ -74,7 +75,7 @@
           <div class='col-12 col-sm-12 col-md-12  col-lg-12'>
           <ul class='list-group'>
               <li class='list-group-item list-group-item-action list-group-item-danger'><img src='../../IMAGENES/cliente.png' class='img-thumbnail' alt='Empleado'></li>
-                  <div class='row'>
+                  <div class='row margen'>
                       <div class='col-12 col-sm-12 col-md-6  col-lg-6'>
                         <li class='list-group-item list-group-item-action list-group-item-danger'>Nombre: <?= $resultado[0]['nombre_usuario']?></li>
                       </div>
@@ -97,8 +98,9 @@
                       <li class='list-group-item list-group-item-action list-group-item-danger'>Dirección: <?= $resultado[0]['direccion_usuario']?></li>
                       </div>
                       </ul>
+                      </div>
                       <?php
-                        echo"<div class='col-12 col-sm-12 col-md-12  col-lg-12'>
+                        echo"<div class='col-12 col-sm-12 col-md-12  col-lg-12 padin'>
                               <h1>MASCOTAS</h1>
                               <table class = 'table table-bordered table-dark'>
                               <thead>
@@ -126,12 +128,14 @@
                         </table>
                   </div>
               </div>
+              <button class="btn btn-info"><a class="h4" href="<?= $_SERVER['HTTP_REFERER'] ?>"><span class="glyphicon glyphicon-arrow-left"></span> Volver</a></button>
           </div>
-          <button class="btn btn-info"><a class="h4" href="<?= $_SERVER['HTTP_REFERER'] ?>"><span class="glyphicon glyphicon-arrow-left"></span> Volver</a></button>
+          
           <?php
           $conexion->desconectar();
           ?>
       </div>
     </div>
+   
   </body>
 </html>

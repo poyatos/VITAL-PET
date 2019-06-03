@@ -82,7 +82,7 @@
           echo '<li class="list-group-item list-group-item-action list-group-item-success"><img src="../../IMAGENES/recepcionista.png" class="img-thumbnail" alt="Empleado"></li>';
         }
         ?>
-              <div class='row'>
+              <div class='row margen'>
                     <div class='col-12 col-sm-12 col-md-6  col-lg-6'>
                       <li class='list-group-item list-group-item-action list-group-item-info'><p class="d-flex flex-start">Nombre:</p><?= $resultado['nombre_usuario']?></li>
                     </div>
