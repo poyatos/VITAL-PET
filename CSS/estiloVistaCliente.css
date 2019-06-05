@@ -1,7 +1,7 @@
-table.table.table-bordered.table-dark{
-  font-size:8px !important;
-}
 
+table.table.table-bordered.table-dark{
+  font-size:14px !important;
+}
 .papaMascota{
     display:flex;
     align-items:center;
@@ -45,5 +45,8 @@ table.table.table-bordered.table-dark{
     
   }
 
-
-  
+  @media (max-width: 767px) {
+  table.table.table-bordered.table-dark{
+    font-size:8px !important;
+  }
+}
