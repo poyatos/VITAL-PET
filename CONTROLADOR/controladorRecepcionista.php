@@ -29,17 +29,6 @@
             }
         }
 
-        /*---------CONTROLADOR VISTA EDITAR CITA-------*/
-        elseif (isset($_POST['editarCita'])) {
-            if ($conexion->modificarCita($_POST['id_cita'], $_POST['fecha'], $_POST['hora'], $_POST['consulta'])) {
-                $_SESSION['exito'] = true;
-            } else {
-                $_SESSION['exito'] = false;
-                $_SESSION['mensaje'] = '<h2>Error al modificar la cita. Intentelo de nuevo.</h2>';
-            }
-            $_SESSION['url'] = 'vistaGestionCitas.php';
-        }
-
         /*---------CONTROLADOR VISTA GESTION CITAS-------*/
         elseif (isset($_POST['borrarCita'])) {
             if ($conexion->borrarCita($_POST['id_cita'])) {
