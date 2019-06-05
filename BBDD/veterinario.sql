@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Servidor: 127.0.0.1
--- Tiempo de generación: 01-06-2019 a las 18:18:32
+-- Tiempo de generación: 05-06-2019 a las 17:44:00
 -- Versión del servidor: 10.1.32-MariaDB
 -- Versión de PHP: 7.1.17
 
@@ -40,15 +40,6 @@ CREATE TABLE `citas` (
   `id_cliente` int(11) NOT NULL,
   `id_veterinario` int(11) NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8 COLLATE=utf8_spanish_ci;
-
---
--- Volcado de datos para la tabla `citas`
---
-
-INSERT INTO `citas` (`id_cita`, `fecha_cita`, `hora_cita`, `estado_cita`, `num_consulta`, `id_mascota`, `id_cliente`, `id_veterinario`) VALUES
-(1, '2019-05-20', '10:00', 'Pendiente', 3, 1, 1, 29),
-(2, '2019-05-18', '16:00', 'Pendiente', 3, 1, 1, 29),
-(3, '2019-05-18', '20:00', 'Finalizado', 2, 1, 1, 30);
 
 -- --------------------------------------------------------
 
@@ -191,16 +182,6 @@ CREATE TABLE `pruebas` (
   `observaciones_prueba` varchar(2000) COLLATE utf8_spanish_ci DEFAULT NULL,
   `id_cita` int(11) NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8 COLLATE=utf8_spanish_ci;
-
---
--- Volcado de datos para la tabla `pruebas`
---
-
-INSERT INTO `pruebas` (`id_prueba`, `id_tipo_prueba`, `id_mascota`, `resultado_prueba`, `observaciones_prueba`, `id_cita`) VALUES
-(1, 1, 1, 'Exito.', 'Sin observaciones.', 2),
-(2, 1, 1, 'Exito.', '', 2),
-(3, 3, 1, 'Ok.', '', 3),
-(4, 2, 1, 'Ok.', '', 3);
 
 -- --------------------------------------------------------
 
@@ -404,7 +385,7 @@ ALTER TABLE `usuarios`
 -- AUTO_INCREMENT de la tabla `citas`
 --
 ALTER TABLE `citas`
-  MODIFY `id_cita` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=4;
+  MODIFY `id_cita` int(11) NOT NULL AUTO_INCREMENT;
 
 --
 -- AUTO_INCREMENT de la tabla `contratos`
@@ -428,7 +409,7 @@ ALTER TABLE `pagos`
 -- AUTO_INCREMENT de la tabla `pruebas`
 --
 ALTER TABLE `pruebas`
-  MODIFY `id_prueba` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=5;
+  MODIFY `id_prueba` int(11) NOT NULL AUTO_INCREMENT;
 
 --
 -- AUTO_INCREMENT de la tabla `tipos_pruebas`
