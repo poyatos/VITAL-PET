@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Servidor: 127.0.0.1
--- Tiempo de generación: 05-06-2019 a las 17:44:00
+-- Tiempo de generación: 05-06-2019 a las 17:55:28
 -- Versión del servidor: 10.1.32-MariaDB
 -- Versión de PHP: 7.1.17
 
@@ -278,7 +278,7 @@ CREATE TABLE `usuarios` (
 --
 
 INSERT INTO `usuarios` (`id_usuario`, `nombre_usuario`, `apellidos_usuario`, `dni_usuario`, `telefono_usuario`, `correo_usuario`, `fecna_usuario`, `direccion_usuario`, `rol_usuario`, `pass_usuario`) VALUES
-(1, 'Valentina', 'Perez Ferrer', '77517664M', 691819415, 'miguelnara22@gmail.com', '1988-10-05', 'Calle Pablo Luis, 5 28529 - Arganda del Rey', 'Cliente', '$2y$10$CtHRsOaXcMo1oVlQwUtmkOErPC0Fc.QIXv8V4kCTpyCDklwbLyPay'),
+(1, 'Valentina', 'Perez Ferrer', '77517664M', 691819415, 'miguelnara22@gmail.com', '1988-10-05', 'Calle Pablo Luis, 5 28529 - Arganda del Rey', 'Cliente', '$2y$10$8VQB7EgQ5K20WmzOOAaIN.jM9zlWod1fXAZ30W75pRWz7WkE.etpO'),
 (2, 'Víctor', 'Serra Bravo', '80328807L', 658660474, 'victor@hotmail.com', '1965-05-10', 'Avenida Dos de Mayo, 69 28409 - Collado Villalba', 'Cliente', '$2y$10$8VQB7EgQ5K20WmzOOAaIN.jM9zlWod1fXAZ30W75pRWz7WkE.etpO'),
 (3, 'Carlos', 'Amador Sanchez', '47490404K', 677854785, 'car@gmail.com', '1972-11-06', 'Calle Simon Hernandez, 20 28109 - Alcobendas', 'Cliente', '$2y$10$8VQB7EgQ5K20WmzOOAaIN.jM9zlWod1fXAZ30W75pRWz7WkE.etpO'),
 (4, 'Lucas', 'Caballero Peña', '99684155Q', 677830541, 'luke@gmail.com', '1990-12-03', 'Calle Estimul, 50 28709 - San Sebastián de los Reyes', 'Cliente', '$2y$10$8VQB7EgQ5K20WmzOOAaIN.jM9zlWod1fXAZ30W75pRWz7WkE.etpO'),
@@ -306,7 +306,7 @@ INSERT INTO `usuarios` (`id_usuario`, `nombre_usuario`, `apellidos_usuario`, `dn
 (26, 'Francisco Javier', 'Marín Blanco', '82353546E', 617463323, 'francis@outlook.com', '1979-10-05', 'Calle Poeta Poyatos, 1 28929 - Alcorcón', 'Cliente', '$2y$10$8VQB7EgQ5K20WmzOOAaIN.jM9zlWod1fXAZ30W75pRWz7WkE.etpO'),
 (27, 'Ángela', 'Martinez Guerrero', '80729531Z', 689845983, 'angel1979@gmail.com', '1977-02-22', 'Paseo de la nara, 12 28939 - Móstoles', 'Cliente', '$2y$10$8VQB7EgQ5K20WmzOOAaIN.jM9zlWod1fXAZ30W75pRWz7WkE.etpO'),
 (28, 'Aitor', 'Rubio Herrera', '77511664M', 600819414, 'aitordw@gmail.com', '1988-10-05', 'Avenida de Pablo Gargallo, 36 28949 - Fuenlabrada', 'Cliente', '$2y$10$8VQB7EgQ5K20WmzOOAaIN.jM9zlWod1fXAZ30W75pRWz7WkE.etpO'),
-(29, 'Rayan', 'Torres Delgado', 'X0888493A', 691832144, 'rayegypt@gmail.com', '2000-03-03', 'Camino de Monzalbarba, 3 28980 - Parla', 'Veterinario', '$2y$10$SeMUj98fOBiJNbm.SHOp8efz/148XegTotaSD2x5tlr0VOjAlA8wu'),
+(29, 'Rayan', 'Torres Delgado', 'X0888493A', 691832144, 'rayegypt@gmail.com', '2000-03-03', 'Camino de Monzalbarba, 3 28980 - Parla', 'Veterinario', '$2y$10$8VQB7EgQ5K20WmzOOAaIN.jM9zlWod1fXAZ30W75pRWz7WkE.etpO'),
 (30, 'Rafael', 'García Marín', '59922043M', 601239414, 'rafi@gmail.com', '1950-07-17', 'Paseo de la Independencia, 2 28981 - Parla', 'Veterinario', '$2y$10$8VQB7EgQ5K20WmzOOAaIN.jM9zlWod1fXAZ30W75pRWz7WkE.etpO'),
 (31, 'Óscar', 'Font Santos', '15536803G', 601819000, 'srfont@gmail.com', '1955-06-16', 'Paseo de la Constitución, 15 28984 - Parla', 'Veterinario', '$2y$10$8VQB7EgQ5K20WmzOOAaIN.jM9zlWod1fXAZ30W75pRWz7WkE.etpO'),
 (32, 'Manuela', 'Casas Hernandez', '98464987D', 692594140, 'casasmanuela@gmail.com', '1958-10-05', 'Paseo de Echegaray y Caballero, 5 28970 - Humanes de Madrid', 'Veterinario', '$2y$10$8VQB7EgQ5K20WmzOOAaIN.jM9zlWod1fXAZ30W75pRWz7WkE.etpO'),
@@ -324,9 +324,9 @@ INSERT INTO `usuarios` (`id_usuario`, `nombre_usuario`, `apellidos_usuario`, `dn
 (44, 'Malak', 'Molina Rojas', 'Z1396130N', 147483647, 'malakmorok@yahoo.com', '1980-05-02', 'Calle de las Navas de Tolosa, 52 28820 - Coslada', 'Veterinario', '$2y$10$8VQB7EgQ5K20WmzOOAaIN.jM9zlWod1fXAZ30W75pRWz7WkE.etpO'),
 (45, 'Nerea', 'Delgado Benitez', '46952785X', 611819112, 'delgaben@gmail.com', '1975-08-15', 'Calle de Carretas, 2 28790 - Tres Cantos', 'Veterinario', '$2y$10$8VQB7EgQ5K20WmzOOAaIN.jM9zlWod1fXAZ30W75pRWz7WkE.etpO'),
 (46, 'Ángel', 'Gimenez Delgado', '61280315N', 691819570, 'angelyo@gmail.com', '1966-10-10', 'Calle de Arlabán, 7 28669 - Boadilla del Monte', 'Veterinario', '$2y$10$8VQB7EgQ5K20WmzOOAaIN.jM9zlWod1fXAZ30W75pRWz7WkE.etpO'),
-(47, 'José Manuel', 'Vila Soler', '86057428F', 677181414, 'jmanuele@gmail.com', '1980-10-21', 'Avenida del Planetario, 6 28340 - Valdemoro', 'Recepcionista', '$2y$10$4fwcL85wqWNJk0zHeSvesOELNkB1MaSihi9G02JRilxRpgdhV2dHO'),
+(47, 'José Manuel', 'Vila Soler', '86057428F', 677181414, 'jmanuele@gmail.com', '1980-10-21', 'Avenida del Planetario, 6 28340 - Valdemoro', 'Recepcionista', '$2y$10$8VQB7EgQ5K20WmzOOAaIN.jM9zlWod1fXAZ30W75pRWz7WkE.etpO'),
 (48, 'Celia', 'Carrasco Velasco', '98686179X', 691819140, 'celiamore@gmail.com', '1992-05-13', 'Calle de Alcalá, 5 28529 - Rivas-Vaciamadrid', 'Recepcionista', '$2y$10$8VQB7EgQ5K20WmzOOAaIN.jM9zlWod1fXAZ30W75pRWz7WkE.etpO'),
-(49, 'Ignacio', 'Casas Lopez', '68316493F', 691459414, 'eljefe@gmail.com', '1975-04-09', 'Avenida de la Ciudad de Barcelona, 8 28109 - Alcobendas', 'Director', '$2y$10$uqiCLxen65o9WcUz.bBse.GToKSJ7kveApwG9ZsyO7gqd7/A2RMf6');
+(49, 'Ignacio', 'Casas Lopez', '68316493F', 691459414, 'eljefe@gmail.com', '1975-04-09', 'Avenida de la Ciudad de Barcelona, 8 28109 - Alcobendas', 'Director', '$2y$10$8VQB7EgQ5K20WmzOOAaIN.jM9zlWod1fXAZ30W75pRWz7WkE.etpO');
 
 --
 -- Índices para tablas volcadas
