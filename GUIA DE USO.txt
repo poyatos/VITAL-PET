@@ -1,0 +1,33 @@
+En la carpeta BBDD se encuentra veterinario.sql para importar la base de datos.
+
+/*Acceso rápido a diferentes roles*/
+
+* Todos los roles se identifican con el DNI y la contraseña común clinica
+
+* hay que tener en cuenta que puede que haya vistas que no tengan resultados, que deberan entrar con un usuario que por ejemplo tenga citas asignadas 
+
+
+-DIRECTOR:
+Dni: 68316493F
+Contraseña: clinica
+
+-RECEPCIONISTA:
+Dni: 98686179X
+Contraseña: clinica
+
+-VETERINARIO:
+Dni: 74774857V
+Contraseña: clinica
+
+-CLIENTE:
+Dni: 82353546E
+Contraseña: clinica
+
+
+/* Acceso para la entrada al correo del Veterinario Vital-Pet */
+
+-CORREO:
+ veterinariovitalpet@gmail.com
+
+-CONTRASEÑA:
+ vitalpetclinica
